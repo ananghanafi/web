@@ -1,0 +1,116 @@
+@import '../../../node_modules/vuetify/src/stylus/settings/_variables.styl'
+
+$material-light.background = #ff0000
+// $body-font-family = 'Courier'
+// $alert-font-size = 18px
+$card-border-radius = 10px
+// $button-border-radius := 20px
+
+@import '../../../node_modules/vuetify/src/stylus/main'
+// Or for a-la-carte:
+// @import '../../../node_modules/vuetify/src/stylus/app'
+
+// for $size, $media_query in $display-breakpoints
+//     @media $media_query
+//         .container-{$size}
+//             max-width: 100%
+//             padding-top: 0
+//             padding-right: 0
+//             padding-left: 0
+//             overflow-x: hidden
+for $size, $media_query in $display-breakpoints
+    $i = 0
+    @media $media_query
+        for $level, $spacer in $spacers
+            .ma-{$i}-{$size}
+                margin: $spacer.y $spacer.x !important
+            .my-{$i}-{$size}
+                margin-top: $spacer.y !important
+                margin-bottom: $spacer.y !important
+            .mx-{$i}-{$size}
+                margin-left: $spacer.x !important
+                margin-right: $spacer.x !important
+            .mt-{$i}-{$size}
+                margin-top: $spacer.y !important
+            .mr-{$i}-{$size}
+                margin-right: $spacer.x !important
+            .mb-{$i}-{$size}
+                margin-bottom: $spacer.y !important
+            .ml-{$i}-{$size}
+                margin-left: $spacer.x !important
+
+            .pa-{$i}-{$size}
+                padding: $spacer.y $spacer.x !important
+            .py-{$i}-{$size}
+                padding-top: $spacer.y !important
+                padding-bottom: $spacer.y !important
+            .px-{$i}-{$size}
+                padding-left: $spacer.x !important
+                padding-right: $spacer.x !important
+            .pt-{$i}-{$size}
+                padding-top: $spacer.y !important
+            .pr-{$i}-{$size}
+                padding-right: $spacer.x !important
+            .pb-{$i}-{$size}
+                padding-bottom: $spacer.y !important
+            .pl-{$i}-{$size}
+                padding-left: $spacer.x !important
+            $i = $i + 1    
+
+$cborder-radius = 5px
+for $i in 0..5
+    .ra-{$i}
+        border-radius:  $cborder-radius*$i !important
+    .rt-{$i}
+        border-top-left-radius: $cborder-radius*$i !important
+        border-top-right-radius: $cborder-radius*$i !important
+    .rb-{$i}
+        border-bottom-left-radius: $cborder-radius*$i !important
+        border-bottom-right-radius: $cborder-radius*$i !important
+    .rr-{$i}
+        border-top-right-radius: $cborder-radius*$i !important
+        border-bottom-right-radius: $cborder-radius*$i !important
+    .rl-{$i}
+        border-top-left-radius: $cborder-radius*$i !important
+        border-bottom-left-radius: $cborder-radius*$i !important
+    .rtl-{$i}
+        border-top-left-radius: $cborder-radius*$i !important
+    .rtr-{$i}
+        border-top-right-radius: $cborder-radius*$i !important
+    .rbl-{$i}
+        border-bottom-left-radius: $cborder-radius*$i !important
+    .rbr-{$i}
+        border-bottom-right-radius: $cborder-radius*$i !important
+
+for $i in 0..5
+    .ra-{$i}
+        .v-tabs__bar
+            border-radius:  $cborder-radius*$i !important
+    .rt-{$i}
+        .v-tabs__bar
+            border-top-left-radius: $cborder-radius*$i !important
+            border-top-right-radius: $cborder-radius*$i !important
+    .rb-{$i}
+        .v-tabs__bar
+            border-bottom-left-radius: $cborder-radius*$i !important
+            border-bottom-right-radius: $cborder-radius*$i !important
+    .rr-{$i}
+        .v-tabs__bar
+            border-top-right-radius: $cborder-radius*$i !important
+            border-bottom-right-radius: $cborder-radius*$i !important
+    .rl-{$i}
+        .v-tabs__bar
+            border-top-left-radius: $cborder-radius*$i !important
+            border-bottom-left-radius: $cborder-radius*$i !important
+    .rtl-{$i}
+        .v-tabs__bar
+            border-top-left-radius: $cborder-radius*$i !important
+    .rtr-{$i}
+        .v-tabs__bar
+            border-top-right-radius: $cborder-radius*$i !important
+    .rbl-{$i}
+        .v-tabs__bar
+            border-bottom-left-radius: $cborder-radius*$i !important
+    .rbr-{$i}
+        .v-tabs__bar
+            border-bottom-right-radius: $cborder-radius*$i !important
