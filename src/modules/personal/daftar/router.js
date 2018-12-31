@@ -3,24 +3,24 @@ const rootp = `/${mod_name}`
 
 const router = [
     {
-        path: `${rootp}/implementasi`,
-        name: `${mod_name}_implementasi`,
+        path: `${rootp}/daftar`,
+        name: `${mod_name}_daftar`,
         meta: {
             auth : true,
         },
-        component: () => import('./pages/Implementasi.vue'),
+        component: () => import('./pages/Daftar.vue'),
     },
     {
-        path: `${rootp}/implementasi/:id`,
-        name: `${mod_name}_implementasi_detail`,
+        path: `${rootp}/daftar/:id`,
+        name: `${mod_name}_daftar_detail`,
         meta: {
             auth : true,
         },
         component: () => import('./pages/Detail.vue'),
     },
     {
-        path: `${rootp}/implementasi/:id/prog`,
-        name: `${mod_name}_implementasi_progress`,
+        path: `${rootp}/daftar/:id/prog`,
+        name: `${mod_name}_daftar_progress`,
         meta: {
             auth : true,
         },

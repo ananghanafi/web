@@ -1,7 +1,7 @@
-import rencana from './rencana/router'
-import implementasi from './implementasi/router'
+// import rencana from './rencana/router'
+import daftar from './daftar/router'
 
-const mod_name = 'donor'
+const mod_name = 'personal'
 const rootp = `/${mod_name}`
 
 const router = [
@@ -10,10 +10,10 @@ const router = [
         name: mod_name,
         // meta: {},
         // component: () => import('./pages/Bo'),
-        redirect : {name:'donor_implementasi'}
+        redirect : {name:'personal_daftar'}
     },
-    ...rencana,
-    ...implementasi
+    // ...rencana,
+    ...daftar
 ]
 
 export default router;

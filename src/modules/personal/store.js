@@ -1,5 +1,5 @@
-import perencanaan from './rencana/store'
-import implementasi from './implementasi/store'
+// import perencanaan from './rencana/store'
+import daftar from './daftar/store'
 
 const store = {
     namespaced: true,
@@ -13,8 +13,8 @@ const store = {
        
     },
     modules : {
-        perencanaan,
-        implementasi
+        // perencanaan,
+        daftar
     }
 }
 

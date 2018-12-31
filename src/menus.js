@@ -229,11 +229,12 @@ const menus = [
     {
         icon: 'people',
         title: 'Personal', 
-        to : {name : 'donor_implementasi'}       
+        to : {name : 'personal_daftar'}      
     }, 
     {
         icon: 'how_to_reg',
         title: 'Organisasi',
+        to : {name : 'personal_daftar'}    
     }, 
 
 ]

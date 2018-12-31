@@ -17,6 +17,7 @@ import r_revegetasi from './modules/revegetasi/router'
 import r_embung from './modules/embung/router'
 import r_revitalisasi from './modules/revitalisasi/router'
 import r_donor from './modules/donor/router'
+import r_personal from './modules/personal/router'
 
 
 import store from './store'
@@ -48,6 +49,7 @@ const routers = [
     ...r_rencana,
     ...r_rtt,
     ...r_donor,
+    ...r_personal,
 
     ...other
 ]
