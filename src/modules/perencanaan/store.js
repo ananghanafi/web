@@ -13,6 +13,13 @@ const store = {
     },
     actions: {
         // eslint-disable-next-line
+        provinces({ }) {
+            return axios.get(`${M_API}/provinces`)
+                .then(res => {
+                    return res.data
+                })
+        },
+        // eslint-disable-next-line
         getPlanningCost({ }) {
             return axios.get(`${M_API}/total-cost-plan`)
                 .then(res => {

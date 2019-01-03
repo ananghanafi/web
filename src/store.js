@@ -24,6 +24,7 @@ import perencanaan from './modules/perencanaan/store'
 import donor from './modules/donor/store'
 import currency from './modules/currency/store'
 import brgMandat from './modules/brgMandat/store'
+import personal from './modules/personal/store'
 
 
 const main = {
@@ -78,6 +79,7 @@ const store = new Vuex.Store({
         donor,
         currency,
         brgMandat,
+        personal,
     }
 })
 

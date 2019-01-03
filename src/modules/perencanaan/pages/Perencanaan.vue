@@ -4,6 +4,58 @@
             <v-flex md12>
                 DASHBOARD PERENCANAAN RESTORASI BRG
             </v-flex>
+            
+            <v-flex md12 xs12>
+                <v-layout row wrap>
+                    
+                    <v-flex md2 sm6>
+                        <v-autocomplete
+                            clearable
+                            :items="list_province"
+                            item-text="year"
+                            item-value="yearId"
+                            label="TAHUN"
+                            hide-details
+                            v-model="filter.qf_year"                            
+                        ></v-autocomplete>
+                    </v-flex>                        
+                    <v-flex md2 sm6>
+                        <v-autocomplete
+                            clearable
+                            :items="list_province"
+                            item-text="longName"
+                            item-value="provinceId"
+                            label="PROVINSI"
+                            hide-details
+                            v-model="filter.qf_province_id"
+                        ></v-autocomplete>
+                    </v-flex>
+                    <v-flex md2 sm6>
+                        <v-autocomplete
+                            clearable
+                            :items="list_province"
+                            item-text="longName"
+                            item-value="provinceId"
+                            label="KHG"
+                            hide-details
+                            v-model="filter.qf_code"                            
+                        ></v-autocomplete>
+                    </v-flex>
+                    <v-flex md2 sm6>
+                        <v-btn block color="primary" outline @click="load(1)">Filter</v-btn>
+                    </v-flex>
+                </v-layout>
+            </v-flex>
+            <!-- <v-flex md2 sm6>
+                <v-text-field
+                    append-icon="search"
+                    label="Kode"
+                    single-line
+                    hide-details
+                    @input="q_code"
+                ></v-text-field>
+            </v-flex> -->
+            
             <v-flex md12 xs12>
                 <v-layout row wrap>
                     <v-flex xs4 md3>
@@ -88,10 +140,19 @@ export default {
             totalCost: '',
             totalArea: '',
             totalAction: '',
+            list_province : [],
+            list_phu : [],
+            list_year : [],
+            filter : {
+                qf_year : null,
+                qf_province_id : null,
+                qf_code : null,
+            }
         }
     },
     mounted(){
         this.load()
+        this.loadFilter
     },
     methods: {
         load(){
@@ -108,7 +169,16 @@ export default {
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []
             })
-        }
+        },
+        loadFilter(){
+            Promise.all([
+            this.$store.dispatch('administrativeArea/getTargetedProv'),
+            this.$store.dispatch('peatHydrologicalUnit/getAll'),
+            ])
+            .then(arr=>{
+                [this.list_province,this.list_phu] = arr
+            })
+        },
     }
 }
 </script>
