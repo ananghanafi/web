@@ -1,4 +1,4 @@
-const mod_name = 'personal'
+const mod_name = 'revitalisasir3'
 const rootp = `/${mod_name}`
 
 const router = [

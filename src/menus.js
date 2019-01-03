@@ -326,7 +326,7 @@ const menus = [
     },
     {
         icon : 'today',
-        title : 'Reporting',
+        title : 'REPORTING',
         to : {name : 'skanal_implementasi'}
     },
 
@@ -492,12 +492,12 @@ const menus = [
     },
     {
         icon: 'people',
-        title: 'Personal', 
+        title: 'PERSONAL', 
         to : {name : 'personal_daftar'}      
     }, 
     {
         icon: 'how_to_reg',
-        title: 'Organisasi',
+        title: 'ORGANISASI',
         to : {name : 'personal_daftar'}    
     }, 
 
