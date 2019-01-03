@@ -18,6 +18,7 @@ import r_embung from './modules/embung/router'
 import r_revitalisasi from './modules/revitalisasi/router'
 import r_donor from './modules/donor/router'
 import r_personal from './modules/personal/router'
+import r_inputrtt from './modules/inputrtt/router'
 
 
 import store from './store'
@@ -50,6 +51,7 @@ const routers = [
     ...r_rtt,
     ...r_donor,
     ...r_personal,
+    ...r_inputrtt,
 
     ...other
 ]

@@ -4,7 +4,7 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1">
-                        DAFTAR
+                        INPUT ANGGARAN KEGIATAN R1,R2
                         <v-spacer></v-spacer>
                         <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn>
                     </v-card-title>

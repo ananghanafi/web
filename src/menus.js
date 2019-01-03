@@ -26,7 +26,12 @@ const menus = [
         icon: 'map',
         title: 'PETA RTT',       
         to : {name : 'rtt'}
-    }, 
+    },
+    {
+        icon: 'gavel',
+        title: 'INPUT RTT',       
+        to : {name : 'inputrtt_daftar'}
+    },  
     {
         icon: 'gavel',
         title: 'REWETTING',
