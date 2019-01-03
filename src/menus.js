@@ -30,7 +30,20 @@ const menus = [
     {
         icon: 'gavel',
         title: 'INPUT RTT',       
-        to : {name : 'inputrtt_daftar'}
+        items : [
+        {
+            icon: 'local_drink',
+            title: 'Input Anggaran Kegiatan R1 R2',
+            to: {name: 'inputrtt_daftar'}
+        },
+        {   icon: 'view_carousel',
+            title: 'REVITALISASI R3',
+            to: {name: 'revitalisasi_daftar'}
+        },
+        {   icon: 'how_to_vote',
+            title: 'INPUT DATA RTT',
+            to: {name: 'inputdatartt_daftar'}
+        },]
     },  
     {
         icon: 'gavel',
