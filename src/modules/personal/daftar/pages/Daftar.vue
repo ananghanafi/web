@@ -53,11 +53,22 @@
                                 </v-flex>
                                 <v-flex md3 sm6>
                                     <v-text-field
-                                        append-icon="edit"
-                                        label="Tanggal Registrasi"
+                                        append-icon="calender"
+                                        label="Tanggal"
                                         single-line
-                                        hide-details
-                                    ></v-text-field>
+                                        hide-details>
+                                            <v-date-picker
+                                            mode='range'
+                                            v-model='selectedDate'
+                                            header-color="#fffff"
+                                            show-caps>
+                                            </v-date-picker>   
+                                    </v-text-field>                                 
+                                </v-flex>
+                                 <v-flex md3 sm6>
+                                <v-btn flat color="warning darken-2">
+                                    
+                                </v-btn>
                                 </v-flex>
                             </v-layout>
                         </v-container>
