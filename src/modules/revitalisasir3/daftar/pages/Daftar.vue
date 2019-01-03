@@ -66,8 +66,9 @@
                                     </v-text-field>                                 
                                 </v-flex>
                                  <v-flex md3 sm6>
-                                <v-btn block color="primary" outline @click="load(1)">Submit</v-btn>
-               
+                                <v-btn flat color="warning darken-2">
+                                    
+                                </v-btn>
                                 </v-flex>
                             </v-layout>
                         </v-container>

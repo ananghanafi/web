@@ -30,16 +30,60 @@ const menus = [
     {
         icon: 'gavel',
         title: 'INPUT RTT',       
-        to : {name : 'inputrtt_daftar'}
+        items : [
+        {
+            icon: 'local_drink',
+            title: 'Input Anggaran Kegiatan R1 R2',
+            to: {name: 'inputrtt_daftar'}
+        },
+        {   icon: 'view_carousel',
+            title: 'REVITALISASI R3',
+            to: {name: 'revitalisasir3_daftar'}
+        },
+        {   icon: 'how_to_vote',
+            title: 'INPUT DATA RTT',
+            to: {name: 'inputdatartt_daftar'}
+        },]
     },  
     {
         icon: 'gavel',
-        title: 'REWETTING',
+        title: 'REPORT RTT',
+        items : [
+            {
+                icon: 'today',
+                title: 'R1 & R2',
+                to : {name : 'bor_rencana'}                
+            },
+            {
+                icon: 'today',
+                title: 'Summary R1 & R2',
+                to : {name : 'skanal_rencana'}
+            },
+            {
+                icon: 'today',
+                title: 'R3',
+                to : {name : 'pkanal_rencana'}
+            },
+            {
+                icon: 'today',
+                title: 'Summary R3',
+                to : {name : 'embung_rencana'}
+            }
+        ]        
+    },
+    {
+        icon: 'gavel',
+        title: 'REPORT BIAYA RTT',
         items : [
             {
                 icon: 'local_drink',
                 title: 'Sumur Bor',
                 to : {name : 'bor_rencana'}                
+            },
+            {
+                icon: 'local_drink',
+                title: 'Summary Sumur Bor',
+                to : {name : 'bor_rencana'}
             },
             {
                 icon: 'view_carousel',
@@ -52,23 +96,152 @@ const menus = [
                 to : {name : 'pkanal_rencana'}
             },
             {
-                icon: 'view_day',
-                title: 'Embung',
-                to : {name : 'embung_rencana'}
+                icon: 'today',
+                title: 'Revegetasi (R2)',
+                to : {name : 'revegetasi_rencana'}
+            },
+            {
+                icon: 'today',
+                title: 'Revitalisasi (R3)',
+                to : {name : 'revitalisasi_rencana'}
+            },
+            {
+                icon: 'today',
+                title: 'Summary Revitalisasi (R3)',
+                to : {name : 'revitalisasi_rencana'}
             }
         ]        
     },
     {
-        icon: 'today',
-        title: 'REVEGETASI',
-        to : {name : 'revegetasi_rencana'}
+        icon : 'today',
+        title : 'KELOLA PETA',
+        subheader : 1,
     },
     {
-        icon: 'today',
-        title: 'REVITALISASI',
-        to : {name: 'revitalisasi_rencana'}
-
+        icon: 'map',
+        title: 'WIL ADMINISTRATIF',
+        items : [
+            {
+                // icon: 'local_drink',
+                title: 'Provinsi',
+            },
+            {
+                // icon: 'view_carousel',
+                title: 'Kab/Kota',
+            },
+            {
+                // icon: 'view_day',
+                title: 'Batas Provinsi',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Batas Kabupaten',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Jalan',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Sungai',
+            }
+        ]        
     },
+    {
+        icon: 'map',
+        title: 'TEMATIK',
+        items : [
+            {
+                // icon: 'local_drink',
+                title: 'Lahan Gambut',
+            },
+            {
+                // icon: 'view_carousel',
+                title: 'Kesatuan Hidrologis Gambut',
+            },
+            {
+                // icon: 'view_day',
+                title: 'Fungsi Ekosistem Gambut',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Kanal Lahan Gambut',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Area Kanal',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Prioritas Indikatif Restorasi Gambut',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Konsesi',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Pola Ruang Provinsi',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Area Terbakar 2015-2017',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Nama KHG',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Moratorium Kawasan Hutan & Gambut',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Tutupan Lahan',
+            },
+            {
+                // icon: 'how_to_vote',
+                title: 'Kawasan Hutan',
+            }
+        ]        
+    },
+    // {
+    //     icon: 'gavel',
+    //     title: 'REWETTING',
+    //     items : [
+    //         {
+    //             icon: 'local_drink',
+    //             title: 'Sumur Bor',
+    //             to : {name : 'bor_rencana'}                
+    //         },
+    //         {
+    //             icon: 'view_carousel',
+    //             title: 'Sekat Kanal',
+    //             to : {name : 'skanal_rencana'}
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Penimbunan Kanal',
+    //             to : {name : 'pkanal_rencana'}
+    //         },
+    //         {
+    //             icon: 'view_day',
+    //             title: 'Embung',
+    //             to : {name : 'embung_rencana'}
+    //         }
+    //     ]        
+    // },
+    // {
+    //     icon: 'today',
+    //     title: 'REVEGETASI',
+    //     to : {name : 'revegetasi_rencana'}
+    // },
+    // {
+    //     icon: 'today',
+    //     title: 'REVITALISASI',
+    //     to : {name: 'revitalisasi_rencana'}
+
+    // },
     {
         icon : 'today',
         title : 'PELAKSANAAN',
@@ -84,7 +257,7 @@ const menus = [
     }, 
     {
         icon: 'gavel',
-        title: 'REWETTING',
+        title: 'INPUT REWETTING',
         items : [
             {
                 icon: 'local_drink',
@@ -103,7 +276,7 @@ const menus = [
             },
             {
                 icon: 'view_day',
-                title: 'Embung',
+                title: 'Ruas Kanal',
                 to : {name : 'embung_implementasi'}
             }
 
@@ -112,120 +285,156 @@ const menus = [
     {
         icon: 'today',
         title: 'REVEGETASI',
-        to : {name : 'revegetasi_implementasi'}
-
+        items : [
+            {
+                icon: 'local_drink',
+                title: 'Sukses Alami',
+                to : {name : 'bor_implementasi'}                
+            },
+            {
+                icon: 'view_carousel',
+                title: 'Pengkayaan Tanaman',
+                to : {name : 'skanal_implementasi'}
+            },
+            {
+                icon: 'how_to_vote',
+                title: 'Penanaman Pola Maksimal',
+                to : {name : 'pkanal_implementasi'}
+            }
+        ]     
     },
     {
         icon: 'today',
         title: 'REVITALISASI',
-        to : {name : 'revitalisasi_implementasi'} 
-
-    },
-    {
-        icon : 'today',
-        title : 'DONOR',
-        subheader : 1,
-    },
-    {
-        icon: 'today',
-        title: 'AKTIVITAS',
-        to : {name : 'donor_rencana'} 
-
-    },
-    {
-        icon : 'today',
-        title : 'KELOLA PETA',
-        subheader : 1,
-    },
-    {
-        icon: 'map',
-        title: 'Peta Dasar',
         items : [
             {
                 icon: 'local_drink',
-                title: 'Peta Wilayah Administasi',
+                title: 'Desa Peduli Gambut',
+                to : {name : 'bor_implementasi'}                
             },
             {
                 icon: 'view_carousel',
-                title: 'Peta KHG',
-            },
-            {
-                icon: 'view_day',
-                title: 'Peta Lahan Gambut',
+                title: 'Kapasitas Kelembagaan',
+                to : {name : 'skanal_implementasi'}
             },
             {
                 icon: 'how_to_vote',
-                title: 'Peta Desa Peduli Gambut',
-            },
-            {
-                icon: 'how_to_vote',
-                title: 'Peta Fungsi Ekosistem Gambut'
+                title: 'Alt Kapasitas & Mata Pencaharian',
+                to : {name : 'pkanal_implementasi'}
             }
-
-        ]        
-    },
-    {
-        icon: 'map',
-        title: 'Peta Prioritas Restorasi',
-        items : [
-            {
-                icon: 'local_drink',
-                title: 'Peta Prioritas Pasca Kebakaran 2015-2016',
-            },
-            {
-                icon: 'view_carousel',
-                title: 'Peta Prioritas Lindung Gambut Berkanal',
-            },
-            {
-                icon: 'view_day',
-                title: 'Peta Prioritas Gambut Tak Berkanal',
-            },
-            {
-                icon: 'how_to_vote',
-                title: 'Peta Prioritas Gambut Budidaya',
-            }
-        ]        
-    },
-    {
-        icon: 'map',
-        title: 'Peta Tata Guna Lahan',
-        items : [
-            {
-                icon: 'local_drink',
-                title: 'Peta Perkebunan Sawit',
-            },
-            {
-                icon: 'view_carousel',
-                title: 'Peta Hak Penguasaan Hutan',
-            },
-            {
-                icon: 'view_day',
-                title: 'Peta Hutan Tanaman Industri',
-            },
-            {
-                icon: 'how_to_vote',
-                title: 'Peta Moratorium Kawasan Hutan dan Gambut',
-            },
-            {
-                icon: 'how_to_vote',
-                title: 'Peta Tutupan Lahan',
-            },
-            {
-                icon: 'how_to_vote',
-                title: 'Peta Kawasan Hutan',
-            }
-        ]        
+        ] 
     },
     {
         icon : 'today',
-        title : 'KELOLA DATA MASTER',
-        subheader : 1,
+        title : 'Reporting',
+        to : {name : 'skanal_implementasi'}
     },
-    {
-        icon: 'today',
-        title: 'Wilayah Administratif'
 
-    },
+    // {
+    //     icon : 'today',
+    //     title : 'DONOR',
+    //     subheader : 1,
+    // },
+    // {
+    //     icon: 'today',
+    //     title: 'AKTIVITAS',
+    //     to : {name : 'donor_rencana'} 
+
+    // },
+    // {
+    //     icon : 'today',
+    //     title : 'KELOLA PETA',
+    //     subheader : 1,
+    // },
+    // {
+    //     icon: 'map',
+    //     title: 'Peta Dasar',
+    //     items : [
+    //         {
+    //             icon: 'local_drink',
+    //             title: 'Peta Wilayah Administasi',
+    //         },
+    //         {
+    //             icon: 'view_carousel',
+    //             title: 'Peta KHG',
+    //         },
+    //         {
+    //             icon: 'view_day',
+    //             title: 'Peta Lahan Gambut',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Desa Peduli Gambut',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Fungsi Ekosistem Gambut'
+    //         }
+
+    //     ]        
+    // },
+    // {
+    //     icon: 'map',
+    //     title: 'Peta Prioritas Restorasi',
+    //     items : [
+    //         {
+    //             icon: 'local_drink',
+    //             title: 'Peta Prioritas Pasca Kebakaran 2015-2016',
+    //         },
+    //         {
+    //             icon: 'view_carousel',
+    //             title: 'Peta Prioritas Lindung Gambut Berkanal',
+    //         },
+    //         {
+    //             icon: 'view_day',
+    //             title: 'Peta Prioritas Gambut Tak Berkanal',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Prioritas Gambut Budidaya',
+    //         }
+    //     ]        
+    // },
+    // {
+    //     icon: 'map',
+    //     title: 'Peta Tata Guna Lahan',
+    //     items : [
+    //         {
+    //             icon: 'local_drink',
+    //             title: 'Peta Perkebunan Sawit',
+    //         },
+    //         {
+    //             icon: 'view_carousel',
+    //             title: 'Peta Hak Penguasaan Hutan',
+    //         },
+    //         {
+    //             icon: 'view_day',
+    //             title: 'Peta Hutan Tanaman Industri',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Moratorium Kawasan Hutan dan Gambut',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Tutupan Lahan',
+    //         },
+    //         {
+    //             icon: 'how_to_vote',
+    //             title: 'Peta Kawasan Hutan',
+    //         }
+    //     ]        
+    // },
+    // {
+    //     icon : 'today',
+    //     title : 'KELOLA DATA MASTER',
+    //     subheader : 1,
+    // },
+    // {
+    //     icon: 'today',
+    //     title: 'Wilayah Administratif'
+
+    // },
     {
         icon : 'today',
         title : 'KELOLA ORGANISASI',

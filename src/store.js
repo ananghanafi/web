@@ -26,7 +26,8 @@ import currency from './modules/currency/store'
 import brgMandat from './modules/brgMandat/store'
 import personal from './modules/personal/store'
 import inputrtt from './modules/inputrtt/store'
-
+import revitalisasir3 from './modules/revitalisasir3/store'
+import inputdatartt from './modules/inputdatartt/store'
 
 const main = {
     namespaced: true,
@@ -82,6 +83,8 @@ const store = new Vuex.Store({
         brgMandat,
         personal,
         inputrtt,
+        revitalisasir3,
+        inputdatartt,
     }
 })
 

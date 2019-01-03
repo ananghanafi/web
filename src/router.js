@@ -19,7 +19,8 @@ import r_revitalisasi from './modules/revitalisasi/router'
 import r_donor from './modules/donor/router'
 import r_personal from './modules/personal/router'
 import r_inputrtt from './modules/inputrtt/router'
-
+import r_revitalisasir3 from './modules/revitalisasir3/router'
+import r_inputdatartt from './modules/inputdatartt/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -52,7 +53,8 @@ const routers = [
     ...r_donor,
     ...r_personal,
     ...r_inputrtt,
-
+    ...r_revitalisasir3,
+    ...r_inputdatartt,
     ...other
 ]
 
