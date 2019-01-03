@@ -437,6 +437,56 @@ const menus = [
     // },
     {
         icon : 'today',
+        title : 'DESA PEDULI GAMBUT',
+        subheader : 1,
+    },  
+    {
+        icon: 'dashboard',
+        title: 'DASHBOARD',   
+    }, 
+    {
+        icon: 'map',
+        title: 'PETA DESA',       
+    }, 
+    {
+        icon: 'today',
+        title: 'RENCANA KEGIATAN',       
+    }, 
+    {
+        icon: 'today',
+        title: 'MONITORING KEGIATAN',       
+    }, 
+    {
+        icon: 'today',
+        title: 'KELOLA PETA DPG',       
+    }, 
+    {
+        icon: 'today',
+        title: 'REPORTING',       
+    }, 
+    {
+        icon : 'today',
+        title : 'MONITORING DONOR',
+        subheader : 1,
+    },  
+    {
+        icon: 'dashboard',
+        title: 'DASHBOARD',   
+    }, 
+    {
+        icon: 'map',
+        title: 'PETA MONITORING',       
+    }, 
+    {
+        icon: 'today',
+        title: 'INPUT',       
+    }, 
+    {
+        icon: 'today',
+        title: 'REPORTING',       
+    },
+    {
+        icon : 'today',
         title : 'KELOLA ORGANISASI',
         subheader : 1,
     },
