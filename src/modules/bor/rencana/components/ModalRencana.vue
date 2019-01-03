@@ -275,7 +275,7 @@ export default {
                 this.$store.dispatch('administrativeArea/getKota'),
                 this.$store.dispatch('administrativeArea/getKec'),
             ])
-            .then(([a,b, c, d, e, f, g])=>{
+            .then(([a,b, c, d, e, f, g,h])=>{
                 this.list_zoneType = a
                 this.list_constructionType = b
                 this.list_fundingSource = c

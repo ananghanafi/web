@@ -9,4 +9,4 @@ express()
         })
     )
     .use(express.static(__dirname + "/dist"))
-    .listen(PORT, () => console.log(`Listening on ${PORT}`));az
+    .listen(PORT, () => console.log(`Listening on ${PORT}`));
