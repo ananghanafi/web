@@ -1,6 +1,6 @@
 <template>
     <v-toolbar
-        color="primary"
+        color="toolbar"
         app
         dense
         clipped-left
@@ -10,8 +10,13 @@
         <v-btn icon v-if="false">
             <v-icon v-html="'chevron_right'"></v-icon>
         </v-btn>
-        <v-toolbar-title class="subheading white--text ml-0">
-            <v-list-tile :inactive="true" :to="{name:'home'}">{{title}}
+        <v-avatar size="40">
+            <v-img src="/img/logobrg.png"></v-img>
+        </v-avatar>
+        <v-toolbar-title class="subheading brown--text ml-0">            
+            <v-list-tile :inactive="true" :to="{name:'home'}">
+                <!-- {{title}}  -->
+                SISTEM INFORMASI BADAN RESTORASI GAMBUT
             </v-list-tile>
         </v-toolbar-title>
 

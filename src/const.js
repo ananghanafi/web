@@ -17,7 +17,8 @@ export const THEME_PRIMS =
     error: "#f44336",
     warning: "#FFCA28",
     info: "#2196f3",
-    success: "#4caf50"
+    success: "#4caf50",
+    toolbar: "#8fb46e"
 }
 
 export const STATUS_REJECT = 9
