@@ -97,7 +97,6 @@
                             </v-layout>
                         </v-container>
                     </v-card-text>
-                    </v-card-text>
                     <v-data-table
                         :headers="headers"
                         :items="items"

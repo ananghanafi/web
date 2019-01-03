@@ -13,7 +13,7 @@
                             clearable
                             :items="list_province"
                             item-text="year"
-                            item-value="yearId"
+                            item-value="year"
                             label="TAHUN"
                             hide-details
                             v-model="filter.qf_year"                            
@@ -34,27 +34,18 @@
                         <v-autocomplete
                             clearable
                             :items="list_province"
-                            item-text="longName"
-                            item-value="provinceId"
+                            item-text="name"
+                            item-value="code"
                             label="KHG"
                             hide-details
                             v-model="filter.qf_code"                            
                         ></v-autocomplete>
                     </v-flex>
                     <v-flex md2 sm6>
-                        <v-btn block color="primary" outline @click="load(1)">Filter</v-btn>
+                        <v-btn block color="primary" outline @click="load()">Filter</v-btn>
                     </v-flex>
                 </v-layout>
             </v-flex>
-            <!-- <v-flex md2 sm6>
-                <v-text-field
-                    append-icon="search"
-                    label="Kode"
-                    single-line
-                    hide-details
-                    @input="q_code"
-                ></v-text-field>
-            </v-flex> -->
             
             <v-flex md12 xs12>
                 <v-layout row wrap>
@@ -92,27 +83,155 @@
                             statPrefix="Instansi"
                             />
                     </v-flex>
-                    <v-flex xs4>                        
-                        <m-widget title="Sumber Anggaran">
-                            <FundingSourceChartPie />
+                </v-layout>
+            </v-flex>
+            <v-flex md12 xs12>
+                 <v-layout row wrap>
+                    <v-flex xs7>
+                        <m-widget title="Jumlah Kegiatan Tindakan">
+                            <v-container grid-list-md class="pa-0">
+                            <v-layout row wrap>    
+                                <v-flex xs3>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <h3>
+                                                    <span class="green--text">Total R1</span> 
+                                                </h3>  
+                                                <div class="green--text">
+                                                    N Tindakan
+                                                </div>                                        
+                                            </div>                                           
+                                        </v-card-title>
+                                        <v-card-text>
+                                            R1.1 = N<br>
+                                            R1.2 = N<br>
+                                            R1.3 = N<br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                                <v-flex xs3>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <h3>
+                                                    <span class="blue--text">Total R2</span> 
+                                                </h3>                                          
+                                                <div class="blue--text">
+                                                    N Tindakan
+                                                </div>                                        
+                                            </div>
+                                        </v-card-title>
+                                        <v-card-text>
+                                            R2.1 = N<br>
+                                            R2.2 = N<br>
+                                            R2.3 = N<br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                                <v-flex xs6>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <h3>
+                                                    <span class="red--text">Total R3</span> 
+                                                </h3>                                          
+                                                <div class="red--text">
+                                                    N Tindakan
+                                                </div>                                        
+                                            </div>                                            
+                                        </v-card-title>
+                                        <v-card-text>
+                                            DESA PEDULI GAMBUT : 100<br>
+                                            PENINGKATAN KAPASITAS : 100<br>
+                                            KOMODITAS ON FARM : 100<br>
+                                            KOMODITAS OFF FARM : 100<br>
+                                            KEGIATAN NON FARM : 100<br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                            </v-layout>
+                            </v-container>
                         </m-widget>
                     </v-flex>
-                    <v-flex xs14>
+                    
+                    <v-flex xs5>
                         <m-widget title="Alokasi Anggaran per Provinsi">
                             <AnggaranChartPie/>
                         </m-widget>
                     </v-flex>
+                 </v-layout>
+            </v-flex>
+            <v-flex md12 xs12>
+                <v-layout row wrap>
 
-                    <v-flex xs4>                        
+                    <!-- <v-flex xs4>                        
+                        <m-widget title="Sumber Anggaran">
+                            <FundingSourceChartPie />
+                        </m-widget>
+                    </v-flex> -->
+                    
+                    <v-flex xs7>
+                        <m-widget title="Biaya Per Kegiatan Tindakan">
+                            <v-layout row wrap>                                
+                                <v-flex xs3>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <span class="green--text">Total R1</span>                                            
+                                            </div>                                           
+                                        </v-card-title>
+                                        <v-card-text>
+                                            R1.1 <br>
+                                            R1.2 <br>
+                                            R1.3 <br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                                <v-flex xs3>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <span class="blue--text">Total R2</span>                                            
+                                            </div>
+                                        </v-card-title>
+                                        <v-card-text>
+                                            R2.1 <br>
+                                            R2.2 <br>
+                                            R2.3 <br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                                <v-flex xs6>
+                                    <v-card class="pb-3">
+                                        <v-card-title class="elevation-1 justify-center">
+                                            <div>
+                                                <span class="red--text">Total R3</span>                                            
+                                            </div>                                            
+                                        </v-card-title>
+                                        <v-card-text>
+                                            DESA PEDULI GAMBUT      : 100<br>
+                                            PENINGKATAN KAPASITAS   : 100<br>
+                                            KOMODITAS ON FARM       : 100<br>
+                                            KOMODITAS OFF FARM      : 100<br>
+                                            KEGIATAN NON FARM       : 100<br>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-flex>
+                            </v-layout>
+                        </m-widget>
+                    </v-flex>
+
+                    <v-flex xs5>                        
                         <m-widget title="Luas Area Intervensi per Provinsi">
                             <AreaChartPie/>
                         </m-widget>
                     </v-flex>
-                    <v-flex xs4>                        
+                    <!-- <v-flex xs4>                        
                         <m-widget title="Tindakan Restorasi per Provinsi">
                             <ActionChartPie/>
                         </m-widget>
-                    </v-flex>
+                    </v-flex> -->
                 </v-layout>
             </v-flex>
         </v-layout>
