@@ -38,7 +38,7 @@ const menus = [
         },
         {   icon: 'view_carousel',
             title: 'REVITALISASI R3',
-            to: {name: 'revitalisasi_daftar'}
+            to: {name: 'revitalisasir3_daftar'}
         },
         {   icon: 'how_to_vote',
             title: 'INPUT DATA RTT',

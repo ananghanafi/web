@@ -83,6 +83,8 @@ const store = new Vuex.Store({
         brgMandat,
         personal,
         inputrtt,
+        revitalisasir3,
+        inputdatartt,
     }
 })
 
