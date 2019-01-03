@@ -40,7 +40,7 @@ export default {
                 {
                     name:'Anggaran',
                     type:'pie',
-                    radius: ['40%', '70%'],
+                    radius: ['0%', '70%'],
                     avoidLabelOverlap: false,                                      
                     data: data
                 }
