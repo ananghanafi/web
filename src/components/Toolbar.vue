@@ -16,7 +16,7 @@
         <v-toolbar-title class="subheading brown--text ml-0">            
             <v-list-tile :inactive="true" :to="{name:'home'}">
                 <!-- {{title}}  -->
-                SISTEM INFORMASI BADAN RESTORASI GAMBUT
+                <b>SISTEM INFORMASI BADAN RESTORASI GAMBUT</b>
             </v-list-tile>
         </v-toolbar-title>
 

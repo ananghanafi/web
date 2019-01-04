@@ -40,7 +40,7 @@ export default {
                 {
                     name:'Luas Area Intervensi',
                     type:'pie',
-                    radius: ['0%', '70%'],
+                    radius: ['0%', '60%'],
                     avoidLabelOverlap: false,                                      
                     data: data
                 }
