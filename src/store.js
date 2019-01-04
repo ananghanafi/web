@@ -32,6 +32,12 @@ import R1danR2 from './modules/R1danR2/store'
 import summaryR1danR2 from './modules/summaryR1danR2/store'
 import R3 from './modules/R3/store'
 import SummaryR3 from './modules/SummaryR3/store'
+import summarysumurbor from './modules/summarysumurbor/store'
+import sekatkanal from './modules/sekatkanal/store'
+import penimbunankanal from './modules/penimbunankanal/store'
+import revegetasiiR2 from './modules/revegetasiiR2/store'
+import revitalisasiiR3 from './modules/revitalisasiiR3/store'
+import summaryrevitalisasiiR3 from './modules/summaryrevitalisasiiR3/store'
 
 const main = {
     namespaced: true,
@@ -93,6 +99,12 @@ const store = new Vuex.Store({
         summaryR1danR2,
         R3,
         SummaryR3,
+        summarysumurbor,
+        sekatkanal,
+        penimbunankanal,
+        revegetasiiR2,
+        revitalisasiiR3,
+        summaryrevitalisasiiR3,
     }
 })
 

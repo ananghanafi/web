@@ -1,6 +1,6 @@
 const menus = {
     icon: 'business',
-    title: 'Revitalisasir3',
+    title: 'RevegetasiR2',
     items: [
         {
             icon: 'today',

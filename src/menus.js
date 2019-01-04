@@ -78,37 +78,37 @@ const menus = [
             {
                 icon: 'local_drink',
                 title: 'Sumur Bor',
-                to : {name : 'bor_rencana'}                
+                to : {name : 'sumurbor_daftar'}                
             },
             {
                 icon: 'local_drink',
                 title: 'Summary Sumur Bor',
-                to : {name : 'bor_rencana'}
+                to : {name : 'summarysumurbor_daftar'}
             },
             {
                 icon: 'view_carousel',
                 title: 'Sekat Kanal',
-                to : {name : 'skanal_rencana'}
+                to : {name : 'sekatkanal_daftar'}
             },
             {
                 icon: 'how_to_vote',
                 title: 'Penimbunan Kanal',
-                to : {name : 'pkanal_rencana'}
+                to : {name : 'penimbunankanal_daftar'}
             },
             {
                 icon: 'today',
-                title: 'Revegetasi (R2)',
-                to : {name : 'revegetasi_rencana'}
+                title: 'Revegetasi R2',
+                to : {name : 'revegetasiiR2_daftar'}
             },
             {
                 icon: 'today',
-                title: 'Revitalisasi (R3)',
-                to : {name : 'revitalisasi_rencana'}
+                title: 'Revitalisasi R3',
+                to : {name : 'revitalisasiiR3_daftar'}
             },
             {
                 icon: 'today',
-                title: 'Summary Revitalisasi (R3)',
-                to : {name : 'revitalisasi_rencana'}
+                title: 'Summary Revitalisasi R3',
+                to : {name : 'summaryrevitalisasiiR3_daftar'}
             }
         ]        
     },

@@ -25,6 +25,13 @@ import r_R1danR2 from './modules/R1danR2/router'
 import r_summaryR1danR2 from './modules/summaryR1danR2/router'
 import r_R3 from './modules/R3/router'
 import r_SummaryR3 from './modules/SummaryR3/router'
+import sumurbor from './modules/sumurbor/router'
+import summarysumurbor from './modules/summarysumurbor/router' 
+import sekatkanal from './modules/sekatkanal/router' 
+import penimbunankanal from './modules/penimbunankanal/router' 
+import revegetasiiR2 from './modules/revegetasiiR2/router' 
+import revitalisasiiR3 from './modules/revitalisasiiR3/router' 
+import summaryrevitalisasiiR3 from './modules/summaryrevitalisasiiR3/router' 
 
 import store from './store'
 import {isCan} from './tools'
@@ -63,6 +70,13 @@ const routers = [
     ...r_summaryR1danR2,
     ...r_R3,
     ...r_SummaryR3,
+    ...sumurbor,
+    ...summarysumurbor,
+    ...sekatkanal,
+    ...penimbunankanal,
+    ...revegetasiiR2,
+    ...revitalisasiiR3,
+    ...summaryrevitalisasiiR3,
     ...other
 ]
 
