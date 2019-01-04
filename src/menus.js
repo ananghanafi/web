@@ -326,7 +326,7 @@ const menus = [
     },
     {
         icon : 'today',
-        title : 'Reporting',
+        title : 'REPORTING',
         to : {name : 'skanal_implementasi'}
     },
 
@@ -437,17 +437,67 @@ const menus = [
     // },
     {
         icon : 'today',
+        title : 'DESA PEDULI GAMBUT',
+        subheader : 1,
+    },  
+    {
+        icon: 'dashboard',
+        title: 'DASHBOARD',   
+    }, 
+    {
+        icon: 'map',
+        title: 'PETA DESA',       
+    }, 
+    {
+        icon: 'today',
+        title: 'RENCANA KEGIATAN',       
+    }, 
+    {
+        icon: 'today',
+        title: 'MONITORING KEGIATAN',       
+    }, 
+    {
+        icon: 'today',
+        title: 'KELOLA PETA DPG',       
+    }, 
+    {
+        icon: 'today',
+        title: 'REPORTING',       
+    }, 
+    {
+        icon : 'today',
+        title : 'MONITORING DONOR',
+        subheader : 1,
+    },  
+    {
+        icon: 'dashboard',
+        title: 'DASHBOARD',   
+    }, 
+    {
+        icon: 'map',
+        title: 'PETA MONITORING',       
+    }, 
+    {
+        icon: 'today',
+        title: 'INPUT',       
+    }, 
+    {
+        icon: 'today',
+        title: 'REPORTING',       
+    },
+    {
+        icon : 'today',
         title : 'KELOLA ORGANISASI',
         subheader : 1,
     },
     {
         icon: 'people',
-        title: 'Personal', 
+        title: 'PERSONAL', 
         to : {name : 'personal_daftar'}      
     }, 
     {
         icon: 'how_to_reg',
-        title: 'Organisasi',
+        title: 'ORGANISASI',
         to : {name : 'personal_daftar'}    
     }, 
 
