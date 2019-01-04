@@ -52,22 +52,22 @@ const menus = [
             {
                 icon: 'today',
                 title: 'R1 & R2',
-                to : {name : 'R1danR2_rencana'}                
+                to : {name : 'R1danR2_daftar'}                
             },
             {
                 icon: 'today',
                 title: 'Summary R1 & R2',
-                to : {name : 'summaryR1danR2_rencana'}
+                to : {name : 'summaryR1danR2_daftar'}
             },
             {
                 icon: 'today',
                 title: 'R3',
-                to : {name : 'R3_rencana'}
+                to : {name : 'R3_daftar'}
             },
             {
                 icon: 'today',
                 title: 'Summary R3',
-                to : {name : 'SummaryR3_rencana'}
+                to : {name : 'SummaryR3_daftar'}
             }
         ]        
     },
