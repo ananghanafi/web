@@ -38,6 +38,31 @@ import Rencanakegiatan from './modules/Rencanakegiatan/router'
 import MonitoringKegiatan from './modules/MonitoringKegiatan/router'
 import KelolaPeta from './modules/KelolaPeta/router'
 import reporting from './modules/reporting/router'
+import Dashboard2 from './modules/Dashboard2/router'
+import PetaMonitoring from './modules/PetaMonitoring/router'
+import Dashboard4 from './modules/Dashboard4/router'
+import PetaMonitoring2 from './modules/PetaMonitoring2/router'
+import Input from './modules/Input/router'
+import Reporting2 from './modules/Reporting2/router'
+import Provinsi from './modules/Provinsi/router'
+import KabupatenKota from './modules/KabupatenKota/router'
+import BatasProvinsi from './modules/BatasProvinsi/router'
+import BatasKabupaten from './modules/BatasKabupaten/router'
+import Jalan from './modules/Jalan/router'
+import Sungai from './modules/Sungai/router'
+import LahanGambut from './modules/LahanGambut/router'
+import KesatuanHidrologisGambut from './modules/KesatuanHidrologisGambut/router'
+import FungsiEkosistemGambut from './modules/FungsiEkosistemGambut/router'
+import KanalLahanGambut from './modules/KanalLahanGambut/router'
+import AreaKanal from './modules/AreaKanal/router'
+import PrioritasIndikatifRestorasiGambut from './modules/PrioritasIndikatifRestorasiGambut/router'
+import Konsesi from './modules/Konsesi/router'
+import PolaRuangProvinsi from './modules/PolaRuangProvinsi/router'
+import AreaTerbakar20152017 from './modules/AreaTerbakar20152017/router'
+import NamaKHG from './modules/NamaKHG/router'
+import MorarotiumKawasanHutanGambut from './modules/MorarotiumKawasanHutanGambut/router'
+import TutupanLahan from './modules/TutupanLahan/router'
+import KawasanHutan from './modules/KawasanHutan/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -89,6 +114,31 @@ const routers = [
     ...MonitoringKegiatan,
     ...KelolaPeta,
     ...reporting,
+    ...Dashboard2,
+    ...PetaMonitoring,
+    ...Dashboard4,
+    ...PetaMonitoring2,
+    ...Input,
+    ...Reporting2,
+    ...Provinsi,
+    ...KabupatenKota,
+    ...BatasProvinsi,
+    ...BatasKabupaten,
+    ...Jalan,
+    ...Sungai,
+    ...LahanGambut,
+    ...KesatuanHidrologisGambut,
+    ...FungsiEkosistemGambut,
+    ...KanalLahanGambut,
+    ...AreaKanal,
+    ...PrioritasIndikatifRestorasiGambut,
+    ...Konsesi,
+    ...PolaRuangProvinsi,
+    ...AreaTerbakar20152017,
+    ...NamaKHG,
+    ...MorarotiumKawasanHutanGambut,
+    ...TutupanLahan,
+    ...KawasanHutan,
     ...other
 ]
 

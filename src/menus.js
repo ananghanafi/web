@@ -124,26 +124,32 @@ const menus = [
             {
                 // icon: 'local_drink',
                 title: 'Provinsi',
+                to : {name : 'Provinsi_daftar'}
             },
             {
                 // icon: 'view_carousel',
                 title: 'Kab/Kota',
+                to : {name : 'KabupatenKota_daftar'}
             },
             {
                 // icon: 'view_day',
                 title: 'Batas Provinsi',
+                to : {name : 'BatasProvinsi_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Batas Kabupaten',
+                to : {name : 'BatasKabupaten_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Jalan',
+                to : {name : 'Jalan_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Sungai',
+                to : {name : 'Sungai_daftar'}
             }
         ]        
     },
@@ -154,54 +160,67 @@ const menus = [
             {
                 // icon: 'local_drink',
                 title: 'Lahan Gambut',
+                to : {name : 'LahanGambut_daftar'}
             },
             {
                 // icon: 'view_carousel',
                 title: 'Kesatuan Hidrologis Gambut',
+                to : {name : 'KesatuanHidrologisGambut_daftar'}
             },
             {
                 // icon: 'view_day',
                 title: 'Fungsi Ekosistem Gambut',
+                to : {name : 'FungsiEkosistemGambut_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Kanal Lahan Gambut',
+                to : {name : 'KanalLahanGambut_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Area Kanal',
+                to : {name : 'AreaKanal_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Prioritas Indikatif Restorasi Gambut',
+                to : {name : 'PrioritasIndikatifRestorasiGambut_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Konsesi',
+                to : {name : 'Konsesi_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Pola Ruang Provinsi',
+                to : {name : 'PolaRuangProvinsi_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Area Terbakar 2015-2017',
+                to : {name : 'AreaTerbakar20152017_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Nama KHG',
+                to : {name : 'NamaKHG_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Moratorium Kawasan Hutan & Gambut',
+                to : {name : 'MorarotiumKawasanHutanGambut_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Tutupan Lahan',
+                to : {name : 'TutupanLahan_daftar'}
             },
             {
                 // icon: 'how_to_vote',
                 title: 'Kawasan Hutan',
+                to : {name : 'KawasanHutan_daftar'}
             }
         ]        
     },
@@ -249,11 +268,13 @@ const menus = [
     },  
     {
         icon: 'dashboard',
-        title: 'DASHBOARD',   
+        title: 'DASHBOARD',
+        to : {name : 'Dashboard2_daftar'}   
     }, 
     {
         icon: 'map',
-        title: 'PETA MONITORING',       
+        title: 'PETA MONITORING',   
+        to : {name : 'PetaMonitoring_daftar'} 
     }, 
     {
         icon: 'gavel',
@@ -478,18 +499,22 @@ const menus = [
     {
         icon: 'dashboard',
         title: 'DASHBOARD',   
+        to : {name : 'Dashboard4_daftar'} 
     }, 
     {
         icon: 'map',
-        title: 'PETA MONITORING',       
+        title: 'PETA MONITORING',
+        to : {name : 'PetaMonitoring2_daftar'}        
     }, 
     {
         icon: 'today',
-        title: 'INPUT',       
+        title: 'INPUT',   
+        to : {name : 'Input_daftar'} 
     }, 
     {
         icon: 'today',
-        title: 'REPORTING',       
+        title: 'REPORTING', 
+        to : {name : 'Reporting2_daftar'}       
     },
     {
         icon : 'today',
