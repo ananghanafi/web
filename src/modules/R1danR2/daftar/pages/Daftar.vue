@@ -4,97 +4,68 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        INPUT ANGGARAN KEGIATAN R1,R2
+                        RTT - R1 dan R2 berbasis KHG
                     </v-card-title>
                     <v-card-text class="py-0">
                         <v-container grid-list-md class="pa-0">
                             <v-layout row wrap>
-                                <v-flex md2 sm6>
+                                <v-flex md2 sm7>
                                     <v-text-field
                                         append-icon="search"
-                                        label="TAHUN"
+                                        label="KHG"
                                         single-line
                                         hide-details
                                         @input="q_code"
                                     ></v-text-field>
                                 </v-flex>
-                                <v-flex md2 sm6>
+                                <v-flex md2 sm7>
+                                    <v-text-field
+                                        append-icon="search"
+                                        label="KABUPATEN"
+                                        single-line
+                                        hide-details
+                                        @input="q_code"
+                                    ></v-text-field>
+                                </v-flex>
+                                <v-flex md2 sm7>
+                                    <v-text-field
+                                        append-icon="search"
+                                        label="KECAMATAN"
+                                        single-line
+                                        hide-details
+                                        @input="q_code"
+                                    ></v-text-field>
+                                </v-flex>
+                                <v-flex md2 sm7>
                                     <v-autocomplete
                                         clearable
                                         :items="list_province"
                                         item-text="longName"
                                         item-value="provinceId"
-                                        label="KHG"
+                                        label="UPRG"
                                         hide-details
                                         v-model="filter.qf_province_id"
                                     ></v-autocomplete>
                                 </v-flex>
-                                <v-flex md2 sm6>
+                                <v-flex md2 sm7>
                                     <v-autocomplete
                                         clearable
                                         :items="list_city"
                                         item-text="shortName"
                                         item-value="cityId"
-                                        label="KHG"
+                                        label="TAHUN"
                                         hide-details
                                         v-model="filter.qf_city_id"
                                     ></v-autocomplete>
                                 </v-flex>
-                                <v-flex md2 sm6>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_fundingSource"
-                                        label="KECAMATAN"
-                                        item-text="remark"
-                                        item-value="id"
-                                        hide-details
-                                        v-model="filter.qf_funding_source"
-                                    ></v-autocomplete>
-
-                                </v-flex>
+                                
                                 <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
                             </v-layout>
 
                         </v-container>
 
                         <v-container grid-list-md class="pa-1">
-                            <v-layout row wrap>
-                                <v-flex md2 sm6>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_province"
-                                        label="PROVINSI"
-                                        item-text="remark"
-                                        item-value="id"
-                                        hide-details
-                                        v-model="filter.qf_province"
-                                    ></v-autocomplete>
-                                </v-flex>
                             
-                                <v-flex md2 sm6>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_kabupaten"
-                                        label="KABUPATEN"
-                                        item-text="remark"
-                                        item-value="id"
-                                        hide-details
-                                        v-model="filter.qf_kabupaten"
-                                    ></v-autocomplete>
-                                </v-flex>
-
-                                <v-flex md2 sm6>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_desa"
-                                        label="DESA"
-                                        item-text="remark"
-                                        item-value="id"
-                                        hide-details
-                                        v-model="filter.qf_desa"
-                                    ></v-autocomplete>
-                                </v-flex>
-                            </v-layout>
                             <v-card-text>
                         DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
                     </v-card-text>
@@ -208,17 +179,18 @@ export default {
                     sortable: true,
                     value: 'generalActivity.name'
                 },
-                { text: 'Wilayah Administratif', value: 'generalActivity.code'},
-                { text: 'KHG', value: 'generalActivity.code'},
-                { text: 'UPRG, Koordinatif X,Y', value: 'generalActivity.revegetationType.desc' },
-                { text: 'Kategori', value: 'generalActivity.administrativeArea.province.longName'},
-                { text: 'Jenis Kegiatan', value: 'generalActivity.administrativeArea.city.shortName' },
-                { text: 'Volume', value: 'generalActivity.cost' },
-                { text: 'Satuan', value: 'generalActivity.fundingSource.id' },
-                { text: 'Anggaran', value: 'generalActivity.code'},
-                { text: 'Sumber Anggaran', value: 'generalActivity.code'},
-                { text: 'Keterangan Anggaran', value: 'generalActivity.code'},
-                { text: 'Action', value: 'generalActivity.code'},
+                { text: 'Kabupaten', value: 'generalActivity.code'},
+                { text: 'UPRG', value: 'generalActivity.code'},
+                { text: 'Kecamatan, Koordinatif X,Y', value: 'generalActivity.revegetationType.desc' },
+                { text: 'Desa', value: 'generalActivity.administrativeArea.province.longName'},
+                { text: 'LUAS AREAL RESTORASI(Hektar)', value: 'generalActivity.administrativeArea.city.shortName' },
+                { text: 'Sumur Bor(Unit)', value: 'generalActivity.cost' },
+                { text: 'PENYEKATAN KANAL', value: 'generalActivity.fundingSource.id' },
+                { text: 'RUAS KANAL (Meter)', value: 'generalActivity.code'},
+                { text: 'PENIMBUNAN (Meter)', value: 'generalActivity.code'},
+                { text: 'PENANAMAN POLA MAKSIMAL', value: 'generalActivity.code'},
+                { text: 'PENGKAYAAN TANAMAN(Hektar)', value: 'generalActivity.code'},
+                { text: 'SUKSES ALAMI (Hektar)', value: 'generalActivity.code'},
                 { text: '',sortable : false}
             ],
             items : [],
