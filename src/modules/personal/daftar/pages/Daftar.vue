@@ -51,6 +51,8 @@
                                         hide-details
                                     ></v-text-field>
                                 </v-flex>
+                                            <v-calendar :attributes='attrs'>
+    </v-calendar>
                                 <v-flex md3 sm6>
                                     <v-text-field
                                         append-icon="calender"
