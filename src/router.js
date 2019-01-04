@@ -21,6 +21,10 @@ import r_personal from './modules/personal/router'
 import r_inputrtt from './modules/inputrtt/router'
 import r_revitalisasir3 from './modules/revitalisasir3/router'
 import r_inputdatartt from './modules/inputdatartt/router'
+import r_R1danR2 from './modules/R1danR2/router'
+import r_summaryR1danR2 from './modules/summaryR1danR2/router'
+import r_R3 from './modules/R3/router'
+import r_SummaryR3 from './modules/SummaryR3/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -55,6 +59,10 @@ const routers = [
     ...r_inputrtt,
     ...r_revitalisasir3,
     ...r_inputdatartt,
+    ...r_R1danR2,
+    ...r_summaryR1danR2,
+    ...r_R3,
+    ...r_SummaryR3,
     ...other
 ]
 

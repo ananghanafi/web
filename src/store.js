@@ -28,6 +28,10 @@ import personal from './modules/personal/store'
 import inputrtt from './modules/inputrtt/store'
 import revitalisasir3 from './modules/revitalisasir3/store'
 import inputdatartt from './modules/inputdatartt/store'
+import R1danR2 from './modules/R1danR2/store'
+import summaryR1danR2 from './modules/summaryR1danR2/store'
+import R3 from './modules/R3/store'
+import SummaryR3 from './modules/SummaryR3/store'
 
 const main = {
     namespaced: true,
@@ -85,6 +89,10 @@ const store = new Vuex.Store({
         inputrtt,
         revitalisasir3,
         inputdatartt,
+        R1danR2,
+        summaryR1danR2,
+        R3,
+        SummaryR3,
     }
 })
 
