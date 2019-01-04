@@ -38,6 +38,12 @@ import penimbunankanal from './modules/penimbunankanal/store'
 import revegetasiiR2 from './modules/revegetasiiR2/store'
 import revitalisasiiR3 from './modules/revitalisasiiR3/store'
 import summaryrevitalisasiiR3 from './modules/summaryrevitalisasiiR3/store'
+import Dashboard3 from './modules/Dashboard3/store'
+import PetaDesa from './modules/PetaDesa/store'
+import Rencanakegiatan from './modules/Rencanakegiatan/store'
+import MonitoringKegiatan from './modules/MonitoringKegiatan/store'
+import KelolaPeta from './modules/KelolaPeta/store'
+import reporting from './modules/reporting/store'
 
 const main = {
     namespaced: true,
@@ -105,6 +111,12 @@ const store = new Vuex.Store({
         revegetasiiR2,
         revitalisasiiR3,
         summaryrevitalisasiiR3,
+        Dashboard3,
+        PetaDesa,
+        Rencanakegiatan,
+        MonitoringKegiatan,
+        KelolaPeta,
+        reporting,
     }
 })
 

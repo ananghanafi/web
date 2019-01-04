@@ -442,27 +442,33 @@ const menus = [
     },  
     {
         icon: 'dashboard',
-        title: 'DASHBOARD',   
+        title: 'DASHBOARD', 
+        to : {name : 'Dashboard3_daftar'}  
     }, 
     {
         icon: 'map',
-        title: 'PETA DESA',       
+        title: 'PETA DESA',  
+        to : {name : 'PetaDesa_daftar'}     
     }, 
     {
         icon: 'today',
-        title: 'RENCANA KEGIATAN',       
+        title: 'RENCANA KEGIATAN',    
+        to : {name : 'Rencanakegiatan_daftar'}   
     }, 
     {
         icon: 'today',
-        title: 'MONITORING KEGIATAN',       
+        title: 'MONITORING KEGIATAN',  
+        to : {name : 'MonitoringKegiatan_daftar'}     
     }, 
     {
         icon: 'today',
-        title: 'KELOLA PETA DPG',       
+        title: 'KELOLA PETA DPG', 
+        to : {name : 'KelolaPeta_daftar'}      
     }, 
     {
         icon: 'today',
-        title: 'REPORTING',       
+        title: 'REPORTING',    
+        to : {name : 'reporting_daftar'}   
     }, 
     {
         icon : 'today',

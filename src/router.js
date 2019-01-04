@@ -32,6 +32,12 @@ import penimbunankanal from './modules/penimbunankanal/router'
 import revegetasiiR2 from './modules/revegetasiiR2/router' 
 import revitalisasiiR3 from './modules/revitalisasiiR3/router' 
 import summaryrevitalisasiiR3 from './modules/summaryrevitalisasiiR3/router' 
+import Dashboard3 from './modules/Dashboard3/router' 
+import PetaDesa from './modules/PetaDesa/router'
+import Rencanakegiatan from './modules/Rencanakegiatan/router'
+import MonitoringKegiatan from './modules/MonitoringKegiatan/router'
+import KelolaPeta from './modules/KelolaPeta/router'
+import reporting from './modules/reporting/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -77,6 +83,12 @@ const routers = [
     ...revegetasiiR2,
     ...revitalisasiiR3,
     ...summaryrevitalisasiiR3,
+    ...Dashboard3,
+    ...PetaDesa,
+    ...Rencanakegiatan,
+    ...MonitoringKegiatan,
+    ...KelolaPeta,
+    ...reporting,
     ...other
 ]
 
