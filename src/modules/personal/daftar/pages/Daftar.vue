@@ -51,8 +51,15 @@
                                         hide-details
                                     ></v-text-field>
                                 </v-flex>
-                                            <v-calendar :attributes='attrs'>
-    </v-calendar>
+                                <v-menu>
+                                    <v-text-field :value="tanggal" slot="activator" label="Tanggal" prepend-icon="date_range">
+
+                                    </v-text-field>
+                                    <v-date-picker v-model="tanggal"> 
+
+                                    </v-date-picker>
+                                </v-menu>
+                                            <v-calendar :attributes='attrs'></v-calendar>
                                 <v-flex md3 sm6>
                                     <v-text-field
                                         append-icon="calender"
@@ -84,3 +91,13 @@
         transform: rotate(-180deg);
     }
 </style>
+<script>
+export default {
+    data(){
+        return{
+            tanggal: null
+        }
+    }
+}
+</script>
+
