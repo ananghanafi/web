@@ -38,6 +38,37 @@ import penimbunankanal from './modules/penimbunankanal/store'
 import revegetasiiR2 from './modules/revegetasiiR2/store'
 import revitalisasiiR3 from './modules/revitalisasiiR3/store'
 import summaryrevitalisasiiR3 from './modules/summaryrevitalisasiiR3/store'
+import Dashboard3 from './modules/Dashboard3/store'
+import PetaDesa from './modules/PetaDesa/store'
+import Rencanakegiatan from './modules/Rencanakegiatan/store'
+import MonitoringKegiatan from './modules/MonitoringKegiatan/store'
+import KelolaPeta from './modules/KelolaPeta/store'
+import reporting from './modules/reporting/store'
+import Dashboard2 from './modules/Dashboard2/store'
+import PetaMonitoring from './modules/PetaMonitoring/store'
+import Dashboard4 from './modules/Dashboard4/store'
+import PetaMonitoring2 from './modules/PetaMonitoring2/store'
+import Input from './modules/Input/store'
+import Reporting2 from './modules/Reporting2/store'
+import Provinsi from './modules/Provinsi/store'
+import KabupatenKota from './modules/KabupatenKota/store'
+import BatasProvinsi from './modules/BatasProvinsi/store'
+import BatasKabupaten from './modules/BatasKabupaten/store'
+import Jalan from './modules/Jalan/store'
+import Sungai from './modules/Sungai/store'
+import LahanGambut from './modules/LahanGambut/store'
+import KesatuanHidrologisGambut from './modules/KesatuanHidrologisGambut/store'
+import FungsiEkosistemGambut from './modules/FungsiEkosistemGambut/store'
+import KanalLahanGambut from './modules/KanalLahanGambut/store'
+import AreaKanal from './modules/AreaKanal/store'
+import PrioritasIndikatifRestorasiGambut from './modules/PrioritasIndikatifRestorasiGambut/store'
+import Konsesi from './modules/Konsesi/store'
+import PolaRuangProvinsi from './modules/PolaRuangProvinsi/store'
+import AreaTerbakar20152017 from './modules/AreaTerbakar20152017/store'
+import NamaKHG from './modules/NamaKHG/store'
+import MorarotiumKawasanHutanGambut from './modules/MorarotiumKawasanHutanGambut/store'
+import TutupanLahan from './modules/TutupanLahan/store'
+import KawasanHutan from './modules/KawasanHutan/store'
 
 const main = {
     namespaced: true,
@@ -105,6 +136,37 @@ const store = new Vuex.Store({
         revegetasiiR2,
         revitalisasiiR3,
         summaryrevitalisasiiR3,
+        Dashboard3,
+        PetaDesa,
+        Rencanakegiatan,
+        MonitoringKegiatan,
+        KelolaPeta,
+        reporting,
+        Dashboard2,
+        PetaMonitoring,
+        Dashboard4,
+        PetaMonitoring2,
+        Input,
+        Reporting2,
+        Provinsi,
+        KabupatenKota,
+        BatasProvinsi,
+        BatasKabupaten,
+        Jalan,
+        Sungai,
+        LahanGambut,
+        KesatuanHidrologisGambut,
+        FungsiEkosistemGambut,
+        KanalLahanGambut,
+        AreaKanal,
+        PrioritasIndikatifRestorasiGambut,
+        Konsesi,
+        PolaRuangProvinsi,
+        AreaTerbakar20152017,
+        NamaKHG,
+        MorarotiumKawasanHutanGambut,
+        TutupanLahan,
+        KawasanHutan,
     }
 })
 

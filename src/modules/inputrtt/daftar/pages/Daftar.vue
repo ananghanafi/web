@@ -108,6 +108,7 @@
                         :total-items="page.total"
                         @update:pagination="pageUpdated"
                     >
+                    
                         <template slot="items" slot-scope="props">
                             <tr @click="props.expanded = !props.expanded">
                                 <td>
