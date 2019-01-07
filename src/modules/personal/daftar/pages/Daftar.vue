@@ -28,12 +28,10 @@
                                     ></v-text-field>
                                 </v-flex>
                                 <v-flex md3 sm6>
-                                    <v-text-field
-                                        append-icon="edit"
-                                        label="Jenis"
-                                        single-line
-                                        hide-details
-                                    ></v-text-field>
+                                    <v-select :items="jenis">
+
+                                    </v-select>
+
                                 </v-flex>
                                 <v-flex md3 sm6>
                                     <v-text-field
@@ -44,12 +42,15 @@
                                     ></v-text-field>
                                 </v-flex>
                                 <v-flex md3 sm6>
-                                    <v-text-field
+                                    <!-- <v-text-field
                                         append-icon="edit"
                                         label="Admin"
                                         single-line
                                         hide-details
-                                    ></v-text-field>
+                                    ></v-text-field> -->
+                                    <v-select :items="admin">
+
+                                    </v-select>
                                 </v-flex>
                                 <v-menu>
                                     <v-text-field :value="tanggal" slot="activator" label="Tanggal" prepend-icon="date_range">
@@ -59,21 +60,7 @@
 
                                     </v-date-picker>
                                 </v-menu>
-                                            <v-calendar :attributes='attrs'></v-calendar>
-                                <v-flex md3 sm6>
-                                    <v-text-field
-                                        append-icon="calender"
-                                        label="Tanggal"
-                                        single-line
-                                        hide-details>
-                                            <v-date-picker
-                                            mode='range'
-                                            v-model='selectedDate'
-                                            header-color="#fffff"
-                                            show-caps>
-                                            </v-date-picker>   
-                                    </v-text-field>                                 
-                                </v-flex>
+                               
                                  <v-flex md3 sm6>
                                 <v-btn block color="primary" outline @click="load(1)">Submit</v-btn>
                
@@ -85,6 +72,7 @@
             </v-flex>
         </v-layout>
     </v-container>
+    
 </template>
 <style>
     .arr_open {
@@ -93,11 +81,17 @@
 </style>
 <script>
 export default {
-    data(){
-        return{
-            tanggal: null
-        }
-    }
+    // data(){
+    //     return{
+    //         tanggal: null
+    //     }
+       
+    // }
+    data: () => ({
+      jenis: ['Lembaga', 'Instansi','Universitas','Organisasi','Institusi'],
+      admin: ['Provinsi', 'Kabupaten/Kota','Kecamatan','Kelurahan'],
+      
+    }),
 }
 </script>
 

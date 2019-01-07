@@ -54,10 +54,10 @@
                                         </v-layout>
                                         <v-layout column class="mt-5">
                                             <v-flex >
-                                                <!-- <a @click.prevent="regPage" class="text-center">Halaman Register</a> -->
+                                                <a @click.prevent="regPage" class="text-center">Halaman Register</a>
                                             </v-flex>
                                             <v-flex >
-                                                <!-- <a @click.prevent="$router.push({name:'home'})" >Halaman depan</a> -->
+                                                <a @click.prevent="$router.push({name:'home'})" >Halaman depan</a>
                                             </v-flex>
                                         </v-layout>
 

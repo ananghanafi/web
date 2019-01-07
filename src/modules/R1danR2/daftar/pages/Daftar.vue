@@ -7,68 +7,39 @@
                         RTT - R1 dan R2 berbasis KHG
                     </v-card-title>
                     <v-card-text class="py-0">
-                        <v-container grid-list-md class="pa-0">
+                        <v-container grid-list-md text-xs-center>
                             <v-layout row wrap>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KHG"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KABUPATEN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KECAMATAN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_province"
-                                        item-text="longName"
-                                        item-value="provinceId"
-                                        label="UPRG"
-                                        hide-details
-                                        v-model="filter.qf_province_id"
-                                    ></v-autocomplete>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_city"
-                                        item-text="shortName"
-                                        item-value="cityId"
-                                        label="TAHUN"
-                                        hide-details
-                                        v-model="filter.qf_city_id"
-                                    ></v-autocomplete>
-                                </v-flex>
-                                
-                                <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
+                            <v-flex xs12>
+                                <v-card dark color="primary">
+                                <v-card-text class="px-0">12</v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex v-for="i in 2" :key="`6${i}`" xs6>
+                                <v-card dark color="secondary">
+                                <v-card-text class="px-0">6</v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex v-for="i in 3" :key="`4${i}`" xs4>
+                                <v-card dark color="primary">
+                                <v-card-text class="px-0">4</v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex v-for="i in 4" :key="`3${i}`" xs3>
+                                <v-card dark color="secondary">
+                                <v-card-text class="px-0">3</v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex v-for="i in 6" :key="`2${i}`" xs2>
+                                <v-card dark color="primary">
+                                <v-card-text class="px-0">2</v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex v-for="i in 12" :key="`1${i}`" xs1>
+                                <v-card dark color="secondary">
+                                <v-card-text class="px-0">1</v-card-text>
+                                </v-card>
+                            </v-flex>
                             </v-layout>
-
-                        </v-container>
-
-                        <v-container grid-list-md class="pa-1">
-                            
-                            <v-card-text>
-                        DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
-                    </v-card-text>
                         </v-container>
                     </v-card-text>
                     <v-data-table
