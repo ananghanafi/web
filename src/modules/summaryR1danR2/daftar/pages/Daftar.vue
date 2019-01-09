@@ -95,7 +95,7 @@
                                     ></v-autocomplete>
                                 </v-flex>
                             </v-layout>
-                            <v-card-text>
+                                <v-card-text>
                         DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
                     </v-card-text>
                         </v-container>
