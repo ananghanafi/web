@@ -117,7 +117,29 @@
                          <td>...</td>
                          <td>...</td>
                          <td>...</td>
-                         
+                         </tr>  
+                         <tr>
+                         <td>...</td>
+                         <td>...</td>
+                         <td colspan="2">Jumlah</td>
+                         <td>...</td>
+                                                                
+                        </tr>  
+                        </tr>  
+                         <tr>
+                         <td>...</td>
+                         <td>...</td>
+                         <td colspan="2">Jumlah Desa</td>
+                         <td>...</td>
+                                                                
+                        </tr> 
+                        </tr>  
+                         <tr>
+                         <td>...</td>
+                         <td>...</td>
+                         <td colspan="2">Anggaran Rata-rata Tiap Desa</td>
+                         <td>...</td>
+                              
                          
                         </tr>   
                         <tr>
