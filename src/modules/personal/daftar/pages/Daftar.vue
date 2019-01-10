@@ -72,9 +72,10 @@
             </v-flex>
         </v-layout>
     </v-container> -->
-    <v-container grid-list-xl>
+    
+    <v-container >
         <v-layout justify-center>
-            <v-flex xs12>
+            <v-flex xs12 sm10 md8 lg6>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1">
                     DAFTAR
@@ -82,8 +83,8 @@
                     <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn>
                     </v-card-title>
                     <v-card-text class="py-0">
-                        <v-container grid-list-md class="pa-0">
-                            <v-layout row wrap>
+                        <!-- <v-container grid-list-md class="pa-0">
+                            <v-layout row wrap> -->
                                 <v-form
                                     ref="form"
                                     v-model="valid"
@@ -111,9 +112,9 @@
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Jenis"
                                     required
-                                    solo
+                                    
                                     ></v-select>
-                                    <v-menu>
+                                    <v-menu full-width="true">
                                         <v-text-field :value="tanggal" slot="activator" label="Tanggal" append-icon="date_range">
 
                                         </v-text-field>
@@ -125,14 +126,14 @@
                                     v-model="Jumlahanggota"
                                     label="Jumlah Anggota"
                                     :rules="jmlRules"
-                                    required
+                                    required                                    
+                                    append-icon="edit"
                                     ></v-text-field>
                                     <v-select
                                     v-model="select"
                                     :items="admin"
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Admin"
-                                    solo
                                     required
                                     ></v-select>
                                                             
@@ -143,17 +144,18 @@
                                     label="Apakah kamu menyetujuinya?"
                                     required
                                     ></v-checkbox>
-
-                                    <v-btn
+                                    <v-layout justify-center>
+                                    <v-btn large="true"
                                     :disabled="!valid"
                                     color="success"
                                     @click="validate"
                                     >
                                     Submit
                                     </v-btn>
+                                    </v-layout>
                                 </v-form>
-                            </v-layout>
-                        </v-container>
+                            <!-- </v-layout>
+                        </v-container> -->
                     </v-card-text>  
                 </v-card>
             </v-flex>
