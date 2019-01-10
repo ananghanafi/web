@@ -136,8 +136,6 @@
                                     label="Admin"
                                     required
                                     ></v-select>
-                                                            
-
                                     <v-checkbox
                                     v-model="checkbox"
                                     :rules="[v => !!v || 'Centang baru lanjut']"
