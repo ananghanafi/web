@@ -102,22 +102,18 @@
                 
                     <table border  height="300px" width="100%">
                         <tr>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">NO</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KABUPATEN</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">URPG</th>
-                            <th colspan="3" bgcolor="#d6d8db">LOKASI & LUAS AREAL RESTORASI</th>
-                            <th colspan="3" bgcolor="#d6d8db">      SUMUR BOR       </th>
-                            <th colspan="2" bgcolor="#d6d8db">BIAYA</th>
-                        </tr>
-                        <tr>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KECAMATAN</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">DESA</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">LUAS AREAL RESTORASI(Hektar) </th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">INDIKATIF FUNGSI BUDIDAYA E.G(Unit)</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">INDIKATIF FUNGSI BUDIDAYA E.G (Unit)</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">TOTAL(Unit)</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">SATUAN(Rp)</th>
-                           <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">TOTAL(Rp)</th>
+                            <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">NO</th>
+                            <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">WILAYAH ADMINISTRATIF</th>
+                            <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KHG, KOORDINATIF X,Y</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">UPRG</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KATEGORI</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">JENIS KEGIATAN</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">VOLUME</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">SATUAN</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">ANGGARAN(RP)</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">SUMBER ANGGARAN</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KETERANGAN ANGGARAN</th>
+                            <th colspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">ACTION</th>
                         </tr>
                         <tr>
                          <td>...</td>
@@ -131,8 +127,10 @@
                          <td>...</td>
                          <td>...</td>
                          <td>...</td>
+                         <td>...</td>
                         </tr>
                         <tr>
+                         <td>...</td>
                          <td>...</td>
                          <td>...</td>
                          <td>...</td>
@@ -145,15 +143,7 @@
                          <td>...</td>
                          <td>...</td>
                         </tr>   
-                        <tr>
-                        <td colspan="5">TOTAL   </td>
-                        <td colspan="1">SUM</td>
-                        <td colspan="1">SUM   </td>
-                        <td colspan="1">SUM   </td>
-                        <td colspan="1">SUM   </td>
-                        <td colspan="1">SUM   </td>
-                        <td colspan="1">SUM   </td>
-                        </tr>
+                        
                     </table>
             </template>
         </table>
