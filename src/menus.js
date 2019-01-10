@@ -224,43 +224,43 @@ const menus = [
             }
         ]        
     },
-    // {
-    //     icon: 'gavel',
-    //     title: 'REWETTING',
-    //     items : [
-    //         {
-    //             icon: 'local_drink',
-    //             title: 'Sumur Bor',
-    //             to : {name : 'bor_rencana'}                
-    //         },
-    //         {
-    //             icon: 'view_carousel',
-    //             title: 'Sekat Kanal',
-    //             to : {name : 'skanal_rencana'}
-    //         },
-    //         {
-    //             icon: 'how_to_vote',
-    //             title: 'Penimbunan Kanal',
-    //             to : {name : 'pkanal_rencana'}
-    //         },
-    //         {
-    //             icon: 'view_day',
-    //             title: 'Embung',
-    //             to : {name : 'embung_rencana'}
-    //         }
-    //     ]        
-    // },
-    // {
-    //     icon: 'today',
-    //     title: 'REVEGETASI',
-    //     to : {name : 'revegetasi_rencana'}
-    // },
-    // {
-    //     icon: 'today',
-    //     title: 'REVITALISASI',
-    //     to : {name: 'revitalisasi_rencana'}
+    {
+        icon: 'gavel',
+        title: 'REWETTING',
+        items : [
+            {
+                icon: 'local_drink',
+                title: 'Sumur Bor',
+                to : {name : 'bor_rencana'}                
+            },
+            {
+                icon: 'view_carousel',
+                title: 'Sekat Kanal',
+                to : {name : 'skanal_rencana'}
+            },
+            {
+                icon: 'how_to_vote',
+                title: 'Penimbunan Kanal',
+                to : {name : 'pkanal_rencana'}
+            },
+            {
+                icon: 'view_day',
+                title: 'Embung',
+                to : {name : 'embung_rencana'}
+            }
+        ]        
+    },
+    {
+        icon: 'today',
+        title: 'REVEGETASI',
+        to : {name : 'revegetasi_rencana'}
+    },
+    {
+        icon: 'today',
+        title: 'REVITALISASI',
+        to : {name: 'revitalisasi_rencana'}
 
-    // },
+    },
     {
         icon : 'today',
         title : 'PELAKSANAAN',
