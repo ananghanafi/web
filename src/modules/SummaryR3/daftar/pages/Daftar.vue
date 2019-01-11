@@ -67,15 +67,48 @@
   <v-data-table
     :headers="headers"
     :items="desserts"
+    :pagination.sync="pagination"
+    item-key="name"
     class="elevation-1"
   >
+<template slot="headers" slot-scope="props">
+        <tr>
+          <th
+            v-for="header in props.headers"
+            :key="header.text"
+            :rowspan="header.rowspan"
+            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+            @click="changeSort(header.value)"
+          >
+            <v-icon small>arrow_upward</v-icon>
+            {{ header.text }}
+          </th>
+        </tr>
+        <tr>
+          <th
+            v-for="header in headers2"
+            :key="header.text"
+            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+            @click="changeSort(header.value)"
+          >
+            <v-icon small>arrow_upward</v-icon>
+            {{ header.text }}
+          </th>
+        </tr>
+      </template>
     <template slot="items" slot-scope="props">
-      <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.calories }}</td>
+    
+        <tr>
+      <td rowspan="2">{{ props.item.name }}</td>
+      <td rowspan="2" class="text-xs-right">{{ props.item.calories }}</td>
       <td class="text-xs-right">{{ props.item.fat }}</td>
       <td class="text-xs-right">{{ props.item.carbs }}</td>
+        </tr>
+        <tr>
       <td class="text-xs-right">{{ props.item.protein }}</td>
       <td class="text-xs-right">{{ props.item.iron }}</td>
+        </tr>
+    
     </template>
   </v-data-table>
 </template>
@@ -241,13 +274,17 @@ export default {
             text: 'Dessert (100g serving)',
             align: 'left',
             sortable: false,
-            value: 'name'
+            value: 'name',
+            rowspan: '2',
           },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' }
+          { text: 'Calories', value: 'calories',rowspan:'2',},
+          { text: 'Fat (g)', value: 'fat',rowspan:'1', },
+          { text: 'Carbs (g)', value: 'carbs',rowspan:'1', },
+         
+        ],
+        headers2: [
+        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Iron (%)', value: 'iron' }
         ],
         desserts: [
           {
