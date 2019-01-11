@@ -526,11 +526,11 @@ const menus = [
         title: 'PERSONAL', 
         to : {name : 'personal_daftar'}      
     }, 
-    {
-        icon: 'how_to_reg',
-        title: 'ORGANISASI',
-        to : {name : 'personal_daftar'}    
-    }, 
+    // {
+    //     icon: 'how_to_reg',
+    //     title: 'ORGANISASI',
+    //     to : {name : 'personal_daftar'}    
+    // }, 
 
 ]
 
