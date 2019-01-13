@@ -6,7 +6,7 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        INPUT ANGGARAN KEGIATAN R1,R2
+                       Rencana Biaya RTT - R1.1 Sumur Bor 
                     </v-card-title>
                         <v-card-text class="py-0">
                             <v-container grid-list-md class="pa-0">

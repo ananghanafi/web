@@ -62,11 +62,11 @@
                             </v-container>
                             
                         </v-card-text>
-
-                </v-card>
-                    <v-card-text>
+<v-card-text>
                         TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
-                    </v-card-text>            
+                    </v-card-text> 
+                </v-card>
+                               
             </v-flex>
 
         </v-layout>

@@ -59,12 +59,13 @@
                                     
                                     <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
                                 </v-layout>
+                                <v-card-text>
+                            TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
+                            </v-card-text>
                             </v-container>
                             
                         </v-card-text>
-                            <v-card-text>
-                            TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
-                            </v-card-text>
+                            
                     <template>
   <v-data-table
     :headers="headers"
