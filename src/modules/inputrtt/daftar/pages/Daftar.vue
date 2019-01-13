@@ -84,11 +84,72 @@
                             </v-container>
 
                         </v-card-text>
+                            <v-card-text>
+                            DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
+                            </v-card-text>
+                        <template>
+     <v-container grid-list-xs fill-height>
+        <v-layout>
+            <v-flex xs12>
+                <v-card class="pb-3">
+                    <v-card-title class="elevation-1 font-weight-bold">
+                         SUMMARY RTT - R1 dan R2 berbasis KHG
+                    </v-card-title>
+                    <v-container>
+                        <v-layout row wrap>
+                            <v-card-text class="py-0">
+                                <v-data-table 
+                                :headers="headers"
+                                :items="items"
+                                item-key="name"
+                                class="elevation-1"
+                                >
+                                <template slot="items" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.No }}</td>
+                                    <td class="text-xs-left">{{ props.item.WILAYAH_ADMINISTRATIF }}</td>
+                                    <td class="text-xs-left">{{ props.item.KHG,KOORDINATIF_X,Y }}</td>
+                                    <td class="text-xs-left">{{ props.item.UPRG }}</td>
+                                    <td class="text-xs-left">{{ props.item.KATEGORI }}</td>
+                                    <td class="text-xs-center">{{ props.item.JENIS_KEGIATAN }}</td>
+                                    <td class="text-xs-center">{{ props.item.VOLUME }}</td>
+                                    <td class="text-xs-center">{{ props.item.SATUAN }}</td>
+                                    <td class="text-xs-center">{{ props.item.ANGGARAN }}</td>
+                                    <td class="text-xs-center">{{ props.item.SUMBER_ANGGARAN }}</td>
+                                    <td class="text-xs-center">{{ props.item.KETERANGAN_ANGGARAN }}</td>
+                                    <td class="text-xs-center">{{ props.item.ACTION }}</td>
+                                </template>
+                                <template slot="jumlah" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.nojumlah }}</td>
+                                    <td class="text-xs-left">{{ props.item.kabupatenjumlah }}</td>
+                                    <td class="text-xs-center" colspan="2">{{ props.item.jumlah }}</td>
+                                    <td class="text-xs-left"></td>{{ props.item.volumejumlah }}
+                                </template>
+                                </v-data-table>             
+                                <v-data-table 
+                                :headers="headers"
+                                :items="items"
+                                item-key="name"
+                                class="elevation-1"
+                                >
+                                <template slot="jumlah" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.nojumlah }}</td>
+                                    <td class="text-xs-left">{{ props.item.kabupatenjumlah }}</td>
+                                    <td class="text-xs-center" colspan="2">{{ props.item.jumlah }}</td>
+                                    <td class="text-xs-left"></td>{{ props.item.volumejumlah }}
+                                </template>
+                                </v-data-table>                 
+                            </v-card-text>
+                        </v-layout>
+                    </v-container>
+                </v-card>        
+            </v-flex>
+        </v-layout>
+       
+    </v-container>
+</template>
 
                 </v-card>
- <v-card-text>
-                        DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
-                    </v-card-text>            </v-flex>
+             </v-flex>
 
         </v-layout>
        
@@ -163,8 +224,100 @@ export default {
                     
                 ]
                 
-            }
-        }
+            },
+            headers: [
+            {
+                text: 'No',
+                align:'center',
+                value: 'no',
+            },
+            { text: 'WILAYAH_ADMINTRATIF', value: 'WILAYAH_ADMINISTRATIF',align:'center',},
+            { text: 'KHG,KOORDINATIF_X,Y', value: 'KHG,KOORDINATIF_X,Y', align:'center',},
+            { text: 'UPRG', value: 'UPRG',align:'center',},
+            { text: 'KATEGORI', value: 'KATEGORI',align:'center',},
+            { text: 'JENIS KEGIATAN', value: 'JENISKEGIATAN',align:'center',},
+            { text: 'VOLUME', value: 'VOLUME',align:'center',},
+            { text: 'SATUAN', value: 'SATUAN',align:'center',},
+            { text: 'ANGGARAN(Rp)', value: 'ANGGARAN',align:'center',},
+            { text: 'SUMBER_ANGGARAN', value: 'SUMBER_ANGGARAN',align:'center',},
+            { text: 'KETERANGAN_ANGGARAN', value: 'KETERANG_ANANGGARAN',align:'center',},
+            { text: 'ACTION', value: 'ACTION',align:'center',},
+        ],
+        items: [
+            {
+                value: false,
+                no: '1',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 200
+            },
+            {
+                value: false,
+                no: '2',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 200
+            },
+            {
+                value: false,
+                no: '3',
+                kabupaten: 'Malang',
+                program: 'Bantuan1',
+                jenis: 'Gotong Royong',
+                volume: 201
+            },
+            {
+                value: false,
+                no: '4',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong1',
+                volume: 222
+            },
+            {
+                value: false,
+                no: '5',
+                kabupaten: 'Malang',
+                program: 'Bantuan2',
+                jenis: 'Gotong Royong3',
+                volume: 204
+            },
+            {
+                value: false,
+                no: '6',
+                kabupaten: 'Jember',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 206
+            },
+        ],
+        jumlah:[
+            {
+                value: false,
+                nojumlah: '',
+                kabupatenjumlah: '',
+                jumlah:'Jumlah',
+                volumejumlah: 206
+            },
+            {
+                value: false,
+                nojumlah: '',
+                kabupatenjumlah: '',
+                jumlah:'Jumlah Desa',
+                volumejumlah: 206
+            },
+            {
+                value: false,
+                nojumlah: '',
+                kabupatenjumlah: '',
+                jumlah:'Anggaran rata-rata tiap desa',
+                volumejumlah: 206
+            },
+        ]
+      }
+        
     }
 }
 </script>
