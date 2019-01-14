@@ -68,13 +68,127 @@
                                     <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
                                 </v-layout>
                             </v-container>
-                            
+                            <v-card-text>
+                        TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
+                    </v-card-text> 
+
+                    <template>
+                                      <v-data-table
+                                        :headers="headers"
+                                        :items="desserts"
+                                        :pagination.sync="pagination"
+                                        item-key="name"
+                                        class="elevation-1"
+                                      >
+                                                <template slot="headers" slot-scope="props">
+                                                        <tr>
+                                                          <th
+                                                            v-for="header in props.headers"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+
+                                                          <th
+                                                            v-for="header in headers3"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        
+
+                                                        <th
+                                                            v-for="header in headers4"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+
+                                                        <th
+                                                            v-for="header in headers5"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        
+
+                                                        <th
+                                                            v-for="header in headers6"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers7"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers8"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers9"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                          <th
+                                                            v-for="header in headers10"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        </tr>
+                                                    </tr>
+                                                </template>
+
+
+                                    </v-data-table>
+                                </template>
                         </v-card-text>
 
                 </v-card>
-                    <v-card-text>
-                        TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
-                    </v-card-text>            
+                               
             </v-flex>
 
         </v-layout>
@@ -168,7 +282,71 @@ export default {
                     
                 ]
                 
-            }
+            },
+            headers: [
+                                  {
+                                    text: 'No',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'nomor',
+                                  },
+                                ],
+                        headers3: [
+                                  {
+                                    text: 'KABUPATEN KECAMATAN',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'KABUPATENKECAMATAN',
+                                  },
+                                ],
+                        headers4: [
+                                  {
+                                    text: 'DESA',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'DESA',
+                                  },
+                                ],
+                        headers6: [
+                                  {
+                                    text: 'PROGRAM',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'PROGRAM',
+                                  },
+                                ],
+                        headers7: [
+                                  {
+                                    text: 'JENIS KEGIATAN',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'JENISKEGIATAN',
+                                  },
+                                ],
+                        headers8: [
+                                  {
+                                    text: 'VOLUME',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'VOLUME',
+                                  },
+                                ],
+                        headers9: [
+                                  {
+                                    text: 'HARGA(Rp)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'HARGA',
+                                  },
+                                ],
+                        headers10: [
+                                  {
+                                    text: 'TOTAL(Rp)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'TOTAL',
+                                  },
+                                ],
         }
     }
 }
