@@ -68,13 +68,193 @@
                                     <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
                                 </v-layout>
                             </v-container>
-                            
+                            <v-card-text>
+                        TINDAKAN RTT TAHUN ...... Provinsi ...... KHG ...... 
+                            </v-card-text>  
+                                <template>
+                                          <v-data-table
+                                            :headers="headers"
+                                            :items="desserts"
+                                            :pagination.sync="pagination"
+                                            item-key="name"
+                                            class="elevation-1"
+                                          >
+                                <template slot="headers" slot-scope="props">
+                                                        <tr>
+                                                          <th
+                                                            v-for="header in props.headers"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+
+                                                          <th
+                                                            v-for="header in headers3"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        
+
+                                                        <th
+                                                            v-for="header in headers4"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+
+                                                        <th
+                                                            v-for="header in headers5"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        
+
+                                                        <th
+                                                            v-for="header in headers6"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers7"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        
+                                                        </tr>
+                                                        <tr>
+                                                        <th
+                                                            v-for="header in headers8"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+
+                                                        <th
+                                                            v-for="header in headers9"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers10"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers11"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers12"
+                                                            :key="header.text"
+                                                            :colspan="header.colspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers13"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        </tr>
+                                                        <tr>
+                                                        <th
+                                                            v-for="header in headers14"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers15"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        <th
+                                                            v-for="header in headers16"
+                                                            :key="header.text"
+                                                            :rowspan="header.rowspan"
+                                                            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                                                            @click="changeSort(header.value)"
+                                                          >
+                                                            <v-icon small>arrow_upward</v-icon>
+                                                            {{ header.text }}
+                                                          </th>
+                                                        </tr>
+                                                    </tr>
+                                                </template>
+
+
+                                    </v-data-table>
+                                </template>
+
                         </v-card-text>
 
                 </v-card>
-                    <v-card-text>
-                        TINDAKAN RTT TAHUN ...... Provinsi ...... KHG ...... 
-                    </v-card-text>            
+                              
             </v-flex>
 
         </v-layout>
@@ -187,7 +367,123 @@ export default {
                     
                 ]
                 
-            }
+            },
+            headers: [
+                                  {
+                                    text: 'No',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'nomor',
+                                    rowspan: '3',
+                                  },
+                                ],
+            headers3: [
+                                  {
+                                    text: 'KABUPATEN',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'KABUPATEN',
+                                    rowspan: '3',
+                                  },
+                                ],
+            headers4: [
+                                  {
+                                    text: 'UPRG',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'UPRG',
+                                    rowspan: '3',
+                                  },
+                                ],
+            headers5: [
+                                  {
+                                    text: 'LOKASI & LUAS AREAL RESTORASI',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'LOKASI',
+                                    colspan: '3',
+                                  },
+                                ],
+            headers6: [
+                                  {
+                                    text: 'ARAH TINDAKAN REWETTING(R1)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REWETTING',
+                                    colspan: '7',
+                                  },
+                                ],
+            headers7: [
+                                  {
+                                    text: 'ARAH TINDAKAN REVEGASI(R2)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REVEGASI',
+                                    colspan: '3',
+                                  },
+                                ],
+            headers8: [
+                        { text: 'KECAMATAN', value: 'KECAMATAN', rowspan: '2' },
+                        { text: 'DESA', value: 'DESA', rowspan: '2' },
+                        { text: 'LUAS AREAL RESTORASI(HEKTAR)', value: 'LUASAREAL', rowspan: '2' },
+                    ],
+            headers9: [
+                                  {
+                                    text: 'SUMUR BOR(UNIT)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REVEGASI',
+                                    rowspan: '2',
+                                  },
+                                ],
+            headers10: [
+                                  {
+                                    text: 'PENYEKATAN KANAL(UNIT)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REVEGASI',
+                                    colspan: '2',
+                                  },
+                                ],
+            headers11: [
+                                  {
+                                    text: 'RUAS KANAL(METER)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REVEGASI',
+                                    colspan: '2',
+                                  },
+                                ],
+            headers12: [
+                                  {
+                                    text: 'PENIMBUNAN(METER)',
+                                    align: 'left',
+                                    sortable: false,
+                                    value: 'REVEGASI',
+                                    colspan: '2',
+                                  },
+                                ],
+            headers13: [
+                                 
+                        { text: 'PENANAMAN POLA MAKSIMAL(HEKTAR)', value: 'PENANAMANPOLA',rowspan: '2' },
+                        { text: 'PENGKAYAAN TANAMAN(HEKTAR)', value: 'PENGKAYAANTANAMAN',rowspan: '2'  },
+                        { text: 'SUKSESI ALAMI(HEKTAR)', value: 'SUKSESIALAMI',rowspan: '2'  },
+                                ],
+            headers14: [
+                                 
+                        { text: 'SEKAT SEKUNDER & TERSIER', value: 'SEKATSEKUNDER1',rowspan: '1' },
+                        { text: 'SEKAT PRIMER', value: 'SEKATPRIMER1',rowspan: '1'  },
+                                ],
+            headers15: [
+                                 
+                        { text: 'KANAL SEKUNDER & TERSIER', value: 'KANALSEKUNDER',rowspan: '1' },
+                        { text: 'KANAL PRIMER', value: 'KANALPRIMER',rowspan: '1'  },
+                                ],
+            headers16: [
+                                 
+                        { text: 'SEKAT SEKUNDER & TERSIER', value: 'SEKATSEKUNDER2',rowspan: '1' },
+                        { text: 'SEKAT KANAL PRIMER', value: 'SEKATKANALPRIMER',rowspan: '1'  },
+                                ],
         }
     }
 }
