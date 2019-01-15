@@ -51,13 +51,48 @@
                                     <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
                                 </v-layout>
                             </v-container>
-                            
+                            <v-card-text>
+                        TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
+                    </v-card-text>  
+                    <v-data-table 
+                                :headers="headers"
+                                :items="items"
+                                item-key="name"
+                                class="elevation-1"
+                                >
+                                <template slot="items" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.no }}</td>
+                                    <td class="text-xs-left">{{ props.item.kabupaten }}</td>
+                                    <td class="text-xs-left">{{ props.item.program }}</td>
+                                    <td class="text-xs-left">{{ props.item.jenis }}</td>
+                                    <td class="text-xs-left">{{ props.item.volume }}</td>
+                                    <td class="text-xs-left">{{ props.item.harga }}</td>
+                                    <td class="text-xs-left">{{ props.item.total }}</td>
+                                </template>
+                                <template slot="jumlah" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.nojumlah }}</td>
+                                    <td class="text-xs-left">{{ props.item.kabupatenjumlah }}</td>
+                                    <td class="text-xs-center" colspan="2">{{ props.item.jumlah }}</td>
+                                    <td class="text-xs-left"></td>{{ props.item.volumejumlah }}
+                                </template>
+                                </v-data-table>             
+                                <v-data-table 
+                                :headers="headers"
+                                :items="items"
+                                item-key="name"
+                                class="elevation-1"
+                                >
+                                <template slot="jumlah" slot-scope="props">
+                                    <td class="text-xs-center">{{ props.item.nojumlah }}</td>
+                                    <td class="text-xs-left">{{ props.item.kabupatenjumlah }}</td>
+                                    <td class="text-xs-center" colspan="2">{{ props.item.jumlah }}</td>
+                                    <td class="text-xs-left"></td>{{ props.item.volumejumlah }}
+                                </template>
+                                </v-data-table>    
                         </v-card-text>
 
                 </v-card>
-                    <v-card-text>
-                        TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
-                    </v-card-text>            
+                             
             </v-flex>
 
         </v-layout>
@@ -179,7 +214,70 @@ export default {
                     
                 ]
                 
-            }
+            },
+            headers: [
+            {
+                text: 'No',
+                align:'center',
+                value: 'no',
+            },
+            { text: 'Kabupaten', value: 'kabupaten',align:'center',},
+            { text: 'Program', value: 'program', align:'center',},
+            { text: 'Jenis Kegiatan', value: 'jenis',align:'center',},
+            { text: 'Volume', value: 'volume',align:'center',},
+            { text: 'Harga(Rp)', value: 'harga',align:'center',},
+            { text: 'Total(Rp)', value: 'total',align:'center',},
+        ],
+        items: [
+            {
+                value: false,
+                no: '1',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 200
+            },
+            {
+                value: false,
+                no: '2',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 200
+            },
+            {
+                value: false,
+                no: '3',
+                kabupaten: 'Malang',
+                program: 'Bantuan1',
+                jenis: 'Gotong Royong',
+                volume: 201
+            },
+            {
+                value: false,
+                no: '4',
+                kabupaten: 'Malang',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong1',
+                volume: 222
+            },
+            {
+                value: false,
+                no: '5',
+                kabupaten: 'Malang',
+                program: 'Bantuan2',
+                jenis: 'Gotong Royong3',
+                volume: 204
+            },
+            {
+                value: false,
+                no: '6',
+                kabupaten: 'Jember',
+                program: 'Bantuan',
+                jenis: 'Gotong Royong',
+                volume: 206
+            },
+        ],
         }
     }
 }
