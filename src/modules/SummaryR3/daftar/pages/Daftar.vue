@@ -68,9 +68,14 @@
         <v-layout>
             <v-flex xs12>
                 <v-card class="pb-3">
+
                     <v-card-title class="elevation-1 font-weight-bold">
                          SUMMARY RTT - R1 dan R2 berbasis KHG
+
                     </v-card-title>
+                    
+                    <button @click="print">Print this component</button>
+                    
                     <v-container>
                         <v-layout row wrap>
                             <v-card-text class="py-0">
@@ -360,11 +365,40 @@ export default {
         ]
       }
         
+    },
+    mounted () {
+                    const { Printd } = window.printd
+                    this.d = new Printd()
+
+                    
+                    const { contentWindow } = this.d.getIFrame()
+
+                    contentWindow.addEventListener(
+                      'beforeprint', () => console.log('before print event!')
+                    )
+                    contentWindow.addEventListener(
+                      'afterprint', () => console.log('after print event!')
+                    )
+                  },
+    methods: {
+    
+    print () {
+    window.print();
+      this.d.print( this.$el, this.cssText)
     }
+    
+  }
 }
 
 </script>
 
 // styling for a template
 <style>
+
+button {
+    background-color: #f0f0f0;
+    border: solid 1px #ccc;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 </style>
