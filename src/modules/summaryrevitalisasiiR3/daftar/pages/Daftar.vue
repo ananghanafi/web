@@ -54,6 +54,7 @@
                             <v-card-text>
                         TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
                     </v-card-text>  
+                    <button @click="print">Print this component</button>
                     <v-data-table 
                                 :headers="headers"
                                 :items="items"
@@ -279,7 +280,15 @@ export default {
             },
         ],
         }
+    },
+    methods: {
+    
+    print () {
+    window.print();
+      this.d.print( this.$el, this.cssText)
     }
+    
+  }
 }
 </script>
 

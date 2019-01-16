@@ -85,6 +85,7 @@
                                 <v-card-text>
                                 DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
                                 </v-card-text>
+                                <button @click="print">Print this component</button>
                                     <template>
                                       <v-data-table
                                         :headers="headers"
@@ -458,7 +459,15 @@ export default {
         ]
       }
         
+    },
+    methods: {
+    
+    print () {
+    window.print();
+      this.d.print( this.$el, this.cssText)
     }
+    
+  }
 }
 </script>
 

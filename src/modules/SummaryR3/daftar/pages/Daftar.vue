@@ -75,11 +75,12 @@
                     </v-card-title>
                     
                     <button @click="print">Print this component</button>
-                    
+                    <button class="dt-button buttons-excel buttons-html5" tabindex="0" aria-controls="example" type="button"><span>Excel</span></button>
                     <v-container>
                         <v-layout row wrap>
                             <v-card-text class="py-0">
                                 <v-data-table 
+                                :id="example"
                                 :headers="headers"
                                 :items="items"
                                 item-key="name"
@@ -387,7 +388,22 @@ export default {
       this.d.print( this.$el, this.cssText)
     }
     
-  }
+  },
+ $(document){ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+              {
+                    extend: 'excelHtml5',
+                    title: 'Project Report - ' + new Date().toJSON().slice(0,10).replace(/-/g,'-')
+                },
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+}
 }
 
 </script>
