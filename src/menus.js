@@ -499,7 +499,7 @@ const menus = [
     {
         icon: 'dashboard',
         title: 'DASHBOARD',   
-        to : {name : 'Dashboard4_daftar'} 
+        to : {name : 'donordash'} 
     }, 
     {
         icon: 'map',

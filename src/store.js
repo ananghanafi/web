@@ -69,6 +69,7 @@ import NamaKHG from './modules/NamaKHG/store'
 import MorarotiumKawasanHutanGambut from './modules/MorarotiumKawasanHutanGambut/store'
 import TutupanLahan from './modules/TutupanLahan/store'
 import KawasanHutan from './modules/KawasanHutan/store'
+import donordash from './modules/donordash/store'
 
 const main = {
     namespaced: true,
@@ -167,6 +168,7 @@ const store = new Vuex.Store({
         MorarotiumKawasanHutanGambut,
         TutupanLahan,
         KawasanHutan,
+        donordash,
     }
 })
 

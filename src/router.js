@@ -63,6 +63,7 @@ import NamaKHG from './modules/NamaKHG/router'
 import MorarotiumKawasanHutanGambut from './modules/MorarotiumKawasanHutanGambut/router'
 import TutupanLahan from './modules/TutupanLahan/router'
 import KawasanHutan from './modules/KawasanHutan/router'
+import donordash from './modules/donordash/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -139,6 +140,7 @@ const routers = [
     ...MorarotiumKawasanHutanGambut,
     ...TutupanLahan,
     ...KawasanHutan,
+    ...donordash,
     ...other
 ]
 
