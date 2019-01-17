@@ -1,86 +1,12 @@
 <template>
-    <!-- <v-container grid-list-xs fill-height>
-        <v-layout>
-            <v-flex xs12>
-                <v-card class="pb-3">
-                    <v-card-title class="elevation-1">
-                        DAFTAR
-                        <v-spacer></v-spacer>
-                        <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn>
-                    </v-card-title>
-                    <v-card-text class="py-0">
-                        <v-container grid-list-md class="pa-0">
-                            <v-layout row wrap>
-                                <v-flex md3 sm6>
-                                    <v-text-field
-                                        append-icon="edit"
-                                        label="Nama"
-                                        single-line
-                                        hide-details
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md3 sm6>
-                                    <v-text-field
-                                        append-icon="edit"
-                                        label="Email"
-                                        single-line
-                                        hide-details
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md3 sm6>
-                                    <v-select :items="jenis">
-
-                                    </v-select>
-
-                                </v-flex>
-                                <v-flex md3 sm6>
-                                    <v-text-field
-                                        append-icon="edit"
-                                        label="Jumlah Anggota"
-                                        single-line
-                                        hide-details
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md3 sm6> -->
-                                    <!-- <v-text-field
-                                        append-icon="edit"
-                                        label="Admin"
-                                        single-line
-                                        hide-details
-                                    ></v-text-field> -->
-                                    <!-- <v-select :items="admin">
-
-                                    </v-select>
-                                </v-flex>
-                                <v-menu>
-                                    <v-text-field :value="tanggal" slot="activator" label="Tanggal" prepend-icon="date_range">
-
-                                    </v-text-field>
-                                    <v-date-picker v-model="tanggal"> 
-
-                                    </v-date-picker>
-                                </v-menu>
-                               
-                                 <v-flex md3 sm6>
-                                <v-btn block color="primary" outline @click="load(1)">Submit</v-btn>
-               
-                                </v-flex>
-                            </v-layout>
-                        </v-container>
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-    </v-container> -->
-    
-    <v-container >
+     <v-container >
         <v-layout justify-center>
             <v-flex xs12 sm10 md8 lg6>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1">
                     DAFTAR
                     <v-spacer></v-spacer>
-                    <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn>
+                    <!-- <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn> -->
                     </v-card-title>
                     <v-card-text class="py-0">
                         <!-- <v-container grid-list-md class="pa-0">
@@ -107,7 +33,7 @@
                                     ></v-text-field>
 
                                     <v-select
-                                    v-model="select"
+                                    v-model="select1"
                                     :items="jenis"
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Jenis"
@@ -129,13 +55,36 @@
                                     required                                    
                                     append-icon="edit"
                                     ></v-text-field>
+  
                                     <v-select
-                                    v-model="select"
+                                    v-model="select2"
                                     :items="admin"
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Admin"
                                     required
                                     ></v-select>
+                                  <v-text-field
+                                        v-model="password"
+                                        :append-icon="show1 ? 'visibility_off' : 'visibility'"
+                                        :rules="[rules.required, rules.min]"
+                                        :type="show1 ? 'text' : 'password'"
+                                        name="input-10-1"
+                                        label="Kata Sandi"
+                                        hint="At least 8 characters"
+                                        counter
+                                        @click:append="show1 = !show1"
+                                    ></v-text-field>
+                                  <v-text-field
+                                        v-model="password2"
+                                        :append-icon="show2 ? 'visibility_off' : 'visibility'"
+                                        :rules="[rules.required, rules.min]"
+                                        :type="show2 ? 'text' : 'password'"
+                                        name="input-10-1"
+                                        label="Konfirmasi Kata Sandi"
+                                        hint="At least 8 characters"
+                                        counter
+                                        @click:append="show2 = !show2"
+                                    ></v-text-field>
                                     <v-checkbox
                                     v-model="checkbox"
                                     :rules="[v => !!v || 'Centang baru lanjut']"
@@ -192,13 +141,27 @@
         v => !!v || 'Email harus di isi',
         v => /.+@.+/.test(v) || 'E-mail harus valid'
       ],
+        show1: false,
+        show2: false,
+        password: null,
+        password2:null,
+        rules: {
+          required: value => !!value || 'Required.',
+          min: v => v.length >= 8 || 'Min 8 characters',
+          emailMatch: () => ('The email and password you entered don\'t match')
+        },
+        rules2: {
+          required: value => !!value || 'Required.',
+          min: v => v.length >= 8 || 'Min 8 characters',
+          emailMatch: () => ('The email and password you entered don\'t match')
+        },
       namaRules: [
         v => !!v || 'Nama harus di isi'
       ],
       jmlRules:[
         v => !!v || 'Jumlah anggota harus di isi, jika tidak kasih 0'
       ],
-      select: null,
+      select1: null,
       jenis: [
         'Lembaga',
         'Instansi',
@@ -206,15 +169,19 @@
         'Organisasi',
         'Institusi'
       ],
+      select2: null,
       admin:[
           'Provinsi',
           'Kabupaten/Kota',
           'Kecamatan',
           'Kelurahan'
       ],
+
       tanggal: null,
-      checkbox: false
+      checkbox: false,
+      
     }),
+    
 
     methods: {
       validate () {
@@ -223,6 +190,7 @@
         }
       }
     }
+   
   }
 </script>
 
