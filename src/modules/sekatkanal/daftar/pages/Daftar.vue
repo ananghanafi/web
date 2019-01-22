@@ -62,7 +62,7 @@
                                 <v-card-text>
                             TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
                             </v-card-text>
-                            <button @click="print">Print this component</button>
+                            <button v-print="'#myTable'" @click="print">Print this component</button>
                             </v-container>
                             
                         </v-card-text>
@@ -74,6 +74,7 @@
     :pagination.sync="pagination"
     item-key="name"
     class="elevation-1"
+    id="myTable"
   >
             <template slot="headers" slot-scope="props">
                     <tr>
@@ -313,10 +314,7 @@ export default {
             colspan: '2',
             }
         ],
-        headers8:[
-             { text: 'Satuan (Rp)', value: 'biayasatuan' },
-             { text: 'Total (Rp)', value: 'biayatotal' }
-        ],
+        
         sekatkanal:[
         {
           value: false,

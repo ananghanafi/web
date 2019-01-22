@@ -236,7 +236,9 @@ export default {
                 kabupaten: 'Malang',
                 program: 'Bantuan',
                 jenis: 'Gotong Royong',
-                volume: 200
+                volume: 200,
+                harga: 9000,
+                total: 10000,
             },
             {
                 value: false,
@@ -244,7 +246,9 @@ export default {
                 kabupaten: 'Malang',
                 program: 'Bantuan',
                 jenis: 'Gotong Royong',
-                volume: 200
+                volume: 200,
+                harga: 9000,
+                total: 10000,
             },
             {
                 value: false,
@@ -252,7 +256,9 @@ export default {
                 kabupaten: 'Malang',
                 program: 'Bantuan1',
                 jenis: 'Gotong Royong',
-                volume: 201
+                volume: 201,
+                harga: 9000,
+                total: 10000,
             },
             {
                 value: false,
@@ -260,7 +266,9 @@ export default {
                 kabupaten: 'Malang',
                 program: 'Bantuan',
                 jenis: 'Gotong Royong1',
-                volume: 222
+                volume: 222,
+                harga: 9000,
+                total: 10000,
             },
             {
                 value: false,
@@ -268,7 +276,9 @@ export default {
                 kabupaten: 'Malang',
                 program: 'Bantuan2',
                 jenis: 'Gotong Royong3',
-                volume: 204
+                volume: 204,
+                harga: 9000,
+                total: 10000,
             },
             {
                 value: false,
@@ -276,7 +286,9 @@ export default {
                 kabupaten: 'Jember',
                 program: 'Bantuan',
                 jenis: 'Gotong Royong',
-                volume: 206
+                volume: 206,
+                harga: 9000,
+                total: 10000,
             },
         ],
         }
