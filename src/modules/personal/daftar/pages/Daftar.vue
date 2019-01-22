@@ -49,7 +49,7 @@
                                         </v-date-picker>
                                     </v-menu>
                                     <v-text-field
-                                    v-model="Jumlahanggota"
+                                    v-model="jumlahanggota"
                                     label="Jumlah Anggota"
                                     :rules="jmlRules"
                                     required                                    
@@ -95,7 +95,8 @@
                                     <v-btn large="true"
                                     :disabled="!valid"
                                     color="success"
-                                    @click="validate"
+                                    
+                                    @click="register"
                                     >
                                     Submit
                                     </v-btn>
@@ -188,7 +189,38 @@
         if (this.$refs.form.validate()) {
           this.snackbar = true
         }
-      }
+      },
+      register(){
+            this.loading = true
+            this.$store.dispatch('personal',{
+                email:this.email,
+                // firstname:this.reg.firstname, 
+                // lastname:this.reg.lastname,
+                nama:this.nama ,
+                jenis:this.jenis,
+                tanggal:this.tanggal,
+                admin:this.admin,
+                password:this.password, 
+                password2:this.password2
+            })
+            // .then((res)=>{
+            //     this.reg.email = ''
+            //     this.reg.firstname = ''
+            //     this.reg.lastname = ''
+            //     this.reg.password = ''
+            //     this.reg.confirm_password = ''
+
+            //     this.loading = false
+            //     this.register_ok = res
+            //     // this.$router.push({name:'home'})
+            //     // eslint-disable-next-line
+            //     // console.log(res)
+            // })
+            // .catch(()=>{
+            //     this.loading = false
+            // })
+
+        }
     }
    
   }

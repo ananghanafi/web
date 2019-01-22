@@ -9,23 +9,7 @@ const router = [
             auth : true,
         },
         component: () => import('./pages/Daftar.vue'),
-    },
-    {
-        path: `${rootp}/daftar/:id`,
-        name: `${mod_name}_daftar_detail`,
-        meta: {
-            auth : true,
-        },
-        component: () => import('./pages/Detail.vue'),
-    },
-    {
-        path: `${rootp}/daftar/:id/prog`,
-        name: `${mod_name}_daftar_progress`,
-        meta: {
-            auth : true,
-        },
-        component: () => import('./pages/Progress'),
-    },
+    }
 
 ]
 

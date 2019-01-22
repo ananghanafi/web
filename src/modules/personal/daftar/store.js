@@ -1,103 +1,54 @@
 import axios from 'axios'
 import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
-const M_API = API + '/revegetationimpl'
+const M_API = API + '/personal'
+const lc = window.localStorage
+const TOKEN = 'prims'
 import {normParam} from '../../../tools'
 
 const store = {
     namespaced: true,
     state: {
+        user: null,
+        token: lc.getItem(TOKEN),
     },
     getters: {
+        user(state){
+            return state.user
+        },
+        check(state) {
+            return state.token // state.user != null
+        },
+        token(state) {
+            return state.token
+        },
     },
     mutations: {
+        login(state, { user, token }) {
+            state.user = user
+            state.token = token
+            lc.setItem(TOKEN, token)
+        },
+        logout(state) {
+            state.user = null
+            state.token = null
+            lc.removeItem(TOKEN)
+        }
     },
     actions: {
-        // eslint-disable-next-line
-        get({},par) {
-            return axios.get(`${M_API}${normParam(par)}`)
-            .then(res => {
-                return res.data
-            })
-            .catch(err => Promise.reject(err))          
-        },
-        // eslint-disable-next-line
-        show({},id) {
-            return axios.get(`${M_API}/${id}`)
-            .then(res => {
-                return res.data
-            })
-            .catch(err => Promise.reject(err))          
-        },
-        // eslint-disable-next-line
-        update({}, obj){
-            return axios.put(`${M_API}/${obj.generalActivity.id}`, obj)
-            .then(res => {
-                return res.data
-            })
-            .catch(err => Promise.reject(err))          
-        },
-        // eslint-disable-next-line
-        approveReject({},{id,is_approve}){
-            return axios.put(`${M_API}/${id}/status`, {status : { id :is_approve ? STATUS_IMPL_OPENED : STATUS_IMPL_PENDING}})
-            .then(res => {
-                return res.data
-            })
-            .catch(err => Promise.reject(err))      
-        },
-        // eslint-disable-next-line
-        uploadImage({ }, { id, collection, file }) {
-            let fd = new FormData()
-            fd.append('collection', collection)
-            fd.append('file', file)
-            return axios.post(`${M_API}/${id}/image`, fd, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+        register({ commit }, { email, nama, jenis, tanggal, admin, password
+        
+        }) {
+
+            return axios.post(M_API + '/personal', {
+               email,nama,jenis,tanggal,admin,password,password2
+                
             })
                 .then(res => {
-                    return res.data
+                    // commit('login', { user: res.data.user, token: res.data.token })
+                    return Promise.resolve(res.data)
                 })
                 .catch(err => Promise.reject(err))
-        },
-        // eslint-disable-next-line
-        uploadGallery({ }, { id, description, category, file }) {
-            let fd = new FormData()
-            fd.append('category', category)
-            fd.append('description', description)
-            fd.append('file', file)
-            return axios.post(`${M_API}/${id}/galery`, fd, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-                .then(res => {
-                    return res.data
-                })
-                .catch(err => Promise.reject(err))
-        },
-        // eslint-disable-next-line
-        uploadDocument({ }, { id, description, category, file }) {
-            let fd = new FormData()
-            fd.append('description', description)
-            fd.append('file', file)
-            return axios.post(`${M_API}/${id}/document`, fd, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-                .then(res => {
-                    return res.data
-                })
-                .catch(err => Promise.reject(err))
-        },
-        // eslint-disable-next-line
-        implProgress({ }, obj) {
-            return axios.post(`${M_API}/${obj.implId}/implprogress`, obj)
-            .then(res => {
-                return res.data
-            })
-            .catch(err => Promise.reject(err))
-        }        
+        },       
     }
 }
 
