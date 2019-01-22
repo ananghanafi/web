@@ -70,7 +70,7 @@
                     <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
+    :items="sekatkanal"
     :pagination.sync="pagination"
     item-key="name"
     class="elevation-1"
@@ -164,14 +164,13 @@
                 <template slot="items" slot-scope="props">
     
                 <tr>
-              <td rowspan="2">{{ props.item.name }}</td>
-              <td rowspan="2" class="text-xs-right">{{ props.item.calories }}</td>
-              <td class="text-xs-right">{{ props.item.fat }}</td>
-              <td class="text-xs-right">{{ props.item.carbs }}</td>
-                </tr>
-                <tr>
-              <td rowspan="1"class="text-xs-right">{{ props.item.satuan }}</td>
-              <td rowspan="1"class="text-xs-right">{{ props.item.total}}</td>
+              <td>{{ props.item.No }}</td>
+              <td class="text-xs-right">{{ props.item.Kabupaten }}</td>
+              <td class="text-xs-right">{{ props.item.UPRG }}</td>
+              <td class="text-xs-right">{{ props.item.Jumlah }}</td>
+              <td class="text-xs-right">{{ props.item.LuasArealRestorasi }}</td>
+              <td class="text-xs-right">{{ props.item.BiayaSatuan}}</td>
+               <td class="text-xs-right">{{ props.item.BiayaTotal}}</td>
                 </tr>
     
             </template>
@@ -321,14 +320,35 @@ export default {
         sekatkanal:[
         {
           value: false,
-          No: '',
-          Kabupaten: '',
-          UPRG: '',
-          Jumlah: '',
-          LuasArealRestorasi: '',
-          BiayaSatuan: '',
-          BiayaTotal: '',
-        }],
+          No: '1',
+          Kabupaten: 'Malang',
+          UPRG: 'UPRG',
+          Jumlah: 'Banyak',
+          LuasArealRestorasi: 'Tak terbatas',
+          BiayaSatuan: 'Tak Terbatas',
+          BiayaTotal: 'Tak Terbatas',
+        },
+        {
+          value: false,
+          No: '2',
+          Kabupaten: 'Papua Barat',
+          UPRG: 'UPRG',
+          Jumlah: 'Banyak',
+          LuasArealRestorasi: 'Tak terbatas',
+          BiayaSatuan: 'Tak Terbatas',
+          BiayaTotal: 'Tak Terbatas',
+        },
+        {
+          value: false,
+          No: '3',
+          Kabupaten: 'Malang',
+          UPRG: 'UPRG',
+          Jumlah: 'Banyak',
+          LuasArealRestorasi: 'Tak terbatas',
+          BiayaSatuan: 'Tak Terbatas',
+          BiayaTotal: 'Tak Terbatas',
+        }
+        ],
         desserts: [
           {
             value: false,

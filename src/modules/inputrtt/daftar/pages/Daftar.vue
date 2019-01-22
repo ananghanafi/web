@@ -95,6 +95,7 @@
                     <v-card-title class="elevation-1 font-weight-bold">
                          SUMMARY RTT - R1 dan R2 berbasis KHG
                     </v-card-title>
+                    <button @click="print">Print this component</button>
                     <v-container>
                         <v-layout row wrap>
                             <v-card-text class="py-0">
@@ -318,7 +319,15 @@ export default {
         ]
       }
         
+    },
+    methods: {
+    
+    print () {
+    window.print();
+      this.d.print( this.$el, this.cssText)
     }
+    
+  }
 }
 </script>
 
