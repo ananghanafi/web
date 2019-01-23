@@ -1,303 +1,667 @@
 <template>
+<div>
+<div class="pb-3">
     <v-container grid-list-xs fill-height>
         <v-layout>
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        RTT - R1 dan R2 berbasis KHG
+                         SUMMARY RTT - R1 dan R2 berbasis KHG
                     </v-card-title>
-                    <v-card-text class="py-0">
-                        <v-container grid-list-md class="pa-0">
-                            <v-layout row wrap>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KHG"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KABUPATEN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KECAMATAN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_province"
-                                        item-text="longName"
-                                        item-value="provinceId"
-                                        label="UPRG"
-                                        hide-details
-                                        v-model="filter.qf_province_id"
-                                    ></v-autocomplete>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_city"
-                                        item-text="shortName"
-                                        item-value="cityId"
-                                        label="TAHUN"
-                                        hide-details
-                                        v-model="filter.qf_city_id"
-                                    ></v-autocomplete>
-                                </v-flex>
+                        <v-card-text class="py-0">
+                            <v-container grid-list-md class="pa-0">
                                 
-                                <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
-                            </v-layout>
-
-                        </v-container>
-
-                        <v-container grid-list-md class="pa-1">
+                                
+                            <button v-print="'#myTable'" @click="print">Print this component</button>
+                            </v-container>
                             
-                            <v-card-text>
-                        DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
-                    </v-card-text>
-                        </v-container>
-                    </v-card-text>
-                    <v-data-table
-                        :headers="headers"
-                        :items="items"
-                        item-key="id"
-                        :rows-per-page-items="[10]"
-                        :total-items="page.total"
-                        @update:pagination="pageUpdated"
-                    >
-                        <template slot="items" slot-scope="props">
-                            <tr @click="props.expanded = !props.expanded">
-                                <td>
-                                    <v-layout row>
-                                        <div :class="statusCls(props.item)" class="mr-1" style="width: 5px;"></div>
-                                        {{ props.item.generalActivity.name }}
-                                    </v-layout>
-                                </td>
-                                <td class="text-xs-right">{{ props.item.calories }}</td>
-                                <td class="text-xs-right">{{ props.item.fat }}</td>
-                                <td class="text-xs-right">{{ props.item.carbs }}</td>
-                                <td class="text-xs-right">{{ props.item.protein }}</td>
-                                <td class="text-xs-right">{{ props.item.iron }}</td>
-                                <td>
-                                    <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
-                                </td>
-                            </tr>
-                        </template>
-                        <template slot="expand" slot-scope="props">
-                            <v-card flat color="grey lighten-5" class="ra-0">
-                                <v-card-text class="px-5">
-                                    <m-labelval label="Nama" 
-                                        :val="props.item.generalActivity.name"/>
-                                    <m-labelval label="Kode" 
-                                        :val="props.item.generalActivity.code"/>
-                                    <m-labelval label="Tindakan" 
-                                        :val="props.item.generalActivity.revegetationType.desc"/>
-                                    <m-labelval label="Status Terbakar"
-                                        :val="props.item.generalActivity.burnStatus.desc"/>
-                                    <m-labelval label="Tutupan Lahan"
-                                        :val="props.item.generalActivity.vegetationDensity.density + ' - ' + props.item.generalActivity.vegetationDensity.landCover"/>
-                                    <m-labelval label="Luas (Ha)"
-                                        :val="props.item.generalActivity.totalArea"/>
-                                    <m-labelval label="Biaya" 
-                                        :val="props.item.generalActivity.cost | toC"/>
-                                    <m-labelval label="Sumber Anggaran" 
-                                        :val="props.item.generalActivity.fundingSource ? props.item.generalActivity.fundingSource.remark : '-'"/>
-                                    <m-labelval label="" val="" class="mt-2"/>
-                                    <m-labelval class="font-weight-light" label="Kesatuan Hidrologis Gambut" val=""/>
-                                    <m-labelval label="Kode" :val="pVal(props.item.generalActivity.phu,'code')"/>
-                                    <m-labelval label="Nama" :val="pVal(props.item.generalActivity.phu,'name')"/>
-                                    <m-labelval label="" val="" class="mt-2"/>
-                                    <m-labelval class="font-weight-light" label="LOKASI KEGIATAN" val=""/>
-                                    <m-labelval label="Desa" 
-                                        :val="props.item.generalActivity.administrativeArea.village"/>
-                                    <m-labelval label="Kecamatan" 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'subDistrict','shortName')"/>
-                                    <m-labelval label="Kota/Kab." 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'city','shortName')"/>
-                                    <m-labelval label="Provinsi" 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'province','longName')"/>
-                                    
-                                    <m-labelval label="" val="" class="mt-2"/>                                        
-                                    <m-labelval label="Keterangan" 
-                                        :val="props.item.generalActivity.remark | toC"/>
-                                    <!-- <m-labelval label="Status" v-if="props.item.status!==null && props.item.status.id!==STATUS_IMPL_INIT"> -->
-                                    <m-labelval label="Status">
-                                        <v-chip small slot="val" class="white--text elevation-2" :color="statusCls(props.item)">{{ statusStr(props.item) }}</v-chip>
-                                    </m-labelval>
-                                </v-card-text>
-                                <v-divider></v-divider>
-                                <v-card-actions class="grey lighten-2" v-if="props.item.status==null || props.item.status.id==STATUS_IMPL_INIT">
-                                    <template>
-                                        <v-spacer></v-spacer>
-                                        <v-btn @click="edit(props.item)" flat color="warning darken-2">Edit</v-btn>                                        
-                                        <v-btn @click="approve(props.item)" flat color="success darken-2">Setujui</v-btn>
-                                        <v-btn v-if="false" @click="reject(props.item)" flat color="error darken-2">Totak</v-btn>
-                                    </template>
-                                </v-card-actions>
-                            </v-card>
-                        </template>      
-                    </v-data-table>                
+                        </v-card-text>
+                            
+                    <template>
+  <v-data-table
+    :headers="headers"
+    :items="sekatkanal"
+    :pagination.sync="pagination"
+    item-key="name"
+    class="elevation-1"
+    id="myTable"
+  >
+            <template slot="headers" slot-scope="props">
+                    <tr>
+                      <th
+                        v-for="header in props.headers"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+
+                      <th
+                        v-for="header in headers3"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                    
+
+                    <th
+                        v-for="header in headers4"
+                        :key="header.text"
+                        :colspan="header.colspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+
+                    <th
+                        v-for="header in headers5"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                    
+
+                    
+                    </tr>
+                    </tr>
+
+
+                    <tr>   
+                        <th
+                        v-for="header in headers6"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>   
+                      <th
+                        v-for="header in headers7"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers8"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers9"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+
+                        <th
+                        v-for="header in headers10"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers11"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers12"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers13"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers14"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      
+                    </tr>
+                  </template>
+                <template slot="items" slot-scope="props">
+    
+                <tr>
+              <td>{{ props.item.No }}</td>
+              <td class="text-xs-right">{{ props.item.partner }}</td>
+              
+              <td class="text-xs-right">{{ props.item.no1 }}</td>
+              <td class="text-xs-right">{{ props.item.no2 }}</td>
+              <td class="text-xs-right">{{ props.item.no3}}</td>
+              <td class="text-xs-right">{{ props.item.no4}}</td>
+              <td class="text-xs-right">{{ props.item.no5 }}</td>
+              <td class="text-xs-right">{{ props.item.no6 }}</td>
+              <td class="text-xs-right">{{ props.item.no7 }}</td>
+              <td class="text-xs-right">{{ props.item.no8 }}</td>
+              <td class="text-xs-right">{{ props.item.no9}}</td>
+              <td class="text-xs-right">{{ props.item.total}}</td>
+              
+                </tr>
+    
+            </template>
+        </v-data-table>
+</template>
                 </v-card>
+                                
             </v-flex>
+
         </v-layout>
+       
     </v-container>
+</div>
+
+</div>
 </template>
 
+
 <script>
-import {STATUS_IMPL_INIT, STATUS_IMPL_OPENED, STATUS_IMPL_ONPROGRESS, STATUS_IMPL_CLOSED, STATUS_IMPL_PENDING,
-        STATUS_IMPL_INIT_STR, STATUS_IMPL_OPENED_STR, STATUS_IMPL_ONPROGRESS_STR,
-        STATUS_IMPL_CLOSED_STR, STATUS_IMPL_PENDING_STR} from '@/const'
 export default {
-    components : {
-    },
-    data(){
+    // a data has to be a function within a vue component
+    data () {
         return {
-            STATUS_IMPL_INIT,
-            STATUS_IMPL_OPENED,
-            STATUS_IMPL_ONPROGRESS,
-            STATUS_IMPL_CLOSED,
-            STATUS_IMPL_PENDING,
-            loading: false,
-            headers: [
-                {
-                    text: 'No',
-                    align: 'left',
-                    sortable: true,
-                    value: 'generalActivity.name'
-                },
-                { text: 'Kabupaten', value: 'generalActivity.code'},
-                { text: 'UPRG', value: 'generalActivity.code'},
-                { text: 'Kecamatan, Koordinatif X,Y', value: 'generalActivity.revegetationType.desc' },
-                { text: 'Desa', value: 'generalActivity.administrativeArea.province.longName'},
-                { text: 'LUAS AREAL RESTORASI(Hektar)', value: 'generalActivity.administrativeArea.city.shortName' },
-                { text: 'Sumur Bor(Unit)', value: 'generalActivity.cost' },
-                { text: 'PENYEKATAN KANAL', value: 'generalActivity.fundingSource.id' },
-                { text: 'RUAS KANAL (Meter)', value: 'generalActivity.code'},
-                { text: 'PENIMBUNAN (Meter)', value: 'generalActivity.code'},
-                { text: 'PENANAMAN POLA MAKSIMAL', value: 'generalActivity.code'},
-                { text: 'PENGKAYAAN TANAMAN(Hektar)', value: 'generalActivity.code'},
-                { text: 'SUKSES ALAMI (Hektar)', value: 'generalActivity.code'},
-                { text: '',sortable : false}
-            ],
-            items : [],
-            list_province : [],
-            // list_city : [],
-            list_fundingSource : [],
-            page  : {},
-            filter : {
-                qf_code : null,
-                qf_province_id : null,
-                // city : null,
-                qf_funding_source : null,
+            storage: {
+                rows: [
+                    {sn: 111, source: 'EK', pair: {source: 'VLT', in: 100}},
+                    
+                ]
+                
+            },
+          headers: [
+          {
+            text: 'No',
+            align: 'left',
+            sortable: 'false',
+            value: 'No',
+            rowspan: '2',
+          },
+       
+         
+        ],
+        
+        headers3: [
+        {
+            text: 'Development Partners',
+            align: 'left',
+            sortable: 'false',
+            value: 'partner',
+            rowspan: '2',
             }
-        }
+        ],
+        headers4: [
+        {
+            text: 'BRG’s Policy and StrategyBRG’s Policy and Strategy',
+            align: 'left',
+            sortable: 'false',
+            value: 'policy',
+            colspan: '9',
+            }
+        ],
+        headers5: [
+        {
+            text: 'TOTAL AMOUNT',
+            align: 'left',
+            sortable: 'false',
+            value: 'total',
+            rowspan: '2',
+            }
+        ],
+        headers6: [
+        {
+            text: '1',
+            align: 'left',
+            sortable: 'false',
+            value: 'no1',
+            rowspan: '1',
+            }
+        ],
+        headers7: [
+        {
+            text: '2',
+            align: 'left',
+            sortable: 'false',
+            value: 'no2',
+            rowspan: '1',
+            }
+        ],
+        headers8: [
+        {
+            text: '3',
+            align: 'left',
+            sortable: 'false',
+            value: 'no3',
+            rowspan: '1',
+            }
+        ],
+        headers9: [
+        {
+            text: '4',
+            align: 'left',
+            sortable: 'false',
+            value: 'no4',
+            rowspan: '1',
+            }
+        ],
+        headers10: [
+        {
+            text: '5',
+            align: 'left',
+            sortable: 'false',
+            value: 'no5',
+            rowspan: '1',
+            }
+        ],
+        headers11: [
+        {
+            text: '6',
+            align: 'left',
+            sortable: 'false',
+            value: 'no6',
+            rowspan: '1',
+            }
+        ],
+        headers12: [
+        {
+            text: '7',
+            align: 'left',
+            sortable: 'false',
+            value: 'no7',
+            rowspan: '1',
+            }
+        ],
+        headers13: [
+        {
+            text: '8',
+            align: 'left',
+            sortable: 'false',
+            value: 'no8',
+            rowspan: '1',
+            }
+        ],
+        headers14: [
+        {
+            text: '9',
+            align: 'left',
+            sortable: 'false',
+            value: 'no9',
+            rowspan: '1',
+            }
+        ],
+               
+        sekatkanal:[
+        {
+          value: false,
+          No: '1',
+          partner: 'AFD',
+          policy: '1',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: '',
+          no5: '',
+          no6: 'V',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },
+        {
+          value: false,
+          No: '2',
+          partner: 'ASEAN',
+          no1: '',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: 'V',
+          total: '',
+        },
+        {
+          value: false,
+          No: '3',
+          partner: 'Austrila',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: '',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: '',
+          no9: '',
+          total: '',
+        },
+        {
+          value: false,
+          No: '4',
+          partner: 'MCA-I',
+          no1: 'V',
+          no2: '',
+          no3: 'V',
+          no4: 'V',
+          no5: '',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: 'V',
+          total: '',
+        },
+        {
+          value: false,
+          No: '5',
+          partner: 'MCATFA/IBCSD-I',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: '',
+          no5: '',
+          no6: 'V',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },
+        {
+          value: false,
+          No: '6',
+          partner: 'Netherlands',
+          no1: '',
+          no2: '',
+          no3: 'V',
+          no4: '',
+          no5: 'V',
+          no6: 'V',
+          no7: '',
+          no8: 'V',
+          no9: '',
+          total: '',
+        },
+        {
+          value: false,
+          No: '7',
+          partner: 'GIZ',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '8',
+          partner: 'AKCCU',
+          no1: 'V',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: 'V',
+          total: '',
+        },{
+          value: false,
+          No: '9',
+          partner: 'NORWAY',
+          no1: 'V',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: 'V',
+          total: '',
+        },{
+          value: false,
+          No: '10',
+          partner: 'JICA',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: '',
+          no8: 'V',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '11',
+          partner: 'WWF',
+          no1: 'V',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: '',
+          no9: 'V',
+          total: '',
+        },{
+          value: false,
+          No: '12',
+          partner: 'CLUA',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: '',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '13',
+          partner: 'USAID',
+          no1: 'V',
+          no2: 'V',
+          no3: 'V',
+          no4: '',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: '',
+          no9: 'V',
+          total: '',
+        },{
+          value: false,
+          No: '14',
+          partner: 'Mitra Aksi',
+          no1: '',
+          no2: '',
+          no3: '',
+          no4: '',
+          no5: '',
+          no6: '',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '15',
+          partner: 'Kehijau Berbak',
+          no1: '1V',
+          no2: 'V',
+          no3: '',
+          no4: '',
+          no5: '',
+          no6: '',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '16',
+          partner: 'Belantara ',
+          no1: '1',
+          no2: '1',
+          no3: '1',
+          no4: '1',
+          no5: '1',
+          no6: '1',
+          no7: '1',
+          no8: '1',
+          no9: '1',
+          total: '1',
+        },{
+          value: false,
+          No: '17',
+          partner: 'Perkumpulan Gita Buana',
+          no1: '',
+          no2: 'V',
+          no3: 'V',
+          no4: '',
+          no5: '',
+          no6: '',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '18',
+          partner: 'GGGI',
+          no1: '',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: '',
+          total: '1',
+        },{
+          value: false,
+          No: '19',
+          partner: 'UNDP',
+          no1: 'V',
+          no2: 'V',
+          no3: 'V',
+          no4: 'V',
+          no5: 'V',
+          no6: 'V',
+          no7: 'V',
+          no8: 'V',
+          no9: 'V',
+          total: '',
+        },{
+          value: false,
+          No: '20',
+          partner: 'Jaringan Masyarakat Gambut Jambi',
+          no1: '',
+          no2: '',
+          no3: 'V',
+          no4: '',
+          no5: '',
+          no6: '',
+          no7: 'V',
+          no8: 'V',
+          no9: '',
+          total: '',
+        },{
+          value: false,
+          No: '21',
+          partner: 'ICCTF',
+          no1: '',
+          no2: 'V',
+          no3: 'V',
+          no4: '',
+          no5: 'v',
+          no6: 'v',
+          no7: '',
+          no8: '',
+          no9: '',
+          total: '',
+        },
+        ],
+        
+      }
+        
     },
     methods: {
-        q_code(val) {
-            this.filter.qf_code = val ? "~" + val : null
-        },
-        loadFilter(){
-            Promise.all([
-            this.$store.dispatch('administrativeArea/getTargetedProv'),
-            this.$store.dispatch('fundingSource/get'),
-            ])
-            .then(arr=>{
-                [this.list_province,this.list_fundingSource] = arr
-                // console.log(this.list_province)
-            })
-        },
-        statusCls(item){
-            if (item.status==null || item.status.id==STATUS_IMPL_INIT) 
-                return 'orange lighten-3'
-            else if (item.status.id==null || item.status.id==STATUS_IMPL_OPENED)
-                return 'success darken-1'
-            else
-                return 'error darken-1'
-        },
-        statusStr(item){
-            if (!item.status)
-                return STATUS_IMPL_INIT_STR;
-            switch (item.status.id){
-                case STATUS_IMPL_INIT : return STATUS_IMPL_INIT_STR
-                case STATUS_IMPL_OPENED : return STATUS_IMPL_OPENED_STR
-                case STATUS_IMPL_ONPROGRESS : return STATUS_IMPL_ONPROGRESS_STR
-                case STATUS_IMPL_CLOSED : return STATUS_IMPL_CLOSED_STR
-                case STATUS_IMPL_PENDING : return STATUS_IMPL_PENDING_STR
-                default :
-                    return ''
-            }
-        },
-        add(){
-            this.$refs.dlg.open()
-            .then(e=>e)
-            .catch(e=>e)
-        },
-        load(pg=1){
-            this.loading = true
-            this.$store.dispatch('revegetasi/implementasi/get',{...this.filter,page:pg})
-            .then(res=>{
-                // let index = 0
-                // ada pagging
-                // console.log(res.data)
-                this.page = res
-                // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
-                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].generalActivity.id})) : []
-                
-                // console.log(this.items)
-                this.loading = false
-            })
-            .catch(()=>this.loading=false)
-        },
-        pageUpdated(o){
-            // console.log(o)
-            this.load(o.page)
-        },
-        edit(item){
-            this.$router.push({name:'revegetasi_implementasi_detail', params : {id : item.id}})
-        },
-        approve(item){
-            this.$confirm(`Setujui Kegiatan Ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
-            .then(()=>{
-                return this.$store.dispatch('revegetasi/implementasi/approveReject',{id:item.generalActivity.id, is_approve : true})
-            })            
-            .then(()=>{
-                this.load()
-            })
-        },
-        reject(item){
-            this.$confirmDanger(`Tolak rencana ini ?<br><strong class="text-xs-center d-block title red--text">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
-            .then(()=>{
-                return this.$store.dispatch('revegetasi/implementasi/approveReject',{id:item.generalActivity.id, is_approve : false})
-            })            
-            .then(()=>{
-                this.load()
-            })
-        }
-    },
-    mounted(){
-        this.load()
-        this.loadFilter()
+    
+    print () {
+    window.print();
+      this.d.print( this.$el, this.cssText)
     }
-
+    
+  }
 }
+
 </script>
 
+// styling for a template
 <style>
-    .arr_open {
-        transform: rotate(-180deg);
-    }
 </style>
