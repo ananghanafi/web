@@ -1,4 +1,4 @@
-const mod_name = 'Input'
+const mod_name = 'formeditviewtable'
 const rootp = `/${mod_name}`
 
 const router = [

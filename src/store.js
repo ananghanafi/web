@@ -48,7 +48,7 @@ import Dashboard2 from './modules/Dashboard2/store'
 import PetaMonitoring from './modules/PetaMonitoring/store'
 import Dashboard4 from './modules/Dashboard4/store'
 import PetaMonitoring2 from './modules/PetaMonitoring2/store'
-import Input from './modules/Input/store'
+import forminput from './modules/forminput/store'
 import Reporting2 from './modules/Reporting2/store'
 import Provinsi from './modules/Provinsi/store'
 import KabupatenKota from './modules/KabupatenKota/store'
@@ -70,6 +70,7 @@ import MorarotiumKawasanHutanGambut from './modules/MorarotiumKawasanHutanGambut
 import TutupanLahan from './modules/TutupanLahan/store'
 import KawasanHutan from './modules/KawasanHutan/store'
 import donordash from './modules/donordash/store'
+import formeditviewtable from './modules/formeditviewtable/store'
 
 const main = {
     namespaced: true,
@@ -147,7 +148,7 @@ const store = new Vuex.Store({
         PetaMonitoring,
         Dashboard4,
         PetaMonitoring2,
-        Input,
+        forminput,
         Reporting2,
         Provinsi,
         KabupatenKota,
@@ -169,6 +170,7 @@ const store = new Vuex.Store({
         TutupanLahan,
         KawasanHutan,
         donordash,
+        formeditviewtable,
     }
 })
 

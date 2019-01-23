@@ -1,7 +1,7 @@
 // import rencana from './rencana/router'
 import daftar from './daftar/router'
 
-const mod_name = 'Input'
+const mod_name = 'formeditviewtable'
 const rootp = `/${mod_name}`
 
 const router = [
@@ -10,7 +10,7 @@ const router = [
         name: mod_name,
         // meta: {},
         // component: () => import('./pages/Bo'),
-        redirect : {name:'Input'}
+        redirect : {name:'formeditviewtable_daftar'}
     },
     // ...rencana,
     ...daftar

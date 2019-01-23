@@ -509,8 +509,19 @@ const menus = [
     {
         icon: 'today',
         title: 'INPUT',   
-        to : {name : 'Input_daftar'} 
-    }, 
+        items: [
+            {
+                // icon: 'local_drink',
+                title: 'Form Input',
+                to : {name : 'forminput_daftar'}
+            },
+            {
+                // icon: 'local_drink',
+                title: 'Form Edit View Table',
+                to : {name : 'formeditviewtable_daftar'}
+            }
+        ]
+    },
     {
         icon: 'today',
         title: 'REPORTING', 
