@@ -105,8 +105,31 @@
                                 ></v-text-field>
                             </v-flex>
                             </v-layout>
-                            
-  </v-container>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Upload Photo</v-subheader>
+                            </v-flex>
+                        <div>
+                            <v-text-field prepend-icon="attach_file" single-line
+                                        v-model="filename" :label="label" :required="required"
+                                        @click.native="onFocus"
+                                        :disabled="disabled" ref="fileTextField"></v-text-field>
+                            <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
+                                ref="fileInput" @change="onFileChange">
+                        
+                        </div>
+                        </v-layout>
+                             <v-layout justify-center>
+                                    <v-btn large="true"
+                                    :disabled="valid"
+                                    color="#4caf50"
+                                    
+                                    @click="register"
+                                    >
+                                    Submit
+                                    </v-btn>
+                                    </v-layout>
+    </v-container>
                         
                                    
                 </v-card>
@@ -140,90 +163,42 @@ export default {
                 ],
     }),
     methods: {
-        q_code(val) {
-            this.filter.qf_code = val ? "~" + val : null
-        },
-        loadFilter(){
-            Promise.all([
-            this.$store.dispatch('administrativeArea/getTargetedProv'),
-            this.$store.dispatch('fundingSource/get'),
-            ])
-            .then(arr=>{
-                [this.list_province,this.list_fundingSource] = arr
-                // console.log(this.list_province)
-            })
-        },
-        statusCls(item){
-            if (item.status==null || item.status.id==STATUS_IMPL_INIT) 
-                return 'orange lighten-3'
-            else if (item.status.id==null || item.status.id==STATUS_IMPL_OPENED)
-                return 'success darken-1'
-            else
-                return 'error darken-1'
-        },
-        statusStr(item){
-            if (!item.status)
-                return STATUS_IMPL_INIT_STR;
-            switch (item.status.id){
-                case STATUS_IMPL_INIT : return STATUS_IMPL_INIT_STR
-                case STATUS_IMPL_OPENED : return STATUS_IMPL_OPENED_STR
-                case STATUS_IMPL_ONPROGRESS : return STATUS_IMPL_ONPROGRESS_STR
-                case STATUS_IMPL_CLOSED : return STATUS_IMPL_CLOSED_STR
-                case STATUS_IMPL_PENDING : return STATUS_IMPL_PENDING_STR
-                default :
-                    return ''
-            }
-        },
-        add(){
-            this.$refs.dlg.open()
-            .then(e=>e)
-            .catch(e=>e)
-        },
-        load(pg=1){
-            this.loading = true
-            this.$store.dispatch('revegetasi/implementasi/get',{...this.filter,page:pg})
-            .then(res=>{
-                // let index = 0
-                // ada pagging
-                // console.log(res.data)
-                this.page = res
-                // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
-                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].generalActivity.id})) : []
-                
-                // console.log(this.items)
-                this.loading = false
-            })
-            .catch(()=>this.loading=false)
-        },
-        pageUpdated(o){
-            // console.log(o)
-            this.load(o.page)
-        },
-        edit(item){
-            this.$router.push({name:'revegetasi_implementasi_detail', params : {id : item.id}})
-        },
-        approve(item){
-            this.$confirm(`Setujui Kegiatan Ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
-            .then(()=>{
-                return this.$store.dispatch('revegetasi/implementasi/approveReject',{id:item.generalActivity.id, is_approve : true})
-            })            
-            .then(()=>{
-                this.load()
-            })
-        },
-        reject(item){
-            this.$confirmDanger(`Tolak rencana ini ?<br><strong class="text-xs-center d-block title red--text">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
-            .then(()=>{
-                return this.$store.dispatch('revegetasi/implementasi/approveReject',{id:item.generalActivity.id, is_approve : false})
-            })            
-            .then(()=>{
-                this.load()
-            })
+      validate () {
+        if (this.$refs.form.validate()) {
+          this.snackbar = true
         }
-    },
-    mounted(){
-        this.load()
-        this.loadFilter()
+      },
+      register(){
+            this.loading = true
+            this.$store.dispatch('forminput',{
+                email:this.email,
+                // firstname:this.reg.firstname, 
+                // lastname:this.reg.lastname,
+                nama:this.nama ,
+                jenis:this.jenis,
+                tanggal:this.tanggal,
+                admin:this.admin,
+                password:this.password, 
+                password2:this.password2
+            })
+            // .then((res)=>{
+            //     this.reg.email = ''
+            //     this.reg.firstname = ''
+            //     this.reg.lastname = ''
+            //     this.reg.password = ''
+            //     this.reg.confirm_password = ''
+
+            //     this.loading = false
+            //     this.register_ok = res
+            //     // this.$router.push({name:'home'})
+            //     // eslint-disable-next-line
+            //     // console.log(res)
+            // })
+            // .catch(()=>{
+            //     this.loading = false
+            // })
+
+        }
     }
 
 }

@@ -319,62 +319,6 @@
        
     </v-container>
 </div>
-
-
-
-<div class="container">
-    
-        <table border="5">
-            <template v-for="row in storage.rows">
-                
-                    <table border  height="300px" width="100%">
-                        <tr>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">NO</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">KABUPATEN</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">UPRG</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">JUMLAH(UNIT)</th>
-                            <th rowspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">LUAS AREAL RESTORASI(HEKTAR)</th>
-                            <th colspan="2" bgcolor="#d6d8db" style="border-bottom:3px solid black;">BIAYA</th>
-                        </tr>
-                        <tr>
-                            <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">SATUAN(Rp)
-                            </th>
-                            <th rowspan="1" bgcolor="#d6d8db" style="border-bottom:3px solid black;">TOTAL(Rp)
-                            </th>
-                        </tr>
-
-                        <tr>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                                                  
-                        </tr>
-                        <tr>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         <td>...</td>
-                         
-                        </tr>   
-                        <tr>
-                        <td colspan="3">TOTAL   </td>
-                        <td colspan="1">SUM</td>
-                        <td colspan="1">SUM</td>
-                        <td colspan="1">SUM</td>
-                        <td colspan="1">SUM</td>
-                        
-                        </tr>
-                    </table>
-            </template>
-        </table>
-    </div>
 </div>
 </template>
 
