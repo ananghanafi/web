@@ -4,153 +4,109 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        RTT - R1 dan R2 berbasis KHG
+                        FORM INPUT  DONOR MAPPING OF BRG (BADAN RESTORASI GAMBUT) INDONESIA
                     </v-card-title>
-                    <v-card-text class="py-0">
-                        <v-container grid-list-md class="pa-0">
-                            <v-layout row wrap>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KHG"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KABUPATEN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-text-field
-                                        append-icon="search"
-                                        label="KECAMATAN"
-                                        single-line
-                                        hide-details
-                                        @input="q_code"
-                                    ></v-text-field>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_province"
-                                        item-text="longName"
-                                        item-value="provinceId"
-                                        label="UPRG"
-                                        hide-details
-                                        v-model="filter.qf_province_id"
-                                    ></v-autocomplete>
-                                </v-flex>
-                                <v-flex md2 sm7>
-                                    <v-autocomplete
-                                        clearable
-                                        :items="list_city"
-                                        item-text="shortName"
-                                        item-value="cityId"
-                                        label="TAHUN"
-                                        hide-details
-                                        v-model="filter.qf_city_id"
-                                    ></v-autocomplete>
-                                </v-flex>
+                    <v-container fluid>
+                   
+                    <v-card-text>
+                        GENERAL INFORMATION
+                    </v-card-text>
+                            <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Country</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="Country"
+                                value=" "
                                 
-                                <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
+                                ></v-text-field>
+                            </v-flex>
                             </v-layout>
 
-                        </v-container>
+                            <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Name Of Instituion</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="Institution"
+                                value=""
+                                
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
 
-                        <v-container grid-list-md class="pa-1">
-                            
-                            <v-card-text>
-                        DAFTAR TINDAKAN RTT KHG ... Provinsi ... Tahun ... 
-                    </v-card-text>
-                        </v-container>
-                    </v-card-text>
-                    <v-data-table
-                        :headers="headers"
-                        :items="items"
-                        item-key="id"
-                        :rows-per-page-items="[10]"
-                        :total-items="page.total"
-                        @update:pagination="pageUpdated"
-                    >
-                        <template slot="items" slot-scope="props">
-                            <tr @click="props.expanded = !props.expanded">
-                                <td>
-                                    <v-layout row>
-                                        <div :class="statusCls(props.item)" class="mr-1" style="width: 5px;"></div>
-                                        {{ props.item.generalActivity.name }}
-                                    </v-layout>
-                                </td>
-                                <td class="text-xs-right">{{ props.item.calories }}</td>
-                                <td class="text-xs-right">{{ props.item.fat }}</td>
-                                <td class="text-xs-right">{{ props.item.carbs }}</td>
-                                <td class="text-xs-right">{{ props.item.protein }}</td>
-                                <td class="text-xs-right">{{ props.item.iron }}</td>
-                                <td>
-                                    <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
-                                </td>
-                            </tr>
-                        </template>
-                        <template slot="expand" slot-scope="props">
-                            <v-card flat color="grey lighten-5" class="ra-0">
-                                <v-card-text class="px-5">
-                                    <m-labelval label="Nama" 
-                                        :val="props.item.generalActivity.name"/>
-                                    <m-labelval label="Kode" 
-                                        :val="props.item.generalActivity.code"/>
-                                    <m-labelval label="Tindakan" 
-                                        :val="props.item.generalActivity.revegetationType.desc"/>
-                                    <m-labelval label="Status Terbakar"
-                                        :val="props.item.generalActivity.burnStatus.desc"/>
-                                    <m-labelval label="Tutupan Lahan"
-                                        :val="props.item.generalActivity.vegetationDensity.density + ' - ' + props.item.generalActivity.vegetationDensity.landCover"/>
-                                    <m-labelval label="Luas (Ha)"
-                                        :val="props.item.generalActivity.totalArea"/>
-                                    <m-labelval label="Biaya" 
-                                        :val="props.item.generalActivity.cost | toC"/>
-                                    <m-labelval label="Sumber Anggaran" 
-                                        :val="props.item.generalActivity.fundingSource ? props.item.generalActivity.fundingSource.remark : '-'"/>
-                                    <m-labelval label="" val="" class="mt-2"/>
-                                    <m-labelval class="font-weight-light" label="Kesatuan Hidrologis Gambut" val=""/>
-                                    <m-labelval label="Kode" :val="pVal(props.item.generalActivity.phu,'code')"/>
-                                    <m-labelval label="Nama" :val="pVal(props.item.generalActivity.phu,'name')"/>
-                                    <m-labelval label="" val="" class="mt-2"/>
-                                    <m-labelval class="font-weight-light" label="LOKASI KEGIATAN" val=""/>
-                                    <m-labelval label="Desa" 
-                                        :val="props.item.generalActivity.administrativeArea.village"/>
-                                    <m-labelval label="Kecamatan" 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'subDistrict','shortName')"/>
-                                    <m-labelval label="Kota/Kab." 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'city','shortName')"/>
-                                    <m-labelval label="Provinsi" 
-                                        :val="pVal(props.item.generalActivity.administrativeArea,'province','longName')"/>
-                                    
-                                    <m-labelval label="" val="" class="mt-2"/>                                        
-                                    <m-labelval label="Keterangan" 
-                                        :val="props.item.generalActivity.remark | toC"/>
-                                    <!-- <m-labelval label="Status" v-if="props.item.status!==null && props.item.status.id!==STATUS_IMPL_INIT"> -->
-                                    <m-labelval label="Status">
-                                        <v-chip small slot="val" class="white--text elevation-2" :color="statusCls(props.item)">{{ statusStr(props.item) }}</v-chip>
-                                    </m-labelval>
-                                </v-card-text>
-                                <v-divider></v-divider>
-                                <v-card-actions class="grey lighten-2" v-if="props.item.status==null || props.item.status.id==STATUS_IMPL_INIT">
-                                    <template>
-                                        <v-spacer></v-spacer>
-                                        <v-btn @click="edit(props.item)" flat color="warning darken-2">Edit</v-btn>                                        
-                                        <v-btn @click="approve(props.item)" flat color="success darken-2">Setujui</v-btn>
-                                        <v-btn v-if="false" @click="reject(props.item)" flat color="error darken-2">Totak</v-btn>
-                                    </template>
-                                </v-card-actions>
-                            </v-card>
-                        </template>      
-                    </v-data-table>                
+                            <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Upload Logo</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="Upload Image"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
+
+                        <v-card-text>
+                        FUNDING SOURCE
+                        </v-card-text>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Name Of Instituion</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="Institution"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
+                        <v-card-text>
+                        IMPLEMENTING AGENCY
+                        </v-card-text>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>Name Of Instituion</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="Institution"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>TYPE OF DEVELOPMENT PARTNER KEY ACTIVITIES</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="choice"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>FOCAL POINT TO BRG</v-subheader>
+                            </v-flex>
+                            <v-flex xs8>
+                                <v-text-field
+                                label="text"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
+                            </v-layout>
+  </v-container>
+                        
+                                   
                 </v-card>
             </v-flex>
         </v-layout>
