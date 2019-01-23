@@ -96,14 +96,15 @@
                             <v-flex xs4>
                                 <v-subheader>FOCAL POINT TO BRG</v-subheader>
                             </v-flex>
-                            <v-flex xs8>
-                                <v-text-field
-                                label="text"
-                                value=""
-                                suffix=""
-                                ></v-text-field>
-                            </v-flex>
+                            <v-select
+                            v-model="select"
+                            :items="organisasi"
+                            :rules="[v => !!v || 'Item is required']"
+                            label="Item"
+                            required
+                            ></v-select>
                             </v-layout>
+                            
   </v-container>
                         
                                    
@@ -114,54 +115,29 @@
 </template>
 
 <script>
-import {STATUS_IMPL_INIT, STATUS_IMPL_OPENED, STATUS_IMPL_ONPROGRESS, STATUS_IMPL_CLOSED, STATUS_IMPL_PENDING,
-        STATUS_IMPL_INIT_STR, STATUS_IMPL_OPENED_STR, STATUS_IMPL_ONPROGRESS_STR,
-        STATUS_IMPL_CLOSED_STR, STATUS_IMPL_PENDING_STR} from '@/const'
+
 export default {
     components : {
     },
-    data(){
-        return {
-            STATUS_IMPL_INIT,
-            STATUS_IMPL_OPENED,
-            STATUS_IMPL_ONPROGRESS,
-            STATUS_IMPL_CLOSED,
-            STATUS_IMPL_PENDING,
-            loading: false,
-            headers: [
-                {
-                    text: 'No',
-                    align: 'left',
-                    sortable: true,
-                    value: 'generalActivity.name'
-                },
-                { text: 'Kabupaten', value: 'generalActivity.code'},
-                { text: 'UPRG', value: 'generalActivity.code'},
-                { text: 'Kecamatan, Koordinatif X,Y', value: 'generalActivity.revegetationType.desc' },
-                { text: 'Desa', value: 'generalActivity.administrativeArea.province.longName'},
-                { text: 'LUAS AREAL RESTORASI(Hektar)', value: 'generalActivity.administrativeArea.city.shortName' },
-                { text: 'Sumur Bor(Unit)', value: 'generalActivity.cost' },
-                { text: 'PENYEKATAN KANAL', value: 'generalActivity.fundingSource.id' },
-                { text: 'RUAS KANAL (Meter)', value: 'generalActivity.code'},
-                { text: 'PENIMBUNAN (Meter)', value: 'generalActivity.code'},
-                { text: 'PENANAMAN POLA MAKSIMAL', value: 'generalActivity.code'},
-                { text: 'PENGKAYAAN TANAMAN(Hektar)', value: 'generalActivity.code'},
-                { text: 'SUKSES ALAMI (Hektar)', value: 'generalActivity.code'},
-                { text: '',sortable : false}
-            ],
-            items : [],
-            list_province : [],
-            // list_city : [],
-            list_fundingSource : [],
-            page  : {},
-            filter : {
-                qf_code : null,
-                qf_province_id : null,
-                // city : null,
-                qf_funding_source : null,
-            }
-        }
-    },
+    data: ()=>({
+                select: null,
+                organisasi: [
+                    'NATIONAL NGO',
+                    'INTERNATIONAL NGO',
+                    'BILATERAL',
+                    'TRUST FUND',
+                    'UNIVERSITY',
+                    'IMPLEMENTING PARTNER/CONTRACTOR',
+                    'GOVERNMENT',
+                    'DEVELOPMENT BANK',
+                    'RESEARCH CENTER',
+                    'ASSOCIATION OF DISTRICT HEADS',
+                    'INSTITUTION',
+                    'KONSORSIUM',
+                    'MULTILATERAL',
+                    'OTHER'
+                ],
+    }),
     methods: {
         q_code(val) {
             this.filter.qf_code = val ? "~" + val : null
