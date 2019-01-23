@@ -11,61 +11,9 @@
                          SUMMARY RTT - R1 dan R2 berbasis KHG
                     </v-card-title>
                         <v-card-text class="py-0">
-                            <v-container grid-list-md class="pa-0">
-                                <v-layout row wrap>
-                                    <v-flex md2 sm6>
-                                        <v-text-field
-                                            append-icon="search"
-                                            label="PROVINSI"
-                                            single-line
-                                            hide-details
-                                            @input="q_code"
-                                        ></v-text-field>
-                                    </v-flex>
-                                    <v-flex md2 sm6>
-                                        <v-text-field
-                                            append-icon="search"
-                                            label="KHG"
-                                            single-line
-                                            hide-details
-                                            @input="q_code"
-                                        ></v-text-field>
-                                    </v-flex>
-                                    <v-flex md2 sm6>
-                                        <v-text-field
-                                            append-icon="search"
-                                            label="KABUPATEN"
-                                            single-line
-                                            hide-details
-                                            @input="q_code"
-                                        ></v-text-field>
-                                    </v-flex>
-                                    <v-flex md2 sm6>
-                                        <v-text-field
-                                            append-icon="search"
-                                            label="UPRG"
-                                            single-line
-                                            hide-details
-                                            @input="q_code"
-                                        ></v-text-field>
-                                    </v-flex>
-                                    <v-flex md2 sm6>
-                                        <v-text-field
-                                            append-icon="search"
-                                            label="TAHUN"
-                                            single-line
-                                            hide-details
-                                            @input="q_code"
-                                        ></v-text-field>
-                                    </v-flex>
-                                    
-                                    <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
-                                </v-layout>
-                                <v-card-text>
-                            TINDAKAN RTT    TAHUN ...... Provinsi ...... KHG ...... 
-                            </v-card-text>
+                            
                             <button  @click="print">Print this component</button>
-                            </v-container>
+                            
                             
                         </v-card-text>
                             
@@ -90,7 +38,16 @@
                         <v-icon small>arrow_upward</v-icon>
                         {{ header.text }}
                       </th>
-
+                    <th
+                        v-for="header in headers2"
+                        :key="header.text"
+                        :colspan="header.colspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
                       <th
                         v-for="header in headers3"
                         :key="header.text"
@@ -139,6 +96,16 @@
                     <th
                         v-for="header in headers7"
                         :key="header.text"
+                        :colspan="header.colspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                    <th
+                        v-for="header in headers8"
+                        :key="header.text"
                         :rowspan="header.rowspan"
                         :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
                         @click="changeSort(header.value)"
@@ -166,6 +133,8 @@
                         <v-icon small>arrow_upward</v-icon>
                         {{ header.text }}
                       </th>
+                    </tr>
+                    <tr>
                       <th
                         v-for="header in headers11"
                         :key="header.text"
@@ -206,7 +175,107 @@
                         <v-icon small>arrow_upward</v-icon>
                         {{ header.text }}
                       </th>
-                      
+                      <th
+                        v-for="header in headers15"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers16"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers17"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers18"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers19"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers20"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers21"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers22"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers23"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+                      <th
+                        v-for="header in headers24"
+                        :key="header.text"
+                        :rowspan="header.rowspan"
+                        :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+                        @click="changeSort(header.value)"
+                      >
+                        <v-icon small>arrow_upward</v-icon>
+                        {{ header.text }}
+                      </th>
+
                     </tr>
                     
                   </template>
@@ -214,30 +283,27 @@
     
                 <tr>
               <td>{{ props.item.No }}</td>
-              <td class="text-xs-right">{{ props.item.WILAYAHADMINISTRATIF }}</td>
-              <td class="text-xs-right">{{ props.item.KHGKOORDINATIFXY }}</td>
-              <td class="text-xs-right">{{ props.item.UPRG }}</td>
-              <td class="text-xs-right">{{ props.item.KATEGORI }}</td>
-              <td class="text-xs-right">{{ props.item.JENISKEGIATAN}}</td>
-              <td class="text-xs-right">{{ props.item.VOLUME}}</td>
-              <td class="text-xs-right">{{ props.item.SATUAN}}</td>
-              <td class="text-xs-right">{{ props.item.ANGGARAN}}</td>
-              <td class="text-xs-right">{{ props.item.SUMBERANGGARAN}}</td>
-              <td class="text-xs-right">{{ props.item.KETERANGANANGGARAN}}</td>
+              <td class="text-xs-right">{{ props.item.COUNTRY }}</td>
+              <td class="text-xs-right">{{ props.item.INSTITUTIONNAME }}</td>
+              <td class="text-xs-right">{{ props.item.INSTITUTIONNAME2 }}</td>
+              <td class="text-xs-right">{{ props.item.INSTITUTIONNAME3 }}</td>
+              <td class="text-xs-right">{{ props.item.TIPE}}</td>
+              <td class="text-xs-right">{{ props.item.KEY}}</td>
+              <td class="text-xs-right">{{ props.item.JUDULPROJEK}}</td>
+              <td class="text-xs-right">{{ props.item.PROJECTSUMMARY}}</td>
+              <td class="text-xs-right">{{ props.item.LOCATION}}</td>
+              <td class="text-xs-right">{{ props.item.PROVINCE}}</td>
+              <td class="text-xs-right">{{ props.item.DISTRICT}}</td>
+              <td class="text-xs-right">{{ props.item.KHG}}</td>
+              <td class="text-xs-right">{{ props.item.STATUSPROJECT}}</td>
+              <td class="text-xs-right">{{ props.item.TANGGALMULAI}}</td>
+              <td class="text-xs-right">{{ props.item.TANGGALAKHIR}}</td>
+              <td class="text-xs-right">{{ props.item.REMARK}}</td>
+              <td class="text-xs-right">{{ props.item.relevancy}}</td>
+              <td class="text-xs-right">{{ props.item.focalpoint}}</td>
+              <td class="text-xs-right">{{ props.item.NEXT}}</td>
               <td class="justify-center layout px-0">
-          <v-icon
-            small
-            class="mr-2"
-            @click="editItem(props.item)"
-          >
-            edit
-          </v-icon>
-          <v-icon
-            small
-            @click="deleteItem(props.item)"
-          >
-            delete
-          </v-icon>
+          
         </td>
                 </tr>
 
@@ -334,151 +400,239 @@ export default {
             rowspan: '2',
           }
         ],
-        headers3: [
+         headers2: [
         {
-            text: 'WILAYAH ADMINISTRATIF',
+            text: ' GENERAL INFORMATION',
             align: 'left',
             sortable: 'false',
-            value: 'WILAYAHADMINISTRATIF',
-            rowspan: '2',
+            value: 'GENERALINFORMATION',
+            colspan: '2',
+            }
+        ],
+        headers3: [
+        {
+            text: 'FUNDING SOURCE',
+            align: 'left',
+            sortable: 'false',
+            value: 'FUNDINGSOURCE',
+            rowspan: '1',
             }
         ],
         headers4: [
         {
-            text: 'KHG, KOORDINATIF X,Y',
+            text: 'IMPLEMENTING AGENCY',
             align: 'left',
             sortable: 'false',
-            value: 'KHGKOORDINATIFXY',
-            rowspan: '2',
+            value: 'IMPLEMENTINGAGENCY',
+            rowspan: '1',
             }
         ],
         headers5: [
         {
-            text: 'UPRG',
+            text: 'TYPE OF DEVELOPMENT PARTNER',
             align: 'left',
             sortable: 'false',
-            value: 'UPRG',
+            value: 'TIPE',
             rowspan: '2',
             }
         ],
         headers6: [
         {
-            text: 'KATEGORI',
+            text: 'KEY ACTIVITIES',
             align: 'left',
             sortable: 'false',
-            value: 'KATEGORI',
+            value: 'KEY',
             rowspan: '2',
             }
         ],
         headers7: [
         {
-            text: 'JENIS KEGIATAN',
+            text: 'PROJECT',
             align: 'left',
             sortable: 'false',
-            value: 'JENISKEGIATAN',
+            value: 'PROJECT',
+            colspan: '10',
+            }
+        ],
+        headers8: [
+        {
+            text: 'Relevancy to BRG Mandat',
+            align: 'left',
+            sortable: 'false',
+            value: 'relevancy',
             rowspan: '2',
             }
         ],
         headers9: [
         {
-            text: 'VOLUME',
+            text: 'Focal Point (PIC) from BRG',
             align: 'left',
             sortable: 'false',
-            value: 'VOLUME',
+            value: 'focalpoint',
             rowspan: '2',
             }
         ],
         headers10: [
         {
-            text: 'SATUAN',
+            text: 'NEXT STEP',
             align: 'left',
             sortable: 'false',
-            value: 'SATUAN',
+            value: 'NEXT',
             rowspan: '2',
             }
         ],
+
+
         headers11: [
         {
-            text: 'ANGGARAN(RP)',
+            text: 'COUNTRY',
             align: 'left',
             sortable: 'false',
-            value: 'ANGGARAN',
-            rowspan: '2',
+            value: 'COUNTRY',
+            rowspan: '1',
             }
         ],
         headers12: [
         {
-            text: 'SUMBER ANGGARAN',
+            text: 'NAME OF INSTITUTION',
             align: 'left',
             sortable: 'false',
-            value: 'SUMBERANGGARAN',
-            rowspan: '2',
+            value: 'INSTITUTIONNAME',
+            rowspan: '1',
             }
         ],
         headers13: [
         {
-            text: 'KETERANGAN ANGGARAN',
+            text: 'NAME OF INTITUTION',
             align: 'left',
             sortable: 'false',
-            value: 'KETERANGANANGGARAN',
-            rowspan: '2',
+            value: 'INSTITUTIONNAME2',
+            rowspan: '1',
             }
         ],
         headers14: [
         {
-            text: 'ACTION',
+            text: 'NAME OF INTITUTION',
             align: 'left',
             sortable: 'false',
-            value: 'ACTION',
-            rowspan: '2',
+            value: 'INSTITUTIONNAME3',
+            rowspan: '1',
+            }
+        ],
+        headers15: [
+        {
+            text: 'PROJECT TITLE',
+            align: 'left',
+            sortable: 'false',
+            value: 'JUDULPROJEK',
+            rowspan: '1',
+            }
+        ],
+        headers16: [
+        {
+            text: 'PROJECT SUMMARY',
+            align: 'left',
+            sortable: 'false',
+            value: 'PROJECTSUMMARY',
+            rowspan: '1',
+            }
+        ],
+        headers17: [
+        {
+            text: 'LOCATION',
+            align: 'left',
+            sortable: 'false',
+            value: 'LOCATION',
+            rowspan: '1',
+            }
+        ],
+        headers18: [
+        {
+            text: 'NAME OF PROVINCE',
+            align: 'left',
+            sortable: 'false',
+            value: 'PROVINCE',
+            rowspan: '1',
+            }
+        ],
+        headers19: [
+        {
+            text: 'NAME OF DISTRICT/REGENCY',
+            align: 'left',
+            sortable: 'false',
+            value: 'DISTRICT',
+            rowspan: '1',
+            }
+        ],
+        headers20: [
+        {
+            text: 'NAME OF KHG',
+            align: 'left',
+            sortable: 'false',
+            value: 'KHG',
+            rowspan: '1',
+            }
+        ],
+        headers21: [
+        {
+            text: 'PROJECT STATUS',
+            align: 'left',
+            sortable: 'false',
+            value: 'STATUSPROJECT',
+            rowspan: '1',
+            }
+        ],
+        headers22: [
+        {
+            text: 'START DATE',
+            align: 'left',
+            sortable: 'false',
+            value: 'TANGGALMULAI',
+            rowspan: '1',
+            }
+        ],
+        headers23: [
+        {
+            text: 'END DATE',
+            align: 'left',
+            sortable: 'false',
+            value: 'TANGGALAKHIR',
+            rowspan: '1',
+            }
+        ],
+        headers24: [
+        {
+            text: 'REMARK',
+            align: 'left',
+            sortable: 'false',
+            value: 'REMARK',
+            rowspan: '1',
             }
         ],
         sekatkanal:[
         {
           value: true,
           No: '1',
-          WILAYAHADMINISTRATIF: 'MALANG',
-          KHGKOORDINATIFXY: '80,90',
-          UPRG: 'UPRG',
-          KATEGORI: 'APA AJA',
-          JENISKEGIATAN: 'PERAMPOKAN',
-          VOLUME: 'BANYAK',
-          SATUAN: 'GAK KEHITUNG',
-          ANGGARAN: 'TAK TERBATAS',
-          SUMBERANGGARAN: 'PRIBADI',
-          KETERANGANANGGARAN: 'MAHAL',
-          ACTION: ''
+          TIPE: '1',
+          KEY: '1',
+          relevancy: '1',
+          focalpoint: '1',
+          NEXT: '1',
+          COUNTRY: '1',
+          INSTITUTIONNAME: '1',
+          INSTITUTIONNAME2: '1',
+          INSTITUTIONNAME3: '1',
+          JUDULPROJEK: '1',
+          PROJECTSUMMARY: '1',
+          LOCATION: '1',
+          PROVINCE: '1',
+          DISTRICT: '1',
+          KHG: '1',
+          STATUSPROJECT: '1',
+          TANGGALMULAI: '1',
+          TANGGALAKHIR: '1',
+          REMARK: '1',
         },
-        {
-          value: true,
-          No: '2',
-          WILAYAHADMINISTRATIF: 'MALANG',
-          KHGKOORDINATIFXY: '80,90',
-          UPRG: 'UPRG',
-          KATEGORI: 'APA AJA',
-          JENISKEGIATAN: 'PERAMPOKAN',
-          VOLUME: 'BANYAK',
-          SATUAN: 'GAK KEHITUNG',
-          ANGGARAN: 'TAK TERBATAS',
-          SUMBERANGGARAN: 'PRIBADI',
-          KETERANGANANGGARAN: 'MAHAL',
-          ACTION: ''
-        },
-        {
-          value: true,
-          No: '3',
-          WILAYAHADMINISTRATIF: 'MALANG',
-          KHGKOORDINATIFXY: '80,90',
-          UPRG: 'UPRG',
-          KATEGORI: 'APA AJA',
-          JENISKEGIATAN: 'PERAMPOKAN',
-          VOLUME: 'BANYAK',
-          SATUAN: 'GAK KEHITUNG',
-          ANGGARAN: 'TAK TERBATAS',
-          SUMBERANGGARAN: 'PRIBADI',
-          KETERANGANANGGARAN: 'MAHAL',
-          ACTION: ''
-        }
         ],
         
       }

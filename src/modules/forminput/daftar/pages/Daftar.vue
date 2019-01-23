@@ -84,18 +84,6 @@
                             <v-flex xs4>
                                 <v-subheader>TYPE OF DEVELOPMENT PARTNER KEY ACTIVITIES</v-subheader>
                             </v-flex>
-                            <v-flex xs8>
-                                <v-text-field
-                                label="choice"
-                                value=""
-                                suffix=""
-                                ></v-text-field>
-                            </v-flex>
-                            </v-layout>
-                        <v-layout row>
-                            <v-flex xs4>
-                                <v-subheader>FOCAL POINT TO BRG</v-subheader>
-                            </v-flex>
                             <v-select
                             v-model="select"
                             :items="organisasi"
@@ -103,6 +91,19 @@
                             label="Item"
                             required
                             ></v-select>
+                            </v-layout>
+                        <v-layout row>
+                            <v-flex xs4>
+                                <v-subheader>FOCAL POINT TO BRG</v-subheader>
+                            </v-flex>
+                            
+                            <v-flex xs8>
+                                <v-text-field
+                                label="choice"
+                                value=""
+                                suffix=""
+                                ></v-text-field>
+                            </v-flex>
                             </v-layout>
                             
   </v-container>
