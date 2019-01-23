@@ -1,4 +1,4 @@
-const mod_name = 'Reporting2'
+const mod_name = 'listpartner'
 const rootp = `/${mod_name}`
 
 const router = [

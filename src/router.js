@@ -43,7 +43,7 @@ import PetaMonitoring from './modules/PetaMonitoring/router'
 import Dashboard4 from './modules/Dashboard4/router'
 import PetaMonitoring2 from './modules/PetaMonitoring2/router'
 import forminput from './modules/forminput/router'
-import Reporting2 from './modules/Reporting2/router'
+import listpartner from './modules/listpartner/router'
 import Provinsi from './modules/Provinsi/router'
 import KabupatenKota from './modules/KabupatenKota/router'
 import BatasProvinsi from './modules/BatasProvinsi/router'
@@ -65,6 +65,7 @@ import TutupanLahan from './modules/TutupanLahan/router'
 import KawasanHutan from './modules/KawasanHutan/router'
 import donordash from './modules/donordash/router'
 import formeditviewtable from './modules/formeditviewtable/router'
+import activitydevelopment from './modules/activitydevelopment/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -121,7 +122,7 @@ const routers = [
     ...Dashboard4,
     ...PetaMonitoring2,
     ...forminput,
-    ...Reporting2,
+    ...listpartner,
     ...Provinsi,
     ...KabupatenKota,
     ...BatasProvinsi,
@@ -143,6 +144,7 @@ const routers = [
     ...KawasanHutan,
     ...donordash,
     ...formeditviewtable,
+    ...activitydevelopment,
     ...other
 ]
 

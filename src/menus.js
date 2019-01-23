@@ -524,8 +524,18 @@ const menus = [
     },
     {
         icon: 'today',
-        title: 'REPORTING', 
-        to : {name : 'Reporting2_daftar'}       
+        title: 'REPORTING',  
+        items: [
+                {
+                title: 'List  Partners in 7 Priority Provinces',
+                to : {name : 'listpartner_daftar'}
+                },
+                {
+                title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',
+                to : {name : 'activitydevelopment_daftar'}
+                }
+        ]
+        
     },
     {
         icon : 'today',
