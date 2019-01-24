@@ -501,11 +501,11 @@ const menus = [
         title: 'DASHBOARD',   
         to : {name : 'donordash'} 
     }, 
-    {
-        icon: 'map',
-        title: 'PETA MONITORING',
-        to : {name : 'PetaMonitoring2_daftar'}        
-    }, 
+    // {
+    //     icon: 'map',
+    //     title: 'PETA MONITORING',
+    //     to : {name : 'PetaMonitoring2_daftar'}        
+    // }, 
     {
         icon: 'today',
         title: 'INPUT',   
