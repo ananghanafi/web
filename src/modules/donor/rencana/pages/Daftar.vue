@@ -494,34 +494,34 @@
     
 
     methods: {
-        getFormData(files){
-                const data = new FormData();
-                [...files].forEach(file => {
-                    data.append('data', file, file.name); // currently only one file at a time
-                });
-                return data;
-            },
-            onFocus(){
-                if (!this.disabled) {
-                    debugger;
-                    this.$refs.fileInput.click();
-                }
-            },
-            onFileChange($event){
-                const files = $event.target.files || $event.dataTransfer.files;
-                const form = this.getFormData(files);
-                if (files) {
-                    if (files.length > 0) {
-                        this.filename = [...files].map(file => file.name).join(', ');
-                    } else {
-                        this.filename = null;
-                    }
-                } else {
-                    this.filename = $event.target.value.split('\\').pop();
-                }
-                this.$emit('input', this.filename);
-                this.$emit('formData', form);
-            },
+        // getFormData(files){
+        //         const data = new FormData();
+        //         [...files].forEach(file => {
+        //             data.append('data', file, file.name); // currently only one file at a time
+        //         });
+        //         return data;
+        //     },
+        //     onFocus(){
+        //         if (!this.disabled) {
+        //             debugger;
+        //             this.$refs.fileInput.click();
+        //         }
+        //     },
+        //     onFileChange($event){
+        //         const files = $event.target.files || $event.dataTransfer.files;
+        //         const form = this.getFormData(files);
+        //         if (files) {
+        //             if (files.length > 0) {
+        //                 this.filename = [...files].map(file => file.name).join(', ');
+        //             } else {
+        //                 this.filename = null;
+        //             }
+        //         } else {
+        //             this.filename = $event.target.value.split('\\').pop();
+        //         }
+        //         this.$emit('input', this.filename);
+        //         this.$emit('formData', form);
+        //     },
       validate () {
         if (this.$refs.form.validate()) {
           this.snackbar = true
