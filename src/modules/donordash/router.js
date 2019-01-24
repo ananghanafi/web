@@ -12,7 +12,7 @@ const router = [
             ]
         },
         components: {
-            default : () => import('./pages/Perencanaan'),
+            default : () => import('./pages/DonorDash'),
             // toolbar : () => import('./components/Toolbar'),
             minitoolbar : () => import('./components/MiniToolbar'),
         }

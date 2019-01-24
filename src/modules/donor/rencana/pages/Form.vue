@@ -46,7 +46,7 @@
                                     </v-flex>
                                     <v-flex md4><v-text-field label="Nominal Dana" v-model="page.amount"></v-text-field></v-flex>
                                     <v-flex md4>
-                                        <!-- <v-autocomplete 
+                                        <v-autocomplete 
                                             v-model="page.fundingSource" 
                                             chips
                                             deletable-chips
@@ -57,26 +57,7 @@
                                             item-value="id"
                                             label="Sumber Dana"
                                             return-object
-                                        ></v-autocomplete> -->
-                                         <!-- <v-select 
-                                            v-model="fSource" 
-                                            chips
-                                            deletable-chips
-                                            small-chips
-                                            autocomplete
-                                            :items="list_org"
-                                            item-text="shortName"
-                                            item-value="id"
-                                            label="Sumber Dana"
-                                            return-object
-                                        ></v-select> -->
-                                        <v-select
-                                        v-model="select9"
-                                        :items="sumberdana"
-                                        :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="sumber dana"
-                                        required
-                                        ></v-select>
+                                        ></v-autocomplete>
                                     </v-flex>
                                     <v-flex md12><v-text-field label="Catatan" counter="150" v-model="page.remark"></v-text-field></v-flex>
                                     <!-- <v-flex md12><v-subheader>Relevansi dengan Mandat BRG</v-subheader></v-flex> -->
@@ -182,14 +163,7 @@
                                         </v-card>
                                     </v-flex>
                                     <v-flex><v-text-field label="Dokumen"></v-text-field></v-flex>
-                                    <v-flex><div>
-                                        <v-text-field prepend-icon="attach_file" single-line
-                                                    v-model="filename" :label="label" :required="required"
-                                                    @click.native="onFocus"
-                                                    :disabled="disabled" ref="fileTextField"></v-text-field>
-                                        <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
-                                            ref="fileInput" @change="onFileChange">
-                                    </div></v-flex>
+                                    <v-flex><v-text-field label="Foto"></v-text-field></v-flex>
                                 </v-layout>
                             </v-flex>
                         </v-layout>
@@ -232,19 +206,7 @@ export default {
             list_kota : [],
             list_kec : [],
             list_desa : [],
-            list_org: [
-          { state: 'APBN 2018',  },
-          { state: 'APBD 2018',  },
-          { state: 'APBN 2019',  },
-          { state: 'APBD 2019',  },
-            ],
-            select9: null,
-      sumberdana:[
-          'APBN 2018',
-          'APBN 2019',
-          'APBD 2018',
-          'APBD 2019',
-      ],
+            list_org: [],
         }
     },
     mounted(){
@@ -279,76 +241,7 @@ export default {
                 this.$success('Data Perencanaan berhasil disimpan')
                 this.$router.push({name:'donor_rencana'})
             })
-        },
-        
-        getFormData(files){
-                const data = new FormData();
-                [...files].forEach(file => {
-                    data.append('data', file, file.name); // currently only one file at a time
-                });
-                return data;
-            },
-            onFocus(){
-                if (!this.disabled) {
-                    debugger;
-                    this.$refs.fileInput.click();
-                }
-            },
-            onFileChange($event){
-                const files = $event.target.files || $event.dataTransfer.files;
-                const form = this.getFormData(files);
-                if (files) {
-                    if (files.length > 0) {
-                        this.filename = [...files].map(file => file.name).join(', ');
-                    } else {
-                        this.filename = null;
-                    }
-                } else {
-                    this.filename = $event.target.value.split('\\').pop();
-                }
-                this.$emit('input', this.filename);
-                this.$emit('formData', form);
-            },
-      validate () {
-        if (this.$refs.form.validate()) {
-          this.snackbar = true
         }
-      },
-      register(){
-        if (this.$refs.form.validate()) {
-          this.snackbar = true
-        }
-            this.loading = true
-            this.$store.dispatch('personal',{
-                email:this.email,
-                // firstname:this.reg.firstname, 
-                // lastname:this.reg.lastname,
-                nama:this.nama ,
-                jenis:this.jenis,
-                tanggal:this.tanggal,
-                admin:this.admin,
-                password:this.password, 
-                password2:this.password2
-            })
-            // .then((res)=>{
-            //     this.reg.email = ''
-            //     this.reg.firstname = ''
-            //     this.reg.lastname = ''
-            //     this.reg.password = ''
-            //     this.reg.confirm_password = ''
-
-            //     this.loading = false
-            //     this.register_ok = res
-            //     // this.$router.push({name:'home'})
-            //     // eslint-disable-next-line
-            //     // console.log(res)
-            // })
-            // .catch(()=>{
-            //     this.loading = false
-            // })
-
-        },
-    
     },
     computed:{
         prov(){

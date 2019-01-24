@@ -181,32 +181,32 @@ export default {
           },
            {
             value: false,
-            nama: '4. Peatland Rewetting',
+            nama: '4. Planning Base Stabilization',
             harga: 'USD 500.000',
           },
            {
             value: false,
-            nama: '5. Peatland Rewetting',
+            nama: '5. Policy and Institutional Strengthening',
             harga: 'USD 500.000',
           },
            {
             value: false,
-            nama: '6. Peatland Rewetting',
+            nama: '6. International Cooperation Improvement',
             harga: 'USD 500.000',
           },
            {
             value: false,
-            nama: '7. Peatland Rewetting',
+            nama: '7. Improvemenent of Active Roles of thr Parties',
             harga: 'USD 500.000',
           },
            {
             value: false,
-            nama: '8. Peatland Rewetting',
+            nama: '8. Peatland Restoration Empowerment',
             harga: 'USD 500.000',
           },
            {
             value: false,
-            nama: '9. Peatland Rewetting',
+            nama: '9. Admintration of Mangement an Intituional Support',
             harga: 'USD 500.000',
           },
           
