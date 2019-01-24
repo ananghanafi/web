@@ -539,7 +539,7 @@ export default {
           amountriau: '',
           institusijambi: 'CLUA',
           amountjambi: '',
-          institusisouthsumatra: 'ASUTRALIA EMBASSY',
+          institusisouthsumatra: 'AUSTRALIA EMBASSY',
           amountsouthsumatra: '',
           institusiwestkalimantan: 'CLUA',
           amountwestkalimantan: '',
