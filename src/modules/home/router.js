@@ -6,7 +6,7 @@ const router = [
             auth : true,
         },
         // component: () => import('./pages/Home'),
-        redirect : {name : 'perencanaan'}
+        redirect : {name : 'donordash'}
     }
 ]
 
