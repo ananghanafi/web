@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { API, STATUS_APPROVE, STATUS_REJECT } from '../../../const';
-const M_API = API + '/donoractivities'
+// const M_API = API + '/donoractivities'
+const M_API = API + '/donordash'
 import {normParam} from '../../../tools'
 
 const store = {
