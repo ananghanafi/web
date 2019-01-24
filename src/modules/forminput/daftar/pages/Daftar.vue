@@ -133,73 +133,15 @@
                                             ></v-text-field>
                                         </v-flex>
                                     </v-layout>
-                                    <v-text-field
-                                    v-model="email"
-                                    :rules="emailRules"
-                                    label="E-mail"
-                                    append-icon="mail"
-                                    required
-                                    ></v-text-field>
-
-                                    <v-select
-                                    v-model="select1"
-                                    :items="jenis"
-                                    :rules="[v => !!v || 'Mohon dipilih']"
-                                    label="Jenis"
-                                    required
-                                    
-                                    ></v-select>
-                                    <v-menu full-width="true">
-                                        <v-text-field :value="tanggal" slot="activator" label="Tanggal" append-icon="date_range">
-
-                                        </v-text-field>
-                                        <v-date-picker v-model="tanggal"> 
-
-                                        </v-date-picker>
-                                    </v-menu>
-                                    <v-text-field
-                                    v-model="jumlahanggota"
-                                    label="Jumlah Anggota"
-                                    :rules="jmlRules"
-                                    required                                    
-                                    append-icon="edit"
-                                    ></v-text-field>
-  
-                                    <v-select
-                                    v-model="select2"
-                                    :items="admin"
-                                    :rules="[v => !!v || 'Mohon dipilih']"
-                                    label="Admin"
-                                    required
-                                    ></v-select>
-                                  <v-text-field
-                                        v-model="password"
-                                        :append-icon="show1 ? 'visibility_off' : 'visibility'"
-                                        :rules="[rules.required, rules.min]"
-                                        :type="show1 ? 'text' : 'password'"
-                                        name="input-10-1"
-                                        label="Kata Sandi"
-                                        hint="At least 8 characters"
-                                        counter
-                                        @click:append="show1 = !show1"
-                                    ></v-text-field>
-                                  <v-text-field
-                                        v-model="password2"
-                                        :append-icon="show2 ? 'visibility_off' : 'visibility'"
-                                        :rules="[rules.required, rules.min]"
-                                        :type="show2 ? 'text' : 'password'"
-                                        name="input-10-1"
-                                        label="Konfirmasi Kata Sandi"
-                                        hint="At least 8 characters"
-                                        counter
-                                        @click:append="show2 = !show2"
-                                    ></v-text-field>
-                                    <v-checkbox
-                                    v-model="checkbox"
-                                    :rules="[v => !!v || 'Centang baru lanjut']"
-                                    label="Apakah kamu menyetujuinya?"
-                                    required
-                                    ></v-checkbox>
+                    <v-container>
+                    <v-card-title class="elevation-1">
+                    +ADD PROJECT
+                    <v-spacer></v-spacer>
+                    <v-btn @click.native="$router.push({name:'donor_rencana_baru'})">Kegiatan Baru</v-btn>
+                    
+                    </v-card-title>
+                    </v-container>
+                                     
                                     <v-layout justify-center>
                                     <v-btn large="true"
                                     :disabled="!valid"
@@ -285,7 +227,9 @@
       institusi2: '',
       institusi3: '',
       focal: '',
-
+      projecttitle: '',
+      startdate:'',
+      
       email: '',
       jumlahanggota:'',
       filename: "",
@@ -308,6 +252,14 @@
           emailMatch: () => ('The email and password you entered don\'t match')
         },
       countryRules: [
+        v => !!v || 'Nama harus di isi'
+      ],
+
+      
+      projecttitleRules: [
+        v => !!v || 'Nama harus di isi'
+      ],
+      startdateRules: [
         v => !!v || 'Nama harus di isi'
       ],
       focalRules: [
