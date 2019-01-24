@@ -1,7 +1,8 @@
 <template>
      <v-container >
         <v-layout justify-center>
-            <v-flex xs12 sm10 md8 lg6>
+            <v-flex xs12 >
+                <!-- <v-flex xs12 sm10 md8 lg6> -->
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1">
                     DAFTAR
