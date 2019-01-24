@@ -1,6 +1,6 @@
 <template>
 <div>
-<div class="pb-3">
+<div class="pb-3" id="table">
     <v-container grid-list-xs fill-height>
         <v-layout>
             <v-flex xs12>
@@ -12,7 +12,7 @@
                             <v-container grid-list-md class="pa-0">
                                 
                                 
-                            <button v-print="'#myTable'" @click="print">Print this component</button>
+                            <button v-print="'table'" @click="print">Print this component</button>
                             </v-container>
                             
                         </v-card-text>
@@ -24,7 +24,6 @@
     :pagination.sync="pagination"
     item-key="name"
     class="elevation-1"
-    id="myTable"
   >
             <template slot="headers" slot-scope="props">
                     <tr>
@@ -650,10 +649,11 @@ export default {
       }
         
     },
+  
     methods: {
     
     print () {
-    window.print();
+    table.print();
       this.d.print( this.$el, this.cssText)
     }
     

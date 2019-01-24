@@ -144,7 +144,7 @@
                                      
                                     <v-layout justify-center>
                                     <v-btn large="true"
-                                    :disabled="valid"
+                                    :disabled="!valid"
                                     color="success"
                                     @click="register"
                                     >
