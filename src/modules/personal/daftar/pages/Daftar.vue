@@ -95,7 +95,6 @@
                                     <v-btn large="true"
                                     :disabled="!valid"
                                     color="success"
-                                    
                                     @click="register"
                                     >
                                     Submit
@@ -191,6 +190,9 @@
         }
       },
       register(){
+        if (this.$refs.form.validate()) {
+          this.snackbar = true
+        }
             this.loading = true
             this.$store.dispatch('personal',{
                 email:this.email,

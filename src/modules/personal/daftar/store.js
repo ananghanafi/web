@@ -3,7 +3,6 @@ import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
 const M_API = API + '/personal'
 const lc = window.localStorage
 const TOKEN = 'prims'
-import {normParam} from '../../../tools'
 
 const store = {
     namespaced: true,
