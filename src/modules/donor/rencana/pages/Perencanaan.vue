@@ -2,11 +2,9 @@
     <v-container grid-list-xs fill-height>
         <v-layout>
             <v-flex xs12>
-                <v-card flat class="pb-3">
+                <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        PERENCANAAN KEGIATAN DONOR
-                        <v-spacer></v-spacer>
-                        <v-btn @click.native="$router.push({name:'donor_rencana_baru'})">Kegiatan Baru</v-btn>
+                        PERENCANAAN KONSTRUKSI SUMUR BOR
                     </v-card-title>
                     <v-card-text class="py-0">
                         <v-container grid-list-md class="pa-0">
@@ -14,7 +12,7 @@
                                 <v-flex md2 sm6>
                                     <v-text-field
                                         append-icon="search"
-                                        label="Kode"
+                                        label="Kode SBO"
                                         single-line
                                         hide-details
                                         @input="q_code"
@@ -83,14 +81,14 @@
                                 <td>
                                     <v-layout row>
                                         <div :class="statusCls(props.item)" class="mr-1" style="width: 5px;"></div>
-                                        {{ props.item.title }}
+                                        {{ props.item.generalActivity.name }}
                                     </v-layout>
                                 </td>
-                                <td class="">{{ props.item.administrativeArea.province.longName }}</td>
-                                <td class="">{{ props.item.administrativeArea.city ? props.item.administrativeArea.city.shortName : '-' }}</td>
-                                <td class="">{{ props.item.currency.code }}</td>
-                                <td class="text-xs-right">{{ props.item.amount | toC }}</td>
-                                <td class="">{{ props.item.fundingSource ? props.item.fundingSource.shortName : '-'}}</td>
+                                <td class="">{{ props.item.generalActivity.code }}</td>
+                                <td class="">{{ props.item.generalActivity.administrativeArea.province.longName }}</td>
+                                <td class="">{{ props.item.generalActivity.administrativeArea.city.shortName }}</td>
+                                <td class="text-xs-right">{{ props.item.generalActivity.cost | toC }}</td>
+                                <td class="">{{ props.item.generalActivity.fundingSource ? props.item.generalActivity.fundingSource.remark : '-'}}</td>
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>
@@ -102,54 +100,62 @@
                                     <v-card-text class="px-5">
                                         <v-layout row wrap>
                                             <v-flex md6>
+                                                <m-labelval class="font-weight-light" label="KESATUAN HIDROLOGIS GAMBUT" val=""/>
+                                                <m-labelval label="Kode" :val="pVal(props.item.generalActivity.peatHydrologicalUnity,'code')"/>
+                                                <m-labelval label="Nama" :val="pVal(props.item.generalActivity.peatHydrologicalUnity,'name')"/>
                                                 <m-labelval label="" val="" class="mt-2"/>
-                                                <m-labelval class="font-weight-light" label="Lokasi Kegiatan" val=""/>
-                                                <v-layout row wrap>
-                                                    <v-flex md6>
-                                                        <v-text-field v-model="props.item.administrativeArea.province.longName" label="Provinsi" disabled></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex md6>
-                                                        <v-text-field 
-                                                            v-if="props.item.administrativeArea.city"
-                                                            v-model="props.item.administrativeArea.city.longName" 
-                                                            label="Kota/Kab." disabled>
-                                                        </v-text-field>
-                                                        <v-text-field
-                                                            v-else label="Kota/Kab." disabled>
-                                                        </v-text-field>
-                                                    </v-flex>
-                                                    <!-- <v-flex md6>
-                                                        <v-text-field 
-                                                            v-if="props.item.administrativeArea.subDistrict"
-                                                            v-model="props.item.administrativeArea.subDistrict.shortName" 
-                                                            label="Kecamatan" disabled
-                                                        ></v-text-field>
-                                                        <v-text-field 
-                                                            v-else label="Kecamatan" disabled
-                                                        ></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex md6>
-                                                        <v-text-field v-model="props.item.administrativeArea.village" label="Desa" disabled></v-text-field>
-                                                    </v-flex> -->
-                                                    <v-flex md12>Kesatuan Hidrologis Gambut</v-flex>
-                                                    <v-chip v-for="n in props.item.phu" :key="n.id">{{ n.name }}</v-chip>
-                                                    <v-flex md12>Relevansi dengan Mandat BRG</v-flex>
-                                                    <v-chip v-for="n in props.item.brgMandat" :key="n.id">{{ n.descEn }}</v-chip>
-                                                </v-layout>
+                                                <m-labelval class="font-weight-light" label="LOKASI KEGIATAN" val=""/>
+                                                <m-labelval label="Desa" 
+                                                    :val="props.item.generalActivity.administrativeArea.village"/>
+                                                <m-labelval label="Kecamatan" 
+                                                    :val="pVal(props.item.generalActivity.administrativeArea,'subDistrict','shortName')"/>
+                                                <m-labelval label="Kota/Kab." 
+                                                    :val="pVal(props.item.generalActivity.administrativeArea,'city','shortName')"/>
+                                                <m-labelval label="Provinsi"
+                                                    :val="pVal(props.item.generalActivity.administrativeArea,'province','longName')"/>
+                                                <m-labelval label="Status" v-if="props.item.status!==null && props.item.status.id!==STATUS_INIT" val=" ">
+                                                    <v-chip small slot="val" class="white--text elevation-2" :color="statusCls(props.item)">{{ statusStr(props.item) }}</v-chip>
+                                                </m-labelval>
                                             </v-flex>
                                             <v-flex md6>
-                                                <v-layout row wrap pl-2>
-                                                    <v-flex md2>
-                                                        <v-text-field v-model="props.item.currency.code" label="Mata Uang" disabled></v-text-field>
+                                                <v-layout row wrap>
+                                                    <v-flex md12>
+                                                        <v-text-field v-model="props.item.generalActivity.cost" label="Nominal Anggaran" :disabled="isReadOnly(props.item)" :rules="[v => !!v || 'Item is required']"></v-text-field>
+                                                    </v-flex>
+                                                    <v-flex md8>
+                                                        <v-autocomplete 
+                                                            v-model="props.item.generalActivity.fundingSource"
+                                                            chips
+                                                            deletable-chips
+                                                            autocomplete
+                                                            :items="list_fundingSource"
+                                                            item-text="remark"
+                                                            item-value="id"
+                                                            label="Sumber Anggaran" 
+                                                            return-object
+                                                            :disabled="isReadOnly(props.item)"
+                                                            :rules="[v => !!v || 'Item is required']"
+                                                        ></v-autocomplete>
                                                     </v-flex>
                                                     <v-flex md4>
-                                                        <v-text-field v-model="props.item.amount" label="Nominal Anggaran" disabled></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex md6>
-                                                        <v-text-field v-model="props.item.fundingSource.shortName" label="Sumber Anggaran" disabled></v-text-field>
+                                                        <v-autocomplete
+                                                            v-model="props.item.status"
+                                                            chips
+                                                            deletable-chips
+                                                            autocomplete
+                                                            :items="list_status"
+                                                            item-text="remark"
+                                                            item-value="id"
+                                                            label="Status"
+                                                            return-object
+                                                            disabled
+                                                            :color="statusCls(props.item)"
+                                                        ></v-autocomplete>
                                                     </v-flex>
                                                     <v-flex md12>
-                                                        <v-textarea v-model="props.item.remark" label="Catatan" disabled></v-textarea>
+                                                        <v-textarea v-model="props.item.generalActivity.remark" 
+                                                            label="KETERANGAN" 
+                                                            :disabled="isReadOnly(props.item)"></v-textarea>
                                                     </v-flex>
                                                 </v-layout>
                                             </v-flex>
@@ -159,13 +165,16 @@
                                     <v-card-actions class="grey lighten-2">
                                         <template>
                                             <v-spacer></v-spacer>
-                                            <v-btn @click="edit(props.item)" flat color="primary">Edit/Lihat</v-btn>
+                                            <v-btn @click="edit(props.item)" flat color="warning darken-2">Edit/Lihat</v-btn>
+                                            <v-btn @click="updateItems(props.item)" flat color="success darken-2" 
+                                                v-if="props.item.status==null || props.item.status.id==STATUS_INIT"
+                                                :disabled="!props.item.valid">Setujui</v-btn>
                                         </template>
                                     </v-card-actions>
                                 </v-card>
                             </v-form>
                         </template>
-                    </v-data-table>                
+                    </v-data-table>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -190,19 +199,20 @@ export default {
                     text: 'Nama',
                     align: 'left',
                     sortable: false,
-                    value: 'title'
+                    value: 'generalActivity.name'
                 },
-                { text: 'Provinsi', value: 'administrativeArea.province.longName', sortable: false},
-                { text: 'Kota/Kab.', value: 'administrativeArea.city.shortName', sortable: false},
-                { text: '', value: 'currency.code', sortable: false},
-                { text: 'Anggaran', value: 'amount', sortable: false },
-                { text: 'Sumber Anggaran', value: 'fundingSource.shortName', sortable: false },
+                { text: 'Kode', value: 'generalActivity.code', sortable: false},
+                { text: 'Provinsi', value: 'generalActivity.administrativeArea.province.longName', sortable: false},
+                { text: 'Kota/Kab.', value: 'generalActivity.administrativeArea.city.shortName', sortable: false},
+                { text: 'Anggaran', value: 'generalActivity.cost', sortable: false },
+                { text: 'Sumber Anggaran', value: 'generalActivity.fundingSource.id', sortable: false },
                 { text: '',sortable : false}
             ],
             items : [],
+            list_zoneType : [],
+            list_fundingSource : [],
             list_province : [],
             list_city : [],
-            list_fundingSource : [],
             list_status: [
                 {'id': 1, 'remark': 'Diajukan'},
                 {'id': 2, 'remark': 'Disetujui'},
@@ -213,21 +223,28 @@ export default {
                 qf_province_id : null,
                 qf_city_id : null,
                 qf_funding_source : null,
+                qf_zone_type : null,
                 qf_status : null,
             }
         }
+    },
+    mounted(){
+        this.load()
+        this.loadFilter()
     },
     methods: {
         q_code(val) {
             this.filter.qf_code = val ? "~" + val : null
         },
+        // load untuk kebutuhan filter by type dll dll
         loadFilter(){
             Promise.all([
-            this.$store.dispatch('administrativeArea/getTargetedProv'),
-            this.$store.dispatch('donor/perencanaan/getOrg'),
+                this.$store.dispatch('zoneType/get'),
+                this.$store.dispatch('fundingSource/get'),
+                this.$store.dispatch('administrativeArea/getTargetedProv'),
             ])
             .then(arr=>{
-                [this.list_province,this.list_fundingSource] = arr
+                [this.list_zoneType,this.list_fundingSource,this.list_province] = arr
             })
         },
         statusCls(item){
@@ -249,6 +266,12 @@ export default {
                     return ''
             }
         },
+        isReadOnly(item){
+            if(item.status.id == STATUS_APPROVE)
+                return true
+            else
+                return false
+        },
         add(){
             this.$refs.dlg.open()
             .then(e=>e)
@@ -256,14 +279,14 @@ export default {
         },
         load(pg=1){
             this.loading = true
-            this.$store.dispatch('donor/perencanaan/get',{...this.filter,page:pg})
+            this.$store.dispatch('bor/perencanaan/get',{...this.filter,page:pg})
             .then(res=>{
                 // let index = 0
                 // ada pagging
                 // console.log(res.data)
                 this.page = res
                 // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
-                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
+                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].generalActivity.id})) : []
                 
                 // console.log(this.items)
                 this.loading = false
@@ -275,12 +298,38 @@ export default {
             this.load(o.page)
         },
         edit(item){
-            this.$router.push({name:'donor_rencana_detail', params : {id : item.id}})
+            this.$router.push({name:'bor_rencana_detail', params : {id : item.id}})
         },
-    },
-    mounted(){
-        this.load()
-        this.loadFilter()
+        approve(item){
+            this.$confirm(`Setujui rencana ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
+            .then(()=>{
+                return this.$store.dispatch('bor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : true})
+            })            
+            .then(()=>{
+                this.load()
+            })
+        },
+        updateItems(item){
+            return this.$store.dispatch('bor/perencanaan/updateItems',{
+                id:item.generalActivity.id, 
+                cost:item.generalActivity.cost, 
+                funding_source:item.generalActivity.fundingSource.id,
+                remark:item.generalActivity.remark,
+                status: STATUS_APPROVE})
+            .then(() => {
+                this.$success('Data Perencanaan berhasil disetujui')
+                this.load()
+            })
+        },
+        reject(item){
+            this.$confirmDanger(`Tolak rencana ini ?<br><strong class="text-xs-center d-block title red--text">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
+            .then(()=>{
+                return this.$store.dispatch('bor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : false})
+            })            
+            .then(()=>{
+                this.load()
+            })
+        }
     },
     computed:{
         prov(){

@@ -46,7 +46,7 @@
                                     </v-flex>
                                     <v-flex md4><v-text-field label="Nominal Dana" v-model="page.amount"></v-text-field></v-flex>
                                     <v-flex md4>
-                                        <!-- <v-autocomplete 
+                                        <v-autocomplete 
                                             v-model="page.fundingSource" 
                                             chips
                                             deletable-chips
@@ -57,7 +57,7 @@
                                             item-value="id"
                                             label="Sumber Dana"
                                             return-object
-                                        ></v-autocomplete> -->
+                                        ></v-autocomplete>
                                          <!-- <v-select 
                                             v-model="fSource" 
                                             chips
@@ -70,13 +70,7 @@
                                             label="Sumber Dana"
                                             return-object
                                         ></v-select> -->
-                                        <v-select
-                                        v-model="select9"
-                                        :items="sumberdana"
-                                        :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="sumber dana"
-                                        required
-                                        ></v-select>
+                                        
                                     </v-flex>
                                     <v-flex md12><v-text-field label="Catatan" counter="150" v-model="page.remark"></v-text-field></v-flex>
                                     <!-- <v-flex md12><v-subheader>Relevansi dengan Mandat BRG</v-subheader></v-flex> -->
@@ -253,18 +247,11 @@ export default {
             list_kec : [],
             list_desa : [],
             list_org: [
-          { state: 'APBN 2018',  },
-          { state: 'APBD 2018',  },
-          { state: 'APBN 2019',  },
-          { state: 'APBD 2019',  },
+        //   { state: 'APBN 2018',  },
+        //   { state: 'APBD 2018',  },
+        //   { state: 'APBN 2019',  },
+        //   { state: 'APBD 2019',  },
             ],
-            select9: null,
-      sumberdana:[
-          'APBN 2018',
-          'APBN 2019',
-          'APBD 2018',
-          'APBD 2019',
-      ],
         }
     },
     mounted(){

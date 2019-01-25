@@ -508,35 +508,45 @@ const menus = [
     // }, 
     {
         icon: 'today',
-        title: 'INPUT',   
-        items: [
-            {
-                // icon: 'local_drink',
-                title: 'Form Input',
-                to : {name : 'donor_rencana_daftar'}
-            },
-            {
-                // icon: 'local_drink',
-                title: 'Form Edit View Table',
-                to : {name : 'donor_rencana'}
-            }
-        ]
-    },
+        title: 'Kegiatan Donor',   
+        to : {name : 'donor_rencana'} 
+    }, 
     {
         icon: 'today',
-        title: 'REPORTING',  
-        items: [
-                {
-                title: 'List  Partners in 7 Priority Provinces',
-                to : {name : 'listpartner_daftar'}
-                },
-                {
-                title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',
-                to : {name : 'activitydevelopment_daftar'}
-                }
-        ]
+        title: 'List  Partners in 7 Priority Provinces',   
+        to : {name : 'listpartner_daftar'} 
+    }, 
+    {
+        icon: 'today',
+        title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',   
+        to : {name : 'activitydevelopment_daftar'} 
+    }, 
+     
+    // {
+    //     icon: 'today',
+    //     title: 'REPORTING',  
+    //     items: [
+    //             {
+    //             title: 'List  Partners in 7 Priority Provinces',
+    //             to : {name : 'listpartner_daftar'}
+    //             },
+    //             {
+    //             title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',
+    //             to : {name : 'activitydevelopment_daftar'}
+    //             }
+    //     ]
         
-    }
+    // },
+    {
+        icon: 'today',
+        title: 'TAMBAH ORGANISASI',   
+        to : {name : 'donor_rencana_daftar'} 
+    }, 
+    {
+        icon: 'today',
+        title: 'TAMBAH KEGIATAN',   
+        to : {name : 'donor_rencana_baru'} 
+    }, 
     //,
     // {
     //     icon : 'today',
