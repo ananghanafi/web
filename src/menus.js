@@ -512,12 +512,12 @@ const menus = [
         to : {name : 'donor_rencana'} 
     }, 
     {
-        icon: 'today',
+        icon: 'people_outline',
         title: 'List  Partners in 7 Priority Provinces',   
         to : {name : 'listpartner_daftar'} 
     }, 
     {
-        icon: 'today',
+        icon: 'group_add',
         title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',   
         to : {name : 'activitydevelopment_daftar'} 
     }, 
@@ -543,7 +543,7 @@ const menus = [
         to : {name : 'donor_rencana_daftar'} 
     }, 
     {
-        icon: 'today',
+        icon: 'input',
         title: 'TAMBAH KEGIATAN',   
         to : {name : 'donor_rencana_baru'} 
     }, 
