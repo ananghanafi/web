@@ -26,6 +26,14 @@ const router = [
         },
         component: () => import('./pages/Form'),
     },
+    {
+        path: `${rootp}/daftar`,
+        name: `${mod_name}_rencana_daftar`,
+        meta: {
+            auth : true,
+        },
+        component: () => import('./pages/Daftar'),
+    },
 ]
 
 export default router;

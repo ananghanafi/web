@@ -513,12 +513,12 @@ const menus = [
             {
                 // icon: 'local_drink',
                 title: 'Form Input',
-                to : {name : 'forminput_daftar'}
+                to : {name : 'donor_rencana_daftar'}
             },
             {
                 // icon: 'local_drink',
                 title: 'Form Edit View Table',
-                to : {name : 'formeditviewtable_daftar'}
+                to : {name : 'donor_rencana'}
             }
         ]
     },
