@@ -240,8 +240,15 @@ export default {
         loadFilter(){
             Promise.all([
                 this.$store.dispatch('zoneType/get'),
-                this.$store.dispatch('organization/get'),
+                // this.$store.dispatch('fundingSource/get'),
+                this.$store.dispatch('donor/perencanaan/getOrg'),
+                this.$store.dispatch('brgMandat/get'),
+                this.$store.dispatch('currency/get'),
+                this.$store.dispatch('phu/get'),
+                
                 this.$store.dispatch('administrativeArea/getTargetedProv'),
+                 Promise.resolve([]),
+                 Promise.resolve([]),
             ])
             .then(arr=>{
                 [this.list_zoneType,this.list_fundingSource,this.list_province] = arr
