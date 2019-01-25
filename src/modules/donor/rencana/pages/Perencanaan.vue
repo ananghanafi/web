@@ -240,7 +240,7 @@ export default {
         loadFilter(){
             Promise.all([
                 this.$store.dispatch('zoneType/get'),
-                this.$store.dispatch('fundingSource/get'),
+                this.$store.dispatch('organization/get'),
                 this.$store.dispatch('administrativeArea/getTargetedProv'),
             ])
             .then(arr=>{

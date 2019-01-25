@@ -134,12 +134,6 @@
                                         </v-flex>
                                     </v-layout>
                     <v-container>
-                    <v-card-title class="elevation-1">
-                    +ADD PROJECT
-                    <v-spacer></v-spacer>
-                    <v-btn @click.native="$router.push({name:'donor_rencana_baru'})">Kegiatan Baru</v-btn>
-                    
-                    </v-card-title>
                     </v-container>
                                      
                                     <v-layout justify-center>
