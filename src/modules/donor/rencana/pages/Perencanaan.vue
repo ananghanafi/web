@@ -239,13 +239,10 @@ export default {
         // load untuk kebutuhan filter by type dll dll
         loadFilter(){
             Promise.all([
-                this.$store.dispatch('zoneType/get'),
-                // this.$store.dispatch('fundingSource/get'),
-                this.$store.dispatch('donor/perencanaan/getOrg'),
-                this.$store.dispatch('brgMandat/get'),
-                this.$store.dispatch('currency/get'),
-                this.$store.dispatch('phu/get'),
                 
+                this.$store.dispatch('zoneType/get'),
+                this.$store.dispatch('fundingSource/get'),
+
                 this.$store.dispatch('administrativeArea/getTargetedProv'),
                  Promise.resolve([]),
                  Promise.resolve([]),
