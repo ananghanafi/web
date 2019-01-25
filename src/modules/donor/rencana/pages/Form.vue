@@ -181,15 +181,35 @@
                                             <v-card-text>LAMPIRAN</v-card-text>
                                         </v-card>
                                     </v-flex>
-                                    <v-flex><v-text-field label="Dokumen"></v-text-field></v-flex>
-                                    <v-flex><div>
-                                        <v-text-field prepend-icon="attach_file" single-line
-                                                    v-model="filename" :label="label" :required="required"
-                                                    @click.native="onFocus"
-                                                    :disabled="disabled" ref="fileTextField"></v-text-field>
+                                    <v-flex>
+                                        <v-layout>
+                                        <v-flex xs4>
+                                    <v-card-title>Dokumen</v-card-title>
+                                        </v-flex>
+                                        <v-flex xs8>
+                                     <div>
+                                       
                                         <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
                                             ref="fileInput" @change="onFileChange">
-                                    </div></v-flex>
+                                    </div>
+                                        </v-flex>
+                                    </v-layout>
+                                    </v-flex>
+
+                                     <v-flex>
+                                        <v-layout>
+                                        <v-flex xs4>
+                                    <v-card-title>Gambar</v-card-title>
+                                        </v-flex>
+                                        <v-flex xs8>
+                                     <div>
+                                        
+                                        <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
+                                            ref="fileInput" @change="onFileChange">
+                                    </div>
+                                        </v-flex>
+                                    </v-layout>
+                                    </v-flex>
                                 </v-layout>
                             </v-flex>
                         </v-layout>
