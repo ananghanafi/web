@@ -25,10 +25,10 @@
                             class="elevation-1">
                                 <template slot="items" slot-scope="props">
                                     <td class="text-xs-left">{{ props.item.nama }}</td>
-                                   
-                                <m-single-stat
+                                  <td class="text-xs-left"> {{ props.item.anggaran }} </td>
+                                <!-- <m-single-stat
                                     :statValue="'Rp.' + ($options.filters.toC(totalCost)) + ',-'"
-                                    />
+                                    /> -->
                    
                                 </template>
                             </v-data-table>
@@ -158,6 +158,7 @@ export default {
             geoJsonOptions,
             clusterOptions: {},
             totalCost: '',
+            anggaran:'',
             totalArea: '',
             totalAction: '',
             list_province : [],
@@ -170,49 +171,50 @@ export default {
             },
             harga: [
           {
-            value: false,
+            
             nama: '1. Peatland Rewetting',
             harga: '',
+            value: 'anggaran',
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '2. Vegetation Rehabilitation (Revegetation)',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '3. Socioeconomic Revization of the Community',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '4. Planning Base Stabilization',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '5. Policy and Institutional Strengthening',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '6. International Cooperation Improvement',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '7. Improvemenent of Active Roles of thr Parties',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '8. Peatland Restoration Empowerment',
-            harga: '',
+            
           },
            {
-            value: false,
+            value: 'anggaran',
             nama: '9. Admintration of Mangement an Intituional Support',
-            harga: '',
+            
           },
           
           ]
@@ -226,10 +228,12 @@ export default {
     methods: {
         load(){
             this.loading = true
-            this.$store.dispatch('donordash/anggaran')
+            this.$store.dispatch('donordash/getPlanningAnggaran')
             .then(res=>{
-                this.totalCost = res.totalCost ? res.totalCost : []
+                this.anggaran = res.anggaran ? res.anggaran : []
+                
             })
+           
             this.$store.dispatch('perencanaan/getPlanningArea')
             .then(res=>{
                 this.totalArea = res.totalArea ? res.totalArea : []

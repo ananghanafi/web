@@ -19,11 +19,12 @@ const store = {
                     return res.data
                 })
         },
-        anggaran({ }) {
-            return axios.get(`${M_API}/anggaran`)
+        getPlanningAnggaran({ }) {
+            return axios.get(`${M_API}/total-anggaran`)
                 .then(res => {
                     return res.data
                 })
+                
         },
         // eslint-disable-next-line
         getPlanningCost({ }) {
