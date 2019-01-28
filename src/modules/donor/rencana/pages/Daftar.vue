@@ -26,7 +26,7 @@
                                         v-model="select5"
                                         :items="country"
                                         :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="country"
+                                        label="Country"
                                         required
                                         ></v-select>
                                         </v-flex>
@@ -40,7 +40,7 @@
                                     v-model="select6"
                                     :items="institusi"
                                     :rules="[v => !!v || 'Mohon dipilih']"
-                                    label="institusi"
+                                    label="Name of institution"
                                     required
                                     ></v-select>
                                     </v-flex>
@@ -75,7 +75,7 @@
                                         v-model="select7"
                                         :items="institusi2"
                                         :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="institusi2"
+                                        label="Name of institution"
                                         required
                                         ></v-select>
                                     </v-flex>
@@ -94,7 +94,7 @@
                                         v-model="select8"
                                         :items="institusi3"
                                         :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="institusi3"
+                                        label="Name of institution"
                                         required
                                         ></v-select>
                                     </v-flex>
@@ -113,7 +113,7 @@
                                         v-model="select9"
                                         :items="institusi4"
                                         :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="institusi4"
+                                        label="Name of institution"
                                         required
                                         ></v-select>
                                     </v-flex>
@@ -127,7 +127,7 @@
                                         <v-text-field
                                             v-model="focal"
                                             :rules="focalRules"
-                                            label="focal"
+                                            label="Focal Point to BRG"
                                             append-icon="edit"
                                             required
                                             ></v-text-field>
