@@ -508,17 +508,17 @@ const menus = [
     // }, 
     {
         icon: 'today',
-        title: 'Kegiatan Donor',   
+        title: 'KEGIATAN DONOR',   
         to : {name : 'donor_rencana'} 
     }, 
     {
         icon: 'people_outline',
-        title: 'List  Partners in 7 Priority Provinces',   
+        title: 'LIST  PARTNER IN 7 PRIORITY PROVINCES',   
         to : {name : 'listpartner_daftar'} 
     }, 
     {
         icon: 'group_add',
-        title: 'ACTIVITY DEVELOPMENT PARTNERS VS BRG"S POLICY & STRATEGI',   
+        title: 'ACTIVITY DEVELOPMENT',   
         to : {name : 'activitydevelopment_daftar'} 
     }, 
      

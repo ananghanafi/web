@@ -48,7 +48,7 @@
 
                                     <v-layout>
                                         <v-flex xs4>
-                                    <v-card-title>Upload</v-card-title>
+                                    <v-card-title>Upload Logo</v-card-title>
                                         </v-flex>
                                         <v-flex xs8>
                                      <div>
