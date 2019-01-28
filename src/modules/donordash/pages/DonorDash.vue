@@ -25,9 +25,14 @@
                             class="elevation-1">
                                 <template slot="items" slot-scope="props">
                                     <td class="text-xs-left">{{ props.item.nama }}</td>
-                                    <td class="text-xs-left">{{ props.item.harga }}</td>
+                                   
+                                <m-single-stat
+                                    :statValue="'Rp.' + ($options.filters.toC(totalCost)) + ',-'"
+                                    />
+                   
                                 </template>
                             </v-data-table>
+                            
                         </m-widget>
                     </v-flex>
                 </v-layout>
@@ -167,47 +172,47 @@ export default {
           {
             value: false,
             nama: '1. Peatland Rewetting',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '2. Vegetation Rehabilitation (Revegetation)',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '3. Socioeconomic Revization of the Community',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '4. Planning Base Stabilization',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '5. Policy and Institutional Strengthening',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '6. International Cooperation Improvement',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '7. Improvemenent of Active Roles of thr Parties',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '8. Peatland Restoration Empowerment',
-            harga: 'USD 500.000',
+            harga: '',
           },
            {
             value: false,
             nama: '9. Admintration of Mangement an Intituional Support',
-            harga: 'USD 500.000',
+            harga: '',
           },
           
           ]
@@ -221,7 +226,7 @@ export default {
     methods: {
         load(){
             this.loading = true
-            this.$store.dispatch('perencanaan/getPlanningCost')
+            this.$store.dispatch('donordash/anggaran')
             .then(res=>{
                 this.totalCost = res.totalCost ? res.totalCost : []
             })

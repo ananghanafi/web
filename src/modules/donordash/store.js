@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { API } from '../../const';
-const M_API = API + '/dashboard'
+const M_API = API + '/donordash'
 // import { normParam } from '../../tools'
 
 const store = {
@@ -15,6 +15,12 @@ const store = {
         // eslint-disable-next-line
         provinces({ }) {
             return axios.get(`${M_API}/provinces`)
+                .then(res => {
+                    return res.data
+                })
+        },
+        anggaran({ }) {
+            return axios.get(`${M_API}/anggaran`)
                 .then(res => {
                     return res.data
                 })
