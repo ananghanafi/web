@@ -247,10 +247,10 @@ export default {
             list_kec : [],
             list_desa : [],
             list_org: [
-        //   { state: 'APBN 2018',  },
-        //   { state: 'APBD 2018',  },
-        //   { state: 'APBN 2019',  },
-        //   { state: 'APBD 2019',  },
+            { state: 'APBN 2018',  },
+            { state: 'APBD 2018',  },
+            { state: 'APBN 2019',  },
+            { state: 'APBD 2019',  },
             ],
         }
     },

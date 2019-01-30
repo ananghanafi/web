@@ -20,7 +20,7 @@ const store = {
                 })
         },
         getPlanningAnggaran({ }) {
-            return axios.get(`${M_API}/total-anggaran`)
+            return axios.get(`${M_API}/anggaran`)
                 .then(res => {
                     return res.data
                 })
