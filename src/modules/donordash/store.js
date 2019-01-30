@@ -20,13 +20,19 @@ const store = {
                 })
         },
         getPlanningAnggaran({ }) {
-            return axios.get(`${M_API}/anggaran`)
+            return axios.get(`${M_API}/peatlandrewetting`)
                 .then(res => {
                     return res.data
                 })
                 
         },
-        
+        getPlanningrevegetasi({ }) {
+            return axios.get(`${M_API}/revegetation`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
         // eslint-disable-next-line
         getPlanningCost({ }) {
             return axios.get(`${M_API}/totalcost`)

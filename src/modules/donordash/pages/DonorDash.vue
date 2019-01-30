@@ -32,21 +32,29 @@
                     <v-flex xs4>
                         <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG">
                             <v-data-table 
-                            hide-headers="true"
+                            :headers="headers"
                             :items="harga"
                             class="elevation-1">
                                 <template slot="items" slot-scope="props">
                                     
-                                     <td class="text-xs-left">{{ props.item.nama}}</td>
-                                    
-                                     
-                                    <v-card>
+                                     <td class="text-xs-left">{{ props.item.name}}</td>
+                                     <td class="text-xs-left">{{ props.item.value}}</td>
+                                     <td class>
+                                         <v-card>
                                         
                                     <m-single-stat
-                                        :statValue="anggaran | toC"
+                                        :statValue="peatlandrewetting | toC"
                                         />
                                     </v-card>
-                                    
+                                     </td>
+                                         <td class>
+                                         <v-card>
+                                        
+                                    <m-single-stat
+                                        :statValue="revegetasi | toC"
+                                        />
+                                    </v-card>
+                                     </td>                   
                                 </template>
                                 
                             </v-data-table>
@@ -178,7 +186,8 @@ export default {
             geoJsonOptions,
             clusterOptions: {},
             anggaran: '',
-            
+            peatlandrewetting: '',
+            revegetasi: '',
             totalcost: '',
             totalArea: '',
             totalAction: '',
@@ -190,11 +199,27 @@ export default {
                 qf_province_id : null,
                 qf_code : null,
             },
-           harga: [{
-                nama:'Peatland Rewetting',
-                value:'anggaran'
+            headers: [{
+                text: 'kegiatan',
+                align: 'left',
+                sortable: false,
+                value: 'name'
 
             },
+            {
+                text: 'total',
+                align: 'left',
+                sortable: false,
+                value: 'nilai'
+                
+            }],
+           harga: [{
+                name: 'peatland',
+                value: this.peatlandrewetting
+
+            },
+            // {   name:'revegetasi', value:'revegetasi'
+            // },
             ]
         }
     },
@@ -294,9 +319,12 @@ export default {
             this.loading = true
             this.$store.dispatch('donordash/getPlanningAnggaran')
             .then(res=>{
-                this.anggaran = res.anggaran;
+                this.peatlandrewetting = res.anggaran;
             })
-            
+            this.$store.dispatch('donordash/getPlanningrevegetasi')
+            .then(res=>{
+                this.revegetasi = res.anggaran;
+            })
             this.$store.dispatch('perencanaan/getPlanningAction')
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []

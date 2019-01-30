@@ -61,44 +61,7 @@
                                     </div>
                                         </v-flex>
                                     </v-layout>
-                                    <v-card-title class="elevation-1">
-                    FUNDING SOURCE
-                    <v-spacer></v-spacer>
-                    <!-- <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn> -->
-                    </v-card-title>
-                                    <v-layout>
-                                        <v-flex xs4>
-                                        <v-card-title>Name of Institution</v-card-title>
-                                        </v-flex>
-                                        <v-flex xs8>
-                                    <v-select
-                                        v-model="select7"
-                                        :items="institusi2"
-                                        :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="Name of institution"
-                                        required
-                                        ></v-select>
-                                    </v-flex>
-                                    </v-layout>
-                                    <v-card-title class="elevation-1">
-                    IMPLEMENTING AGENCY
-                    <v-spacer></v-spacer>
-                    <!-- <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn> -->
-                    </v-card-title>
-                                    <v-layout>
-                                        <v-flex xs4>
-                                        <v-card-title>Name of Institution</v-card-title>
-                                        </v-flex>
-                                   <v-flex xs8>
-                                    <v-select
-                                        v-model="select8"
-                                        :items="institusi3"
-                                        :rules="[v => !!v || 'Mohon dipilih']"
-                                        label="Name of institution"
-                                        required
-                                        ></v-select>
-                                    </v-flex>
-                                    </v-layout>
+                                    
                     <v-card-title class="elevation-1">
                     Type of Development Partner
                     <v-spacer></v-spacer>
