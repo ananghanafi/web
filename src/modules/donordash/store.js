@@ -13,17 +13,24 @@ const store = {
     },
     actions: {
         // eslint-disable-next-line
+        getAnggaran({ }){
+            return axios.get(`${M_API}/anggaran`)
+            .then(res => {
+                return res.data
+            })
+        },
         provinces({ }) {
             return axios.get(`${M_API}/provinces`)
                 .then(res => {
                     return res.data
                 })
         },
-        anggaran({ }) {
-            return axios.get(`${M_API}/anggaran`)
+        getPlanningAnggaran({ }) {
+            return axios.get(`${M_API}/total-anggaran`)
                 .then(res => {
                     return res.data
                 })
+                
         },
         // eslint-disable-next-line
         getPlanningCost({ }) {
