@@ -25,14 +25,9 @@
                             class="elevation-1">
                                 <template slot="items" slot-scope="props">
                                     <td class="text-xs-left">{{ props.item.nama }}</td>
-                                   
-                                <m-single-stat
-                                    :statValue="'Rp.' + ($options.filters.toC(totalCost)) + ',-'"
-                                    />
-                   
+                                    <td class="text-xs-left">{{ props.item.harga }}</td>
                                 </template>
                             </v-data-table>
-                            
                         </m-widget>
                     </v-flex>
                 </v-layout>
@@ -167,56 +162,7 @@ export default {
                 qf_year : null,
                 qf_province_id : null,
                 qf_code : null,
-            },
-            harga: [
-          {
-            value: false,
-            nama: '1. Peatland Rewetting',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '2. Vegetation Rehabilitation (Revegetation)',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '3. Socioeconomic Revization of the Community',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '4. Planning Base Stabilization',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '5. Policy and Institutional Strengthening',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '6. International Cooperation Improvement',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '7. Improvemenent of Active Roles of thr Parties',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '8. Peatland Restoration Empowerment',
-            harga: '',
-          },
-           {
-            value: false,
-            nama: '9. Admintration of Mangement an Intituional Support',
-            harga: '',
-          },
-          
-          ]
-
+            }
         }
     },
     mounted(){
@@ -226,7 +172,7 @@ export default {
     methods: {
         load(){
             this.loading = true
-            this.$store.dispatch('donordash/anggaran')
+            this.$store.dispatch('perencanaan/getPlanningCost')
             .then(res=>{
                 this.totalCost = res.totalCost ? res.totalCost : []
             })
