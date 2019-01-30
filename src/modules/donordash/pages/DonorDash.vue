@@ -26,13 +26,14 @@
                                 <template slot="items" slot-scope="props">
                                     
                                      <td class="text-xs-left">{{ props.item.nama}}</td>
+                                    
                                      
                                     <v-card>
                                     <m-single-stat
-                                        :statValue="totalArea "
+                                        :statValue="anggaran | toC"
                                         />
                                     </v-card>
-
+                                    
                                 </template>
                                 
                             </v-data-table>
@@ -63,13 +64,7 @@
                                     <v-flex xs6 >
                                         <v-card class="green text-xs-center">
                                              <h1><span class="white--text">18</span></h1>
-                                             <v-flex md12>
-                                                 <m-single-stat
-                            
-                            :statValue="totalCost"
-                           
-                            />
-                                             </v-flex> 
+                                             <div class="white blue-grey--text">Rp.200.000.000.000,-</div> 
                                         </v-card>
                                     </v-flex>
                                     <v-flex xs6>
@@ -135,8 +130,9 @@ export default {
     },
     data(){
         return {
-            anggara: '',
-            totalCost: '',
+            anggaran: '',
+            
+            totalcost: '',
             totalArea: '',
             totalAction: '',
             list_province : [],
@@ -149,15 +145,9 @@ export default {
             },
            harga: [{
                 nama:'Peatland Rewetting',
-                value:'totalArea'
+                value:'anggaran'
 
             },
-            {
-                nama:'Vegetation Rehabilitation (Revegetation)',
-                value:'totalArea'
-
-            }
-            
             ]
         }
     },
@@ -169,14 +159,11 @@ export default {
         load(){
             
             this.loading = true
-            this.$store.dispatch('perencanaan/getPlanningCost')
+            this.$store.dispatch('donordash/getPlanningAnggaran')
             .then(res=>{
-                this.totalCost = res.totalCost;
+                this.anggaran = res.anggaran;
             })
-            this.$store.dispatch('perencanaan/getPlanningArea')
-            .then(res=>{
-                this.totalArea = res.totalArea ? res.totalArea : []
-            })
+            
             this.$store.dispatch('perencanaan/getPlanningAction')
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []

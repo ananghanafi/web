@@ -26,9 +26,10 @@ const store = {
                 })
                 
         },
+        
         // eslint-disable-next-line
         getPlanningCost({ }) {
-            return axios.get(`${M_API}/total-cost-plan`)
+            return axios.get(`${M_API}/totalcost`)
                 .then(res => {
                     return res.data
                 })
