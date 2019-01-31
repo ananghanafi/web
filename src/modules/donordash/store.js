@@ -39,6 +39,56 @@ const store = {
                 })
                 
         },
+        getPlanningrevitalization({ }) {
+            return axios.get(`${M_API}/revitalization`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        
+        getPlanningStabilization({ }) {
+            return axios.get(`${M_API}/baseStabilization`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        getPlanninginstSrengthening({ }) {
+            return axios.get(`${M_API}/instSrengthening`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        getPlanningcoopImprove({ }) {
+            return axios.get(`${M_API}/coopImprove`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        getPlanningactifRoles({ }) {
+            return axios.get(`${M_API}/actifRoles`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        getPlanningpeatlandRestoration({ }) {
+            return axios.get(`${M_API}/peatlandRestoration`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
+        getPlanningadministrationManagement({ }) {
+            return axios.get(`${M_API}/administrationManagement`)
+                .then(res => {
+                    return res.data
+                })
+                
+        },
         // eslint-disable-next-line
         getPlanningCost({ }) {
             return axios.get(`${M_API}/totalcost`)
