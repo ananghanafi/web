@@ -22,13 +22,25 @@
                                         </v-flex>
 
                                         <v-flex xs8>
-                                        <v-select
+                                        <!-- <v-select
                                         v-model="select5"
                                         :items="country"
                                         :rules="[v => !!v || 'Mohon dipilih']"
                                         label="Country"
                                         required
-                                        ></v-select>
+                                        ></v-select> -->
+                                        <v-autocomplete 
+                                            v-model="select5" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="country"
+                                            item-text="code"
+                                            item-value="id"
+                                            label="country"
+                                            return-object
+                                        ></v-autocomplete>
                                         </v-flex>
                                     </v-layout>
                                     <v-layout>
