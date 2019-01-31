@@ -11,6 +11,7 @@
                 <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                 <!-- <v-marker-cluster :options="clusterOptions">
                                 <v-geo-json v-for="geoJson in features" :key="geoJson.kegiatan" :geojson="geoJson" :options="geoJsonOptions"></v-geo-json>
+<<<<<<< HEAD
                 </v-marker-cluster>-->
               </l-map>
             </v-flex>
@@ -27,6 +28,36 @@
                   </template>
                 </v-data-table>
               </m-widget>
+=======
+                            </v-marker-cluster> -->
+                        </l-map>
+                    </v-flex>
+                    
+                    <v-flex xs4>
+                        <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG">
+                            <v-data-table 
+                            hide-headers="true"
+                            :items="harga"
+                            class="elevation-1">
+                                <template slot="items" slot-scope="props">
+                                    
+                                     <td class="text-xs-left">{{ props.item.nama}}</td>
+                                     
+                                    <v-card>
+                                    <m-single-stat
+                                        :statValue="totalArea "
+                                        />
+                                    </v-card>
+
+                                </template>
+                                
+                            </v-data-table>
+                              
+                        </m-widget>
+                    </v-flex>
+                </v-layout>
+                </m-widget>
+>>>>>>> 14ff827632254f981e55905f13a561fbd00ac9e1
             </v-flex>
           </v-layout>
         </m-widget>
@@ -37,6 +68,7 @@
             <m-widget title="SUMMARY">
               <v-container grid-list-md>
                 <v-layout row wrap>
+<<<<<<< HEAD
                   <v-flex xs6>
                     <v-card class="red text-xs-center">
                       <h1>
@@ -73,6 +105,46 @@
               </v-container>
             </m-widget>
           </v-flex>
+=======
+                    <v-flex xs8>
+                        <m-widget title="SUMMARY">
+                            <v-container grid-list-md >
+                                <v-layout row wrap>                                
+                                    <v-flex xs6 >
+                                        <v-card class="red text-xs-center">
+                                             <h1><span class="white--text">18</span></h1>
+                                             <div class="white red--text">Rp.200.000.000.000,-</div>  
+                                        </v-card>
+                                    </v-flex>
+                                    <v-flex xs6>
+                                         <v-card class="blue-grey text-xs-center">
+                                             <h1><span class="white--text">18</span></h1>
+                                             <div class="white blue-grey--text">Rp.200.000.000.000,-</div>  
+                                        </v-card>                                       
+                                    </v-flex>
+                                    <v-flex xs6 >
+                                        <v-card class="green text-xs-center">
+                                             <h1><span class="white--text">18</span></h1>
+                                             <v-flex md12>
+                                                 <m-single-stat
+                            
+                            :statValue="totalCost"
+                           
+                            />
+                                             </v-flex> 
+                                        </v-card>
+                                    </v-flex>
+                                    <v-flex xs6>
+                                         <v-card class="orange text-xs-center">
+                                             <h1><span class="white--text">18</span></h1>
+                                             <div class="white orange--text">Rp.200.000.000.000,-</div>  
+                                        </v-card>                                       
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </m-widget>
+                    </v-flex>
+>>>>>>> 14ff827632254f981e55905f13a561fbd00ac9e1
 
           <v-flex xs4>
             <m-widget title="% PEMBIAYAAN BERDASARKAN KEGIATAN">
@@ -107,6 +179,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import MWidget from "@/components/MWidget";
 import MSingleStat from "@/components/MSingleStat";
 import AnggaranChartPie from "../components/AnggaranChartPie";
@@ -299,6 +372,83 @@ export default {
     }, 4000);
   }
 };
+=======
+import MWidget from '@/components/MWidget'
+import MSingleStat from '@/components/MSingleStat'
+import AnggaranChartPie from '../components/AnggaranChartPie'
+import FundingSourceChartPie from '../components/FundingSourceChartPie'
+import AreaChartPie from '../components/AreaChartPie'
+import ActionChartPie from '../components/ActionChartPie'
+export default {
+    components : {
+        MWidget,
+        MSingleStat,
+        AnggaranChartPie,
+        FundingSourceChartPie,
+        AreaChartPie,
+        ActionChartPie,
+    },
+    data(){
+        return {
+            anggara: '',
+            totalCost: '',
+            totalArea: '',
+            totalAction: '',
+            list_province : [],
+            list_phu : [],
+            list_year : [],
+            filter : {
+                qf_year : null,
+                qf_province_id : null,
+                qf_code : null,
+            },
+           harga: [{
+                nama:'Peatland Rewetting',
+                value:'totalArea'
+
+            },
+            {
+                nama:'Vegetation Rehabilitation (Revegetation)',
+                value:'totalArea'
+
+            }
+            
+            ]
+        }
+    },
+    mounted(){
+        this.load()
+        this.loadFilter
+    },
+    methods: {
+        load(){
+            
+            this.loading = true
+            this.$store.dispatch('perencanaan/getPlanningCost')
+            .then(res=>{
+                this.totalCost = res.totalCost;
+            })
+            this.$store.dispatch('perencanaan/getPlanningArea')
+            .then(res=>{
+                this.totalArea = res.totalArea ? res.totalArea : []
+            })
+            this.$store.dispatch('perencanaan/getPlanningAction')
+            .then(res=>{
+                this.totalAction = res.totalAction ? res.totalAction : []
+            })
+        },
+        loadFilter(){
+            Promise.all([
+            this.$store.dispatch('administrativeArea/getTargetedProv'),
+            this.$store.dispatch('peatHydrologicalUnit/getAll'),
+            ])
+            .then(arr=>{
+                [this.list_province,this.list_phu] = arr
+            })
+        },
+    }
+}
+>>>>>>> 14ff827632254f981e55905f13a561fbd00ac9e1
 </script>
 
 <style>
