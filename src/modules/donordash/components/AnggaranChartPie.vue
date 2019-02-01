@@ -26,7 +26,7 @@ export default {
     return {
         options : {
             title: {
-                text: 'Anggaran per Provinsi'
+                text: 'Biaya total donor per Provinsi'
             },
             legend:{
                 orient: 'vertical',
@@ -38,7 +38,7 @@ export default {
                 },   
             series: [
                 {
-                    name:'Anggaran',
+                    name:'Biaya total donor',
                     type:'pie',
                     radius: ['0%', '70%'],
                     avoidLabelOverlap: false,                                      
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
       load(){
-          this.$store.dispatch('perencanaan/getPlanningCostByProvince')
+          this.$store.dispatch('donordash/getPlanningCostByProvince')
           .then(res=>{
               this.options.series[0].data = res ? Object.values(res) : []
           })

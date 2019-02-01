@@ -212,7 +212,7 @@
 
                     <v-flex xs4>                        
                         <m-widget title="% JUMLAH BIAYA BERDASARKAN WILAYAH">
-                            <AreaChartPie/>
+                            <AnggaranChartPie/>
                         </m-widget>
                     </v-flex>
                     <!-- <v-flex xs4>                        

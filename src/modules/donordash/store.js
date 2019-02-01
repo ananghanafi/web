@@ -99,7 +99,7 @@ const store = {
         },
         // eslint-disable-next-line
         getPlanningCostByProvince({ }) {
-            return axios.get(`${M_API}/cost-by-province-plan`)
+            return axios.get(`${M_API}/costByProvince`)
                 .then(res => {
                     return res.data
                 })
