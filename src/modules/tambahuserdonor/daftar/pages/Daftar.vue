@@ -19,7 +19,7 @@
                                         ></v-text-field>
                                         
                                     </v-flex>
-                                    <v-flex md2 sm6>
+                                    <v-flex md2 >
                                         <v-text-field
                                             append-icon="search"
                                             label="NAME OF INSTITUTION"
@@ -29,7 +29,9 @@
                                         ></v-text-field>
                                         
                                     </v-flex>
+                                    <v-flex md2 sm6>
                                     <v-btn block color="primary" outline @click="load(1)">Search</v-btn>
+                                    </v-flex>
                                 </v-layout>
                             </v-container>
                               

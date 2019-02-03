@@ -43,25 +43,22 @@
                                         ></v-autocomplete>
                                         </v-flex>
                                     </v-layout>
+                                    
                                     <v-layout>
                                         <v-flex xs4>
-                                         <v-card-title>Name of Insitution</v-card-title>
+                                        <v-card-title>Name of Insitution</v-card-title>
                                         </v-flex>
-                                        <v-flex xs8>
-                                    <v-autocomplete
-                                    v-model="select6"
-                                    chips
-                                   deletable-chips
-                                            small-chips
-                                            autocomplete
-                                    :items="institusi"
-                                    :rules="[v => !!v || 'Mohon dipilih']"
-                                    label="Name of institution"
-                                    required
-                                    ></v-autocomplete>
-                                    </v-flex>
-                                    </v-layout>
 
+                                        <v-flex xs8>
+                                        <v-text-field
+                                            v-model="institution"
+                                            :rules="institusiRules"
+                                            label="Name of Institution"
+                                            append-icon="edit"
+                                            required
+                                            ></v-text-field>
+                                        </v-flex>
+                                    </v-layout>
                                     <v-layout>
                                         <v-flex xs4>
                                     <v-card-title>Upload Logo</v-card-title>
@@ -88,13 +85,17 @@
                                         <v-card-title>Key Activities</v-card-title>
                                         </v-flex>
                                    <v-flex xs8>
-                                    <v-select
+                                    <v-autocomplete
                                         v-model="select9"
+                                        chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
                                         :items="institusi4"
                                         :rules="[v => !!v || 'Mohon dipilih']"
                                         label="Name of institution"
                                         required
-                                        ></v-select>
+                                        ></v-autocomplete>
                                     </v-flex>
                                     </v-layout>
                     <v-layout>
@@ -202,7 +203,8 @@
       focal: '',
       projecttitle: '',
       startdate:'',
-      
+      institution: '',
+
       email: '',
       jumlahanggota:'',
       filename: "",
@@ -239,7 +241,7 @@
         v => !!v || 'Nama harus di isi'
       ],
       institusiRules: [
-        v => !!v || 'Nama harus di isi'
+        v => !!v || 'institusi harus di isi'
       ],
       institusi2Rules: [
         v => !!v || 'Nama harus di isi'
