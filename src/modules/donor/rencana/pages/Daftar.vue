@@ -48,13 +48,17 @@
                                          <v-card-title>Name of Insitution</v-card-title>
                                         </v-flex>
                                         <v-flex xs8>
-                                    <v-select
+                                    <v-autocomplete
                                     v-model="select6"
+                                    chips
+                                   deletable-chips
+                                            small-chips
+                                            autocomplete
                                     :items="institusi"
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Name of institution"
                                     required
-                                    ></v-select>
+                                    ></v-autocomplete>
                                     </v-flex>
                                     </v-layout>
 
