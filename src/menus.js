@@ -547,6 +547,17 @@ const menus = [
         title: 'TAMBAH KEGIATAN',   
         to : {name : 'donor_rencana_baru'} 
     }, 
+    {
+        icon: 'input',
+        title: 'KELOLA ORGANISASI',   
+        items : [
+                   {
+                    //    icon: 'local_drink',
+                       title: 'TAMBAH USER',
+                       to : {name : 'tambahuserdonor_daftar'}
+                  },
+        ]
+    }, 
     //,
     // {
     //     icon : 'today',

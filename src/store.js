@@ -72,6 +72,7 @@ import KawasanHutan from './modules/KawasanHutan/store'
 import donordash from './modules/donordash/store'
 import formeditviewtable from './modules/formeditviewtable/store'
 import activitydevelopment from './modules/activitydevelopment/store'
+import tambahuserdonor from './modules/tambahuserdonor/store'
 
 const main = {
     namespaced: true,
@@ -173,6 +174,7 @@ const store = new Vuex.Store({
         donordash,
         formeditviewtable,
         activitydevelopment,
+        tambahuserdonor,
     }
 })
 

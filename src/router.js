@@ -66,6 +66,7 @@ import KawasanHutan from './modules/KawasanHutan/router'
 import donordash from './modules/donordash/router'
 import formeditviewtable from './modules/formeditviewtable/router'
 import activitydevelopment from './modules/activitydevelopment/router'
+import tambahuserdonor from './modules/tambahuserdonor/router'
 
 import store from './store'
 import {isCan} from './tools'
@@ -145,6 +146,7 @@ const routers = [
     ...donordash,
     ...formeditviewtable,
     ...activitydevelopment,
+    ...tambahuserdonor,
     ...other
 ]
 
