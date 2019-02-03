@@ -148,9 +148,9 @@ export default {
                         summary: [
                             {
                                 value: false,
-                                nomor: '1',
-                                kota: '1',
-                                institusi: '1',
+                                nomor: '-',
+                                kota: '-',
+                                institusi: '-',
                             },
                         ]
                         // headers5: [

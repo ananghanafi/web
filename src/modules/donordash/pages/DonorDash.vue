@@ -31,127 +31,30 @@
                     
                     <v-flex xs4>
                         <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG">
-                            <!-- <v-data-table 
-                            :headers="headers"
-                            :items="harga"
-                            class="elevation-1">
-                                <template slot="items" slot-scope="props">
+                                                       
+                              
+                            <v-card flat color="grey lighten-5" class="ra-0"> 
+                               
+                                    <m-labelval label="1.Peatland Rewetting  " :val="peatlandrewetting" />
+                                    <v-divider></v-divider>                            
+                                    <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" />
+                                    <v-divider></v-divider> 
+                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" />
+                                    <v-divider></v-divider>   
+                                    <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
+                                     <v-divider></v-divider>   
+                                    <m-labelval label="5.Policy and Institutional Strengthening" :val="instSrengthening" />
+                                     <v-divider></v-divider>   
+                                    <m-labelval label="6.International Cooperation Improvement" :val="coopImprove" />
+                                     <v-divider></v-divider>  
+                                    <m-labelval label="7.Improvement of Active Roles of the Parties" :val="actifRoles"/>
+                                    <v-divider></v-divider>  
+                                    <m-labelval label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" />
+                                     <v-divider></v-divider>  
+                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
                                     
-                                     <td class="text-xs-left">{{ props.item.name}}</td>
-                                     
-                                     <td class>
-                                         <v-card>
-                                        
-                                    <m-single-stat
-                                        :statValue="peatlandrewetting | toC"
-                                        />
-                                    </v-card>
-                                     </td>
-                                    <tr>
-                                         
-                                         <v-card>
-                                        
-                                    <m-single-stat
-                                        :statValue="revegetasi | toC"
-                                        />
-                                    </v-card>
-                                     
-                                    </tr>                 
-                                </template>
-                                
-                            </v-data-table> -->
-                             
-                                
-                                <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Peatland Rewetting</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="peatlandrewetting | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Vegetation Rehabilitation (Revegetation)</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="revegetasi | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title> Socioeconomic Revitalization of the Community</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="revitalization | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Planning Base Stabilization</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="baseStabilization | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Policy and Institutional Strengthening</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="instSrengthening | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>International Cooperation Improvement</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="coopImprove | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Improvement of Active Roles of the Parties</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="actifRoles | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Peatland Restoration Empowerment</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="peatlandRestoration | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
-                                  <v-layout>
-                                      <v-flex xs4>
-
-                                         <v-card-title>Administration of Management and Institutional</v-card-title>
-                                      </v-flex>
-                                      <v-flex xs8>
-                                    <m-single-stat :statValue="administrationManagement | toC"/>
-
-                                        </v-flex>
-                                  </v-layout>
+                            </v-card>
+                                 
                         </m-widget>
                     </v-flex>
                 </v-layout>
@@ -175,10 +78,11 @@
                                              <div class="white blue-grey--text">KEGIATAN</div>  
                                         </v-card>                                       
                                     </v-flex>
-                                    <v-flex xs6 >
+                                    <!-- <v-flex xs6 >
                                         <v-card class="green text-xs-center">
                                              <h1><span class="white--text">20</span></h1>
-                                             <div class="white blue-grey--text">KEGIATAN PROGRES</div> 
+                                             <div class="white blue-grey--text">KEGIATAN</div> 
+                                             
                                         </v-card>
                                     </v-flex>
                                     <v-flex xs6>
@@ -186,7 +90,7 @@
                                              <h1><span class="white--text">14</span></h1>
                                              <div class="white orange--text">KEGIATAN SELESAI</div>  
                                         </v-card>                                       
-                                    </v-flex>
+                                    </v-flex> -->
                                 </v-layout>
                             </v-container>
                         </m-widget>
