@@ -30,7 +30,7 @@
                                         required
                                         ></v-select> -->
                                         <v-autocomplete 
-                                            v-model="select5" 
+                                            v-model="country" 
                                             chips
                                             deletable-chips
                                             small-chips
@@ -53,6 +53,7 @@
                                         <v-text-field
                                             v-model="institution"
                                             :rules="institusiRules"
+                                            :items="name"
                                             label="Name of Institution"
                                             append-icon="edit"
                                             required
@@ -86,12 +87,12 @@
                                         </v-flex>
                                    <v-flex xs8>
                                     <v-autocomplete
-                                        v-model="select9"
+                                        v-model="key"
                                         chips
                                             deletable-chips
                                             small-chips
                                             autocomplete
-                                        :items="institusi4"
+                                        :items="key"
                                         :rules="[v => !!v || 'Mohon dipilih']"
                                         label="Name of institution"
                                         required
@@ -117,13 +118,7 @@
                     </v-container>
                                      
                                     <v-layout justify-center>
-                                    <v-btn large="true"
-                                    :disabled="!valid"
-                                    color="success"
-                                    @click="register"
-                                    >
-                                    Submit
-                                    </v-btn>
+                                   <v-btn color="primary" flat @click.native="createorg">SUBMIT</v-btn>
                                     </v-layout>
                                 </v-form>
                             <!-- </v-layout>
@@ -157,7 +152,7 @@
 </script>
 <script>
   export default {
-      props: {
+      page: {
           value: {
                 type: [Array, String]
             },
@@ -200,6 +195,8 @@
       institusi: '',
       institusi2: '',
       institusi3: '',
+      name: '',
+      key: '',
       focal: '',
       projecttitle: '',
       startdate:'',
@@ -267,7 +264,7 @@
           'Kecamatan',
           'Kelurahan'
       ],
-        select5: null,
+        country: null,
       country:[
           'Norway',
           'Switzerland',
@@ -445,8 +442,8 @@
             'SMI',
 
       ],
-      select9: null,
-      institusi4:[
+      key: null,
+      key:[
           'National NGO',
           'International NGO',
           'Bilateral',
@@ -457,7 +454,7 @@
           'Development Bank',
           'Research Center',
           'Association of district Heads',
-          'INstitution',
+          'Institution',
           'Konsorsium',
           'Multilateral',
           'Other',
@@ -467,7 +464,10 @@
       
     }),
     
-
+    mounted(){
+        this.load()
+        this.loadFilter()
+    },
     methods: {
         getFormData(files){
                 const data = new FormData();
@@ -502,6 +502,18 @@
           this.snackbar = true
         }
       },
+      createorg(){
+            this.$store.dispatch('donor/createorg', {
+                country:country, 
+                name:name, 
+                key:key,
+                focal:focal,
+               })
+            .then(()=>{
+                this.$success('Data Organisasi berhasil disimpan')
+                this.$router.push({name:'tambahuserdonor/daftar'})
+            })
+        },
       register(){
         if (this.$refs.form.validate()) {
           this.snackbar = true

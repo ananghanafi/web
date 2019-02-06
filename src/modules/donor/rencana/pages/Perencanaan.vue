@@ -283,7 +283,7 @@ export default {
         },
         load(pg=1){
             this.loading = true
-            this.$store.dispatch('bor/perencanaan/get',{...this.filter,page:pg})
+            this.$store.dispatch('donor/perencanaan/get',{...this.filter,page:pg})
             .then(res=>{
                 // let index = 0
                 // ada pagging
@@ -307,14 +307,14 @@ export default {
         approve(item){
             this.$confirm(`Setujui rencana ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
             .then(()=>{
-                return this.$store.dispatch('bor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : true})
+                return this.$store.dispatch('donor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : true})
             })            
             .then(()=>{
                 this.load()
             })
         },
         updateItems(item){
-            return this.$store.dispatch('bor/perencanaan/updateItems',{
+            return this.$store.dispatch('donor/perencanaan/updateItems',{
                 id:item.generalActivity.id, 
                 cost:item.generalActivity.cost, 
                 funding_source:item.generalActivity.fundingSource.id,
@@ -328,7 +328,7 @@ export default {
         reject(item){
             this.$confirmDanger(`Tolak rencana ini ?<br><strong class="text-xs-center d-block title red--text">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
             .then(()=>{
-                return this.$store.dispatch('bor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : false})
+                return this.$store.dispatch('donor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : false})
             })            
             .then(()=>{
                 this.load()

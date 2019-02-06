@@ -2,6 +2,7 @@ import axios from 'axios'
 import { API, STATUS_APPROVE, STATUS_REJECT } from '../../../const';
 // const M_API = API + '/donoractivities'
 const M_API = API + '/donordash'
+const M_APII = API + '/organisasi'
 import {normParam} from '../../../tools'
 
 const store = {
@@ -45,6 +46,12 @@ const store = {
             })
             .catch(err => Promise.reject(err))          
         },
+        createorg({}, { country, name, key, focal}){
+            return axios.post(`${M_APII}`, { country:country , name:name, key:key, focal:focal})
+            .then(res => {
+                return res.data
+            })       
+        },
         // eslint-disable-next-line
         update({}, obj){
             return axios.put(`${M_API}/${obj.id}`, obj)
@@ -56,6 +63,13 @@ const store = {
         // eslint-disable-next-line
         updateItems({ }, { id, cost, funding_source, remark, status }) {
             return axios.patch(`${M_API}/${id}/cost`, { cost: cost, fundingSource: funding_source, remark: remark, status: status })
+                .then(res => {
+                    return res.data
+                })
+                .catch(err => Promise.reject(err))
+        },
+        updateeItems({ }, { country, name, key, focal }) {
+            return axios.patch(`${M_API}/${id}/organisasi`, {})
                 .then(res => {
                     return res.data
                 })

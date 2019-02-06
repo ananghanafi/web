@@ -97,6 +97,21 @@ const store = {
                 })
                 .catch(err => Promise.reject(err))
         },
+        totalkegiatan({ }) {
+            return axios.get(`${M_API}/totalkegiatan`)
+                .then(res => {
+                    return res.data
+                })
+                .catch(err => Promise.reject(err))
+        },
+        
+        totallembaga({ }) {
+            return axios.get(`${M_API}/totallembaga`)
+                .then(res => {
+                    return res.data
+                })
+                .catch(err => Promise.reject(err))
+        },
         // eslint-disable-next-line
         getPlanningCostByProvince({ }) {
             return axios.get(`${M_API}/costByProvince`)

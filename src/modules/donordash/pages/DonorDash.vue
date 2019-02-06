@@ -5,7 +5,7 @@
                 DASHBOARD DONOR
             </v-flex>
            
-            <v-flex md12 xs12>
+            <v-flex xl8>
                 <m-widget title="Monitoring Donor Mapping">
                 <v-layout row wrap>
                     <v-container class="pa-0" fluid fill-height>
@@ -20,7 +20,7 @@
             </v-flex>
         </v-layout>
 </v-container>
-                    <v-flex xs8>
+                    <v-flex xs6>
                         <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
                             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                             <!-- <v-marker-cluster :options="clusterOptions">
@@ -29,18 +29,21 @@
                         </l-map>
                     </v-flex>
                     
-                    <v-flex xs4>
-                        <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG">
+                    <v-flex xs6>
+                        
+                        <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" >
                                                        
                               
                             <v-card flat color="grey lighten-5" class="ra-0"> 
-                               
-                                    <m-labelval label="1.Peatland Rewetting  " :val="peatlandrewetting" />
-                                    <v-divider></v-divider>                            
-                                    <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" />
-                                    <v-divider></v-divider> 
-                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" />
-                                    <v-divider></v-divider>   
+
+                                   
+                                    <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
+                                                          
+                                    
+                                    <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-center" />
+                                    
+                                    <!-- <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" /> -->
+                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " val="" />   
                                     <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
                                      <v-divider></v-divider>   
                                     <m-labelval label="5.Policy and Institutional Strengthening" :val="instSrengthening" />
@@ -52,7 +55,7 @@
                                     <m-labelval label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" />
                                      <v-divider></v-divider>  
                                     <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
-                                    
+                                 
                             </v-card>
                                  
                         </m-widget>
@@ -68,13 +71,18 @@
                                 <v-layout row wrap>                                
                                     <v-flex xs6 >
                                         <v-card class="red text-xs-center">
-                                             <h1><span class="white--text">18</span></h1>
+                                             <h1><span class="white--text"> 
+                                                 <m-labelval :val="totallembaga" class="text--center"/>
+                                                 </span></h1>
                                              <div class="white red--text">LEMBAGA DONOR</div>  
+                                            
                                         </v-card>
                                     </v-flex>
                                     <v-flex xs6>
                                          <v-card class="blue-grey text-xs-center">
-                                             <h1><span class="white--text">34</span></h1>
+                                             <h1><span class="white--text">
+                                                 <m-labelval :val="totalkegiatan" class="text--center"/>
+                                                 </span></h1>
                                              <div class="white blue-grey--text">KEGIATAN</div>  
                                         </v-card>                                       
                                     </v-flex>
@@ -183,6 +191,7 @@ export default {
             geoJsonOptions,
             clusterOptions: {},
             anggaran: '',
+            totalkegiatan: '',
             revitalization: '',
             peatlandrewetting: '',
             revegetasi: '',
@@ -324,6 +333,14 @@ export default {
             .then(res=>{
                 this.peatlandrewetting = res.anggaran;
             })
+             this.$store.dispatch('donordash/totalkegiatan')
+            .then(res=>{
+                this.totalkegiatan = res.status;
+            })
+            this.$store.dispatch('donordash/totallembaga')
+            .then(res=>{
+                this.totallembaga = res.id;
+            })
             this.$store.dispatch('donordash/getPlanningrevegetasi')
             .then(res=>{
                 this.revegetasi = res.anggaran;
@@ -340,6 +357,7 @@ export default {
             .then(res=>{
                 this.instSrengthening = res.anggaran;
             }) 
+
             
              this.$store.dispatch('donordash/getPlanningcoopImprove')
             .then(res=>{
@@ -380,4 +398,9 @@ export default {
 @import "~leaflet.markercluster/dist/MarkerCluster.css";
 @import "~leaflet.markercluster/dist/MarkerCluster.Default.css";
 .map{  height:100vh; width: 100vw; }
+
+  m-widget {
+    font-size: 2em;
+  }
+
 </style>
