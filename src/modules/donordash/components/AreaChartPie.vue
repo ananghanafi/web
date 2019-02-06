@@ -26,7 +26,7 @@ export default {
     return {
         options : {
             title: {
-                text: 'Luas Area Intervensi per Provinsi'
+                text: 'Jumlah Anggrana Kegiatan per Provinsi'
             },
             legend:{
                 orient: 'vertical',
@@ -38,7 +38,7 @@ export default {
                 },   
             series: [
                 {
-                    name:'Luas Area Intervensi',
+                    name:'Jumlah Anggrana Kegiatan',
                     type:'pie',
                     radius: ['0%', '60%'],
                     avoidLabelOverlap: false,                                      
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
       load(){
-          this.$store.dispatch('perencanaan/getPlanningAreaByProvince')
+          this.$store.dispatch('donordash/getPlanningCostByKegiatan')
           .then(res=>{
               this.options.series[0].data = res ? Object.values(res) : []
           })
