@@ -168,12 +168,13 @@
        
             
     
-    data: () => ({
+    data (){
+        return{
         page: {
           country: [],
           name: [],
           key: [],
-      focal: [],
+          focal: [],
           value: {
                 type: [Array, String]
             },
@@ -470,8 +471,8 @@
       tanggal: null,
       checkbox: false,
       
-    }),
-    
+    }
+    },
     mounted(){
         this.load()
         this.loadFilter()

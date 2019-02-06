@@ -47,8 +47,8 @@ const store = {
             })
             .catch(err => Promise.reject(err))          
         },
-        createorg({}, id, country, name, key, focal){
-            return axios.post(`${M_APII}`, {id:id, country:country, name:name, key:key, focal:focal})
+        createorg({}, obj){
+            return axios.post(`${M_APII}`,obj)
             .then(res => {
                 return res.data
             })       
