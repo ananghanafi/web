@@ -121,8 +121,8 @@ const store = {
                 .catch(err => Promise.reject(err))
         },
         // eslint-disable-next-line
-        getPlanningArea({ }) {
-            return axios.get(`${M_API}/total-area-plan`)
+        getPlanningCostByKegiatan({ }) {
+            return axios.get(`${M_API}/costByActivity`)
                 .then(res => {
                     return res.data
                 })
