@@ -54,8 +54,8 @@ const store = {
                 })
                 
         },
-        getPlanninginstSrengthening({ }) {
-            return axios.get(`${M_API}/instSrengthening`)
+        getPlanninginstStrengthening({ }) {
+            return axios.get(`${M_API}/instStrengthening`)
                 .then(res => {
                     return res.data
                 })

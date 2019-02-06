@@ -67,6 +67,8 @@ import donordash from './modules/donordash/router'
 import formeditviewtable from './modules/formeditviewtable/router'
 import activitydevelopment from './modules/activitydevelopment/router'
 import tambahuserdonor from './modules/tambahuserdonor/router'
+import listorganisasi from './modules/listorganisasi/router'
+
 
 import store from './store'
 import {isCan} from './tools'
@@ -147,6 +149,7 @@ const routers = [
     ...formeditviewtable,
     ...activitydevelopment,
     ...tambahuserdonor,
+    ...listorganisasi,
     ...other
 ]
 

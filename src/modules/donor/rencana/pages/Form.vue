@@ -104,26 +104,7 @@
                             </v-flex>
                             
                             <v-flex md6>
-                                <v-layout row wrap>
-                                    
-                                    <v-flex md12>
-                                        <v-card color="secondary" tile>
-                                            <v-card-text>FUNDING SOURCE</v-card-text>
-                                        </v-card>
-                                    </v-flex>
-                                   <v-autocomplete 
-                                            v-model="page.currency" 
-                                            chips
-                                            deletable-chips
-                                            small-chips
-                                            autocomplete
-                                            :items="list_institusi1"
-                                            item-text="code"
-                                            item-value="id"
-                                            label="Name of Instituion"
-                                            return-object
-                                        ></v-autocomplete>
-                                    
+                                <v-layout row wrap>                                    
                                     <v-flex md12>
                                         <v-card color="secondary" tile>
                                             <v-card-text>IMPLEMENTING AGENCY</v-card-text>

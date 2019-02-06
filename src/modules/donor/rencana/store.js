@@ -22,6 +22,7 @@ const store = {
                 })
                 .catch(err => Promise.reject(err))
             },
+            
         // eslint-disable-next-line
         get({},par) {
             return axios.get(`${M_API}${normParam(par)}`)
@@ -46,8 +47,8 @@ const store = {
             })
             .catch(err => Promise.reject(err))          
         },
-        createorg({}, { country, name, key, focal}){
-            return axios.post(`${M_APII}`, { country:country , name:name, key:key, focal:focal})
+        createorg({}, id, country, name, key, focal){
+            return axios.post(`${M_APII}`, {id:id, country:country, name:name, key:key, focal:focal})
             .then(res => {
                 return res.data
             })       
@@ -68,13 +69,7 @@ const store = {
                 })
                 .catch(err => Promise.reject(err))
         },
-        updateeItems({ }, { country, name, key, focal }) {
-            return axios.patch(`${M_API}/${id}/organisasi`, {})
-                .then(res => {
-                    return res.data
-                })
-                .catch(err => Promise.reject(err))
-        },
+       
         // eslint-disable-next-line
         approveReject({},{id,is_approve}){
             return axios.put(`${M_API}/${id}/status`, {status : { id :is_approve ? STATUS_APPROVE : STATUS_REJECT}})

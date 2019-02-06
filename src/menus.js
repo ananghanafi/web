@@ -556,6 +556,11 @@ const menus = [
                        title: 'TAMBAH USER',
                        to : {name : 'tambahuserdonor_daftar'}
                   },
+                  {
+                    //    icon: 'local_drink',
+                       title: 'LIST ORGANISASI',
+                       to : {name : 'listorganisasi_daftar'}
+                  },
         ]
     }, 
     //,
