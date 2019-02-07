@@ -18,8 +18,8 @@
                                     lazy-validation
                                 >
                                     <v-text-field
-                                    v-model="nama"
-                                    :rules="namaRules"
+                                    v-model="name"
+                                    :rules="nameRules"
                                     label="Nama"
                                     append-icon="edit"
                                     required
@@ -135,7 +135,7 @@
   export default {
     data: () => ({
       valid: true,
-      nama: '',
+      name: '',
       email: '',
       jumlahanggota:'',
       emailRules: [
@@ -156,7 +156,7 @@
           min: v => v.length >= 8 || 'Min 8 characters',
           emailMatch: () => ('The email and password you entered don\'t match')
         },
-      namaRules: [
+      nameRules: [
         v => !!v || 'Nama harus di isi'
       ],
       jmlRules:[
@@ -195,11 +195,11 @@
           this.snackbar = true
         }
             this.loading = true
-            this.$store.dispatch('personal',{
+            this.$store.dispatch('tambahuserdonor/daftar/register',{
                 email:this.email,
                 // firstname:this.reg.firstname, 
                 // lastname:this.reg.lastname,
-                nama:this.nama ,
+                name:this.name ,
                 jenis:this.jenis,
                 tanggal:this.tanggal,
                 admin:this.admin,

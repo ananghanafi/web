@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
-const M_API = API + '/organisasi'
-const M_APII = API + '/personal'
+const M_API = API + '/listuser'
 import {normParam} from '../../../tools'
 
 const store = {
@@ -98,21 +97,7 @@ const store = {
                 return res.data
             })
             .catch(err => Promise.reject(err))
-        },    
-        register({ commit }, { email, name, jenis, tanggal, admin, password
-        
-        }) {
-
-            return axios.post(`${M_APII}`, {
-               email,name,jenis,tanggal,admin,password
-                
-            })
-                .then(res => {
-                    // commit('login', { user: res.data.user, token: res.data.token })
-                    return Promise.resolve(res.data)
-                })
-                .catch(err => Promise.reject(err))
-        },    
+        }        
     }
 }
 

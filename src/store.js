@@ -74,6 +74,7 @@ import formeditviewtable from './modules/formeditviewtable/store'
 import activitydevelopment from './modules/activitydevelopment/store'
 import tambahuserdonor from './modules/tambahuserdonor/store'
 import listorganisasi from './modules/listorganisasi/store'
+import listuser from './modules/listuser/store'
 
 const main = {
     namespaced: true,
@@ -177,6 +178,7 @@ const store = new Vuex.Store({
         activitydevelopment,
         tambahuserdonor,
         listorganisasi,
+        listuser,
     }
 })
 

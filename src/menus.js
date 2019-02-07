@@ -508,8 +508,13 @@ const menus = [
     // }, 
     {
         icon: 'today',
-        title: 'KEGIATAN DONOR',   
+        title: 'LIST KEGIATAN DONOR',   
         to : {name : 'donor_rencana'} 
+    }, 
+    {
+        icon: 'input',
+        title: 'LIST ORGANISASI',   
+        to : {name : 'listorganisasi_daftar'}
     }, 
     {
         icon: 'people_outline',
@@ -558,8 +563,8 @@ const menus = [
                   },
                   {
                     //    icon: 'local_drink',
-                       title: 'LIST ORGANISASI',
-                       to : {name : 'listorganisasi_daftar'}
+                       title: 'LIST USER',
+                       to : {name : 'listuser_daftar'}
                   },
         ]
     }, 

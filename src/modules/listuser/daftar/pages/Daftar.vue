@@ -4,7 +4,7 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                       LIST KEGIATAN DONOR
+                        DAFTAR PENGGUNA
                     </v-card-title>
                     <v-card-text class="py-0">
                         <v-container grid-list-md class="pa-0">
@@ -12,7 +12,7 @@
                                 <v-flex md2 sm6>
                                     <v-text-field
                                         append-icon="search"
-                                        label="Kode SBO"
+                                        label="Kode"
                                         single-line
                                         hide-details
                                         @input="q_code"
@@ -84,13 +84,10 @@
                                         {{ props.item.id }}
                                     </v-layout>
                                 </td>
-                                <td class="">{{ props.item.title }}</td>
-                                <td class="">{{ props.item.currency.code }}</td>
-                                <td class="">{{ props.item.implementingAgency.fullName}}</td>
-                                 <td class="">{{ props.item.amount }}</td>
-                                
-                               
-                                <td class="">{{ props.item.fundingSource.fullName }}</td>
+                                <td class="">{{ props.item.country }}</td>
+                                <td class="">{{ props.item.name }}</td>
+                                <td class="">{{ props.item.key }}</td>
+                                <td class="">{{ props.item.focal }}</td>
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>
@@ -100,11 +97,11 @@
                             <v-form v-model="props.item.valid">
                                 <v-card flat color="grey lighten-5" class="ra-0">
                                     <v-card-text class="px-5">
-                                        <v-layout row wrap>
+                                        <!-- <v-layout row wrap>
                                             <v-flex md6>
                                                 <m-labelval class="font-weight-light" label="KESATUAN HIDROLOGIS GAMBUT" val=""/>
-                                                <m-labelval label="Kode" :val="pVal(props.item.generalActivity.peatHydrologicalUnity,'code')"/>
-                                                <m-labelval label="Nama" :val="pVal(props.item.generalActivity.peatHydrologicalUnity,'name')"/>
+                                                <m-labelval label="Kode" :val="pVal(props.item.generalActivity.phu,'code')"/>
+                                                <m-labelval label="Nama" :val="pVal(props.item.generalActivity.phu,'name')"/>
                                                 <m-labelval label="" val="" class="mt-2"/>
                                                 <m-labelval class="font-weight-light" label="LOKASI KEGIATAN" val=""/>
                                                 <m-labelval label="Desa" 
@@ -161,22 +158,19 @@
                                                     </v-flex>
                                                 </v-layout>
                                             </v-flex>
-                                        </v-layout>
+                                        </v-layout> -->
                                     </v-card-text>
                                     <v-divider></v-divider>
                                     <v-card-actions class="grey lighten-2">
                                         <template>
                                             <v-spacer></v-spacer>
                                             <v-btn @click="edit(props.item)" flat color="warning darken-2">Edit/Lihat</v-btn>
-                                            <v-btn @click="updateItems(props.item)" flat color="success darken-2" 
-                                                v-if="props.item.status==null || props.item.status.id==STATUS_INIT"
-                                                :disabled="!props.item.valid">Setujui</v-btn>
                                         </template>
                                     </v-card-actions>
                                 </v-card>
                             </v-form>
                         </template>
-                    </v-data-table>
+                    </v-data-table>                
                 </v-card>
             </v-flex>
         </v-layout>
@@ -198,61 +192,46 @@ export default {
             loading: false,
             headers: [
                 {
-                    text: 'Nama',
+                    text: 'Nomor',
                     align: 'left',
                     sortable: false,
                     value: 'id'
                 },
-                { text: 'Nama', value: 'title', sortable: false},
-                { text: 'Mata Uang', value: 'currency.code', sortable: false},
-                { text: 'Implementing Agency', value: 'implementingAgency', sortable: false},
-                { text: 'Nominal.', value: 'amount', sortable: false},
-                { text: 'Sumber Anggaran', value: 'fundingSource', sortable: false },
+                { text: 'Negara', value: 'country', sortable: false},
+                { text: 'Nama Institution', value: 'name', sortable: false},
+                { text: 'Key Activities', value: 'key', sortable: false},
+                { text: 'FOCAL POINT TO BRG', value: 'focal', sortable: false},
                 { text: '',sortable : false}
             ],
-            
             items : [],
-            list_zoneType : [],
-            list_fundingSource : [],
             list_province : [],
+            list_fundingSource : [],
             list_city : [],
             list_status: [
                 {'id': 1, 'remark': 'Diajukan'},
                 {'id': 2, 'remark': 'Disetujui'},
                 ],
-            page  : {
-            },
+            page  : {},
             filter : {
                 qf_code : null,
                 qf_province_id : null,
                 qf_city_id : null,
                 qf_funding_source : null,
-                qf_zone_type : null,
                 qf_status : null,
             }
         }
-    },
-    mounted(){
-        this.load()
-        this.loadFilter()
     },
     methods: {
         q_code(val) {
             this.filter.qf_code = val ? "~" + val : null
         },
-        // load untuk kebutuhan filter by type dll dll
         loadFilter(){
             Promise.all([
-                
-                this.$store.dispatch('zoneType/get'),
+               this.$store.dispatch('administrativeArea/getTargetedProv'),
                 this.$store.dispatch('fundingSource/get'),
-
-                this.$store.dispatch('administrativeArea/getTargetedProv'),
-                 Promise.resolve([]),
-                 Promise.resolve([]),
             ])
             .then(arr=>{
-                [this.list_zoneType,this.list_fundingSource,this.list_province] = arr
+                [this.list_province,this.list_fundingSource] = arr
             })
         },
         statusCls(item){
@@ -287,7 +266,7 @@ export default {
         },
         load(pg=1){
             this.loading = true
-            this.$store.dispatch('donor/perencanaan/get',{...this.filter,page:pg})
+            this.$store.dispatch('donor/perencanaan/gett',{...this.filter,page:pg})
             .then(res=>{
                 // let index = 0
                 // ada pagging
@@ -306,38 +285,30 @@ export default {
             this.load(o.page)
         },
         edit(item){
-            this.$router.push({name:'bor_rencana_detail', params : {id : item.id}})
+            this.$router.push({name:'user_detail', params : {id : item.id}})
         },
         approve(item){
             this.$confirm(`Setujui rencana ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
             .then(()=>{
-                return this.$store.dispatch('donor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : true})
+                return this.$store.dispatch('revitalisasi/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : true})
             })            
             .then(()=>{
-                this.load()
-            })
-        },
-        updateItems(item){
-            return this.$store.dispatch('donor/perencanaan/updateItems',{
-                id:item.generalActivity.id, 
-                cost:item.generalActivity.cost, 
-                funding_source:item.generalActivity.fundingSource.id,
-                remark:item.generalActivity.remark,
-                status: STATUS_APPROVE})
-            .then(() => {
-                this.$success('Data Perencanaan berhasil disetujui')
                 this.load()
             })
         },
         reject(item){
             this.$confirmDanger(`Tolak rencana ini ?<br><strong class="text-xs-center d-block title red--text">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)
             .then(()=>{
-                return this.$store.dispatch('donor/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : false})
+                return this.$store.dispatch('revitalisasi/perencanaan/approveReject',{id:item.generalActivity.id, is_approve : false})
             })            
             .then(()=>{
                 this.load()
             })
         }
+    },
+    mounted(){
+        this.load()
+        this.loadFilter()
     },
     computed:{
         prov(){
