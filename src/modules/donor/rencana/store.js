@@ -31,6 +31,13 @@ const store = {
             })
             .catch(err => Promise.reject(err))          
         },
+        gett({},par) {
+            return axios.get(`${M_APII}${normParam(par)}`)
+            .then(res => {
+                return res.data
+            })
+            .catch(err => Promise.reject(err))          
+        },
         // eslint-disable-next-line
         show({},id) {
             return axios.get(`${M_API}/${id}`)
