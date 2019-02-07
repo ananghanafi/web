@@ -30,7 +30,7 @@
                                         required
                                         ></v-select> -->
                                         <v-autocomplete 
-                                            v-model="country" 
+                                            v-model="page.country" 
                                             chips
                                             deletable-chips
                                             small-chips
@@ -51,9 +51,10 @@
 
                                         <v-flex xs8>
                                         <v-text-field
-                                            v-model="institution"
+                                            v-model="page.name"
                                             :rules="institusiRules"
                                             :items="name"
+                                            item-value="id"
                                             label="Name of Institution"
                                             append-icon="edit"
                                             required
@@ -87,12 +88,13 @@
                                         </v-flex>
                                    <v-flex xs8>
                                     <v-autocomplete
-                                        v-model="key"
+                                        v-model="page.key"
                                         chips
                                             deletable-chips
                                             small-chips
                                             autocomplete
                                         :items="key"
+                                        item-value="id"
                                         :rules="[v => !!v || 'Mohon dipilih']"
                                         label="Name of institution"
                                         required
@@ -106,10 +108,11 @@
 
                                         <v-flex xs8>
                                         <v-text-field
-                                            v-model="focal"
+                                            v-model="page.focal"
                                             :rules="focalRules"
                                             label="Focal Point to BRG"
                                             append-icon="edit"
+                                            item-value="id"
                                             required
                                             ></v-text-field>
                                         </v-flex>
@@ -118,7 +121,7 @@
                     </v-container>
                                      
                                     <v-layout justify-center>
-                                   <v-btn color="primary" flat @click.native="createorg">SUBMIT</v-btn>
+                                   <v-btn color="primary" flat @click.native="save">SUBMIT</v-btn>
                                     </v-layout>
                                 </v-form>
                             <!-- </v-layout>
@@ -152,7 +155,26 @@
 </script>
 <script>
   export default {
-      page: {
+      
+        watch: {
+            value(v){
+                this.filename = v;
+            }
+        },
+        mounted() {
+            this.filename = this.value;
+        },
+
+       
+            
+    
+    data (){
+        return{
+        page: {
+          country: [],
+          name: [],
+          key: [],
+          focal: [],
           value: {
                 type: [Array, String]
             },
@@ -177,27 +199,14 @@
                 default: false
             }
         },
-        watch: {
-            value(v){
-                this.filename = v;
-            }
-        },
-        mounted() {
-            this.filename = this.value;
-        },
-
-       
-            
-    
-    data: () => ({
+        
       valid: true,
-      country: '',
+      
       institusi: '',
       institusi2: '',
       institusi3: '',
-      name: '',
-      key: '',
-      focal: '',
+      
+      
       projecttitle: '',
       startdate:'',
       institution: '',
@@ -462,8 +471,8 @@
       tanggal: null,
       checkbox: false,
       
-    }),
-    
+    }
+    },
     mounted(){
         this.load()
         this.loadFilter()
@@ -502,16 +511,11 @@
           this.snackbar = true
         }
       },
-      createorg(){
-            this.$store.dispatch('donor/createorg', {
-                country:country, 
-                name:name, 
-                key:key,
-                focal:focal,
-               })
+      save(){
+            this.$store.dispatch('donor/perencanaan/createorg', this.page)
             .then(()=>{
                 this.$success('Data Organisasi berhasil disimpan')
-                this.$router.push({name:'tambahuserdonor/daftar'})
+                 
             })
         },
       register(){

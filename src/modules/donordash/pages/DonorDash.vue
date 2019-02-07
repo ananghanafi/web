@@ -353,9 +353,9 @@ export default {
             .then(res=>{
                 this.baseStabilization = res.anggaran;
             })  
-            this.$store.dispatch('donordash/getPlanninginstSrengthening')
+            this.$store.dispatch('donordash/getPlanninginstStrengthening')
             .then(res=>{
-                this.instSrengthening = res.anggaran;
+                this.instStrengthening = res.anggaran;
             }) 
 
             
