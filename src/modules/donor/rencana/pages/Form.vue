@@ -111,12 +111,12 @@
                                         </v-card>
                                     </v-flex>
                                    <v-autocomplete 
-                                            v-model="page.currency" 
+                                            v-model="page.agency" 
                                             chips
                                             deletable-chips
                                             small-chips
                                             autocomplete
-                                            :items="list_institusi2"
+                                            :items="institusi2"
                                             item-text="code"
                                             item-value="id"
                                             label="Name of Instituion"
@@ -240,6 +240,43 @@
 export default {
     data() {
         return {
+            agency: [],
+            institusi2: '',
+            institusi2: null,
+            institusi2:[
+          'Kingdom of Norway',
+          'DFID UK Climate Change Unit Indonesia  (UKCCU)',
+          'Japan',
+          'Millenium Challenge Corporation',
+          'Norway',
+          'French Government (shareholder) ; financial markets (loans) ; delegated funds (grants)',
+          'Department of Foreign Affairs and Trade (DFAT)',
+          'Climate Works Foundation',
+          'Ford Foundation',
+          'Packard Foundation',
+          'Good Energies Foundation',
+          'UKCCU ',
+          'Government of Norway/Embassy of Norway',
+          'World Economic Forum',
+          'Embassy of the Kingdom of the Netherlands',
+          'APP Group ',
+          'Global Affairs Canada ',
+          'Climate and Land Use Alliance (CLUA)',
+        'USAID (United States Agency for International Development)',
+        'MCA-I',
+        'Republic of South Korea',
+        'Ministry of Foreign Affairs of Denmark',
+        'EC (European Commission)',
+        'Federal Ministry for Economic Cooperation and Development (grant)',
+        'WWF Network',
+        'EMM',
+        'Walhi Jambi, Scale Up, UNDP, EMM, SAFIR, Madani',
+        'UNDP, TFCa, MCA, Belantara, IDH (Inisiasi Dagang Hijau), ICCTF (for on going project only ICCTF and Belantara)',
+        'European Union, International Fund for Agricultural Development (IFAD), Global Environment Facility (GEF) through IFAD',
+        'Royal Norwegian Embassy ',
+        'Kingdom of Denmark & Norway',
+
+      ],
             page: {
                 administrativeArea: {
                     province: {

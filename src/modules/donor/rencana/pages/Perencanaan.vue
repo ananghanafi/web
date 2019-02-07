@@ -4,7 +4,7 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        PERENCANAAN KONSTRUKSI SUMUR BOR
+                       LIST KEGIATAN DONOR
                     </v-card-title>
                     <v-card-text class="py-0">
                         <v-container grid-list-md class="pa-0">
@@ -81,14 +81,15 @@
                                 <td>
                                     <v-layout row>
                                         <div :class="statusCls(props.item)" class="mr-1" style="width: 5px;"></div>
-                                        {{ props.item.generalActivity.name }}
+                                        {{ props.item.id }}
                                     </v-layout>
                                 </td>
-                                <td class="">{{ props.item.generalActivity.code }}</td>
-                                <td class="">{{ props.item.generalActivity.administrativeArea.province.longName }}</td>
-                                <td class="">{{ props.item.generalActivity.administrativeArea.city.shortName }}</td>
-                                <td class="text-xs-right">{{ props.item.generalActivity.cost | toC }}</td>
-                                <td class="">{{ props.item.generalActivity.fundingSource ? props.item.generalActivity.fundingSource.remark : '-'}}</td>
+                                <td class="">{{ props.item.title }}</td>
+                                <td class="">{{ props.item.currency }}</td>
+                                 <td class="">{{ props.item.amount }}</td>
+                                <td class="">{{ props.item.implementingAgency }}</td>
+                               
+                                <td class="">{{ props.item.fundingSource }}</td>
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>
@@ -199,15 +200,15 @@ export default {
                     text: 'Nama',
                     align: 'left',
                     sortable: false,
-                    value: 'generalActivity.name'
+                    value: 'id'
                 },
-                { text: 'Kode', value: 'generalActivity.code', sortable: false},
-                { text: 'Provinsi', value: 'generalActivity.administrativeArea.province.longName', sortable: false},
-                { text: 'Kota/Kab.', value: 'generalActivity.administrativeArea.city.shortName', sortable: false},
-                { text: 'Anggaran', value: 'generalActivity.cost', sortable: false },
-                { text: 'Sumber Anggaran', value: 'generalActivity.fundingSource.id', sortable: false },
+                { text: 'Mata Uang', value: 'currency', sortable: false},
+                { text: 'Implementing Agency', value: 'implementingAgency', sortable: false},
+                { text: 'Nominal.', value: 'amount', sortable: false},
+                { text: 'Sumber Anggaran', value: 'fundingSource', sortable: false },
                 { text: '',sortable : false}
             ],
+            
             items : [],
             list_zoneType : [],
             list_fundingSource : [],
@@ -217,7 +218,8 @@ export default {
                 {'id': 1, 'remark': 'Diajukan'},
                 {'id': 2, 'remark': 'Disetujui'},
                 ],
-            page  : {},
+            page  : {
+            },
             filter : {
                 qf_code : null,
                 qf_province_id : null,
@@ -290,7 +292,7 @@ export default {
                 // console.log(res.data)
                 this.page = res
                 // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
-                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].generalActivity.id})) : []
+                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
                 
                 // console.log(this.items)
                 this.loading = false
