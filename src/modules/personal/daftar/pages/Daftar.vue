@@ -133,7 +133,8 @@
 </script>
 <script>
   export default {
-    data: () => ({
+    data(){
+        return{
       valid: true,
       nama: '',
       email: '',
@@ -181,8 +182,8 @@
       tanggal: null,
       checkbox: false,
       
-    }),
-    
+    }
+    },
 
     methods: {
       validate () {

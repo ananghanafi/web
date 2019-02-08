@@ -3,6 +3,7 @@ import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
 const M_API = API + '/personal'
 const lc = window.localStorage
 const TOKEN = 'prims'
+import {normParam} from '../../../tools'
 
 const store = {
     namespaced: true,
@@ -34,12 +35,12 @@ const store = {
         }
     },
     actions: {
-        register({ commit }, { email, nama, jenis, tanggal, admin, password
+        register({ commit }, { email, name, jenis, tanggal, admin, password
         
         }) {
 
             return axios.post(M_API + '/personal', {
-               email,nama,jenis,tanggal,admin,password,password2
+               email,name,jenis,tanggal,admin,password,password2
                 
             })
                 .then(res => {
@@ -47,7 +48,14 @@ const store = {
                     return Promise.resolve(res.data)
                 })
                 .catch(err => Promise.reject(err))
-        },       
+        },   
+        gett({},par) {
+            return axios.get(`${M_API}${normParam(par)}`)
+            .then(res => {
+                return res.data
+            })
+            .catch(err => Promise.reject(err))          
+        },    
     }
 }
 

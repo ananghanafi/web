@@ -84,10 +84,12 @@
                                         {{ props.item.id }}
                                     </v-layout>
                                 </td>
-                                <td class="">{{ props.item.country }}</td>
                                 <td class="">{{ props.item.name }}</td>
-                                <td class="">{{ props.item.key }}</td>
-                                <td class="">{{ props.item.focal }}</td>
+                                <td class="">{{ props.item.email }}</td>
+                                <td class="">{{ props.item.jenis }}</td>
+                                <td class="">{{ props.item.jmlanggota }}</td>
+                                 <td class="">{{ props.item.admin }}</td>
+
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>
@@ -197,10 +199,11 @@ export default {
                     sortable: false,
                     value: 'id'
                 },
-                { text: 'Negara', value: 'country', sortable: false},
-                { text: 'Nama Institution', value: 'name', sortable: false},
-                { text: 'Key Activities', value: 'key', sortable: false},
-                { text: 'FOCAL POINT TO BRG', value: 'focal', sortable: false},
+                { text: 'Name', value: 'name', sortable: false},
+                { text: 'Email', value: 'email', sortable: false},
+                { text: 'Jenis Kegiatan', value: 'jenis', sortable: false},
+                { text: 'Jumlah Anggota', value: 'jmlanggota', sortable: false},
+                 { text: 'Admin', value: 'admin', sortable: false},
                 { text: '',sortable : false}
             ],
             items : [],
@@ -266,7 +269,7 @@ export default {
         },
         load(pg=1){
             this.loading = true
-            this.$store.dispatch('donor/perencanaan/gett',{...this.filter,page:pg})
+            this.$store.dispatch('listuser/daftar/gett',{...this.filter,page:pg})
             .then(res=>{
                 // let index = 0
                 // ada pagging

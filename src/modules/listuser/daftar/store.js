@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
 const M_API = API + '/listuser'
+const M_APII = API + '/personal'
 import {normParam} from '../../../tools'
 
 const store = {
@@ -15,6 +16,13 @@ const store = {
         // eslint-disable-next-line
         get({},par) {
             return axios.get(`${M_API}${normParam(par)}`)
+            .then(res => {
+                return res.data
+            })
+            .catch(err => Promise.reject(err))          
+        },
+        gett({},par) {
+            return axios.get(`${M_APII}${normParam(par)}`)
             .then(res => {
                 return res.data
             })

@@ -4,13 +4,17 @@ const M_API = API + '/organisasi'
 const M_APII = API + '/personal'
 import {normParam} from '../../../tools'
 
+
 const store = {
     namespaced: true,
     state: {
+        
     },
     getters: {
+        
     },
     mutations: {
+        
     },
     actions: {
         // eslint-disable-next-line
@@ -99,13 +103,12 @@ const store = {
             })
             .catch(err => Promise.reject(err))
         },    
-        register({ commit }, { email, name, jenis, tanggal, admin, password
+        register({ commit }, { email, name, jenis, tanggal, admin, password,jmlanggota
         
         }) {
 
-            return axios.post(`${M_APII}`, {
-               email,name,jenis,tanggal,admin,password
-                
+            return axios.post(`${M_APII}` , { email, name, jenis, tanggal, admin, password,jmlanggota
+        
             })
                 .then(res => {
                     // commit('login', { user: res.data.user, token: res.data.token })

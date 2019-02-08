@@ -201,16 +201,12 @@
         },
         
       valid: true,
-      
       institusi: '',
       institusi2: '',
       institusi3: '',
-      
-      
       projecttitle: '',
       startdate:'',
       institution: '',
-
       email: '',
       jumlahanggota:'',
       filename: "",

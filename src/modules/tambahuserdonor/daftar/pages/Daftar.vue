@@ -23,6 +23,7 @@
                                     label="Nama"
                                     append-icon="edit"
                                     required
+                                    
                                     ></v-text-field>
 
                                     <v-text-field
@@ -31,6 +32,7 @@
                                     label="E-mail"
                                     append-icon="mail"
                                     required
+                                    
                                     ></v-text-field>
 
                                     <v-select
@@ -50,11 +52,12 @@
                                         </v-date-picker>
                                     </v-menu>
                                     <v-text-field
-                                    v-model="jumlahanggota"
+                                    v-model="jmlanggota"
                                     label="Jumlah Anggota"
                                     :rules="jmlRules"
                                     required                                    
                                     append-icon="edit"
+                                    
                                     ></v-text-field>
   
                                     <v-select
@@ -63,34 +66,38 @@
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Admin"
                                     required
+                                   
                                     ></v-select>
                                   <v-text-field
                                         v-model="password"
                                         :append-icon="show1 ? 'visibility_off' : 'visibility'"
                                         :rules="[rules.required, rules.min]"
                                         :type="show1 ? 'text' : 'password'"
-                                        name="input-10-1"
+                                       
                                         label="Kata Sandi"
                                         hint="At least 8 characters"
                                         counter
                                         @click:append="show1 = !show1"
+                                    
                                     ></v-text-field>
                                   <v-text-field
                                         v-model="password2"
                                         :append-icon="show2 ? 'visibility_off' : 'visibility'"
                                         :rules="[rules.required, rules.min]"
                                         :type="show2 ? 'text' : 'password'"
-                                        name="input-10-1"
+                                       
                                         label="Konfirmasi Kata Sandi"
                                         hint="At least 8 characters"
                                         counter
                                         @click:append="show2 = !show2"
+                                        
                                     ></v-text-field>
                                     <v-checkbox
                                     v-model="checkbox"
                                     :rules="[v => !!v || 'Centang baru lanjut']"
                                     label="Apakah kamu menyetujuinya?"
                                     required
+                                    
                                     ></v-checkbox>
                                     <v-layout justify-center>
                                     <v-btn large="true"
@@ -133,19 +140,31 @@
 </script>
 <script>
   export default {
-    data: () => ({
+    data(){
+        return{
+    value: {
+                type: String,
+            },
+    label: {
+                type: String,
+                default: "Please choose..."
+            },
+    required: {
+                type: Boolean,
+                default: false
+            },
       valid: true,
       name: '',
       email: '',
-      jumlahanggota:'',
+      jmlanggota:'',
       emailRules: [
         v => !!v || 'Email harus di isi',
         v => /.+@.+/.test(v) || 'E-mail harus valid'
       ],
         show1: false,
         show2: false,
-        password: null,
-        password2:null,
+        password: '',
+        password2: '',
         rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
@@ -181,7 +200,8 @@
       tanggal: null,
       checkbox: false,
       
-    }),
+    }
+    },
     
 
     methods: {
@@ -203,6 +223,7 @@
                 jenis:this.jenis,
                 tanggal:this.tanggal,
                 admin:this.admin,
+                jmlanggota:this.jmlanggota,
                 password:this.password, 
                 password2:this.password2
             })
