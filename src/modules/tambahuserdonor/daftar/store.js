@@ -103,13 +103,9 @@ const store = {
             })
             .catch(err => Promise.reject(err))
         },    
-        register({ commit }, { email, name, jenis, tanggal, admin, password,jmlanggota
-        
-        }) {
+        register({ commit }, {id, name, email, jenis, tanggal, jmlanggota ,admin, password}) {
 
-            return axios.post(`${M_APII}` , { email, name, jenis, tanggal, admin, password,jmlanggota
-        
-            })
+            return axios.post(`${M_APII}` , {id, name, email, jenis, tanggal, jmlanggota ,admin, password})
                 .then(res => {
                     // commit('login', { user: res.data.user, token: res.data.token })
                     return Promise.resolve(res.data)

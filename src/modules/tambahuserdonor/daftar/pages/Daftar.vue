@@ -23,7 +23,7 @@
                                     label="Nama"
                                     append-icon="edit"
                                     required
-                                    
+                                    :value="name"
                                     ></v-text-field>
 
                                     <v-text-field
@@ -32,7 +32,7 @@
                                     label="E-mail"
                                     append-icon="mail"
                                     required
-                                    
+                                    :value="email"
                                     ></v-text-field>
 
                                     <v-select
@@ -57,7 +57,7 @@
                                     :rules="jmlRules"
                                     required                                    
                                     append-icon="edit"
-                                    
+                                    :value="jmlanggota"
                                     ></v-text-field>
   
                                     <v-select
@@ -66,14 +66,15 @@
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Admin"
                                     required
-                                   
+                                    
                                     ></v-select>
                                   <v-text-field
                                         v-model="password"
                                         :append-icon="show1 ? 'visibility_off' : 'visibility'"
                                         :rules="[rules.required, rules.min]"
                                         :type="show1 ? 'text' : 'password'"
-                                       
+                                        :value="password"
+
                                         label="Kata Sandi"
                                         hint="At least 8 characters"
                                         counter
@@ -85,7 +86,8 @@
                                         :append-icon="show2 ? 'visibility_off' : 'visibility'"
                                         :rules="[rules.required, rules.min]"
                                         :type="show2 ? 'text' : 'password'"
-                                       
+                                        :value="password2"
+
                                         label="Konfirmasi Kata Sandi"
                                         hint="At least 8 characters"
                                         counter
@@ -100,11 +102,7 @@
                                     
                                     ></v-checkbox>
                                     <v-layout justify-center>
-                                    <v-btn large="true"
-                                    :disabled="!valid"
-                                    color="success"
-                                    @click="register"
-                                    >
+                                    <v-btn large="true" :disabled="!valid" color="success" @click="register">
                                     Submit
                                     </v-btn>
                                     </v-layout>
@@ -154,17 +152,17 @@
                 default: false
             },
       valid: true,
-      name: '',
-      email: '',
-      jmlanggota:'',
+      name: [""],
+      email: [""],
+      jmlanggota: [""],
       emailRules: [
         v => !!v || 'Email harus di isi',
         v => /.+@.+/.test(v) || 'E-mail harus valid'
       ],
         show1: false,
         show2: false,
-        password: '',
-        password2: '',
+        password: [""],
+        password2: [""],
         rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
@@ -216,14 +214,15 @@
         }
             this.loading = true
             this.$store.dispatch('tambahuserdonor/daftar/register',{
+                id:this.id ,
+                name:this.name ,
                 email:this.email,
                 // firstname:this.reg.firstname, 
                 // lastname:this.reg.lastname,
-                name:this.name ,
                 jenis:this.jenis,
                 tanggal:this.tanggal,
-                admin:this.admin,
                 jmlanggota:this.jmlanggota,
+                admin:this.admin,
                 password:this.password, 
                 password2:this.password2
             })
