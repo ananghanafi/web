@@ -152,9 +152,9 @@
                 default: false
             },
       valid: true,
-      name: [""],
-      email: [""],
-      jmlanggota: [""],
+      name: "",
+      email: "",
+      jmlanggota: "",
       emailRules: [
         v => !!v || 'Email harus di isi',
         v => /.+@.+/.test(v) || 'E-mail harus valid'
