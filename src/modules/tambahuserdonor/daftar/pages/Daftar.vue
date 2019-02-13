@@ -35,14 +35,26 @@
                                     :value="email"
                                     ></v-text-field>
 
-                                    <v-select
+                                    <!-- <v-select
                                     v-model="select1"
-                                    :items="jenis"
+                                    :items=(jenis)
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Jenis"
                                     required
                                     
-                                    ></v-select>
+                                    ></v-select> -->
+                                     <v-autocomplete 
+                                            v-model="select1" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="jenis"
+                                            item-text="code"
+                                            item-value="id"
+                                            label="Jenis"
+                                            return-object
+                                        ></v-autocomplete>
                                     <v-menu full-width="true">
                                         <v-text-field :value="tanggal" slot="activator" label="Tanggal" append-icon="date_range">
 
@@ -60,14 +72,26 @@
                                     :value="jmlanggota"
                                     ></v-text-field>
   
-                                    <v-select
+                                    <!-- <v-select
                                     v-model="select2"
                                     :items="admin"
                                     :rules="[v => !!v || 'Mohon dipilih']"
                                     label="Admin"
                                     required
                                     
-                                    ></v-select>
+                                    ></v-select> -->
+                                     <v-autocomplete 
+                                            v-model="select2" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="admin"
+                                            item-text="code"
+                                            item-value="id"
+                                            label="admin"
+                                            return-object
+                                        ></v-autocomplete>
                                   <v-text-field
                                         v-model="password"
                                         :append-icon="show1 ? 'visibility_off' : 'visibility'"
@@ -138,19 +162,9 @@
 </script>
 <script>
   export default {
-    data(){
+    data() {
         return{
-    value: {
-                type: String,
-            },
-    label: {
-                type: String,
-                default: "Please choose..."
-            },
-    required: {
-                type: Boolean,
-                default: false
-            },
+      
       valid: true,
       name: "",
       email: "",
@@ -161,8 +175,8 @@
       ],
         show1: false,
         show2: false,
-        password: [""],
-        password2: [""],
+        password: "",
+        password2: "",
         rules: {
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
@@ -179,21 +193,19 @@
       jmlRules:[
         v => !!v || 'Jumlah anggota harus di isi, jika tidak kasih 0'
       ],
-      select1: null,
+      select1: {
+                type: [String]
+            },
       jenis: [
-        'Lembaga',
-        'Instansi',
-        'Universitas',
-        'Organisasi',
-        'Institusi'
+        'Lembaga', 'Instansi', 'Universitas', 'Organisasi','Institusi'
       ],
       select2: null,
-      admin:[
+      admin: (
           'Provinsi',
           'Kabupaten/Kota',
           'Kecamatan',
           'Kelurahan'
-      ],
+      ),
 
       tanggal: null,
       checkbox: false,
