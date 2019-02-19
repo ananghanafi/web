@@ -50,7 +50,7 @@
                                             small-chips
                                             autocomplete
                                             :items="jenis"
-                                            item-text="code"
+                                            item-text="jenisId"
                                             item-value="id"
                                             label="Jenis"
                                             return-object
@@ -87,7 +87,7 @@
                                             small-chips
                                             autocomplete
                                             :items="admin"
-                                            item-text="code"
+                                            item-text="adminId"
                                             item-value="id"
                                             label="admin"
                                             return-object
@@ -165,56 +165,76 @@
     data() {
         return{
       
-      valid: true,
-      name: "",
-      email: "",
-      jmlanggota: "",
-      emailRules: [
-        v => !!v || 'Email harus di isi',
-        v => /.+@.+/.test(v) || 'E-mail harus valid'
-      ],
-        show1: false,
-        show2: false,
-        password: "",
-        password2: "",
-        rules: {
-          required: value => !!value || 'Required.',
-          min: v => v.length >= 8 || 'Min 8 characters',
-          emailMatch: () => ('The email and password you entered don\'t match')
-        },
-        rules2: {
-          required: value => !!value || 'Required.',
-          min: v => v.length >= 8 || 'Min 8 characters',
-          emailMatch: () => ('The email and password you entered don\'t match')
-        },
-      nameRules: [
-        v => !!v || 'Nama harus di isi'
-      ],
-      jmlRules:[
-        v => !!v || 'Jumlah anggota harus di isi, jika tidak kasih 0'
-      ],
-      select1: {
-                type: [String]
+            valid: true,
+            name: '',
+            email: '',
+            jmlanggota: '',
+            admin: '',
+            jenis: '',
+            emailRules: [
+              v => !!v || 'Email harus di isi',
+              v => /.+@.+/.test(v) || 'E-mail harus valid'
+            ],
+            show1: false,
+            show2: false,
+            password: "",
+            password2: "",
+            rules: {
+              required: value => !!value || 'Required.',
+              min: v => v.length >= 8 || 'Min 8 characters',
+              emailMatch: () => ('The email and password you entered don\'t match')
             },
-      jenis: [
-        'Lembaga', 'Instansi', 'Universitas', 'Organisasi','Institusi'
-      ],
-      select2: null,
-      admin: (
-          'Provinsi',
-          'Kabupaten/Kota',
-          'Kecamatan',
-          'Kelurahan'
-      ),
+            rules2: {
+              required: value => !!value || 'Required.',
+              min: v => v.length >= 8 || 'Min 8 characters',
+              emailMatch: () => ('The email and password you entered don\'t match')
+            },
+            nameRules: [
+              v => !!v || 'Nama harus di isi'
+            ],
+            jmlRules:[
+              v => !!v || 'Jumlah anggota harus di isi, jika tidak kasih 0'
+            ],
+            select1: null,
+            jenis:[],
+            // jenis: (
+              
+            //   'Lembaga', 'Instansi', 'Universitas', 'Organisasi','Institusi'
+            // ),
+            select2: null,
+            admin:[],
+            // admin: (
+        
+            //     'Provinsi',
+            //      'Kabupaten/Kota',
+            //      'Kecamatan',
+            //       'Kelurahan'
+            // ),
 
-      tanggal: null,
-      checkbox: false,
+            tanggal: null,
+            checkbox: false,
       
-    }
+        }
     },
     
-
+    mounted(){
+        this.loadChoice()
+    },
     methods: {
+       loadChoice(){
+            return Promise.all([
+                this.$store.dispatch('tambahuserdonor/daftar/get'),
+                this.$store.dispatch('tambahuserdonor/daftar/gett'),
+                
+                 Promise.resolve([]),
+                Promise.resolve([]),
+            ])
+             .then(([a, b])=>{
+                this.jenis = a
+                this.admin = b
+               
+            })
+           },
       validate () {
         if (this.$refs.form.validate()) {
           this.snackbar = true
