@@ -44,12 +44,12 @@
                                     
                                     ></v-select> -->
                                      <v-autocomplete 
-                                            v-model="select1" 
+                                            v-model="jenis" 
                                             chips
                                             deletable-chips
                                             small-chips
                                             autocomplete
-                                            :items="jenis"
+                                            :items="list_jenis"
                                             item-text="jenisId"
                                             item-value="id"
                                             label="Jenis"
@@ -81,12 +81,12 @@
                                     
                                     ></v-select> -->
                                      <v-autocomplete 
-                                            v-model="select2" 
+                                            v-model="admin" 
                                             chips
                                             deletable-chips
                                             small-chips
                                             autocomplete
-                                            :items="admin"
+                                            :items="list_admin"
                                             item-text="adminId"
                                             item-value="id"
                                             label="admin"
@@ -177,8 +177,8 @@
             ],
             show1: false,
             show2: false,
-            password: "",
-            password2: "",
+            password: '',
+            password2: '',
             rules: {
               required: value => !!value || 'Required.',
               min: v => v.length >= 8 || 'Min 8 characters',
@@ -195,14 +195,14 @@
             jmlRules:[
               v => !!v || 'Jumlah anggota harus di isi, jika tidak kasih 0'
             ],
-            select1: null,
-            jenis:[],
+            jenis: null,
+            list_jenis:[],
             // jenis: (
               
             //   'Lembaga', 'Instansi', 'Universitas', 'Organisasi','Institusi'
             // ),
-            select2: null,
-            admin:[],
+            admin: null,
+            list_jenis:[],
             // admin: (
         
             //     'Provinsi',
@@ -230,11 +230,11 @@
                 Promise.resolve([]),
             ])
              .then(([a, b])=>{
-                this.jenis = a
-                this.admin = b
+                this.list_jenis = a
+                this.list_admin = b
                
             })
-           },
+        },
       validate () {
         if (this.$refs.form.validate()) {
           this.snackbar = true
@@ -258,24 +258,29 @@
                 password:this.password, 
                 password2:this.password2
             })
-            // .then((res)=>{
-            //     this.reg.email = ''
-            //     this.reg.firstname = ''
-            //     this.reg.lastname = ''
-            //     this.reg.password = ''
-            //     this.reg.confirm_password = ''
+            .then((res)=>{
+                id:this.id =''
+                this.name=''
+                this.email=''
+                // firstname:this.reg.firstname, 
+                // lastname:this.reg.lastname,
+                this.jenis=''
+                this.tanggal=''
+                this.jmlanggota=''
+               this.admin=''
+                this.password='' 
 
-            //     this.loading = false
-            //     this.register_ok = res
-            //     // this.$router.push({name:'home'})
-            //     // eslint-disable-next-line
-            //     // console.log(res)
-            // })
-            // .catch(()=>{
-            //     this.loading = false
-            // })
+               this.loading = false
+                // this.register_ok = res
+                // this.$router.push({name:'home'})
+                // eslint-disable-next-line
+                // console.log(res)
+            })
+            .catch(()=>{
+                this.loading = false
+            })
 
-        }
+        },
     }
    
   }
