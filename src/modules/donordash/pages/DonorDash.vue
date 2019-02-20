@@ -9,17 +9,17 @@
                 <m-widget title="Monitoring Donor Mapping">
                 <v-layout row wrap>
                     <v-container class="pa-0" fluid fill-height>
-        <v-layout>
-            <v-flex xs12>
-                <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
-                    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-                    <!-- <v-marker-cluster :options="clusterOptions">
-                        <v-geo-json v-for="geoJson in features" :key="geoJson.kegiatan" :geojson="geoJson" :options="geoJsonOptions"></v-geo-json>
-                    </v-marker-cluster> -->
-                </l-map>
-            </v-flex>
-        </v-layout>
-</v-container>
+                        <v-layout>
+                            <v-flex xs12>
+                                <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
+                                    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                                    <!-- <v-marker-cluster :options="clusterOptions">
+                                        <v-geo-json v-for="geoJson in features" :key="geoJson.kegiatan" :geojson="geoJson" :options="geoJsonOptions"></v-geo-json>
+                                    </v-marker-cluster> -->
+                                </l-map>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
                     <v-flex xs6>
                         <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
                             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
@@ -32,18 +32,29 @@
                     <v-flex xs6>
                         
                         <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" >
-                                                       
+
+                             <v-data-table
+                                :hide-headers="true"
+                                :items="items"
+                                class="elevation-1"
+                                :rows-per-page-items="[5]"
+                            >
+                                <template slot="items" slot-scope="props">
+                                    <td class="">{{ props.item.name }}</td>
+                                    <td class="">{{ props.item.value }}</td>
+                                </template>
+                             </v-data-table>              
                               
-                            <v-card flat color="grey lighten-5" class="ra-0"> 
+                            <!-- <v-card flat color="grey lighten-5" class="ra-0">  -->
 
                                    
-                                    <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
+                                    <!-- <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
                                                           
                                     
                                     <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-center" />
-                                    
+                                     -->
                                     <!-- <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" /> -->
-                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " val="" />   
+                                    <!-- <m-labelval label="3.Socioeconomic Revitalization of the Community  " val="" />   
                                     <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
                                      <v-divider></v-divider>   
                                     <m-labelval label="5.Policy and Institutional Strengthening" :val="instSrengthening" />
@@ -54,9 +65,9 @@
                                     <v-divider></v-divider>  
                                     <m-labelval label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" />
                                      <v-divider></v-divider>  
-                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
+                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" /> -->
                                  
-                            </v-card>
+                            <!-- </v-card> -->
                                  
                         </m-widget>
                     </v-flex>
@@ -212,28 +223,33 @@ export default {
                 qf_province_id : null,
                 qf_code : null,
             },
-            headers: [{
-                text: 'kegiatan',
-                align: 'left',
-                sortable: false,
-                value: 'name'
+            // headers: [
+            //     { text: 'Name', value: 'name', sortable: false},
+            //     { text: 'Value', value: 'value', sortable: false},
+            //  ],
+             items : [],
+        //     headers: [{
+        //         text: 'kegiatan',
+        //         align: 'left',
+        //         sortable: false,
+        //         value: 'name'
 
-            },
-            {
-                text: 'total',
-                align: 'left',
-                sortable: false,
-                value: 'nilai'
+        //     },
+        //     {
+        //         text: 'total',
+        //         align: 'left',
+        //         sortable: false,
+        //         value: 'nilai'
                 
-            }],
-           harga: [{
-                name: 'peatland',
-                value: 'peatlandrewetting'
+        //     }],
+        //    harga: [{
+        //         name: 'peatland',
+        //         value: 'peatlandrewetting'
 
-            },
+        //     },
             // {   name:'revegetasi', value:'revegetasi'
             // },
-            ]
+            // ]
         }
     },
     mounted(){
@@ -367,7 +383,7 @@ export default {
             .then(res=>{
                 this.actifRoles = res.anggaran;
             })
-                         this.$store.dispatch('donordash/getPlanningpeatlandRestoration')
+            this.$store.dispatch('donordash/getPlanningpeatlandRestoration')
             .then(res=>{
                 this.peatlandRestoration = res.anggaran;
             })      
@@ -375,7 +391,13 @@ export default {
             .then(res=>{
                 this.adminstrartionManagement = res.anggaran;
             })
-
+            this.$store.dispatch('donordash/getKhg')
+            .then(res=>{
+                // this.options.series[0].data = res ? Object.values(res) : []
+                // this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
+                this.items[0].data = res ? Object.values(res) : []
+            })
+            .catch(()=>this.loading=false)
             this.$store.dispatch('perencanaan/getPlanningAction')
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []
@@ -389,7 +411,23 @@ export default {
             .then(arr=>{
                 [this.list_province,this.list_phu] = arr
             })
-        },
+        }
+        // load(pg=1){
+        //     this.loading = true
+        //     this.$store.dispatch('donordash/getKhg',{...this.filter,page:pg})
+        //     .then(res=>{
+        //         // let index = 0
+        //         // ada pagging
+        //         // console.log(res.data)
+        //         this.page = res
+        //         // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
+        //         this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
+                
+        //         // console.log(this.items)
+        //         this.loading = false
+        //     })
+        //     .catch(()=>this.loading=false)
+        // },
     }
 }
 </script>

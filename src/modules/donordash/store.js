@@ -13,6 +13,13 @@ const store = {
     },
     actions: {
         // eslint-disable-next-line
+        getKhg({}){
+            return axios.get(`${M_API}/costByActivity`)
+            .then(res => {
+                return res.data
+            })
+            .catch(err => Promise.reject(err))
+        },
         getAnggaran({ }){
             return axios.get(`${M_API}/anggaran`)
             .then(res => {
