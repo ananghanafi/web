@@ -53,7 +53,6 @@
                                             item-text="jenisId"
                                             item-value="id"
                                             label="Jenis"
-                                            return-object
                                         ></v-autocomplete>
                                     <v-menu full-width="true">
                                         <v-text-field :value="tanggal" slot="activator" label="Tanggal" append-icon="date_range">
@@ -90,7 +89,6 @@
                                             item-text="adminId"
                                             item-value="id"
                                             label="admin"
-                                            return-object
                                         ></v-autocomplete>
                                   <v-text-field
                                         v-model="password"
