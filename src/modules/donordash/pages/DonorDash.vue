@@ -1,11 +1,11 @@
 <template>
     <v-container grid-list-lg fill-height>
-        <v-layout row wrap fill-height >
+        <v-layout row wrap>
             <v-flex md12>
                 DASHBOARD DONOR
             </v-flex>
            
-            <v-flex xl8>
+            <v-flex xs12>
                 <m-widget title="Monitoring Donor Mapping">
                 <v-layout row wrap>
                     <v-container class="pa-0" fluid fill-height>
