@@ -78,7 +78,7 @@
                                     <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" />
                                     <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
                                      <v-divider></v-divider>   
-                                    <m-labelval label="5.Policy and Institutional Strengthening" :val="instSrengthening" />
+                                    <m-labelval label="5.Policy and Institutional Strengthening" :val="instStrengthening" />
                                      <v-divider></v-divider>   
                                     <m-labelval label="6.International Cooperation Improvement" :val="coopImprove" />
                                      <v-divider></v-divider>  
