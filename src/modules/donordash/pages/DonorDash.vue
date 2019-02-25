@@ -1,16 +1,17 @@
 <template>
     <v-container grid-list-lg fill-height>
-        <v-layout row wrap>
-            <v-flex md12>
+        <v-layout row wrap fill-height >
+            <!-- <v-flex md12>
                 DASHBOARD DONOR
-            </v-flex>
+            </v-flex> -->
            
-            <v-flex xs12>
-                <m-widget title="Monitoring Donor Mapping">
+            <v-flex xl8>
+                <!-- <m-widget title="Monitoring Donor Mapping"> -->
                 <v-layout row wrap>
                     <v-container class="pa-0" fluid fill-height>
                         <v-layout>
                             <v-flex xs12>
+ 
                                 <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
                                     <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                                     <!-- <v-marker-cluster :options="clusterOptions">
@@ -21,6 +22,10 @@
                         </v-layout>
                     </v-container>
                     <v-flex xs6>
+                        <!-- <h3>   <span>SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3> -->
+                        <v-card-title primary-title class="blue-grey text-xs-center">
+                        <h3>   <span class="white--text">Monitoring Donor Mapping</span></h3>
+                        </v-card-title>  
                         <l-map ref="map" :zoom="zoom" :center="center" style="z-index:1">
                             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
                             <!-- <v-marker-cluster :options="clusterOptions">
@@ -31,30 +36,46 @@
                     
                     <v-flex xs6>
                         
-                        <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" >
-
+                        <!-- <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" > -->
+<!-- 
                              <v-data-table
                                 :hide-headers="true"
                                 :items="items"
                                 class="elevation-1"
                                 :rows-per-page-items="[5]"
                             >
-                                <template slot="items" slot-scope="props">
-                                    <td class="">{{ props.item.name }}</td>
-                                    <td class="">{{ props.item.value }}</td>
-                                </template>
-                             </v-data-table>              
+                                <template slot="items" slot-scope="props"> -->
+                                    
+                                <!-- <template > -->
+                                    <!-- <td class="">{{ props.item.name }}</td>
+                                    <td class="">{{ props.item.value }}</td> -->
+                                     <!-- <td class="">sf</td>
+                                    <td class="">fdf</td> -->
+                                     <!-- <tr>
+                                        <td>Jill</td>
+                                        <td>Smith</td>
+                                        <td>50</td>
+                                    </tr>
+                                     <tr>
+                                        <td>Jill</td>
+                                        <td>Smith</td>
+                                        <td>50</td>
+                                    </tr> -->
+                                <!-- </template>
+                             </v-data-table>               -->
                               
-                            <!-- <v-card flat color="grey lighten-5" class="ra-0">  -->
-
+                            <v-card flat color="grey lighten-5" class="ra-0"> 
+                                <!-- <v-card class="blue-grey text-xs-center">        -->
+                                    <v-card-title primary-title class="blue-grey text-xs-center">
+                                    <h3>   <span class="white--text">SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3>
+                                    </v-card-title>    
                                    
-                                    <!-- <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
+                                    <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
                                                           
                                     
                                     <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-center" />
-                                     -->
-                                    <!-- <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" /> -->
-                                    <!-- <m-labelval label="3.Socioeconomic Revitalization of the Community  " val="" />   
+                                    
+                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" />
                                     <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
                                      <v-divider></v-divider>   
                                     <m-labelval label="5.Policy and Institutional Strengthening" :val="instSrengthening" />
@@ -65,14 +86,20 @@
                                     <v-divider></v-divider>  
                                     <m-labelval label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" />
                                      <v-divider></v-divider>  
-                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" /> -->
+                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
                                  
-                            <!-- </v-card> -->
+                            </v-card>
                                  
-                        </m-widget>
+                        <!-- </m-widget> -->
                     </v-flex>
                 </v-layout>
-                </m-widget>
+                <!-- </m-widget> -->
+            </v-flex>
+            <v-flex md12 xs12>  
+               ''
+            </v-flex>
+            <v-flex md12 xs12>  
+                ''
             </v-flex>
             <v-flex md12 xs12>
                 <v-layout row wrap>
@@ -115,10 +142,15 @@
                         </m-widget>
                     </v-flex>
 
-                    <v-flex xs4>                        
-                        <m-widget title="% PEMBIAYAAN BERDASARKAN KEGIATAN">
+                    <v-flex xs4>
+                         <v-card class="blue-grey text-xs-center">       
+                            <v-card-title primary-title>
+                             <h4>   <span class="white--text">% PEMBIAYAAN BERDASARKAN KEGIATAN</span></h4>
+                            </v-card-title>                          
+                        <!-- <m-widget title="% PEMBIAYAAN BERDASARKAN KEGIATAN"> -->
                             <AreaChartPie/>
-                        </m-widget>
+                        <!-- </m-widget> -->
+                         </v-card>
                     </v-flex>
                     <!-- <v-flex xs4>                        
                         <m-widget title="Tindakan Restorasi per Provinsi">
@@ -133,10 +165,16 @@
                        
                     </v-flex>
 
-                    <v-flex xs4>                        
-                        <m-widget title="% JUMLAH BIAYA BERDASARKAN WILAYAH">
+                    <v-flex xs4>        
+                        <v-card class="blue-grey text-xs-center">       
+                            <v-card-title primary-title>
+                             <h4>   <span class="white--text">% JUMLAH BIAYA BERDASARKAN WILAYAH</span></h4>
+                            </v-card-title>  
+                        <!-- <m-widget  class=" font-weight-light" title="% JUMLAH BIAYA BERDASARKAN WILAYAH" aria-setsize="8"> -->
+                           
                             <AnggaranChartPie/>
-                        </m-widget>
+                        <!-- </m-widget> -->
+                        </v-card>
                     </v-flex>
                     <!-- <v-flex xs4>                        
                         <m-widget title="Tindakan Restorasi per Provinsi">
@@ -184,6 +222,7 @@ export default {
         ActionChartPie,
     },
     data(){
+       
         let geoJsonOptions = {
             onEachFeature: function (feature, layer) {
                 layer.getLatLng = function() { return this.getBounds().getCenter() }
@@ -227,7 +266,9 @@ export default {
             //     { text: 'Name', value: 'name', sortable: false},
             //     { text: 'Value', value: 'value', sortable: false},
             //  ],
-             items : [],
+             items : [
+                // { name:"kalau ini", value: this.instStrengthening},
+             ],
         //     headers: [{
         //         text: 'kegiatan',
         //         align: 'left',
@@ -372,6 +413,7 @@ export default {
             this.$store.dispatch('donordash/getPlanninginstStrengthening')
             .then(res=>{
                 this.instStrengthening = res.anggaran;
+                this.semua = this.instStrengthening;
             }) 
 
             
@@ -391,13 +433,35 @@ export default {
             .then(res=>{
                 this.adminstrartionManagement = res.anggaran;
             })
-            this.$store.dispatch('donordash/getKhg')
+                  this.$store.dispatch('donordash/getKhg',{...this.filter,page:pg})
             .then(res=>{
-                // this.options.series[0].data = res ? Object.values(res) : []
-                // this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
-                this.items[0].data = res ? Object.values(res) : []
+                // let index = 0
+                // ada pagging
+                // console.log(res.data)
+                this.page = res
+                // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
+                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
+                
+                // console.log(this.items)
+                this.loading = false
             })
             .catch(()=>this.loading=false)
+            // this.$store.dispatch('donordash/getKhg')
+            // // .then(([a])=>{
+            // //     this.items = a
+               
+            // // })
+            // .then(res=>{
+            //     // this.options.series[0].data = res ? Object.values(res) : []
+            //    // this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
+            //     //   this.items= res.name;
+            //     //   document.write(this.items);
+            // //                  this.items =[
+            // //     { name:"kalau ini", value: "ss"},
+            // //     { name:"kalau ini", value: this.instStrengthening},
+            // //  ]
+            // })
+            // .catch(()=>this.loading=false)
             this.$store.dispatch('perencanaan/getPlanningAction')
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []
