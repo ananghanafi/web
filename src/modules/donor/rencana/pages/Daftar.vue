@@ -511,7 +511,7 @@
             this.$store.dispatch('donor/perencanaan/createorg', this.page)
             .then(()=>{
                 this.$success('Data Organisasi berhasil disimpan')
-                 
+                this.$router.push({name:'listorganisasi_daftar'}) 
             })
         },
       register(){

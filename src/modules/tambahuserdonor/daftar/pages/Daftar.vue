@@ -256,19 +256,21 @@
                 password:this.password, 
                 password2:this.password2
             })
-            .then((res)=>{
-                id:this.id =''
-                this.name=''
-                this.email=''
-                // firstname:this.reg.firstname, 
-                // lastname:this.reg.lastname,
-                this.jenis=''
-                this.tanggal=''
-                this.jmlanggota=''
-               this.admin=''
-                this.password='' 
+            .then(()=>{
+              //   id:this.id =''
+              //   this.name=''
+              //   this.email=''
+              //   // firstname:this.reg.firstname, 
+              //   // lastname:this.reg.lastname,
+              //   this.jenis=''
+              //   this.tanggal=''
+              //   this.jmlanggota=''
+              //  this.admin=''
+              //   this.password='' 
 
-               this.loading = false
+              //  this.register_ok = res
+               this.$success('Data Organisasi berhasil disimpan')
+               this.$router.push({name:'listuser_daftar'})
                 // this.register_ok = res
                 // this.$router.push({name:'home'})
                 // eslint-disable-next-line
