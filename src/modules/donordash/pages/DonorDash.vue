@@ -21,7 +21,7 @@
                             </v-flex>
                         </v-layout>
                     </v-container>
-                    <v-flex xs6>
+                    <v-flex xs8>
                         <!-- <h3>   <span>SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3> -->
                         <v-card-title primary-title class="blue-grey text-xs-center">
                         <h3>   <span class="white--text">Monitoring Donor Mapping</span></h3>
@@ -34,21 +34,24 @@
                         </l-map>
                     </v-flex>
                     
-                    <v-flex xs6>
+                    <v-flex xs4>
+                                        <v-card-title primary-title class="blue-grey text-xs-center">
+                                    <h3>   <span class="white--text">SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3>
+                                    </v-card-title>
                         
-                        <!-- <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" > -->
-<!-- 
+                        <!-- <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" > --> 
+
                              <v-data-table
                                 :hide-headers="true"
                                 :items="items"
                                 class="elevation-1"
                                 :rows-per-page-items="[5]"
                             >
-                                <template slot="items" slot-scope="props"> -->
+                                <template slot="items" slot-scope="props" :val="peatlandrewetting">
                                     
                                 <!-- <template > -->
-                                    <!-- <td class="">{{ props.item.name }}</td>
-                                    <td class="">{{ props.item.value }}</td> -->
+                                    <td :val="peatlandrewetting" class="">{{ props.item.name }}</td>
+                                    <td class="">{{ props.item.value }}</td>
                                      <!-- <td class="">sf</td>
                                     <td class="">fdf</td> -->
                                      <!-- <tr>
@@ -61,16 +64,16 @@
                                         <td>Smith</td>
                                         <td>50</td>
                                     </tr> -->
-                                <!-- </template>
-                             </v-data-table>               -->
+                                </template>
+                             </v-data-table>              
                               
-                            <v-card flat color="grey lighten-5" class="ra-0"> 
+                            <!-- <v-card flat color="grey lighten-5" class="ra-0">  -->
                                 <!-- <v-card class="blue-grey text-xs-center">        -->
-                                    <v-card-title primary-title class="blue-grey text-xs-center">
+                                    <!-- <v-card-title primary-title class="blue-grey text-xs-center">
                                     <h3>   <span class="white--text">SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3>
                                     </v-card-title>    
                                    
-                                    <m-labelval label="1.Peatland_rewetting" :val="peatlandrewetting" class="text-lg-center"/>
+                                    <m-labelval label="1.Peatland_rewetting " :val="peatlandrewetting" class="text-lg-center"/>
                                                           
                                     
                                     <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-center" />
@@ -88,7 +91,7 @@
                                      <v-divider></v-divider>  
                                     <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
                                  
-                            </v-card>
+                            </v-card> -->
                                  
                         <!-- </m-widget> -->
                     </v-flex>
