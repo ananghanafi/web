@@ -100,7 +100,7 @@
                             <v-form v-model="props.item.valid">
                                 <v-card flat color="grey lighten-5" class="ra-0">
                                     <v-card-text class="px-5">
-                                        <v-layout row wrap>
+                                        <!-- <v-layout row wrap>
                                             <v-flex md6>
                                                 <m-labelval class="font-weight-light" label="KESATUAN HIDROLOGIS GAMBUT" val=""/>
                                                 <m-labelval label="Kode" :val="pVal(props.item.generalActivity.peatHydrologicalUnity,'code')"/>
@@ -161,16 +161,16 @@
                                                     </v-flex>
                                                 </v-layout>
                                             </v-flex>
-                                        </v-layout>
+                                        </v-layout> -->
                                     </v-card-text>
                                     <v-divider></v-divider>
                                     <v-card-actions class="grey lighten-2">
                                         <template>
                                             <v-spacer></v-spacer>
                                             <v-btn @click="edit(props.item)" flat color="warning darken-2">Edit/Lihat</v-btn>
-                                            <v-btn @click="updateItems(props.item)" flat color="success darken-2" 
+                                            <!-- <v-btn @click="updateItems(props.item)" flat color="success darken-2" 
                                                 v-if="props.item.status==null || props.item.status.id==STATUS_INIT"
-                                                :disabled="!props.item.valid">Setujui</v-btn>
+                                                :disabled="!props.item.valid">Setujui</v-btn> -->
                                         </template>
                                     </v-card-actions>
                                 </v-card>
@@ -306,7 +306,7 @@ export default {
             this.load(o.page)
         },
         edit(item){
-            this.$router.push({name:'bor_rencana_detail', params : {id : item.id}})
+            this.$router.push({name:'donor_rencana_detail', params : {id : item.id}})
         },
         approve(item){
             this.$confirm(`Setujui rencana ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)

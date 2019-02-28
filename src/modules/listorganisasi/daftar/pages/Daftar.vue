@@ -4,7 +4,7 @@
             <v-flex xs12>
                 <v-card class="pb-3">
                     <v-card-title class="elevation-1 font-weight-bold">
-                        DAFTAR PENGGUNA
+                        List Organisasi
                     </v-card-title>
                     <v-card-text class="py-0">
                         <v-container grid-list-md class="pa-0">
@@ -285,7 +285,7 @@ export default {
             this.load(o.page)
         },
         edit(item){
-            this.$router.push({name:'user_detail', params : {id : item.id}})
+            this.$router.push({name:'listorganisasi_daftar_detail', params : {id : item.id}})
         },
         approve(item){
             this.$confirm(`Setujui rencana ini ?<br><strong class="text-xs-center d-block title">${item.generalActivity.code}<br>${item.generalActivity.name}</strong>`)

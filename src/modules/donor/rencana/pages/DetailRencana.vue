@@ -3,22 +3,18 @@
         <v-layout column>
             <v-flex xs12>
                 <v-card>       
-                    <v-tabs v-model="tab" fixed centered slider-color="primary lighten-4" class="rt-2">
-                        <v-tab>
-                            Informasi Umum
-                        </v-tab>         
-                        <v-tab>
-                            Dokumen Terkait
-                        </v-tab>     
+                    <v-tabs v-model="tab" fixed centered slider-color="primary lighten-4">
+                        <v-tab>Informasi Umum</v-tab>
+                        <v-tab>Pelaksanaan</v-tab>
+                        <v-tab>Progress Realisasi</v-tab>
+                        <v-tab>Dokumentasi</v-tab>
                     </v-tabs>                 
                     <v-card-text id="cana_detail" class="pa-0 px-2">
                         <v-tabs v-model="tab" fixed>
-                            <v-tab>
-                                Detil Kegiatan
-                            </v-tab>          
-                            <v-tab>
-                                Dokumen Terkait
-                            </v-tab>
+                            <v-tab>Informasi Umum</v-tab>    
+                            <v-tab>Pelaksanaan</v-tab>
+                            <v-tab>Progress Realisasi</v-tab>
+                            <v-tab>Dokumentasi</v-tab>
                             <!-- Detail Kegiatan -->
                             <v-tab-item>
                                 <v-card flat>                   
@@ -29,131 +25,139 @@
                                                     <v-layout row wrap>
                                                         <v-flex md12>
                                                             <v-card color="secondary" tile>
-                                                                <v-card-text>PERENCANAAN KEGIATAN DONOR</v-card-text>
+                                                                <v-card-text>PELAKSANAAN KEGIATAN REVEGETASI</v-card-text>
                                                             </v-card>
                                                         </v-flex>
+                                                        <v-flex md4>
+                                                            <v-text-field
+                                                                v-model="doc.year"
+                                                                label="TAHUN RTT"
+                                                                type="number"
+                                                                disabled
+                                                            ></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md4>                        
+                                                            <v-text-field v-model="doc.code" label="KODE" disabled></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md4>                        
+                                                            <v-text-field v-model="plan.status.remark" label="STATUS" disabled></v-text-field>
+                                                        </v-flex>
                                                         <v-flex md12>                        
-                                                            <v-text-field v-model="doc.title" label="NAMA KEGIATAN" counter="150"></v-text-field>
+                                                            <v-text-field v-model="doc.title" label="NAMA KEGIATAN" counter="50"></v-text-field>
                                                         </v-flex>
                                                         <v-flex md6>
-                                                            <m-datepicker
-                                                                v-model="doc.startDate"
-                                                                label="Tanggal Mulai"
-                                                            ></m-datepicker>
+                                                            <v-autocomplete 
+                                                                v-model="doc.brgMandat"
+                                                                chips
+                                                                deletable-chips
+                                                                small-chips
+                                                                autocomplete
+                                                                :items="list_revegetationType"
+                                                                item-text="descId"
+                                                                item-value="id"
+                                                                label="TINDAKAN"
+                                                                disabled
+                                                            ></v-autocomplete>                        
                                                         </v-flex>
-                                                        <v-flex md6>
-                                                            <m-datepicker
-                                                                v-model="doc.endDate"
-                                                                label="Tanggal Selesai"
-                                                            ></m-datepicker>
+                                                        <!-- <v-flex md6>                        
+                                                            <v-autocomplete 
+                                                                disabled
+                                                                v-model="doc.burnStatus"
+                                                                chips
+                                                                deletable-chips
+                                                                small-chips
+                                                                autocomplete
+                                                                :items="list_burnStatus"
+                                                                item-text="desc"
+                                                                item-value="id"
+                                                                label="STATUS TERBAKAR"
+                                                                
+                                                            ></v-autocomplete>                        
+                                                        </v-flex> -->
+                                                        <!-- <v-flex md4> 
+                                                            <v-text-field v-model="plan.generalActivity.vegetationDensity.density" label="KERAPATAN VEGETASI" disabled></v-text-field>
                                                         </v-flex>
-                                                        <v-flex md12>
-                                                            <v-textarea label="Ringkasan Kegiatan" counter="150" row=3 v-model="doc.summary"></v-textarea>
+                                                        <v-flex md4> 
+                                                            <v-text-field v-model="plan.generalActivity.vegetationDensity.landCover" label="TUTUPAN LAHAN" disabled></v-text-field>
                                                         </v-flex>
+                                                        <v-flex md4>
+                                                            <v-text-field v-model="plan.generalActivity.totalArea" label="LUAS AREA" suffix="Ha"></v-text-field>
+                                                        </v-flex> -->
                                                         <v-flex md12>
                                                             <v-card color="secondary" tile>
                                                                 <v-card-text>ANGGARAN</v-card-text>
                                                             </v-card>
                                                         </v-flex>
-                                                        <v-flex md2>                        
-                                                            <v-autocomplete
-                                                                v-model="doc.currency"
-                                                                chips
-                                                                deletable-chips
-                                                                small-chips
-                                                                autocomplete
-                                                                :items="list_currency"
-                                                                item-text="code"
-                                                                item-value="id"
-                                                                label="MATA UANG"
-                                                                return-object
-                                                            ></v-autocomplete>                        
-                                                        </v-flex>
-                                                        <v-flex md3>
+                                                        <v-flex md6>
                                                             <v-text-field
-                                                                v-model="doc.amount"
+                                                                v-model="doc.cost"
                                                                 label="NILAI ANGGARAN"
                                                                 type="number"
                                                             ></v-text-field>
                                                         </v-flex>
-                                                        <v-flex md7>                        
+                                                        <v-flex md6>                        
                                                             <v-autocomplete
                                                                 v-model="doc.fundingSource"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
                                                                 autocomplete
-                                                                :items="list_org"
+                                                                :items="list_fundingSource"
                                                                 item-text="shortName"
                                                                 item-value="id"
                                                                 label="SUMBER ANGGARAN"
-                                                                return-object
+                                                             
                                                             ></v-autocomplete>                        
                                                         </v-flex>
-                                                        <v-flex md12>
+                                                        <!-- <v-flex md12>
                                                             <v-textarea
                                                                 class="mt-3"
                                                                 v-model="doc.remark"
-                                                                label="CATATAN"
+                                                                label="KETERANGAN"
                                                                 box
                                                                 rows="3"
                                                             >
                                                             </v-textarea>
+                                                        </v-flex> -->
+                                                        <!-- <v-flex md12>
+                                                            <v-card color="secondary" tile>
+                                                                <v-card-text>UPRG</v-card-text>
+                                                            </v-card>
                                                         </v-flex>
-                                                        <v-flex md12>
-                                                            <v-autocomplete 
-                                                                v-model="doc.brgMandat" 
-                                                                chips
-                                                                color="primary"
-                                                                deletable-chips
-                                                                small-chips
-                                                                autocomplete
-                                                                multiple
-                                                                :items="list_brg_mandat"
-                                                                item-text="descEn"
-                                                                item-value="id"
-                                                                label="Relevansi dengan Mandat BRG"
-                                                                return-object
-                                                            ></v-autocomplete>
+                                                        <v-flex md6>
+                                                            <v-text-field v-model="doc.uprgSlug" label="KODE UPRG" disabled></v-text-field>
                                                         </v-flex>
+                                                        <v-flex md6>
+                                                            <v-text-field v-model="doc.uprgText" label="NAMA" disabled></v-text-field>
+                                                        </v-flex> -->
                                                     </v-layout>
                                                 </v-flex>
                                                 <v-flex md6 pl-2>
                                                     <v-layout row wrap>
-                                                        <v-flex md12>
-                                                            <v-card color="secondary" tile>
-                                                                <v-card-text>IMPLEMENTING AGENCY</v-card-text>
-                                                            </v-card>
-                                                        </v-flex>
-                                                        <v-flex md4>
-                                                            <v-card flat>
-                                                                <v-card-text class="text-xs-center">
-                                                                    <v-avatar
-                                                                    slot="offset"
-                                                                    class="mx-auto d-block"
-                                                                    size="130"
-                                                                    >
-                                                                    <img
-                                                                    src="/img/logo-wwf.png"
-                                                                    >
-                                                                </v-avatar>
-                                                                </v-card-text>
-                                                            </v-card>
-                                                        </v-flex>
-                                                        <v-flex md8>
-                                                            <v-card flat>
-                                                                <v-card-title><h1>WWF</h1></v-card-title>
-                                                                <v-card-text><h4>World Wide Fund for Nature</h4></v-card-text>
-                                                            </v-card>
-                                                        </v-flex>
-                                                        <v-flex md12>
-                                                            <v-card color="secondary" tile>
-                                                                <v-card-text>LOKASI</v-card-text>
-                                                            </v-card>
-                                                        </v-flex>
-                                                        <!-- <v-flex md12 pb-2>
+                                                        <v-flex md12 pb-2>
                                                             <MiniMap pRef="revegetasi" :doc="doc" :phu="doc ? doc.phu : null" title="LOKASI KEGIATAN" />
-                                                        </v-flex> -->
+                                                        </v-flex>
+                                                        <v-flex md3>
+                                                            <v-text-field v-model="doc.lat" label="LATITUDE"></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md3>
+                                                            <v-text-field v-model="doc.lng" label="LONGITUDE"></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md6>                        
+                                                            <v-autocomplete 
+                                                                disabled
+                                                                v-model="doc.phu"
+                                                                chips
+                                                                deletable-chips
+                                                                small-chips
+                                                                autocomplete
+                                                                :items="list_phu"
+                                                                item-text="name"
+                                                                item-value="id"
+                                                                label="KESATUAN HIDROLOGIS GAMBUT"
+                                                                
+                                                            ></v-autocomplete>                        
+                                                        </v-flex>
                                                         <v-flex md6 xs12>
                                                             <v-autocomplete 
                                                                 v-model="doc.administrativeArea.province"
@@ -165,7 +169,8 @@
                                                                 item-text="longName"
                                                                 item-value="id"
                                                                 label="PROVINSI"
-                                                                return-object
+                                                              
+                                                                disabled
                                                             ></v-autocomplete>                                                                        
                                                         </v-flex>
                                                         <v-flex md6 xs12>
@@ -179,7 +184,8 @@
                                                                 item-text="shortName"
                                                                 item-value="id"
                                                                 label="KOTA/KAB"
-                                                                return-object
+                                                            
+                                                                disabled
                                                             ></v-autocomplete>                                                                        
                                                         </v-flex>
                                                         <v-flex md6 xs12>
@@ -193,7 +199,7 @@
                                                                 item-text="shortName"
                                                                 item-value="id"
                                                                 label="KECAMATAN"
-                                                                return-object
+                                                            
                                                             ></v-autocomplete>                                                                        
                                                         </v-flex>                                            
                                                         <v-flex md6 xs12>
@@ -201,28 +207,7 @@
                                                                 v-model="doc.administrativeArea.village"
                                                                 label="DESA"
                                                             ></v-text-field>
-                                                        </v-flex>
-                                                        <v-flex md3>
-                                                            <v-text-field v-model="doc.x" label="LATITUDE"></v-text-field>
-                                                        </v-flex>
-                                                        <v-flex md3>
-                                                            <v-text-field v-model="doc.y" label="LONGITUDE"></v-text-field>
-                                                        </v-flex>
-                                                        <v-flex md6>                        
-                                                            <v-autocomplete 
-                                                                v-model="doc.phu"
-                                                                chips
-                                                                deletable-chips
-                                                                small-chips
-                                                                autocomplete
-                                                                multiple
-                                                                :items="list_phu"
-                                                                item-text="name"
-                                                                item-value="id"
-                                                                label="KESATUAN HIDROLOGIS GAMBUT"
-                                                                return-object
-                                                            ></v-autocomplete>                        
-                                                        </v-flex>
+                                                        </v-flex>                                            
                                                     </v-layout>
                                                 </v-flex>
                                             </v-layout>
@@ -230,21 +215,259 @@
                                     </v-card-text>                        
                                 </v-card>                            
                             </v-tab-item>
-                            <!-- Dokumen Terkait   -->
+                            <!-- Pelaksanaan -->
                             <v-tab-item>
-                                <v-layout column class="pa-2">
-                                </v-layout>                               
+                                <v-card flat>
+                                    <v-card-text>
+                                        <v-form>
+                                            <v-layout v-if="doc" row wrap="">
+                                                <v-flex md6>
+                                                    <!-- Left Side -->
+                                                    <v-layout row wrap="">
+                                                        <v-flex xs12>
+                                                            <v-card color="secondary" tile>
+                                                                <v-card-text>WAKTU DAN PELAKSANAAN</v-card-text>
+                                                            </v-card>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <m-datepicker
+                                                                v-model="det.startDate"
+                                                                label="Tanggal Mulai"
+                                                            ></m-datepicker>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <m-datepicker
+                                                                v-model="det.endDate"
+                                                                label="Tanggal Selesai"
+                                                            ></m-datepicker>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <v-text-field
+                                                                label="Nama Pelaksana"
+                                                                v-model="det.execTeam"
+                                                            ></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <v-text-field
+                                                                label="Kategori Pelaksana"
+                                                                v-model="det.execTeamCategory"
+                                                            ></v-text-field>
+                                                        </v-flex>
+                                                        <v-flex md12>
+                                                            <v-text-field
+                                                                label="Keterangan"
+                                                                v-model="det.execTeamRemark"
+                                                            ></v-text-field>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                    <v-layout row wrap="">
+                                                        <v-flex md12>
+                                                            <v-card color="secondary" tile>
+                                                                <v-card-text>KOORDINAT GEOGRAFIS DAN AKSES LOKASI</v-card-text>
+                                                            </v-card>
+                                                        </v-flex>
+                                                        <v-flex md12>
+                                                            <v-layout row wrap="">
+                                                                <!-- info -->
+                                                                <v-flex md6>
+                                                                    <v-layout row wrap="">
+                                                                        <v-flex md12>
+                                                                            <v-text-field
+                                                                                v-model="doc.lat"
+                                                                                label="Lintang/Latitude"
+                                                                            ></v-text-field>
+                                                                        </v-flex>
+                                                                        <v-flex md12>
+                                                                            <v-text-field
+                                                                                v-model="doc.lng"
+                                                                                label="Bujur/Longitude"
+                                                                            ></v-text-field>
+                                                                        </v-flex>
+                                                                        <v-flex md12>
+                                                                            <v-text-field
+                                                                                v-model="det.utmZone"
+                                                                                label="Zona UTM"
+                                                                                suffix=" meter "
+                                                                            ></v-text-field>
+                                                                        </v-flex>
+                                                                        <v-flex md12>
+                                                                            <v-text-field
+                                                                                v-model="det.elevation"
+                                                                                label="Elevasi"
+                                                                                suffix=" (mdpl) "
+                                                                            ></v-text-field>
+                                                                        </v-flex>
+                                                                    </v-layout>
+                                                                </v-flex>
+                                                                <!-- sketsa -->
+                                                                <v-flex md6 pa-2>
+                                                                    <v-card class="grey lighten-4">
+                                                                        <v-img
+                                                                            :src="plan.files.detailSketch[0] ? plan.files.detailSketch[0].url  : '/img/camera.jpg'"
+                                                                            height="200px" contain
+                                                                        >
+                                                                        </v-img>
+                                                                        <v-card-actions class="pl-3 white">
+                                                                            <span class="font-weight-medium">Sketsa Detail</span>
+                                                                            <v-spacer></v-spacer>
+                                                                            <v-btn
+                                                                                icon
+                                                                                @click="editImg(1)"
+                                                                            >
+                                                                                <v-icon>edit</v-icon>
+                                                                            </v-btn>
+                                                                        </v-card-actions>
+                                                                    </v-card>
+                                                                </v-flex>
+                                                            </v-layout>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <v-textarea
+                                                                v-model="det.roadAccess"
+                                                                :rows="3"
+                                                                label="Akses/Jalan ke Lokasi"
+                                                            ></v-textarea>
+                                                        </v-flex>
+                                                        <v-flex md6>
+                                                            <v-textarea
+                                                                v-model="det.locationRemark"
+                                                                :rows="3"
+                                                                label="Uraian Lokasi"
+                                                            ></v-textarea>
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-flex>
+                                                <v-flex md6>
+                                                    <!-- Right Side -->
+                                                    <v-layout row wrap="">
+                                                        <v-flex xs12>
+                                                            <v-card color="secondary" tile>
+                                                                <v-card-text>ARAH PANDANG</v-card-text>
+                                                            </v-card>
+                                                        </v-flex>
+                                                        <template>
+                                                            <v-flex md12>
+                                                                <v-card flat>
+                                                                    <v-container
+                                                                        fluid
+                                                                        grid-list-md
+                                                                        class="pa-0"
+                                                                    >
+                                                                        <v-layout row wrap="">
+                                                                            <v-flex
+                                                                                v-for="card in cards"
+                                                                                xs6
+                                                                                :key="card.title"
+                                                                            >
+                                                                                <v-card class="grey lighten-4">
+                                                                                    <v-img
+                                                                                        :src="plan.files[card.obj][0] ? plan.files[card.obj][0].url : '/img/camera.jpg'"
+                                                                                        height="200px" contain aspect-ration="1.7"
+                                                                                    >
+                                                                                    </v-img>
+                                                                                    <v-card-actions class="pl-3 white">
+                                                                                        <span class="font-weight-medium">{{card.title}}</span>
+                                                                                        <v-spacer></v-spacer>
+                                                                                        <v-btn
+                                                                                            icon
+                                                                                            @click="editImg(card.tag)"
+                                                                                        >
+                                                                                            <v-icon>edit</v-icon>
+                                                                                        </v-btn>
+                                                                                    </v-card-actions>
+                                                                                </v-card>
+                                                                            </v-flex>
+                                                                        </v-layout>
+                                                                    </v-container>
+                                                                </v-card>
+                                                            </v-flex>
+                                                        </template>
+                                                    </v-layout>
+                                                    <v-layout column>
+                                                        <v-flex xs12>
+                                                            <v-card color="secondary" tile>
+                                                                <v-card-text>
+                                                                    <v-layout
+                                                                        row
+                                                                        wrap=""
+                                                                        align-center
+                                                                    >
+                                                                        <span>DOKUMEN PENDUKUNG</span>
+                                                                        <v-spacer></v-spacer>
+                                                                        <v-btn
+                                                                            @click="editImg(7)"
+                                                                            small
+                                                                            flat
+                                                                            icon
+                                                                            right
+                                                                            class="ma-0"
+                                                                        >
+                                                                            <v-icon>add_circle</v-icon>
+                                                                        </v-btn>
+                                                                    </v-layout>
+                                                                </v-card-text>
+                                                            </v-card>
+                                                        </v-flex>
+                                                        <v-card flat class="pa-0">
+                                                            <v-card-text class="py-0 px-1">
+                                                                <v-list class="py-0">
+                                                                    <v-list-tile
+                                                                        avatar
+                                                                        @click="()=>{}"
+                                                                        v-for="(fl, index) in plan.files.document"
+                                                                        :key="index"
+                                                                    >
+                                                                        <v-list-tile-avatar>
+                                                                            <v-icon>attach_file</v-icon>
+                                                                        </v-list-tile-avatar>
+                                                                        <v-list-tile-content>
+                                                                            <v-list-tile-title>{{fl.description}}</v-list-tile-title>
+                                                                        </v-list-tile-content>
+                                                                        <v-list-tile-action v-if="false">
+                                                                            <v-btn icon>
+                                                                                <v-icon>delete</v-icon>
+                                                                            </v-btn>
+                                                                        </v-list-tile-action>
+                                                                    </v-list-tile>
+                                                                </v-list>
+                                                            </v-card-text>
+                                                        </v-card>
+                                                    </v-layout>
+                                                </v-flex>
+                                            </v-layout>
+                                        </v-form>
+                                    </v-card-text>
+                                </v-card>
+                            </v-tab-item>
+                            <!-- Progress Realisasi -->
+                            <v-tab-item>
+                                <v-card flat dense>
+                                    <v-card-title>
+                                        <v-spacer></v-spacer>
+                                        <div class="font-weight-medium">Waktu Pelaksanaan :</div>
+                                        <v-subheader>Tanggal Mulai</v-subheader>
+                                        <m-datepicker v-model="det.startDate" label ></m-datepicker>
+                                        <v-subheader>Tanggal Selesai</v-subheader>
+                                        <m-datepicker v-model="det.endDate" label ></m-datepicker>
+                                    </v-card-title>
+                                    <ProgressRealisasi module="revegetasi" :item="plan"/>                                
+                                </v-card>
+                            </v-tab-item>
+                            <!-- Dokumentasi   -->
+                            <v-tab-item>
+                                <Gallery :item="plan" module="revegetasi"/>
                             </v-tab-item>
                         </v-tabs>                    
                     </v-card-text>
                     <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn color="primary" flat @click.native="$router.push({name:'donor_rencana'})">Batal</v-btn>
-                        <v-btn color="primary" flat @click.native="save">Simpan</v-btn>
-                    </v-card-actions>                
+                            <v-spacer></v-spacer>
+                            <v-btn color="primary" flat @click.native="$router.push({name:'revegetasi_implementasi'})">Batal</v-btn>
+                            <v-btn color="primary" flat @click.native="save">Simpan</v-btn>
+                        </v-card-actions>                
                 </v-card>
             </v-flex>
         </v-layout>
+        <MImgDialog ref="dlgImg" />
     </v-container>
 </template>
 <style>
@@ -255,47 +478,41 @@
 
 <script>
 import MiniMap from '@/components/MiniMap'
+import MImgDialog from '@/components/MImgDialog'
+import Gallery from '@/components/Gallery'
+import ProgressRealisasi from '@/components/ProgressRealisasi'
+
 export default {
     components : {
-        MiniMap
+        MiniMap,
+        MImgDialog,
+        Gallery,
+        ProgressRealisasi,
     },
     data(){
         return {
             tab : 0,
             plan : null, // keseluruhan object
             doc : null, // hanya general activity
-            list_currency: [],
-            list_brg_mandat: [],
-            list_org : [],            
+            det : {}, // detail act
+            list_burnStatus : [],
+            list_revegetationType : [],
+            list_fundingSource : [],            
             list_phu  : [],
             list_provinsi : [],
             list_kota : [],
             list_kec : [],
             list_desa : [],
+            menu: false,
+            menu2: false,
 
-            lampiran : [
-                {
-                    id : 1,
-                    fileType : 'doc',
-                    fileName : 'KAK Konstruksi Sumur Bor.doc',
-                    url : '',
-                    keterangan : 'KAK Konstruksi Sumur Bor'
-                },
-                {
-                    id : 2,
-                    fileType : 'pdf',
-                    fileName : 'Blueprint.pdf',
-                    url : '',
-                    keterangan : 'Blueprint'
-                },          
-                {
-                    id : 3,
-                    fileType : 'pdf',
-                    fileName : 'Denah.pdf',
-                    url : '',
-                    keterangan : 'Ini Denah konstruksi versi 1.0'
-                },                          
-            ]
+            cards: [
+                { title: 'Arah Pandang ke Utara', tag: 2, obj: 'toNorth' },
+                { title: 'Arah Pandang ke Selatan', tag: 4, obj: 'toSouth' },
+                { title: 'Arah Pandang ke Timur', tag: 3, obj: 'toEast' },
+                { title: 'Arah Pandang ke Barat', tag: 5, obj: 'toWest' }
+            ],
+
         }
     },
     mounted(){
@@ -303,21 +520,88 @@ export default {
         this.loadChoice()
     },
     methods:{
+        editImg(tag) {
+            // 1 --> sketsa detail
+            // 2 --> utaran dst dst
+            // 
+            let op = {}
+            switch (tag) {
+                case 1:
+                    op = { collection: 'detail-sketch', obj: 'detailSketch', title: 'Upload Sketsa Detail' }; break;
+                case 2:
+                    op = { collection: 'to-north', obj: 'toNorth', title: 'Upload Arah Pandang Utara' }; break;
+                case 3:
+                    op = { collection: 'to-east', obj: 'toEast', title: 'Upload Arah Pandang Timur' }; break;
+                case 4:
+                    op = { collection: 'to-south', obj: 'toSouth', title: 'Upload Arah Pandang Selatan' }; break;
+                case 5:
+                    op = { collection: 'to-west', obj: 'toWest', title: 'Upload Arah Pandang Barat' }; break;
+
+                // case 6:
+                //     op = { title: 'Upload Galeri' }; break;
+                case 7:
+                    op = { title: 'Upload Dokumen Pendukung' }; break;
+
+            }
+            // switch (tag) {
+                // case 1:
+                // case 2:
+                // case 3:
+                // case 4:
+                // case 5:
+                //     op.img = this.impl.files[op.obj][0] ? this.impl.files[op.obj][0].url : null;
+                //     op.func = 'revegetasi/implementasi/uploadImage';
+                //     break;
+                // case 6:
+                //     op.img = null;
+                //     op.func = 'embung/implementasi/uploadGallery';
+                //     op.options = {
+                //         description: true,
+                //         category: true,
+                //     }
+                //     break;
+                // case 7:
+                //     op.img = null;
+                //     op.func = 'revegetasi/implementasi/uploadDocument';
+                //     op.options = {
+                //         description: true,
+                //         category: false,
+                //         preview: false,
+                //         // doc,docx,xls,xlsx,pdf,zip
+                //         mime: 
+                //             `
+                //             application/pdf,
+                //             application/msword,
+                //             application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                //             application/zip,
+                //             application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                //             `                        
+                //     }
+            //         break;
+            // }
+            op.id = this.plan.generalActivity.id
+            this.$refs.dlgImg.open(op)
+                .then(res => {
+                    this.plan.files = { ...res.files }
+                })
+        },
         loadData(){
             return this.$store.dispatch('donor/perencanaan/show', parseInt(this.$route.params.id))
             .then(res=>{
+                this.plan = res
+                if (!this.plan.detailActivity)
+                    this.plan.detailActivity = {}
+                // this.doc = this.impl.generalActivity
                 this.doc = res
-                // this.doc = res.generalActivity
-                // this.list_burnStatus = [{id: this.doc.burnStatus.id, desc : this.doc.burnStatus.desc}]
-                // this.list_revegetationType = [{id: this.doc.revegetationType.id, desc : this.doc.revegetationType.desc}]
-                // this.list_fundingSource = [{id: this.doc.fundingSource.id, desc : this.doc.fundingSource.type}]
+                this.det = res.detailActivity
+                // this.det = this.impl.detailActivity
             })
         },        
         loadChoice(){
             return Promise.all([
-                this.$store.dispatch('donor/perencanaan/getOrg'),
-                this.$store.dispatch('brgMandat/get'),
-                this.$store.dispatch('currency/get'),
+                this.$store.dispatch('burnStatus/get'),
+                this.$store.dispatch('revegetationType/get'),
+                this.$store.dispatch('fundingSource/get'),
                 this.$store.dispatch('phu/get'),
                 
                 this.$store.dispatch('administrativeArea/getProv'),
@@ -325,9 +609,9 @@ export default {
                 Promise.resolve([]),
             ])
             .then(([a, b, c, d, e, f, g])=>{
-                this.list_org = a
-                this.list_brg_mandat = b
-                this.list_currency = c
+                this.list_burnStatus = a
+                this.list_revegetationType = b
+                this.list_fundingSource = c
                 this.list_phu = d
 
                 this.list_provinsi = e
@@ -336,9 +620,9 @@ export default {
             })
         },
         save(){
-            this.$store.dispatch('donor/perencanaan/update', this.doc)
+            this.$store.dispatch('donor/perencanaan/update', this.plan)
             .then(()=>{
-                this.$success('Data Perencanaan berhasil disimpan')
+                this.$success('Data Implementasi berhasil disimpan')
                 this.$router.push({name:'donor_rencana'})
             })
         }
