@@ -30,14 +30,14 @@
                                                         </v-flex>
                                                         <v-flex md4>
                                                             <v-text-field
-                                                                v-model="doc.year"
+                                                                v-model="doc.startDate"
                                                                 label="TAHUN RTT"
                                                                 type="number"
                                                                 disabled
                                                             ></v-text-field>
                                                         </v-flex>
                                                         <v-flex md4>                        
-                                                            <v-text-field v-model="doc.code" label="KODE" disabled></v-text-field>
+                                                            <v-text-field v-model="phu.code" label="KODE" disabled></v-text-field>
                                                         </v-flex>
                                                         <v-flex md4>                        
                                                             <v-text-field v-model="plan.status.remark" label="STATUS" disabled></v-text-field>
@@ -47,7 +47,7 @@
                                                         </v-flex>
                                                         <v-flex md6>
                                                             <v-autocomplete 
-                                                                v-model="doc.brgMandat"
+                                                                v-model="brg.descEn"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
@@ -90,14 +90,14 @@
                                                         </v-flex>
                                                         <v-flex md6>
                                                             <v-text-field
-                                                                v-model="doc.cost"
+                                                                v-model="doc.amount"
                                                                 label="NILAI ANGGARAN"
                                                                 type="number"
                                                             ></v-text-field>
                                                         </v-flex>
                                                         <v-flex md6>                        
                                                             <v-autocomplete
-                                                                v-model="doc.fundingSource"
+                                                                v-model="fund.shortName"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
@@ -138,15 +138,15 @@
                                                             <MiniMap pRef="revegetasi" :doc="doc" :phu="doc ? doc.phu : null" title="LOKASI KEGIATAN" />
                                                         </v-flex>
                                                         <v-flex md3>
-                                                            <v-text-field v-model="doc.lat" label="LATITUDE"></v-text-field>
+                                                            <v-text-field v-model="doc.x" label="LATITUDE"></v-text-field>
                                                         </v-flex>
                                                         <v-flex md3>
-                                                            <v-text-field v-model="doc.lng" label="LONGITUDE"></v-text-field>
+                                                            <v-text-field v-model="doc.y" label="LONGITUDE"></v-text-field>
                                                         </v-flex>
                                                         <v-flex md6>                        
                                                             <v-autocomplete 
                                                                 disabled
-                                                                v-model="doc.phu"
+                                                                v-model="phu.name"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
@@ -160,14 +160,14 @@
                                                         </v-flex>
                                                         <v-flex md6 xs12>
                                                             <v-autocomplete 
-                                                                v-model="doc.administrativeArea.province"
+                                                                v-model="admin.province"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
                                                                 autocomplete
                                                                 :items="list_provinsi"
                                                                 item-text="longName"
-                                                                item-value="id"
+                                                                item-value="provinceId"
                                                                 label="PROVINSI"
                                                               
                                                                 disabled
@@ -175,14 +175,14 @@
                                                         </v-flex>
                                                         <v-flex md6 xs12>
                                                             <v-autocomplete 
-                                                                v-model="doc.administrativeArea.city"
+                                                                v-model="admin.city"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
                                                                 autocomplete
                                                                 :items="list_kota"
                                                                 item-text="shortName"
-                                                                item-value="id"
+                                                                item-value="cityId"
                                                                 label="KOTA/KAB"
                                                             
                                                                 disabled
@@ -190,7 +190,7 @@
                                                         </v-flex>
                                                         <v-flex md6 xs12>
                                                             <v-autocomplete 
-                                                                v-model="doc.administrativeArea.subDistrict"
+                                                                v-model="admin.subDistrict"
                                                                 chips
                                                                 deletable-chips
                                                                 small-chips
@@ -204,7 +204,7 @@
                                                         </v-flex>                                            
                                                         <v-flex md6 xs12>
                                                             <v-text-field
-                                                                v-model="doc.administrativeArea.village"
+                                                                v-model="admin.village"
                                                                 label="DESA"
                                                             ></v-text-field>
                                                         </v-flex>                                            
@@ -231,17 +231,17 @@
                                                         </v-flex>
                                                         <v-flex md6>
                                                             <m-datepicker
-                                                                v-model="det.startDate"
+                                                                v-model="doc.startDate"
                                                                 label="Tanggal Mulai"
                                                             ></m-datepicker>
                                                         </v-flex>
                                                         <v-flex md6>
                                                             <m-datepicker
-                                                                v-model="det.endDate"
+                                                                v-model="doc.endDate"
                                                                 label="Tanggal Selesai"
                                                             ></m-datepicker>
                                                         </v-flex>
-                                                        <v-flex md6>
+                                                        <!-- <v-flex md6>
                                                             <v-text-field
                                                                 label="Nama Pelaksana"
                                                                 v-model="det.execTeam"
@@ -258,7 +258,7 @@
                                                                 label="Keterangan"
                                                                 v-model="det.execTeamRemark"
                                                             ></v-text-field>
-                                                        </v-flex>
+                                                        </v-flex> -->
                                                     </v-layout>
                                                     <v-layout row wrap="">
                                                         <v-flex md12>
@@ -273,17 +273,17 @@
                                                                     <v-layout row wrap="">
                                                                         <v-flex md12>
                                                                             <v-text-field
-                                                                                v-model="doc.lat"
+                                                                                v-model="doc.x"
                                                                                 label="Lintang/Latitude"
                                                                             ></v-text-field>
                                                                         </v-flex>
                                                                         <v-flex md12>
                                                                             <v-text-field
-                                                                                v-model="doc.lng"
+                                                                                v-model="doc.y"
                                                                                 label="Bujur/Longitude"
                                                                             ></v-text-field>
                                                                         </v-flex>
-                                                                        <v-flex md12>
+                                                                        <!-- <v-flex md12>
                                                                             <v-text-field
                                                                                 v-model="det.utmZone"
                                                                                 label="Zona UTM"
@@ -296,7 +296,7 @@
                                                                                 label="Elevasi"
                                                                                 suffix=" (mdpl) "
                                                                             ></v-text-field>
-                                                                        </v-flex>
+                                                                        </v-flex> -->
                                                                     </v-layout>
                                                                 </v-flex>
                                                                 <!-- sketsa -->
@@ -321,7 +321,7 @@
                                                                 </v-flex>
                                                             </v-layout>
                                                         </v-flex>
-                                                        <v-flex md6>
+                                                        <!-- <v-flex md6>
                                                             <v-textarea
                                                                 v-model="det.roadAccess"
                                                                 :rows="3"
@@ -334,7 +334,7 @@
                                                                 :rows="3"
                                                                 label="Uraian Lokasi"
                                                             ></v-textarea>
-                                                        </v-flex>
+                                                        </v-flex> -->
                                                     </v-layout>
                                                 </v-flex>
                                                 <v-flex md6>
@@ -494,6 +494,11 @@ export default {
             tab : 0,
             plan : null, // keseluruhan object
             doc : null, // hanya general activity
+            impl : null,
+            fund : null,
+            admin : null,
+            brg : null,
+            phu : null,
             det : {}, // detail act
             list_burnStatus : [],
             list_revegetationType : [],
@@ -588,12 +593,15 @@ export default {
         loadData(){
             return this.$store.dispatch('donor/perencanaan/show', parseInt(this.$route.params.id))
             .then(res=>{
-                this.plan = res
-                if (!this.plan.detailActivity)
-                    this.plan.detailActivity = {}
-                // this.doc = this.impl.generalActivity
                 this.doc = res
-                this.det = res.detailActivity
+
+                // this.doc = this.impl.generalActivity
+                // this.doc = res.doc
+                this.impl = res.implementingAgency
+                this.fund = res.fundingSource
+                this.admin = res.administrativeArea
+                this.brg = res.brgMandat
+                this.phu = res.phu
                 // this.det = this.impl.detailActivity
             })
         },        
