@@ -198,7 +198,7 @@ export default {
             loading: false,
             headers: [
                 {
-                    text: 'Nama',
+                    text: 'Nomor',
                     align: 'left',
                     sortable: false,
                     value: 'id'

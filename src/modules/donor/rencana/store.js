@@ -3,6 +3,8 @@ import { API, STATUS_APPROVE, STATUS_REJECT } from '../../../const';
 // const M_API = API + '/donoractivities'
 const M_API = API + '/donordash'
 const M_APII = API + '/organisasi'
+
+
 import {normParam} from '../../../tools'
 
 const store = {
