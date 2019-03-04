@@ -38,20 +38,37 @@
                                         <v-card-title primary-title class="blue-grey text-xs-center">
                                     <h3>   <span class="white--text">SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3>
                                     </v-card-title>
-                        
+                                     <m-nilai-tabel label="1.Peatland_rewetting " :val="peatlandrewetting" class="text-lg-left"/>
+                                                          
+                                    
+                                    <m-nilai-tabel label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-left" />
+                                    
+                                    <m-nilai-tabel label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" class="text-lg-left"/>
+                                    <m-nilai-tabel label="4.Planning Base Stabilization  " :val="baseStabilization" class="text-lg-left"/>
+                                     <v-divider></v-divider>   
+                                    <m-nilai-tabel label="5.Policy and Institutional Strengthening" :val="instStrengthening" class="text-lg-left"/>
+                                     <v-divider></v-divider>   
+                                    <m-nilai-tabel label="6.International Cooperation Improvement" :val="coopImprove" class="text-lg-left" />
+                                     <v-divider></v-divider>  
+                                    <m-nilai-tabel label="7.Improvement of Active Roles of the Parties" :val="actifRoles" class="text-lg-left"/>
+                                    <v-divider></v-divider>  
+                                    <m-nilai-tabel label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" class="text-lg-left"/>
+                                     <v-divider></v-divider>  
+                                    <m-nilai-tabel label="9.Administration of Management and Institutional" :val="administrationManagement"  class="text-lg-left"/>
+                                 
                         <!-- <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" > --> 
 
-                             <v-data-table
+                             <!-- <v-data-table
                                 :hide-headers="true"
                                 :items="items"
                                 class="elevation-1"
                                 :rows-per-page-items="[5]"
-                            >
-                                <template slot="items" slot-scope="props" :val="peatlandrewetting">
+                            > -->
+                                <!-- <template slot="items" slot-scope="props" :val="peatlandrewetting"> -->
                                     
                                 <!-- <template > -->
-                                    <td :val="peatlandrewetting" class="">{{ props.item.name }}</td>
-                                    <td class="">{{ props.item.value }}</td>
+                                    <!-- <td :val="peatlandrewetting" class="">{{ props.item.name }}</td> -->
+                                    <!-- <td class="">{{ props.item.value }}</td> -->
                                      <!-- <td class="">sf</td>
                                     <td class="">fdf</td> -->
                                      <!-- <tr>
@@ -64,8 +81,8 @@
                                         <td>Smith</td>
                                         <td>50</td>
                                     </tr> -->
-                                </template>
-                             </v-data-table>              
+                                <!-- </template> -->
+                             <!-- </v-data-table>               -->
                               
                               
                             <!-- <v-card flat color="grey lighten-5" class="ra-0">  -->
@@ -114,7 +131,9 @@
                                     <v-flex xs6 >
                                         <v-card class="red text-xs-center">
                                              <h1><span class="white--text"> 
-                                                 <m-labelval :val="totallembaga" class="text--center"/>
+                                                 <!-- <m-labelval :val="totallembaga" class="text--center"/> -->
+                                                 <!-- <v-card-text :val="totallembaga" ></v-card-text> -->
+                                                   <m-nilai :val="totallembaga"> </m-nilai>
                                                  </span></h1>
                                              <div class="white red--text">LEMBAGA DONOR</div>  
                                             
@@ -123,7 +142,8 @@
                                     <v-flex xs6>
                                          <v-card class="blue-grey text-xs-center">
                                              <h1><span class="white--text">
-                                                 <m-labelval :val="totalkegiatan" class="text--center"/>
+                                                 <!-- <m-labelval :val="totalkegiatan" class="text--center"/> -->
+                                                 <m-nilai :val="totalkegiatan"> </m-nilai>
                                                  </span></h1>
                                              <div class="white blue-grey--text">KEGIATAN</div>  
                                         </v-card>                                       
