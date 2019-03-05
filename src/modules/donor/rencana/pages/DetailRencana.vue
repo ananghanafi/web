@@ -22,10 +22,10 @@
                                         ></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.country" label="COUNTRY" ></v-text-field>
+                                        <v-text-field v-model="user.amount" label="COUNTRY" ></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.name" label="NAME OF INSTITUTION" ></v-text-field>
+                                        <v-text-field v-model="user.amount" label="NAME OF INSTITUTION" ></v-text-field>
                                     </v-flex>
                                     <v-flex md3>                        
                                         <v-text-field v-model="user.key" label="Focal POINT TO BRG" counter="50"></v-text-field>

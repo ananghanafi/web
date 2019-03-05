@@ -131,9 +131,9 @@
                                     <v-flex xs6 >
                                         <v-card class="red text-xs-center">
                                              <h1><span class="white--text"> 
-                                                 <!-- <m-labelval :val="totallembaga" class="text--center"/> -->
+                                                 <m-labelval :val="totallembaga" class="text--center"/>
                                                  <!-- <v-card-text :val="totallembaga" ></v-card-text> -->
-                                                   <m-nilai :val="totallembaga"> </m-nilai>
+                                                   <!-- <m-nilai :val="totallembaga"> </m-nilai> -->
                                                  </span></h1>
                                              <div class="white red--text">LEMBAGA DONOR</div>  
                                             
@@ -142,8 +142,8 @@
                                     <v-flex xs6>
                                          <v-card class="blue-grey text-xs-center">
                                              <h1><span class="white--text">
-                                                 <!-- <m-labelval :val="totalkegiatan" class="text--center"/> -->
-                                                 <m-nilai :val="totalkegiatan"> </m-nilai>
+                                                 <m-labelval :val="totalkegiatan" class="text--center"/>
+                                                 <!-- <m-nilai :val="totalkegiatan"> </m-nilai> -->
                                                  </span></h1>
                                              <div class="white blue-grey--text">KEGIATAN</div>  
                                         </v-card>                                       

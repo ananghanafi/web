@@ -2,6 +2,7 @@ import axios from 'axios'
 import { API, STATUS_IMPL_OPENED, STATUS_IMPL_PENDING } from '../../../const';
 const M_API = API + '/listorganisasi'
 const M_APII = API + '/organisasi'
+const M_APIII = API + '/donordash'
 import {normParam} from '../../../tools'
 
 const store = {
