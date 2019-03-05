@@ -6,7 +6,7 @@
                 <v-card-text>                
                     <v-form>
                         <v-layout v-if="user" row wrap>
-                            <v-flex md12>
+                            <v-flex md6>
                                 <v-layout row wrap>
                                     <v-flex md12>
                                         <v-card color="secondary" tile>
@@ -27,17 +27,46 @@
                                     <v-flex md4>                        
                                         <v-text-field v-model="user.summary" label="Ringkasan Kegiatan" disabled></v-text-field>
                                     </v-flex>
-                                    <v-flex md2>                        
+                                    <v-flex md4>                        
                                         <v-text-field v-model="user.amount" label="NOMINAL DANA" ></v-text-field>
                                     </v-flex>
-                                    <v-flex md2>                        
-                                        <v-text-field v-model="user.key" label="SUMBER DANA " counter="50"></v-text-field>
-                                    </v-flex>
-                                    <v-flex md2>                        
-                                        <v-text-field v-model="user.key" label="MATA UANG" counter="50"></v-text-field>
+                                    <v-flex md4>                        
+                                        <v-text-field v-model="fund.fullName" label="SUMBER DANA " counter="50"></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.key" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
+                                        <v-text-field v-model="cur.code" label="MATA UANG" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md12>                        
+                                        <v-text-field v-model="brgMandat.descEn" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md12>                        
+                                        <v-text-field v-model="impl.fullName" label="IMPLEMENTING AGENCY" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md12>
+                                        <v-card color="secondary" tile>
+                                            <v-card-text>LOKASI</v-card-text>
+                                        </v-card>
+                                    </v-flex>
+                                    <v-flex md3>                        
+                                        <v-text-field v-model="admin.province.longName" label="PROVINSI" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md3>                        
+                                        <v-text-field v-model="admin.city.longName" label="KOTA" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md3>                        
+                                        <v-text-field v-model="admin.subDistrict.longName" label="KECAMATAN" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md3>                        
+                                        <v-text-field v-model="admin.village" label="DESA" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md4>                        
+                                        <v-text-field v-model="phu.name" label="KHG" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md4>                        
+                                        <v-text-field v-model="user.x" label="LONGITUDE" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md4>                        
+                                        <v-text-field v-model="user.y" label="LATITUDE" counter="50"></v-text-field>
                                     </v-flex>
                                     <!-- <v-flex md6>                        
                                         <v-text-field v-model="person.fullName" label="NAMA LENGKAP" counter="50"></v-text-field>
@@ -68,6 +97,15 @@
                                     </v-flex> -->
                                 </v-layout>
                             </v-flex>
+                            <v-flex md6>
+                                <v-layout row wrap>
+                                    <v-flex md12>
+                                        <v-card color="secondary" tile>
+                                            <v-card-text>LAMPIRAN</v-card-text>
+                                        </v-card>
+                                    </v-flex>
+                                </v-layout>        
+                            </v-flex>
                             <v-flex md6 pl-2 pb-2>
                             </v-flex>
                         </v-layout>
@@ -75,7 +113,7 @@
                 </v-card-text>
                 <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" flat @click.native="$router.push({name:'donor_detail'})">Batal</v-btn>
+                        <v-btn color="primary" flat @click.native="$router.push({name:'donor_rencana'})">Batal</v-btn>
                         <v-btn color="primary" flat @click.native="save">Simpan</v-btn>
                     </v-card-actions>                
             </v-card>
@@ -96,6 +134,12 @@ export default {
             user : null, // keseluruhan object
             person : null, // hanya person
             org : null, // hanya organisasi
+            cur : null,
+            fund : null,
+            impl : null,
+            admin : null,
+            brgMandat : null,
+            phu : null,
 
             list_org : [],            
             list_phu  : [],
@@ -114,6 +158,12 @@ export default {
             return this.$store.dispatch('donor/perencanaan/show', parseInt(this.$route.params.id))
             .then(res=>{
                 this.user = res
+                this.cur = res.currency
+                this.fund = res.fundingSource
+                this.impl = res. implementingAgency
+                this.admin = res.administrativeArea
+                this.brgMandat = res.brgMandat
+                this.phu = res.phu
                 // this.person = res
                
                 // this.org = res.person.organization
@@ -138,10 +188,10 @@ export default {
         //     })
         // },
         save(){
-            this.$store.dispatch('listorganisasi/daftar/update', this.user)
+            this.$store.dispatch('donor/perencanaan/update', this.user)
             .then(()=>{
                 this.$success('Data Pengguna berhasil disimpan')
-                this.$router.push({name:'listorganisasi_daftar'})
+                this.$router.push({name:'donor_rencana'})
             })
         }
     },
