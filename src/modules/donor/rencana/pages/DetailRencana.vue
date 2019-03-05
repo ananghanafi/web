@@ -6,11 +6,11 @@
                 <v-card-text>                
                     <v-form>
                         <v-layout v-if="user" row wrap>
-                            <v-flex md6>
+                            <v-flex md12>
                                 <v-layout row wrap>
                                     <v-flex md12>
                                         <v-card color="secondary" tile>
-                                            <v-card-text>INFORMASI ORGANISASI</v-card-text>
+                                            <v-card-text>INFORMASI KEGIATAN DONOR</v-card-text>
                                         </v-card>
                                     </v-flex>
                                     <v-flex md4>
@@ -18,17 +18,26 @@
                                             v-model="user.id"
                                             label="ID"
                                             type="number"
-                                            
+                                            disabled
                                         ></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.amount" label="COUNTRY" ></v-text-field>
+                                        <v-text-field v-model="user.title" label="Nama Kegiatan" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.amount" label="NAME OF INSTITUTION" ></v-text-field>
+                                        <v-text-field v-model="user.summary" label="Ringkasan Kegiatan" disabled></v-text-field>
                                     </v-flex>
-                                    <v-flex md3>                        
-                                        <v-text-field v-model="user.key" label="Focal POINT TO BRG" counter="50"></v-text-field>
+                                    <v-flex md2>                        
+                                        <v-text-field v-model="user.amount" label="NOMINAL DANA" ></v-text-field>
+                                    </v-flex>
+                                    <v-flex md2>                        
+                                        <v-text-field v-model="user.key" label="SUMBER DANA " counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md2>                        
+                                        <v-text-field v-model="user.key" label="MATA UANG" counter="50"></v-text-field>
+                                    </v-flex>
+                                    <v-flex md4>                        
+                                        <v-text-field v-model="user.key" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
                                     </v-flex>
                                     <!-- <v-flex md6>                        
                                         <v-text-field v-model="person.fullName" label="NAMA LENGKAP" counter="50"></v-text-field>
