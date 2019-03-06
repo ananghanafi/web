@@ -1,5 +1,5 @@
 <template>
-    <v-container grid-list-md>
+    <v-container grid-list-xs>
     <v-layout column>
         <v-flex xs12>
             <v-card>
@@ -21,10 +21,10 @@
                                             disabled
                                         ></v-text-field>
                                     </v-flex>
-                                    <v-flex md4>                        
+                                    <v-flex md8>                        
                                         <v-text-field v-model="user.title" label="Nama Kegiatan" disabled></v-text-field>
                                     </v-flex>
-                                    <v-flex md4>                        
+                                    <v-flex md12>                        
                                         <v-text-field v-model="user.summary" label="Ringkasan Kegiatan" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
@@ -33,11 +33,24 @@
                                     <v-flex md4>                        
                                         <v-text-field v-model="fund.fullName" label="SUMBER DANA " counter="50"></v-text-field>
                                     </v-flex>
-                                    <v-flex md4>                        
-                                        <v-text-field v-model="cur.code" label="MATA UANG" counter="50"></v-text-field>
+                                    <v-flex md4>      
+                                        <v-autocomplete
+                                            v-model="cur.code" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="list_currency" 
+                                            item-text="code"
+                                            item-value="code"
+                                            label="MATA UANG" 
+                                            
+                                            return-object
+                                        ></v-autocomplete>               
+                                        <!-- <v-text-field v-model="cur.code" label="MATA UANG" counter="50"></v-text-field> -->
                                     </v-flex>
                                     <v-flex md12>                        
-                                        <v-text-field v-model="brgMandat.descEn" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
+                                        <v-text-field v-model="brgMandat[0].descEn" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
                                     </v-flex>
                                     <v-flex md12>                        
                                         <v-text-field v-model="impl.fullName" label="IMPLEMENTING AGENCY" counter="50"></v-text-field>
@@ -60,7 +73,7 @@
                                         <v-text-field v-model="admin.village" label="DESA" counter="50"></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="phu.name" label="KHG" counter="50"></v-text-field>
+                                        <v-text-field v-model="phu[0].name" label="KHG" counter="50"></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
                                         <v-text-field v-model="user.x" label="LONGITUDE" counter="50"></v-text-field>
@@ -141,6 +154,7 @@ export default {
             brgMandat : null,
             phu : null,
 
+            list_currency : [],
             list_org : [],            
             list_phu  : [],
             list_provinsi : [],
@@ -164,29 +178,32 @@ export default {
                 this.admin = res.administrativeArea
                 this.brgMandat = res.brgMandat
                 this.phu = res.phu
+                this.list_currency = [{id: this.user.cur.code, desc : this.user.cur.code}]
                 // this.person = res
                
                 // this.org = res.person.organization
             })
         },        
-        // loadChoice(){
-        //     return Promise.all([
-        //         this.$store.dispatch('user/get'),
-        //         this.$store.dispatch('phu/get'),
+        loadChoice(){
+            return Promise.all([
+                this.$store.dispatch('currency/get'),
+                this.$store.dispatch('phu/get'),
                 
-        //         this.$store.dispatch('administrativeArea/getProv'),
-        //         Promise.resolve([]),
-        //         Promise.resolve([]),
-        //     ])
-        //     .then(([c, d, e, f, g])=>{
-        //         this.list_org = c
-        //         this.list_phu = d
+                this.$store.dispatch('administrativeArea/getProv'),
+                Promise.resolve([]),
+                Promise.resolve([]),
+            ])
+            .then(([b,c, d, e, f, g])=>{
+                this.list_currency = b
+                this.list_org = c
+                this.list_phu = d
+                
 
-        //         this.list_provinsi = e
-        //         this.list_kota = f
-        //         this.list_kec = g
-        //     })
-        // },
+                this.list_provinsi = e
+                this.list_kota = f
+                this.list_kec = g
+            })
+        },
         save(){
             this.$store.dispatch('donor/perencanaan/update', this.user)
             .then(()=>{

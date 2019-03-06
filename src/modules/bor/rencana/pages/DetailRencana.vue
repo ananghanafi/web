@@ -32,7 +32,7 @@
                                         </v-flex>
                                         <v-flex md6>
                                             <v-autocomplete
-                                                disabled
+                                                
                                                 v-model="doc.zoneType"
                                                 chips
                                                 deletable-chips
