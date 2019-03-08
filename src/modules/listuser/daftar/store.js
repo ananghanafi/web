@@ -30,7 +30,7 @@ const store = {
         },
         // eslint-disable-next-line
         show({},id) {
-            return axios.get(`${M_API}/${id}`)
+            return axios.get(`${M_APII}/${id}`)
             .then(res => {
                 return res.data
             })
@@ -38,7 +38,7 @@ const store = {
         },
         // eslint-disable-next-line
         update({}, obj){
-            return axios.put(`${M_API}/${obj.generalActivity.id}`, obj)
+            return axios.put(`${M_APII}/${obj.id}`, obj)
             .then(res => {
                 return res.data
             })

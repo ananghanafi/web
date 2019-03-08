@@ -116,8 +116,8 @@
                                             deletable-chips
                                             small-chips
                                             autocomplete
-                                            :items="institusi2"
-                                            item-text="code"
+                                            :items="list_org"
+                                            item-text="shortName"
                                             item-value="id"
                                             label="Name of Instituion"
                                             return-object
@@ -292,7 +292,7 @@ export default {
                 },
                 implementingAgency: {
                     id: 2,
-                }
+                },
             },
             list_currency: [],
             list_brg_mandat: [],
@@ -303,12 +303,8 @@ export default {
             list_kota : [],
             list_kec : [],
             list_desa : [],
-            list_org: [
-            { state: 'APBN 2018',  },
-            { state: 'APBD 2018',  },
-            { state: 'APBN 2019',  },
-            { state: 'APBD 2019',  },
-            ],
+            list_org: [],
+            list_org_type: [],
         }
     },
     mounted(){
@@ -327,6 +323,7 @@ export default {
                 Promise.resolve([]),
             ])
             .then(([a, b, c, d, e, f, g])=>{
+                // this.list_org = a
                 this.list_org = a
                 this.list_brg_mandat = b
                 this.list_currency = c

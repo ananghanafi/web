@@ -1,12 +1,8 @@
 <template>
     <v-container grid-list-lg fill-height>
         <v-layout row wrap fill-height >
-            <!-- <v-flex md12>
-                DASHBOARD DONOR
-            </v-flex> -->
-           
             <v-flex xl8>
-                <!-- <m-widget title="Monitoring Donor Mapping"> -->
+                
                 <v-layout row wrap>
                     <v-container class="pa-0" fluid fill-height>
                         <v-layout>
@@ -56,65 +52,9 @@
                                      <v-divider></v-divider>  
                                     <m-nilai-tabel label="9.Administration of Management and Institutional" :val="administrationManagement"  class="text-lg-left"/>
                                  
-                        <!-- <m-widget title="SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG" > --> 
-
-                             <!-- <v-data-table
-                                :hide-headers="true"
-                                :items="items"
-                                class="elevation-1"
-                                :rows-per-page-items="[5]"
-                            > -->
-                                <!-- <template slot="items" slot-scope="props" :val="peatlandrewetting"> -->
-                                    
-                                <!-- <template > -->
-                                    <!-- <td :val="peatlandrewetting" class="">{{ props.item.name }}</td> -->
-                                    <!-- <td class="">{{ props.item.value }}</td> -->
-                                     <!-- <td class="">sf</td>
-                                    <td class="">fdf</td> -->
-                                     <!-- <tr>
-                                        <td>Jill</td>
-                                        <td>Smith</td>
-                                        <td>50</td>
-                                    </tr>
-                                     <tr>
-                                        <td>Jill</td>
-                                        <td>Smith</td>
-                                        <td>50</td>
-                                    </tr> -->
-                                <!-- </template> -->
-                             <!-- </v-data-table>               -->
-                              
-                              
-                            <!-- <v-card flat color="grey lighten-5" class="ra-0">  -->
-                                <!-- <v-card class="blue-grey text-xs-center">        -->
-                                    <!-- <v-card-title primary-title class="blue-grey text-xs-center">
-                                    <h3>   <span class="white--text">SEBARAN BIAYA DONOR BERDASARKAN MANDAT BRG</span></h3>
-                                    </v-card-title>    
-                                   
-                                    <m-labelval label="1.Peatland_rewetting " :val="peatlandrewetting" class="text-lg-center"/>
-                                                          
-                                    
-                                    <m-labelval label="2.Vegetation Rehabilitation (Revegetation)  " :val="revegetasi" class="text-lg-center" />
-                                    
-                                    <m-labelval label="3.Socioeconomic Revitalization of the Community  " :val="revitalization" />
-                                    <m-labelval label="4.Planning Base Stabilization  " :val="baseStabilization" />
-                                     <v-divider></v-divider>   
-                                    <m-labelval label="5.Policy and Institutional Strengthening" :val="instStrengthening" />
-                                     <v-divider></v-divider>   
-                                    <m-labelval label="6.International Cooperation Improvement" :val="coopImprove" />
-                                     <v-divider></v-divider>  
-                                    <m-labelval label="7.Improvement of Active Roles of the Parties" :val="actifRoles"/>
-                                    <v-divider></v-divider>  
-                                    <m-labelval label="8.Peatland Restoration Empowerment" :val="peatlandRestoration" />
-                                     <v-divider></v-divider>  
-                                    <m-labelval label="9.Administration of Management and Institutional" :val="administrationManagement" />
-                                 
-                            </v-card> -->
-                                 
-                        <!-- </m-widget> -->
+                        
                     </v-flex>
                 </v-layout>
-                <!-- </m-widget> -->
             </v-flex>
             <v-flex md12 xs12>  
                ''
@@ -275,6 +215,7 @@ export default {
             actifRoles: '',
             peatlandRestoration: '',
             administrationManagement: '',
+            instStrengthening: '',
             totalcost: '',
             totalArea: '',
             totalAction: '',
@@ -286,43 +227,17 @@ export default {
                 qf_province_id : null,
                 qf_code : null,
             },
-            // headers: [
-            //     { text: 'Name', value: 'name', sortable: false},
-            //     { text: 'Value', value: 'value', sortable: false},
-            //  ],
+            
              items : [
                 // { name:"kalau ini", value: this.instStrengthening},
              ],
-        //     headers: [{
-        //         text: 'kegiatan',
-        //         align: 'left',
-        //         sortable: false,
-        //         value: 'name'
-
-        //     },
-        //     {
-        //         text: 'total',
-        //         align: 'left',
-        //         sortable: false,
-        //         value: 'nilai'
-                
-        //     }],
-        //    harga: [{
-        //         name: 'peatland',
-        //         value: 'peatlandrewetting'
-
-        //     },
-            // {   name:'revegetasi', value:'revegetasi'
-            // },
-            // ]
+        
         }
     },
     mounted(){
         setTimeout(() => {
         this.$nextTick(() => {
             this.map = this.$refs.map.mapObject
-        // });
-
             var targetedProvincesLayer = L.tileLayer.wms(MAP_SERVER, {
                     layers: 'brg:sasaran_provinsi',
                     format: 'image/png',

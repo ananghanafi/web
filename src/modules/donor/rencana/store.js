@@ -18,13 +18,26 @@ const store = {
     actions: {
         // eslint-disable-next-line
         getOrg({ }) {
-            return axios.get(`${API}/organization?qf_org_type=7`)
+            return axios.get(`${API}/organization`)
                 .then(res => {
                     return res.data.data
                 })
                 .catch(err => Promise.reject(err))
             },
-            
+        // getOrg({ }) {
+        //         return axios.get(`${API}/organization?qf_org_type=7`)
+        //             .then(res => {
+        //                 return res.data.data
+        //             })
+        //             .catch(err => Promise.reject(err))
+        //         },  
+        getOrgType({ }) {
+            return axios.get(`${API}/donortype`)
+                    .then(res => {
+                        return res.data
+                    })
+                    .catch(err => Promise.reject(err))
+            },
         // eslint-disable-next-line
         get({},par) {
             return axios.get(`${M_API}${normParam(par)}`)
