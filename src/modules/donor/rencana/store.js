@@ -3,7 +3,7 @@ import { API, STATUS_APPROVE, STATUS_REJECT } from '../../../const';
 // const M_API = API + '/donoractivities'
 const M_API = API + '/donordash'
 const M_APII = API + '/organisasi'
-
+const M_APIII = API + '/organization'
 
 import {normParam} from '../../../tools'
 
@@ -17,20 +17,34 @@ const store = {
     },
     actions: {
         // eslint-disable-next-line
-        getOrg({ }) {
-            return axios.get(`${API}/organization`)
-                .then(res => {
-                    return res.data.data
-                })
-                .catch(err => Promise.reject(err))
-            },
         // getOrg({ }) {
-        //         return axios.get(`${API}/organization?qf_org_type=7`)
+        //     return axios.get(`${API}/organization`)
+        //         .then(res => {
+        //             return res.data.data
+        //         })
+        //         .catch(err => Promise.reject(err))
+        //     },
+        // getOrg({ }) {
+        //         return axios.get(`${API}/organization?qf_org_type`)
         //             .then(res => {
         //                 return res.data.data
         //             })
         //             .catch(err => Promise.reject(err))
         //         },  
+        getOrg({ }) {
+                    return axios.get(`${API}/organization?qf_org_type`)
+                        .then(res => {
+                            return res.data.data
+                        })
+                        .catch(err => Promise.reject(err))
+                    },     
+                    getOrg({ }) {
+                        return axios.get(`${API}/organization?qf_org_type=6`)
+                            .then(res => {
+                                return res.data.data
+                            })
+                            .catch(err => Promise.reject(err))
+                        },     
         getOrgType({ }) {
             return axios.get(`${API}/donortype`)
                     .then(res => {

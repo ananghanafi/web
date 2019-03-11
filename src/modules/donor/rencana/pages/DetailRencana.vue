@@ -31,7 +31,7 @@
                                         <v-text-field v-model="user.amount" label="NOMINAL DANA" ></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="fund.fullName" label="SUMBER DANA " counter="50"></v-text-field>
+                                        <v-text-field v-model="fund.fullName" label="SUMBER DANA " counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>      
                                         <v-autocomplete
@@ -50,10 +50,10 @@
                                         <!-- <v-text-field v-model="cur.code" label="MATA UANG" counter="50"></v-text-field> -->
                                     </v-flex>
                                     <v-flex md12>                        
-                                        <v-text-field v-model="brgMandat[0].descEn" label="RELEVANSI DENGAN MANDAT BRG" counter="50"></v-text-field>
+                                        <v-text-field v-model="brgMandat[0].descEn" label="RELEVANSI DENGAN MANDAT BRG" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md12>                        
-                                        <v-text-field v-model="impl.fullName" label="IMPLEMENTING AGENCY" counter="50"></v-text-field>
+                                        <v-text-field v-model="impl.fullName" label="IMPLEMENTING AGENCY" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md12>
                                         <v-card color="secondary" tile>
@@ -61,25 +61,25 @@
                                         </v-card>
                                     </v-flex>
                                     <v-flex md3>                        
-                                        <v-text-field v-model="admin.province.longName" label="PROVINSI" counter="50"></v-text-field>
+                                        <v-text-field v-model="admin.province.longName" label="PROVINSI" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md3>                        
-                                        <v-text-field v-model="admin.city.longName" label="KOTA" counter="50"></v-text-field>
+                                        <v-text-field v-model="admin.city.longName" label="KOTA" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md3>                        
-                                        <v-text-field v-model="admin.subDistrict.longName" label="KECAMATAN" counter="50"></v-text-field>
+                                        <v-text-field v-model="admin.subDistrict.longName" label="KECAMATAN" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md3>                        
-                                        <v-text-field v-model="admin.village" label="DESA" counter="50"></v-text-field>
+                                        <v-text-field v-model="admin.village" label="DESA" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="phu[0].name" label="KHG" counter="50"></v-text-field>
+                                        <v-text-field v-model="phu[0].name" label="KHG" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.x" label="LONGITUDE" counter="50"></v-text-field>
+                                        <v-text-field v-model="user.x" label="LONGITUDE" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <v-flex md4>                        
-                                        <v-text-field v-model="user.y" label="LATITUDE" counter="50"></v-text-field>
+                                        <v-text-field v-model="user.y" label="LATITUDE" counter="50" disabled></v-text-field>
                                     </v-flex>
                                     <!-- <v-flex md6>                        
                                         <v-text-field v-model="person.fullName" label="NAMA LENGKAP" counter="50"></v-text-field>
