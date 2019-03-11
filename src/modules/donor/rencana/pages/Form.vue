@@ -46,7 +46,7 @@
                                     </v-flex>
                                     <v-flex md4><v-text-field label="Nominal Dana" v-model="page.amount"></v-text-field></v-flex>
                                     <v-flex md4>
-                                        <v-autocomplete 
+                                        <!-- <v-autocomplete 
                                             v-model="page.fundingSource" 
                                             chips
                                             deletable-chips
@@ -54,6 +54,18 @@
                                             autocomplete
                                             :items="list_org"
                                             item-text="shortName"
+                                            item-value="id"
+                                            label="Sumber Dana"
+                                            return-object
+                                        ></v-autocomplete> -->
+                                        <v-autocomplete 
+                                            v-model="page.fundingSource" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="list_org"
+                                            item-text="name"
                                             item-value="id"
                                             label="Sumber Dana"
                                             return-object
@@ -110,7 +122,7 @@
                                             <v-card-text>IMPLEMENTING AGENCY</v-card-text>
                                         </v-card>
                                     </v-flex>
-                                   <v-autocomplete 
+                                   <!-- <v-autocomplete 
                                             v-model="page.agency" 
                                             chips
                                             deletable-chips
@@ -118,6 +130,18 @@
                                             autocomplete
                                             :items="list_org"
                                             item-text="shortName"
+                                            item-value="id"
+                                            label="Name of Instituion"
+                                            return-object
+                                        ></v-autocomplete> -->
+                                         <v-autocomplete 
+                                            v-model="page.agency" 
+                                            chips
+                                            deletable-chips
+                                            small-chips
+                                            autocomplete
+                                            :items="list_org"
+                                            item-text="name"
                                             item-value="id"
                                             label="Name of Instituion"
                                             return-object

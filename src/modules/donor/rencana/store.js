@@ -32,19 +32,19 @@ const store = {
         //             .catch(err => Promise.reject(err))
         //         },  
         getOrg({ }) {
-                    return axios.get(`${API}/organization?qf_org_type`)
+                    return axios.get(`${API}/organisasi`)
                         .then(res => {
                             return res.data.data
                         })
                         .catch(err => Promise.reject(err))
                     },     
-                    getOrg({ }) {
-                        return axios.get(`${API}/organization?qf_org_type=6`)
-                            .then(res => {
-                                return res.data.data
-                            })
-                            .catch(err => Promise.reject(err))
-                        },     
+                    // getOrg({ }) {
+                    //     return axios.get(`${API}/organization?qf_org_type=6`)
+                    //         .then(res => {
+                    //             return res.data.data
+                    //         })
+                    //         .catch(err => Promise.reject(err))
+                    //     },     
         getOrgType({ }) {
             return axios.get(`${API}/donortype`)
                     .then(res => {
