@@ -89,7 +89,7 @@ const store = {
                 })
                 
         },
-        getPlanningadministrationManagement({ }) {
+        getPlanningadminstrartionManagement({ }) {
             return axios.get(`${M_API}/administrationManagement`)
                 .then(res => {
                     return res.data

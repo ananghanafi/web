@@ -219,6 +219,8 @@ export default {
             totalcost: '',
             totalArea: '',
             totalAction: '',
+            totallembaga:'',
+            totalkegiatan:'',
             list_province : [],
             list_phu : [],
             list_year : [],
@@ -372,35 +374,6 @@ export default {
             .then(res=>{
                 this.adminstrartionManagement = res.anggaran;
             })
-                  this.$store.dispatch('donordash/getKhg',{...this.filter,page:pg})
-            .then(res=>{
-                // let index = 0
-                // ada pagging
-                // console.log(res.data)
-                this.page = res
-                // this.items = res.data //res.data.map((d)=>{d.index=index++;return d})
-                this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
-                
-                // console.log(this.items)
-                this.loading = false
-            })
-            .catch(()=>this.loading=false)
-            // this.$store.dispatch('donordash/getKhg')
-            // // .then(([a])=>{
-            // //     this.items = a
-               
-            // // })
-            // .then(res=>{
-            //     // this.options.series[0].data = res ? Object.values(res) : []
-            //    // this.items = res.data ? Object.keys(res.data).map(k=>({...res.data[k], id:res.data[k].id})) : []
-            //     //   this.items= res.name;
-            //     //   document.write(this.items);
-            // //                  this.items =[
-            // //     { name:"kalau ini", value: "ss"},
-            // //     { name:"kalau ini", value: this.instStrengthening},
-            // //  ]
-            // })
-            // .catch(()=>this.loading=false)
             this.$store.dispatch('perencanaan/getPlanningAction')
             .then(res=>{
                 this.totalAction = res.totalAction ? res.totalAction : []
