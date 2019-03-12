@@ -54,7 +54,7 @@
                                             item-value="id"
                                             label="Jenis"
                                         ></v-autocomplete>
-                                    <v-menu full-width="true">
+                                    <v-menu>
                                         <v-text-field :value="tanggal" slot="activator" label="Tanggal" append-icon="date_range">
 
                                         </v-text-field>
@@ -124,7 +124,7 @@
                                     
                                     ></v-checkbox>
                                     <v-layout justify-center>
-                                    <v-btn large="true" :disabled="!valid" color="success" @click="register">
+                                    <v-btn :disabled="!valid" color="success" @click="register">
                                     Submit
                                     </v-btn>
                                     </v-layout>
@@ -200,7 +200,7 @@
             //   'Lembaga', 'Instansi', 'Universitas', 'Organisasi','Institusi'
             // ),
             admin: null,
-            list_jenis:[],
+            list_admin:[],
             // admin: (
         
             //     'Provinsi',
