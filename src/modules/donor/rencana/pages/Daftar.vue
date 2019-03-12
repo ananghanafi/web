@@ -77,14 +77,14 @@
                                         </v-flex>
                                     </v-layout>
                                     
-                    <v-card-title class="elevation-1">
+                    <!-- <v-card-title class="elevation-1">
                     Type of Development Partner
-                    <v-spacer></v-spacer>
+                    <v-spacer></v-spacer> -->
                     <!-- <v-btn icon @click="load(1)"><v-icon>refresh</v-icon></v-btn> -->
-                    </v-card-title>
+                    <!-- </v-card-title> -->
                     <v-layout>
                                         <v-flex xs4>
-                                        <v-card-title>Key Activities</v-card-title>
+                                        <v-card-title>Type Of Development Partner</v-card-title>
                                         </v-flex>
                                    <v-flex xs8>
                                     <v-autocomplete
@@ -101,7 +101,7 @@
                                         ></v-autocomplete>
                                     </v-flex>
                                     </v-layout>
-                    <v-layout>
+                    <!-- <v-layout>
                                         <v-flex xs4>
                                         <v-card-title>FOCAL POINT TO BRG</v-card-title>
                                         </v-flex>
@@ -116,7 +116,7 @@
                                             required
                                             ></v-text-field>
                                         </v-flex>
-                                    </v-layout>
+                                    </v-layout> -->
                     <v-container>
                     </v-container>
                                      
