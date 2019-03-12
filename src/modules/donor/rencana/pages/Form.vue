@@ -135,7 +135,7 @@
                                             return-object
                                         ></v-autocomplete> -->
                                          <v-autocomplete 
-                                            v-model="page.agency" 
+                                            v-model="page.implementingAgency" 
                                             chips
                                             deletable-chips
                                             small-chips
@@ -225,7 +225,7 @@
                                         <v-flex xs8>
                                      <div>
                                        
-                                        <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
+                                        <input type="file"  :multiple="false" 
                                             ref="fileInput" @change="onFileChange">
                                     </div>
                                         </v-flex>
@@ -240,7 +240,7 @@
                                         <v-flex xs8>
                                      <div>
                                         
-                                        <input type="file" :accept="accept" :multiple="false" :disabled="disabled"
+                                        <input type="file" :multiple="false"
                                             ref="fileInput" @change="onFileChange">
                                     </div>
                                         </v-flex>
@@ -265,42 +265,42 @@ export default {
     data() {
         return {
             agency: [],
-            institusi2: '',
-            institusi2: null,
-            institusi2:[
-          'Kingdom of Norway',
-          'DFID UK Climate Change Unit Indonesia  (UKCCU)',
-          'Japan',
-          'Millenium Challenge Corporation',
-          'Norway',
-          'French Government (shareholder) ; financial markets (loans) ; delegated funds (grants)',
-          'Department of Foreign Affairs and Trade (DFAT)',
-          'Climate Works Foundation',
-          'Ford Foundation',
-          'Packard Foundation',
-          'Good Energies Foundation',
-          'UKCCU ',
-          'Government of Norway/Embassy of Norway',
-          'World Economic Forum',
-          'Embassy of the Kingdom of the Netherlands',
-          'APP Group ',
-          'Global Affairs Canada ',
-          'Climate and Land Use Alliance (CLUA)',
-            'USAID (United States Agency for International Development)',
-            'MCA-I',
-            'Republic of South Korea',
-            'Ministry of Foreign Affairs of Denmark',
-            'EC (European Commission)',
-            'Federal Ministry for Economic Cooperation and Development (grant)',
-            'WWF Network',
-            'EMM',
-            'Walhi Jambi, Scale Up, UNDP, EMM, SAFIR, Madani',
-            'UNDP, TFCa, MCA, Belantara, IDH (Inisiasi Dagang Hijau), ICCTF (for on going project only ICCTF and Belantara)',
-            'European Union, International Fund for Agricultural Development (IFAD), Global Environment Facility (GEF) through IFAD',
-            'Royal Norwegian Embassy ',
-            'Kingdom of Denmark & Norway',
+        //     institusi2: '',
+        //     institusi2: null,
+        //     institusi2:[
+        //   'Kingdom of Norway',
+        //   'DFID UK Climate Change Unit Indonesia  (UKCCU)',
+        //   'Japan',
+        //   'Millenium Challenge Corporation',
+        //   'Norway',
+        //   'French Government (shareholder) ; financial markets (loans) ; delegated funds (grants)',
+        //   'Department of Foreign Affairs and Trade (DFAT)',
+        //   'Climate Works Foundation',
+        //   'Ford Foundation',
+        //   'Packard Foundation',
+        //   'Good Energies Foundation',
+        //   'UKCCU ',
+        //   'Government of Norway/Embassy of Norway',
+        //   'World Economic Forum',
+        //   'Embassy of the Kingdom of the Netherlands',
+        //   'APP Group ',
+        //   'Global Affairs Canada ',
+        //   'Climate and Land Use Alliance (CLUA)',
+        //     'USAID (United States Agency for International Development)',
+        //     'MCA-I',
+        //     'Republic of South Korea',
+        //     'Ministry of Foreign Affairs of Denmark',
+        //     'EC (European Commission)',
+        //     'Federal Ministry for Economic Cooperation and Development (grant)',
+        //     'WWF Network',
+        //     'EMM',
+        //     'Walhi Jambi, Scale Up, UNDP, EMM, SAFIR, Madani',
+        //     'UNDP, TFCa, MCA, Belantara, IDH (Inisiasi Dagang Hijau), ICCTF (for on going project only ICCTF and Belantara)',
+        //     'European Union, International Fund for Agricultural Development (IFAD), Global Environment Facility (GEF) through IFAD',
+        //     'Royal Norwegian Embassy ',
+        //     'Kingdom of Denmark & Norway',
 
-                ],
+        //         ],
             page: {
                 administrativeArea: {
                     province: {
@@ -315,7 +315,7 @@ export default {
                     village: null,
                 },
                 implementingAgency: {
-                    id: 2,
+                    id: "",
                 },
             },
             list_currency: [],

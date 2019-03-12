@@ -87,7 +87,7 @@
                                 <td class="">{{ props.item.country }}</td>
                                 <td class="">{{ props.item.name }}</td>
                                 <td class="">{{ props.item.key }}</td>
-                                <td class="">{{ props.item.focal }}</td>
+                                <!-- <td class="">{{ props.item.focal }}</td> -->
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>
@@ -200,7 +200,7 @@ export default {
                 { text: 'Negara', value: 'country', sortable: false},
                 { text: 'Nama Institution', value: 'name', sortable: false},
                 { text: 'Key Activities', value: 'key', sortable: false},
-                { text: 'FOCAL POINT TO BRG', value: 'focal', sortable: false},
+                // { text: 'FOCAL POINT TO BRG', value: 'focal', sortable: false},
                 { text: '',sortable : false}
             ],
             items : [],

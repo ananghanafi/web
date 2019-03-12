@@ -86,11 +86,11 @@
                                 </td>
                                 <td class="">{{ props.item.title }}</td>
                                 <td class="">{{ props.item.currency.code }}</td>
-                                <td class="">{{ props.item.implementingAgency.fullName}}</td>
+                                <td class="">{{ props.item.implementingAgency.name}}</td>
                                  <td class="">{{ props.item.amount }}</td>
                                 
                                
-                                <td class="">{{ props.item.fundingSource.fullName }}</td>
+                                <td class="">{{ props.item.fundingSource.name }}</td>
                                 <td>
                                     <v-icon @click.stop="props.expanded = !props.expanded" :class="{'arr_open':props.expanded}" small>keyboard_arrow_down</v-icon>
                                 </td>

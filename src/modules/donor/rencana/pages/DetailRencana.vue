@@ -35,7 +35,7 @@
                                     </v-flex>
                                     <v-flex md4>      
                                         <v-autocomplete
-                                            v-model="cur.code" 
+                                            v-model="user.currency" 
                                             chips
                                             deletable-chips
                                             small-chips
@@ -172,7 +172,7 @@ export default {
             return this.$store.dispatch('donor/perencanaan/show', parseInt(this.$route.params.id))
             .then(res=>{
                 this.user = res
-                this.cur = res.currency
+                // this.cur = res.currency
                 this.fund = res.fundingSource
                 this.impl = res. implementingAgency
                 this.admin = res.administrativeArea
