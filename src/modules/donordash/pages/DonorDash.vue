@@ -331,6 +331,7 @@ export default {
             .then(res=>{
                 this.peatlandrewetting = res.anggaran;
             })
+            
              this.$store.dispatch('donordash/totalkegiatan')
             .then(res=>{
                 this.totalkegiatan = res.status;
